@@ -1,2 +1,3 @@
-1. `npm install`
-2. `npm run dev`
+1. `cp .env.example .env`
+2. `npm install`
+3. `npm run dev`
