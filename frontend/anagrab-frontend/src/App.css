@@ -40,3 +40,137 @@
 .read-the-docs {
   color: #888;
 }
+
+.game-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #213547;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-controls {
+  margin-bottom: 20px;
+}
+
+.game-controls button {
+  margin-right: 10px;
+}
+
+.pot {
+  margin: 20px 0;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.letter {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: #4a72f5;
+  color: white;
+  border: 1px solid #3557d0;
+  border-radius: 4px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.word-form {
+  margin: 20px 0;
+}
+
+.word-form input {
+  padding: 8px;
+  margin-right: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #213547;
+  background-color: #ffffff;
+}
+
+.players {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.player {
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  color: #213547;
+}
+
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.word {
+  background: #f0f4ff;
+  color: #213547;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #d0d8ff;
+}
+
+.join-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #213547;
+}
+
+.join-form form {
+  display: flex;
+  gap: 10px;
+}
+
+.join-form input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #213547;
+  background-color: #ffffff;
+}
+
+.game-controls button,
+.word-form button,
+.join-form button {
+  background-color: #4a72f5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.game-controls button:hover,
+.word-form button:hover,
+.join-form button:hover {
+  background-color: #3557d0;
+}
+
+h2, h3 {
+  color: #213547;
+}
