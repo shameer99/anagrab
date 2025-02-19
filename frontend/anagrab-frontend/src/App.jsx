@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { io } from 'socket.io-client'
 
-const socket = io('http://localhost:5001')
+console.log(import.meta.env.VITE_BACKEND_URL)
+const socket = io(import.meta.env.VITE_BACKEND_URL)
 
 function App() {
   const [count, setCount] = useState(0)
