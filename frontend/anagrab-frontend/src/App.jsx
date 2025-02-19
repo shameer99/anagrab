@@ -1,10 +1,32 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { io } from 'socket.io-client'
+
+const socket = io('http://localhost:5001')
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    // Listen for counter updates from the server
+    socket.on('counter_update', (newCount) => {
+      setCount(newCount)
+    })
+
+    return () => {
+      socket.off('counter_update')
+    }
+  }, [])
+
+  const handleIncrement = () => {
+    socket.emit('increment')
+  }
+
+  const handleDecrement = () => {
+    socket.emit('decrement')
+  }
 
   return (
     <>
@@ -18,12 +40,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <h1>Counter: {count}</h1>
+        <button onClick={handleIncrement}>+</button>
+        <button onClick={handleDecrement}>-</button>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
