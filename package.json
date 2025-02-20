@@ -1,6 +1,14 @@
 {
+  "name": "anagrab",
+  "version": "1.0.0",
+  "description": "Word game with real-time multiplayer",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend/anagrab-frontend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend/anagrab-frontend && npm run dev\"",
+    "dev:install": "npm run install:all && npm run dev"
+  },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "dotenv": "^16.4.7"

@@ -1,7 +1,45 @@
 # Anagrab
 
-1. Read the [README.md](frontend/anagrab-frontend/README.md) in the frontend/anagrab-frontend directory.
-2. Read the [README.md](backend/README.md) in the backend directory.
+A real-time multiplayer word game where players compete to form words from shared letters.
+
+## Development Setup
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm (v7 or higher)
+
+### Environment Setup
+1. Copy the backend environment file:
+```bash
+cp backend/.env.example backend/.env
+```
+
+2. Copy the frontend environment file:
+```bash
+cp frontend/anagrab-frontend/.env.example frontend/anagrab-frontend/.env
+```
+
+### Quick Start
+If you haven't installed dependencies yet:
+```bash
+npm run dev:install
+```
+
+If you've already installed dependencies:
+```bash
+npm run dev
+```
+
+### What This Does
+- Installs all dependencies for root, frontend, and backend (when using `dev:install`)
+- Starts both frontend and backend development servers concurrently
+- Auto-reloads backend on file changes using nodemon
+- Uses Vite's dev server for frontend hot module replacement
+
+### Server Locations
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5001
+
 ## About Snatch (The Word Game)
 
 Snatch is a fast-paced word game where players compete to form and steal words using letter tiles. Here's how it works:
