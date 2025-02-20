@@ -74,6 +74,10 @@ io.on('connection', socket => {
 
   socket.on('start_game', () => {
     initializeDeck();
+    // Reset all players' word banks
+    for (const playerId in gameState.players) {
+      gameState.players[playerId].words = [];
+    }
     io.emit('game_state_update', gameState);
   });
 
