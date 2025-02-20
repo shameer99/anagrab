@@ -18,7 +18,6 @@ function App() {
       <GameControls
         onStartGame={startGame}
         onFlipLetter={flipLetter}
-        onEndGame={endGame}
         deckCount={gameState?.deck?.length}
       />
       <LetterPot letters={gameState?.pot} />
