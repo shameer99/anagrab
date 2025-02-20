@@ -5,4 +5,4 @@ export const GameControls = ({ onStartGame, onFlipLetter }) => {
       <button onClick={onFlipLetter}>Flip Letter</button>
     </div>
   );
-}; 
+};

@@ -3,7 +3,7 @@ import { useState } from 'react';
 export const WordForm = ({ onClaimWord }) => {
   const [wordInput, setWordInput] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (wordInput.trim()) {
       onClaimWord(wordInput);
@@ -16,10 +16,10 @@ export const WordForm = ({ onClaimWord }) => {
       <input
         type="text"
         value={wordInput}
-        onChange={(e) => setWordInput(e.target.value)}
+        onChange={e => setWordInput(e.target.value)}
         placeholder="Enter word to claim"
       />
       <button type="submit">Claim Word</button>
     </form>
   );
-}; 
+};

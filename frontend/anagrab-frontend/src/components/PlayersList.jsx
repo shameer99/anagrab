@@ -6,11 +6,13 @@ export const PlayersList = ({ players }) => {
           <h3>{player.name}</h3>
           <div className="words">
             {player.words.map((word, index) => (
-              <span key={index} className="word">{word}</span>
+              <span key={index} className="word">
+                {word}
+              </span>
             ))}
           </div>
         </div>
       ))}
     </div>
   );
-}; 
+};

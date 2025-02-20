@@ -7,15 +7,7 @@ import { WordForm } from './components/WordForm';
 import { PlayersList } from './components/PlayersList';
 
 function App() {
-  const {
-    gameState,
-    isJoined,
-    joinGame,
-    startGame,
-    flipLetter,
-    claimWord,
-    endGame,
-  } = useSocket();
+  const { gameState, isJoined, joinGame, startGame, flipLetter, claimWord, endGame } = useSocket();
 
   if (!isJoined) {
     return <JoinForm onJoin={joinGame} />;
@@ -23,10 +15,7 @@ function App() {
 
   return (
     <div className="game-container">
-      <GameControls
-        onStartGame={startGame}
-        onFlipLetter={flipLetter}
-      />
+      <GameControls onStartGame={startGame} onFlipLetter={flipLetter} />
       <LetterPot letters={gameState?.pot} />
       <WordForm onClaimWord={claimWord} />
       <PlayersList players={gameState?.players} />
