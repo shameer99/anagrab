@@ -118,10 +118,9 @@ function tryToStealWord(word, pot, socketId) {
       }
       potLetters.splice(potIndex, 1);
     }
-
-    if (canFormFromPot) {
-      // Remove the word from the original player
-      for (const [playerId, player] of Object.entries(gameState.players)) {
+    if (!canFormFromPot) return false;
+    // Remove the word from the original player
+    for (const [playerId, player] of Object.entries(gameState.players)) {
         const wordIndex = player.words.indexOf(existingWord);
         if (wordIndex !== -1) {
           player.words.splice(wordIndex, 1);
@@ -143,10 +142,6 @@ function tryToStealWord(word, pot, socketId) {
       return true;
     }
   }
-
-  return false;
-}
-
 
 
 io.on("connection", (socket) => {
