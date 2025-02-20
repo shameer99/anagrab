@@ -44,25 +44,41 @@ function shuffle(array) {
   return array;
 }
 
-function isValidWord(word, playerWords, pot) {
+function isValidWord(word) {
   // Check if it's in dictionary and at least 4 letters
-  if (!dictionary.has(word.toLowerCase()) || word.length < 4) return false;
+  return (dictionary.has(word.toLowerCase()) && word.length >= 4);
+}
 
+// Try to take word from pot, return true if successful
+function tryTakeFromPot(word, pot) {
   // For MVP, just check if letters exist in pot
   const potLetters = [...pot];
   const wordLetters = word.split('');
-
+  
+  // Check if word can be formed
   for (const letter of wordLetters) {
     const index = potLetters.indexOf(letter);
     if (index === -1) return false;
     potLetters.splice(index, 1);
   }
+  // Add word to player's words
+    gameState.players[socket.id].words.push(word);
 
+  // Remove letters from pot
+      for (const letter of wordLetters) {
+        const index = gameState.pot.indexOf(letter);
+        if (index !== -1) {
+          gameState.pot.splice(index, 1);
+        }
+      }
+  
+  // Check if any letters are left in pot
   return true;
 }
 
-io.on('connection', socket => {
-  console.log('Player connected:', socket.id);
+
+io.on("connection", (socket) => {
+  console.log("Player connected:", socket.id);
 
   socket.on('join_game', playerName => {
     gameState.players[socket.id] = {
@@ -85,19 +101,19 @@ io.on('connection', socket => {
     }
   });
 
-  socket.on('claim_word', word => {
-    if (isValidWord(word, gameState.players[socket.id].words, gameState.pot)) {
-      gameState.players[socket.id].words.push(word);
-      // Remove used letters from pot
-      const wordLetters = word.split('');
-      for (const letter of wordLetters) {
-        const index = gameState.pot.indexOf(letter);
-        if (index !== -1) {
-          gameState.pot.splice(index, 1);
-        }
-      }
-      io.emit('game_state_update', gameState);
+  socket.on("claim_word", (word) => {
+    // First check if word is valid
+    if (!isValidWord(word)) {
+       io.emit("Invalid word");
+       return;
     }
+    if (tryTakeFromPot(word, gameState.pot) || tryToStealWord(word, gameState.pot))
+      {
+        io.emit("game_state_update", gameState);
+        return;
+      }
+
+      io.emit("Invalid move");
   });
 
   socket.on('disconnect', () => {
