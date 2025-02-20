@@ -26,7 +26,6 @@ function App() {
       <GameControls
         onStartGame={startGame}
         onFlipLetter={flipLetter}
-        onEndGame={endGame}
       />
       <LetterPot letters={gameState?.pot} />
       <WordForm onClaimWord={claimWord} />

@@ -23,7 +23,6 @@ const gameState = {
   players: {},  // { socketId: { name, words: [] } }
   pot: [],      // Letters that have been flipped
   deck: [],     // Unflipped letters
-  isActive: false
 };
 
 // Initialize letter distribution (simplified for MVP)
@@ -31,7 +30,6 @@ function initializeDeck() {
   const distribution = 'AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ'.split('');
   gameState.deck = shuffle([...distribution]);
   gameState.pot = [];
-  gameState.isActive = true;
 }
 
 function shuffle(array) {
@@ -94,13 +92,6 @@ io.on("connection", (socket) => {
           gameState.pot.splice(index, 1);
         }
       }
-      io.emit("game_state_update", gameState);
-    }
-  });
-
-  socket.on("end_game", () => {
-    if (gameState.deck.length === 0) {
-      gameState.isActive = false;
       io.emit("game_state_update", gameState);
     }
   });
