@@ -51,6 +51,11 @@ function isValidWord(word) {
 
 // Try to take word from pot, return true if successful
 function tryTakeFromPot(word, pot) {
+  return (dictionary.has(word.toLowerCase()) && word.length >= 4);
+}
+
+// Try to take word from pot, return true if successful
+function tryTakeFromPot(word, pot) {
   // For MVP, just check if letters exist in pot
   const potLetters = [...pot];
   const wordLetters = word.split('');
@@ -73,8 +78,21 @@ function tryTakeFromPot(word, pot) {
       }
   
   // Check if any letters are left in pot
+  // Add word to player's words
+    gameState.players[socket.id].words.push(word);
+
+  // Remove letters from pot
+      for (const letter of wordLetters) {
+        const index = gameState.pot.indexOf(letter);
+        if (index !== -1) {
+          gameState.pot.splice(index, 1);
+        }
+      }
+  
+  // Check if any letters are left in pot
   return true;
 }
+
 
 
 io.on("connection", (socket) => {
@@ -114,6 +132,13 @@ io.on("connection", (socket) => {
       }
 
       io.emit("Invalid move");
+  });
+
+  socket.on("end_game", () => {
+    if (gameState.deck.length === 0) {
+      gameState.isActive = false;
+      io.emit("game_state_update", gameState);
+    }
   });
 
   socket.on('disconnect', () => {
