@@ -3,6 +3,21 @@ import { io } from 'socket.io-client';
 
 const socket = io(import.meta.env.VITE_BACKEND_URL);
 
+const originalOn = socket.on.bind(socket);
+socket.on = (eventName, callback) => {
+  return originalOn(eventName, (...args) => {
+    console.log(`Socket Received '${eventName}':`, ...args);
+    callback(...args);
+  });
+};
+
+// Wrap the original socket.emit method
+const originalEmit = socket.emit.bind(socket);
+socket.emit = (eventName, ...args) => {
+  console.log(`Socket Emitting '${eventName}':`, ...args);
+  return originalEmit(eventName, ...args);
+};
+
 export const useSocket = () => {
   const [gameState, setGameState] = useState(null);
   const [isJoined, setIsJoined] = useState(false);
