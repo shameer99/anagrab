@@ -51,7 +51,7 @@ function isValidWord(word) {
 
 
 // Try to take word from pot, return true if successful
-function tryTakeFromPot(word, pot) {
+function tryTakeFromPot(word, pot, socketId) {
   // For MVP, just check if letters exist in pot
   const potLetters = [...pot];
   const wordLetters = word.split('');
@@ -65,18 +65,86 @@ function tryTakeFromPot(word, pot) {
   
   // Check if any letters are left in pot
   // Add word to player's words
-    gameState.players[socket.id].words.push(word);
+  gameState.players[socketId].words.push(word);
 
   // Remove letters from pot
-      for (const letter of wordLetters) {
+  for (const letter of wordLetters) {
+    const index = gameState.pot.indexOf(letter);
+    if (index !== -1) {
+      gameState.pot.splice(index, 1);
+    }
+  }
+  
+  // Check if any letters are left in pot
+  return true;
+}
+
+function tryToStealWord(word, pot, socketId) {
+  const potLetters = [...pot];
+  const wordLetters = word.split('');
+
+  // Get all words from all players
+  const allPlayerWords = Object.values(gameState.players).reduce((words, player) => {
+    return words.concat(player.words);
+  }, []);
+
+  // Try each existing word to see if it can be used for stealing
+  for (const existingWord of allPlayerWords) {
+    // Skip if trying to steal the exact same word
+    if (existingWord === word) continue;
+
+    // Check if existing word is contained within the target word
+    let remainingLetters = [...wordLetters];
+    let canUseExistingWord = true;
+    
+    for (const letter of existingWord) {
+      const index = remainingLetters.indexOf(letter);
+      if (index === -1) {
+        canUseExistingWord = false;
+        break;
+      }
+      remainingLetters.splice(index, 1);
+    }
+
+    if (!canUseExistingWord) continue;
+
+    // Check if remaining letters can be formed from pot
+    let canFormFromPot = true;
+    for (const letter of remainingLetters) {
+      const potIndex = potLetters.indexOf(letter);
+      if (potIndex === -1) {
+        canFormFromPot = false;
+        break;
+      }
+      potLetters.splice(potIndex, 1);
+    }
+
+    if (canFormFromPot) {
+      // Remove the word from the original player
+      for (const [playerId, player] of Object.entries(gameState.players)) {
+        const wordIndex = player.words.indexOf(existingWord);
+        if (wordIndex !== -1) {
+          player.words.splice(wordIndex, 1);
+          break;
+        }
+      }
+
+      // Add the new word to the current player's words
+      gameState.players[socketId].words.push(word);
+
+      // Remove used letters from pot
+      for (const letter of remainingLetters) {
         const index = gameState.pot.indexOf(letter);
         if (index !== -1) {
           gameState.pot.splice(index, 1);
         }
       }
-  
-  // Check if any letters are left in pot
-  return true;
+      
+      return true;
+    }
+  }
+
+  return false;
 }
 
 
@@ -106,18 +174,16 @@ io.on("connection", (socket) => {
   });
 
   socket.on("claim_word", (word) => {
-    // First check if word is valid
     if (!isValidWord(word)) {
-       io.emit("Invalid word");
-       return;
+      io.emit("Invalid word");
+      return;
     }
-    if (tryTakeFromPot(word, gameState.pot) || tryToStealWord(word, gameState.pot))
-      {
-        io.emit("game_state_update", gameState);
-        return;
-      }
-
-      io.emit("Invalid move");
+    if (tryTakeFromPot(word, gameState.pot, socket.id) || 
+        tryToStealWord(word, gameState.pot, socket.id)) {
+      io.emit("game_state_update", gameState);
+      return;
+    }
+    io.emit("Invalid move");
   });
 
   socket.on("end_game", () => {
