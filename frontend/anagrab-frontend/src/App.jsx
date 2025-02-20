@@ -15,7 +15,12 @@ function App() {
 
   return (
     <div className="game-container">
-      <GameControls onStartGame={startGame} onFlipLetter={flipLetter} />
+      <GameControls
+        onStartGame={startGame}
+        onFlipLetter={flipLetter}
+        onEndGame={endGame}
+        deckCount={gameState?.deck?.length}
+      />
       <LetterPot letters={gameState?.pot} />
       <WordForm onClaimWord={claimWord} />
       <PlayersList players={gameState?.players} />
