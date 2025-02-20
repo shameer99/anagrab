@@ -8,6 +8,9 @@ on:
 jobs:
   prettier:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,4 +24,9 @@ jobs:
         run: npm install
 
       - name: Run Prettier Check
-        run: npx prettier --check .
+        run: |
+          if ! npx prettier --check .; then
+            echo "Code formatting issues found. Running prettier to show the diff..."
+            npx prettier --write .
+            exit 1
+          fi
