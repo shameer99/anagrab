@@ -49,10 +49,6 @@ function isValidWord(word) {
   return (dictionary.has(word.toLowerCase()) && word.length >= 4);
 }
 
-// Try to take word from pot, return true if successful
-function tryTakeFromPot(word, pot) {
-  return (dictionary.has(word.toLowerCase()) && word.length >= 4);
-}
 
 // Try to take word from pot, return true if successful
 function tryTakeFromPot(word, pot) {
@@ -66,16 +62,6 @@ function tryTakeFromPot(word, pot) {
     if (index === -1) return false;
     potLetters.splice(index, 1);
   }
-  // Add word to player's words
-    gameState.players[socket.id].words.push(word);
-
-  // Remove letters from pot
-      for (const letter of wordLetters) {
-        const index = gameState.pot.indexOf(letter);
-        if (index !== -1) {
-          gameState.pot.splice(index, 1);
-        }
-      }
   
   // Check if any letters are left in pot
   // Add word to player's words
