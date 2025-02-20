@@ -38,10 +38,6 @@ export const useSocket = () => {
     }
   };
 
-  const endGame = () => {
-    socket.emit('end_game');
-  };
-
   return {
     gameState,
     isJoined,
@@ -49,6 +45,5 @@ export const useSocket = () => {
     startGame,
     flipLetter,
     claimWord,
-    endGame,
   };
 }; 
