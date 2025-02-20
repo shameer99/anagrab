@@ -59,6 +59,13 @@
   margin-right: 10px;
 }
 
+.deck-count {
+  margin-top: 10px;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #4a72f5;
+}
+
 .pot {
   margin: 20px 0;
   padding: 20px;

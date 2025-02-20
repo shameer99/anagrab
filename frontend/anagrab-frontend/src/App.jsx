@@ -27,6 +27,7 @@ function App() {
         onStartGame={startGame}
         onFlipLetter={flipLetter}
         onEndGame={endGame}
+        deckCount={gameState?.deck?.length}
       />
       <LetterPot letters={gameState?.pot} />
       <WordForm onClaimWord={claimWord} />
