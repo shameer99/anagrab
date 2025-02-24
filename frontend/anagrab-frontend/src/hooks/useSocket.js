@@ -21,7 +21,8 @@ socket.emit = (eventName, ...args) => {
 export const useSocket = () => {
   const [gameState, setGameState] = useState(null);
   const [isJoined, setIsJoined] = useState(false);
-  const [error, setError] = useState(null);
+  const [errorData, setErrorData] = useState(null);
+  const [successData, setSuccessData] = useState(null);
 
   useEffect(() => {
     socket.on('game_state_update', newState => {
@@ -40,13 +41,19 @@ export const useSocket = () => {
   }, []);
 
   useEffect(() => {
-    socket.on('claim_error', ({ reason }) => {
-      setError(reason);
-      setTimeout(() => setError(null), 5000);
+    socket.on('claim_error', data => {
+      setErrorData(data);
+      setTimeout(() => setErrorData(null), 5000);
+    });
+
+    socket.on('claim_success', data => {
+      setSuccessData(data);
+      setTimeout(() => setSuccessData(null), 5000);
     });
 
     return () => {
       socket.off('claim_error');
+      socket.off('claim_success');
     };
   }, []);
 
@@ -78,7 +85,9 @@ export const useSocket = () => {
     startGame,
     flipLetter,
     claimWord,
-    error,
-    setError,
+    errorData,
+    setErrorData,
+    successData,
+    setSuccessData,
   };
 };

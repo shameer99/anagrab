@@ -65,14 +65,30 @@ function claimWord(word, socketId) {
     return { success: false, error: validation.reason };
   }
 
-  if (
-    tryTakeFromPot(word, gameState.pot, socketId, gameState) ||
-    tryToStealWord(word, gameState.pot, socketId, gameState)
-  ) {
-    return { success: true, state: gameState };
+  // Try taking from pot first
+  if (tryTakeFromPot(word, gameState.pot, socketId, gameState)) {
+    return {
+      success: true,
+      state: gameState,
+      source: 'pot',
+      word,
+    };
   }
 
-  return { success: false, error: 'Invalid move', state: gameState };
+  // Try stealing
+  const stealResult = tryToStealWord(word, gameState.pot, socketId, gameState);
+  if (stealResult.success) {
+    return {
+      success: true,
+      state: gameState,
+      source: 'steal',
+      stolenFrom: stealResult.stolenFrom,
+      originalWord: stealResult.originalWord,
+      word,
+    };
+  }
+
+  return { success: false, error: 'Invalid move' };
 }
 
 function endGame() {
