@@ -19,12 +19,25 @@ function App() {
     endGame,
     errorData,
     successData,
+    currentPlayer,
     socket,
   } = useSocket();
 
   if (!isJoined) {
     return <JoinForm onJoin={joinGame} />;
   }
+
+  // Split players into current and others
+  const players = gameState?.players || {};
+  const [currentPlayerEntry, otherPlayers] = Object.entries(players).reduce(
+    ([current, others], [id, player]) => {
+      const isCurrentPlayer = currentPlayer?.id
+        ? id === currentPlayer.id
+        : player.name === currentPlayer?.name;
+      return isCurrentPlayer ? [[id, player], others] : [current, [...others, [id, player]]];
+    },
+    [null, []]
+  );
 
   return (
     <div className="game-container">
@@ -37,9 +50,46 @@ function App() {
         deckCount={gameState?.deck?.length}
         gameState={gameState}
       />
-      <LetterPot letters={gameState?.pot} />
-      <WordForm onClaimWord={claimWord} />
-      <PlayersList players={gameState?.players} />
+
+      {/* Other players at the top */}
+      {otherPlayers.length > 0 && (
+        <div className="other-players">
+          {otherPlayers.map(([id, player]) => (
+            <div key={id} className="player">
+              <h3>{player.name}</h3>
+              <div className="words">
+                {player.words.map((word, index) => (
+                  <span key={index} className="word">
+                    {word}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Letters in play */}
+      <div className="game-board">
+        <LetterPot letters={gameState?.pot || []} />
+        <WordForm onClaimWord={claimWord} />
+      </div>
+
+      {/* Current player at the bottom */}
+      {currentPlayerEntry && (
+        <div className="your-player">
+          <div className="player">
+            <h3>{currentPlayerEntry[1].name}</h3>
+            <div className="words">
+              {currentPlayerEntry[1].words.map((word, index) => (
+                <span key={index} className="word">
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

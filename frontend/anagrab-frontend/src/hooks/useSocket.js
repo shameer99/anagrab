@@ -23,6 +23,7 @@ export const useSocket = () => {
   const [isJoined, setIsJoined] = useState(false);
   const [errorData, setErrorData] = useState(null);
   const [successData, setSuccessData] = useState(null);
+  const [currentPlayer, setCurrentPlayer] = useState(null);
 
   useEffect(() => {
     socket.on('game_state_update', newState => {
@@ -32,6 +33,43 @@ export const useSocket = () => {
         potSize: newState ? newState.pot.length : 0,
         deckSize: newState ? newState.deck.length : 0,
       });
+
+      // Update current player with their ID from game state
+      if (newState?.players && currentPlayer?.name) {
+        console.log('[game_state_update] Current player before update:', currentPlayer);
+        console.log('[game_state_update] All players:', newState.players);
+
+        const playerEntry = Object.entries(newState.players).find(([_, p]) => {
+          const match = p.name === currentPlayer.name;
+          console.log('[game_state_update] Comparing:', {
+            playerName: p.name,
+            currentPlayerName: currentPlayer.name,
+            match,
+          });
+          return match;
+        });
+
+        console.log('[game_state_update] Found player entry:', playerEntry);
+
+        if (playerEntry) {
+          const [id] = playerEntry;
+          console.log('[game_state_update] Updating current player with id:', id);
+          setCurrentPlayer(prev => {
+            const updated = { ...prev, id };
+            console.log('[game_state_update] Updated current player:', updated);
+            return updated;
+          });
+        } else {
+          console.log('[game_state_update] WARNING: Could not find current player in game state');
+        }
+      } else {
+        console.log('[game_state_update] Skipping current player update:', {
+          hasPlayers: !!newState?.players,
+          hasCurrentPlayer: !!currentPlayer,
+          currentPlayerName: currentPlayer?.name,
+        });
+      }
+
       setGameState(newState);
     });
 
@@ -59,8 +97,10 @@ export const useSocket = () => {
 
   const joinGame = playerName => {
     if (playerName.trim()) {
+      console.log('[joinGame] Setting current player name:', playerName);
       socket.emit('join_game', playerName);
       setIsJoined(true);
+      setCurrentPlayer({ name: playerName });
     }
   };
 
@@ -89,5 +129,6 @@ export const useSocket = () => {
     setErrorData,
     successData,
     setSuccessData,
+    currentPlayer,
   };
 };
