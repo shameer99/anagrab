@@ -51,6 +51,10 @@ function tryTakeFromPot(word, pot, socketId, gameState) {
   return true;
 }
 
+function isAnagram(word1, word2) {
+  return word1.split('').sort().join('') === word2.split('').sort().join('');
+}
+
 function tryToStealWord(word, pot, socketId, gameState) {
   const potLetters = [...pot];
   const wordLetters = word.split('');
@@ -63,6 +67,9 @@ function tryToStealWord(word, pot, socketId, gameState) {
   // Try each existing word to see if it can be used for stealing
   for (const existingWord of allPlayerWords) {
     if (existingWord === word) continue;
+
+    // Check if this is an exact anagram - if so, skip this word
+    if (isAnagram(existingWord, word)) continue;
 
     let remainingLetters = [...wordLetters];
     let canUseExistingWord = true;
