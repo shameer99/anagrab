@@ -57,7 +57,7 @@ Snatch is a fast-paced word game where players compete to form and steal words u
 
 - Letter tiles are revealed one at a time in the center of the play area
 - Players can form words using available letters at any time
-- Words must be at least 3 letters long
+- Words must be at least 4 letters long
 - Once a player claims a word, they keep those letters in front of them
 
 ### The "Snatching" Mechanic
