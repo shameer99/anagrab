@@ -66,10 +66,8 @@ function tryToStealWord(word, pot, socketId, gameState) {
 
   // Try each existing word to see if it can be used for stealing
   for (const existingWord of allPlayerWords) {
-    if (existingWord === word) continue;
-
     // Check if this is an exact anagram - if so, skip this word
-    if (isAnagram(existingWord, word)) continue;
+    if (isAnagram(existingWord, word) && existingWord !== word) continue;
 
     let remainingLetters = [...wordLetters];
     let canUseExistingWord = true;
