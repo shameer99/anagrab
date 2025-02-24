@@ -5,9 +5,20 @@ import { GameControls } from './components/GameControls';
 import { LetterPot } from './components/LetterPot';
 import { WordForm } from './components/WordForm';
 import { PlayersList } from './components/PlayersList';
+import ErrorMessage from './components/ErrorMessage';
 
 function App() {
-  const { gameState, isJoined, joinGame, startGame, flipLetter, claimWord, endGame } = useSocket();
+  const {
+    gameState,
+    isJoined,
+    joinGame,
+    startGame,
+    flipLetter,
+    claimWord,
+    endGame,
+    error,
+    socket,
+  } = useSocket();
 
   if (!isJoined) {
     return <JoinForm onJoin={joinGame} />;
@@ -15,6 +26,7 @@ function App() {
 
   return (
     <div className="game-container">
+      {error && <ErrorMessage error={error} />}
       <GameControls
         onStartGame={startGame}
         onFlipLetter={flipLetter}

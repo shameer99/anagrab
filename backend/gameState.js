@@ -60,8 +60,9 @@ function flipLetter() {
 }
 
 function claimWord(word, socketId) {
-  if (!isValidWord(word)) {
-    return { success: false, error: 'Invalid word', state: gameState };
+  const validation = isValidWord(word);
+  if (!validation.success) {
+    return { success: false, error: validation.reason };
   }
 
   if (

@@ -9,7 +9,13 @@ const dictionary = new Set(
 );
 
 function isValidWord(word) {
-  return dictionary.has(word.toLowerCase()) && word.length >= 4;
+  if (word.length < 4) {
+    return { success: false, reason: 'Word must be at least 4 letters long' };
+  }
+  if (!dictionary.has(word.toLowerCase())) {
+    return { success: false, reason: 'Word not found in dictionary' };
+  }
+  return { success: true };
 }
 
 function shuffle(array) {

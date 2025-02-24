@@ -35,14 +35,29 @@ function setupSocketHandlers(io) {
     });
 
     socket.on('claim_word', word => {
-      console.log('Word claim attempt:', { socketId: socket.id, word });
-      const { success, error, state } = claimWord(word, socket.id);
-      if (success) {
-        console.log('Word claim successful');
-        io.emit('game_state_update', state);
+      console.log('Word claim attempt:', {
+        socketId: socket.id,
+        word,
+      });
+      const result = claimWord(word, socket.id);
+
+      if (result.success) {
+        console.log('Word claim successful', {
+          newPotSize: result.state.pot.length,
+          playerWordCount: result.state.players[socket.id].words.length,
+          totalPlayers: Object.keys(result.state.players).length,
+        });
+        io.emit('game_state_update', result.state);
       } else {
-        console.log('Word claim failed:', error);
-        io.emit(error);
+        console.log('Word claim failed:', {
+          error: result.error,
+          hasState: !!result.state,
+          potSize: result.state?.pot?.length,
+        });
+        socket.emit('claim_error', {
+          word,
+          reason: result.error,
+        });
       }
     });
 
