@@ -6,6 +6,7 @@ import { LetterPot } from './components/LetterPot';
 import { WordForm } from './components/WordForm';
 import { PlayersList } from './components/PlayersList';
 import ErrorMessage from './components/ErrorMessage';
+import SuccessMessage from './components/SuccessMessage';
 
 function App() {
   const {
@@ -16,7 +17,8 @@ function App() {
     flipLetter,
     claimWord,
     endGame,
-    error,
+    errorData,
+    successData,
     socket,
   } = useSocket();
 
@@ -26,11 +28,14 @@ function App() {
 
   return (
     <div className="game-container">
-      {error && <ErrorMessage error={error} />}
+      {errorData && <ErrorMessage data={errorData} />}
+      {successData && <SuccessMessage data={successData} />}
       <GameControls
         onStartGame={startGame}
         onFlipLetter={flipLetter}
+        onEndGame={endGame}
         deckCount={gameState?.deck?.length}
+        gameState={gameState}
       />
       <LetterPot letters={gameState?.pot} />
       <WordForm onClaimWord={claimWord} />

@@ -47,7 +47,30 @@ function setupSocketHandlers(io) {
           playerWordCount: result.state.players[socket.id].words.length,
           totalPlayers: Object.keys(result.state.players).length,
         });
+
+        // Send game state update to all players
         io.emit('game_state_update', result.state);
+
+        // Send success notification
+        const playerName = result.state.players[socket.id].name;
+        if (result.source === 'pot') {
+          io.emit('claim_success', {
+            type: 'pot_claim',
+            player: playerName,
+            word: result.word,
+          });
+        } else {
+          const stolenFromName = result.state.players[result.stolenFrom].name;
+          const isSelfModification = socket.id === result.stolenFrom;
+
+          io.emit('claim_success', {
+            type: isSelfModification ? 'self_modify' : 'steal',
+            player: playerName,
+            word: result.word,
+            originalWord: result.originalWord,
+            stolenFrom: stolenFromName,
+          });
+        }
       } else {
         console.log('Word claim failed:', {
           error: result.error,
@@ -56,6 +79,7 @@ function setupSocketHandlers(io) {
         });
         socket.emit('claim_error', {
           word,
+          type: 'claim_failed',
           reason: result.error,
         });
       }

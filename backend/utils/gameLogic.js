@@ -87,12 +87,14 @@ function tryToStealWord(word, pot, socketId, gameState) {
       }
       potLetters.splice(potIndex, 1);
     }
-    if (!canFormFromPot) return false;
+    if (!canFormFromPot) return { success: false };
 
-    // Remove the word from the original player
+    // Find the player who owns the word
+    let stolenFromId;
     for (const [playerId, player] of Object.entries(gameState.players)) {
       const wordIndex = player.words.indexOf(existingWord);
       if (wordIndex !== -1) {
+        stolenFromId = playerId;
         player.words.splice(wordIndex, 1);
         break;
       }
@@ -109,9 +111,13 @@ function tryToStealWord(word, pot, socketId, gameState) {
       }
     }
 
-    return true;
+    return {
+      success: true,
+      stolenFrom: stolenFromId,
+      originalWord: existingWord,
+    };
   }
-  return false;
+  return { success: false };
 }
 
 module.exports = {
