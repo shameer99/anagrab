@@ -1,69 +1,78 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
 
-  color-scheme: light;
-  color: #213547;
-  background-color: #f0f2f5;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #f0f2f5;
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-background text-slate-900;
   }
-  a:hover {
-    color: #747bff;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    @apply font-semibold;
   }
-  button {
-    background-color: #4a72f5;
-    color: white;
+  
+  body {
+    @apply antialiased min-h-screen;
+  }
+
+  button, input, textarea, select {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50;
+  }
+}
+
+@layer components {
+  .letter-tile {
+    @apply w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-lg font-bold text-lg sm:text-xl md:text-2xl bg-primary-600 text-white shadow-letter 
+    transition-all duration-300 ease-in-out cursor-default hover:shadow-letter-hover select-none;
+  }
+
+  .available-letter {
+    @apply animate-flip-in;
+  }
+
+  .button-primary {
+    @apply px-4 py-2 md:px-6 md:py-3 bg-primary-600 text-white rounded-lg font-medium shadow-md 
+    hover:bg-primary-700 active:bg-primary-800 transition-colors duration-200 focus:ring-2 
+    focus:ring-primary-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .button-secondary {
+    @apply px-4 py-2 md:px-6 md:py-3 bg-white text-primary-700 border border-primary-300 rounded-lg font-medium shadow-sm 
+    hover:bg-primary-50 active:bg-primary-100 transition-colors duration-200 focus:ring-2 
+    focus:ring-primary-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-primary {
+    @apply w-full px-4 py-2 md:px-5 md:py-3 bg-white border border-slate-300 rounded-lg text-slate-800 
+    placeholder:text-slate-400 focus:border-primary-400 transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-game p-4 md:p-6;
+  }
+
+  .game-card {
+    @apply card transition-shadow duration-300 hover:shadow-game-hover;
+  }
+
+  .word-tag {
+    @apply inline-block bg-primary-100 text-primary-800 px-2 py-1 rounded-md text-sm font-medium m-1;
+  }
+
+  .notification {
+    @apply fixed top-4 right-4 md:top-6 md:right-6 max-w-[calc(100vw-2rem)] md:max-w-md p-4 rounded-lg shadow-lg 
+    transform transition-all duration-500 ease-in-out z-50;
+  }
+
+  .notification-success {
+    @apply notification bg-success-100 border-l-4 border-success-500 text-success-800;
+  }
+
+  .notification-error {
+    @apply notification bg-error-100 border-l-4 border-error-500 text-error-800;
   }
 }

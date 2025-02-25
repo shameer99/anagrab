@@ -1,12 +1,11 @@
-import './App.css';
 import { useSocket } from './hooks/useSocket';
-import { JoinForm } from './components/JoinForm';
-import { GameControls } from './components/GameControls';
-import { LetterPot } from './components/LetterPot';
-import { WordForm } from './components/WordForm';
-import { PlayersList } from './components/PlayersList';
-import ErrorMessage from './components/ErrorMessage';
-import SuccessMessage from './components/SuccessMessage';
+import { useState } from 'react';
+import JoinScreen from './components/JoinScreen';
+import GameBoard from './components/GameBoard';
+import PlayerSection from './components/PlayerSection';
+import GameControls from './components/GameControls';
+import Notification from './components/Notification';
+import LoadingOverlay from './components/LoadingOverlay';
 
 function App() {
   const {
@@ -20,11 +19,25 @@ function App() {
     errorData,
     successData,
     currentPlayer,
-    socket,
+    isLoading,
   } = useSocket();
 
+  const [animateNewLetter, setAnimateNewLetter] = useState(false);
+
+  // Handle flip letter with animation trigger
+  const handleFlipLetter = () => {
+    flipLetter();
+    setAnimateNewLetter(true);
+    setTimeout(() => setAnimateNewLetter(false), 500);
+  };
+
+  // If not joined, show join screen
   if (!isJoined) {
-    return <JoinForm onJoin={joinGame} />;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center p-4">
+        <JoinScreen onJoin={joinGame} />
+      </div>
+    );
   }
 
   // Split players into current and others
@@ -40,56 +53,51 @@ function App() {
   );
 
   return (
-    <div className="game-container">
-      {errorData && <ErrorMessage data={errorData} />}
-      {successData && <SuccessMessage data={successData} />}
-      <GameControls
-        onStartGame={startGame}
-        onFlipLetter={flipLetter}
-        onEndGame={endGame}
-        deckCount={gameState?.deck?.length}
-        gameState={gameState}
-      />
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 px-2 py-3 sm:px-4 sm:py-6 md:py-8">
+      {/* Notifications */}
+      {errorData && <Notification type="error" message={errorData.message} />}
+      {successData && <Notification type="success" message={successData.message} />}
 
-      {/* Other players at the top */}
-      {otherPlayers.length > 0 && (
-        <div className="other-players">
-          {otherPlayers.map(([id, player]) => (
-            <div key={id} className="player">
-              <h3>{player.name}</h3>
-              <div className="words">
-                {player.words.map((word, index) => (
-                  <span key={index} className="word">
-                    {word}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      {/* Loading overlay */}
+      {isLoading && <LoadingOverlay />}
 
-      {/* Letters in play */}
-      <div className="game-board">
-        <LetterPot letters={gameState?.pot || []} />
-        <WordForm onClaimWord={claimWord} />
-      </div>
+      <div className="max-w-4xl mx-auto flex flex-col gap-3 sm:gap-4 md:gap-6">
+        <header className="text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-900">Anagrab</h1>
+          <p className="text-primary-700 mt-0.5 sm:mt-1 text-sm sm:text-base">Word Game</p>
+        </header>
 
-      {/* Current player at the bottom */}
-      {currentPlayerEntry && (
-        <div className="your-player">
-          <div className="player">
-            <h3>{currentPlayerEntry[1].name}</h3>
-            <div className="words">
-              {currentPlayerEntry[1].words.map((word, index) => (
-                <span key={index} className="word">
-                  {word}
-                </span>
-              ))}
-            </div>
+        {/* Game Controls */}
+        <GameControls
+          onStartGame={startGame}
+          onFlipLetter={handleFlipLetter}
+          onEndGame={endGame}
+          deckCount={gameState?.deck?.length || 0}
+          hasGameStarted={gameState?.gameInProgress || false}
+        />
+
+        {/* Game Board */}
+        <GameBoard
+          letters={gameState?.pot || []}
+          onClaimWord={claimWord}
+          animateNewLetter={animateNewLetter}
+          isGameInProgress={gameState?.gameInProgress || false}
+        />
+
+        {/* Current Player */}
+        {currentPlayerEntry && (
+          <PlayerSection player={currentPlayerEntry[1]} isCurrentPlayer={true} />
+        )}
+
+        {/* Other Players */}
+        {otherPlayers.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {otherPlayers.map(([id, player]) => (
+              <PlayerSection key={id} player={player} isOpponent={true} />
+            ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

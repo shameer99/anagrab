@@ -5,6 +5,7 @@ const gameState = {
   pot: [],
   deck: [],
   isActive: true,
+  gameInProgress: false,
 };
 
 function initializeDeck() {
@@ -36,6 +37,10 @@ function startNewGame() {
   for (const playerId in gameState.players) {
     gameState.players[playerId].words = [];
   }
+  // Set game as in progress
+  gameState.gameInProgress = true;
+  gameState.isActive = true;
+  console.log('Game started, gameInProgress set to true');
   return gameState;
 }
 
@@ -92,11 +97,10 @@ function claimWord(word, socketId) {
 }
 
 function endGame() {
-  if (gameState.deck.length === 0) {
-    gameState.isActive = false;
-    return { success: true, state: gameState };
-  }
-  return { success: false, state: gameState };
+  gameState.gameInProgress = false;
+  gameState.isActive = false;
+  console.log('Game ended, gameInProgress set to false');
+  return { success: true, state: gameState };
 }
 
 module.exports = {
