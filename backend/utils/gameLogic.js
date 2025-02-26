@@ -71,9 +71,6 @@ function sharesSameRoot(word1, word2) {
     lemmatizer.adjective(word2.toLowerCase()),
   ];
 
-  console.log(`Word1 "${word1}" forms:`, word1Forms);
-  console.log(`Word2 "${word2}" forms:`, word2Forms);
-
   // Check if any form matches between the two words
   return word1Forms.some(form1 => word2Forms.some(form2 => form1 === form2));
 }
