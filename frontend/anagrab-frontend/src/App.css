@@ -232,7 +232,9 @@ h3 {
   height: 50px;
   padding: 0 !important;
   border-radius: 50% !important;
-  transition: transform 0.2s, background-color 0.2s;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
 }
 
 .bag-button:hover {
