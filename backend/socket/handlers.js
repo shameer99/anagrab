@@ -99,6 +99,10 @@ function setupSocketHandlers(io) {
       const state = removePlayer(socket.id);
       io.emit('game_state_update', state);
     });
+
+    socket.on('ping', data => {
+      socket.emit('pong', data);
+    });
   });
 }
 
