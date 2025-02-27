@@ -60,7 +60,20 @@ function App() {
         <div className="other-players">
           {otherPlayers.map(([id, player]) => (
             <div key={id} className="player">
-              <h3>{player.name}</h3>
+              <h3>
+                {player.name}
+                {'   '}
+                <span
+                  style={{
+                    backgroundColor: 'red',
+                    color: 'white',
+                    padding: '0 5px', // Adds some padding to make the background color visible around the text
+                    borderRadius: 15,
+                  }}
+                >
+                  {player.words.reduce((total, word) => total + word.length, 0)}
+                </span>
+              </h3>
               <div className="words">
                 {player.words.map((word, index) => (
                   <span key={index} className="word">
@@ -83,7 +96,20 @@ function App() {
       {currentPlayerEntry && (
         <div className="your-player">
           <div className="player">
-            <h3>{currentPlayerEntry[1].name}</h3>
+            <h3>
+              {currentPlayerEntry[1].name}
+              {'   '}
+              <span
+                style={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  padding: '0 5px', // Adds some padding to make the background color visible around the text
+                  borderRadius: 15,
+                }}
+              >
+                {currentPlayerEntry[1].words.reduce((total, word) => total + word.length, 0)}
+              </span>
+            </h3>
             <div className="words">
               {currentPlayerEntry[1].words.map((word, index) => (
                 <span key={index} className="word">
