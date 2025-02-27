@@ -46,8 +46,19 @@ npm run dev
 
 ### Server Locations
 
-- Frontend: http://localhost:5173
-- Backend: http://localhost:5001
+| Environment | Frontend                    | Backend                       |
+| ----------- | --------------------------- | ----------------------------- |
+| Development | http://localhost:5173       | http://localhost:5001         |
+| Production  | https://anagrab.vercel.app/ | https://anagrab.onrender.com/ |
+
+### Debug
+
+The debug interface provides tools for testing word root comparisons and transformation rules:
+
+| Page         | Description                                                                         | Local URL                              | Production URL                                |
+| ------------ | ----------------------------------------------------------------------------------- | -------------------------------------- | --------------------------------------------- |
+| Root Checker | Test if two words share the same root using the game's algorithm                    | http://localhost:5001/debug/shareroot  | https://anagrab.onrender.com/debug/shareroot  |
+| Test Cases   | View and validate predefined test cases for allowed/disallowed word transformations | http://localhost:5001/debug/test-cases | https://anagrab.onrender.com/debug/test-cases |
 
 ## About Snatch (The Word Game)
 

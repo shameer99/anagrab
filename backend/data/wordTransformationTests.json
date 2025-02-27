@@ -1,6 +1,11 @@
 {
   "allowed": [
     {
+      "word1": "seer",
+      "word2": "steer",
+      "explanation": "Different stems ('seer' vs. 'steer') with distinct meanings"
+    },
+    {
       "word1": "pat",
       "word2": "patch",
       "explanation": "Different stems ('pat' vs. 'patch') and a clear meaning shift"
