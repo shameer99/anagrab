@@ -18,22 +18,22 @@
 }
 
 .status-indicator.green {
-  background-color: #4CAF50;
-  box-shadow: 0 0 5px #4CAF50;
+  background-color: #4caf50;
+  box-shadow: 0 0 5px #4caf50;
 }
 
 .status-indicator.yellow {
-  background-color: #FFC107;
-  box-shadow: 0 0 5px #FFC107;
+  background-color: #ffc107;
+  box-shadow: 0 0 5px #ffc107;
 }
 
 .status-indicator.red {
-  background-color: #F44336;
-  box-shadow: 0 0 5px #F44336;
+  background-color: #f44336;
+  box-shadow: 0 0 5px #f44336;
 }
 
 .ping-value {
   color: white;
   font-size: 12px;
   font-family: monospace;
-} 
+}
