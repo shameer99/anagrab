@@ -29,6 +29,221 @@
       "word1": "pin",
       "word2": "pine",
       "explanation": "Stems differ ('pin' vs. 'pine'), and meanings diverge"
+    },
+    {
+      "word1": "star",
+      "word2": "stare",
+      "explanation": "Different stems ('star' vs. 'stare') with distinct meanings"
+    },
+    {
+      "word1": "plan",
+      "word2": "plane",
+      "explanation": "Stems differ ('plan' vs. 'plane') with significant meaning change"
+    },
+    {
+      "word1": "grin",
+      "word2": "grind",
+      "explanation": "Different stems ('grin' vs. 'grind') with distinct meanings"
+    },
+    {
+      "word1": "flow",
+      "word2": "flower",
+      "explanation": "Stems differ ('flow' vs. 'flower') with clear meaning shift"
+    },
+    {
+      "word1": "hear",
+      "word2": "heart",
+      "explanation": "Different stems ('hear' vs. 'heart') with unrelated meanings"
+    },
+    {
+      "word1": "form",
+      "word2": "format",
+      "explanation": "Stems differ ('form' vs. 'format') with distinct meanings"
+    },
+    {
+      "word1": "card",
+      "word2": "scard",
+      "explanation": "Different stems with meaningful change"
+    },
+    {
+      "word1": "band",
+      "word2": "brand",
+      "explanation": "Stems differ ('band' vs. 'brand') with distinct meanings"
+    },
+    {
+      "word1": "lace",
+      "word2": "place",
+      "explanation": "Different stems ('lace' vs. 'place') with unrelated meanings"
+    },
+    {
+      "word1": "rage",
+      "word2": "barge",
+      "explanation": "Stems differ ('rage' vs. 'barge') with distinct meanings"
+    },
+    {
+      "word1": "tale",
+      "word2": "stale",
+      "explanation": "Different stems ('tale' vs. 'stale') with unrelated meanings"
+    },
+    {
+      "word1": "rain",
+      "word2": "train",
+      "explanation": "Stems differ ('rain' vs. 'train') with distinct meanings"
+    },
+    {
+      "word1": "port",
+      "word2": "sport",
+      "explanation": "Different stems ('port' vs. 'sport') with unrelated meanings"
+    },
+    {
+      "word1": "rest",
+      "word2": "crest",
+      "explanation": "Stems differ ('rest' vs. 'crest') with distinct meanings"
+    },
+    {
+      "word1": "team",
+      "word2": "steam",
+      "explanation": "Different stems ('team' vs. 'steam') with unrelated meanings"
+    },
+    {
+      "word1": "tone",
+      "word2": "stone",
+      "explanation": "Stems differ ('tone' vs. 'stone') with distinct meanings"
+    },
+    {
+      "word1": "able",
+      "word2": "table",
+      "explanation": "Different stems ('able' vs. 'table') with unrelated meanings"
+    },
+    {
+      "word1": "fine",
+      "word2": "knife",
+      "explanation": "Different stems with complete meaning change"
+    },
+    {
+      "word1": "seat",
+      "word2": "beast",
+      "explanation": "Different stems ('seat' vs. 'beast') with unrelated meanings"
+    },
+    {
+      "word1": "care",
+      "word2": "scare",
+      "explanation": "Stems differ ('care' vs. 'scare') with distinct meanings"
+    },
+    {
+      "word1": "time",
+      "word2": "timer",
+      "explanation": "Different stems ('time' vs. 'timer') with meaningful change"
+    },
+    {
+      "word1": "read",
+      "word2": "bread",
+      "explanation": "Stems differ ('read' vs. 'bread') with unrelated meanings"
+    },
+    {
+      "word1": "mile",
+      "word2": "smile",
+      "explanation": "Different stems ('mile' vs. 'smile') with distinct meanings"
+    },
+    {
+      "word1": "note",
+      "word2": "toner",
+      "explanation": "Different stems with complete meaning change"
+    },
+    {
+      "word1": "pear",
+      "word2": "spear",
+      "explanation": "Stems differ ('pear' vs. 'spear') with distinct meanings"
+    },
+    {
+      "word1": "calm",
+      "word2": "claim",
+      "explanation": "Different stems ('calm' vs. 'claim') with unrelated meanings"
+    },
+    {
+      "word1": "date",
+      "word2": "dated",
+      "explanation": "Stems differ with meaningful change in usage"
+    },
+    {
+      "word1": "wing",
+      "word2": "swing",
+      "explanation": "Different stems ('wing' vs. 'swing') with distinct meanings"
+    },
+    {
+      "word1": "sale",
+      "word2": "scale",
+      "explanation": "Stems differ ('sale' vs. 'scale') with unrelated meanings"
+    },
+    {
+      "word1": "rice",
+      "word2": "price",
+      "explanation": "Different stems ('rice' vs. 'price') with distinct meanings"
+    },
+    {
+      "word1": "ring",
+      "word2": "bring",
+      "explanation": "Stems differ ('ring' vs. 'bring') with unrelated meanings"
+    },
+    {
+      "word1": "line",
+      "word2": "liner",
+      "explanation": "Different stems with meaningful change"
+    },
+    {
+      "word1": "game",
+      "word2": "games",
+      "explanation": "Different usage with meaningful change"
+    },
+    {
+      "word1": "word",
+      "word2": "sword",
+      "explanation": "Stems differ ('word' vs. 'sword') with distinct meanings"
+    },
+    {
+      "word1": "part",
+      "word2": "party",
+      "explanation": "Different stems ('part' vs. 'party') with meaningful change"
+    },
+    {
+      "word1": "coal",
+      "word2": "coast",
+      "explanation": "Stems differ ('coal' vs. 'coast') with unrelated meanings"
+    },
+    {
+      "word1": "file",
+      "word2": "filer",
+      "explanation": "Different stems with meaningful change"
+    },
+    {
+      "word1": "heat",
+      "word2": "heart",
+      "explanation": "Stems differ ('heat' vs. 'heart') with distinct meanings"
+    },
+    {
+      "word1": "mail",
+      "word2": "gmail",
+      "explanation": "Different stems ('mail' vs. 'gmail') with meaningful change"
+    },
+    {
+      "word1": "rate",
+      "word2": "crate",
+      "explanation": "Stems differ ('rate' vs. 'crate') with unrelated meanings"
+    },
+    {
+      "word1": "deal",
+      "word2": "ideal",
+      "explanation": "Different stems ('deal' vs. 'ideal') with distinct meanings"
+    },
+    {
+      "word1": "face",
+      "word2": "facet",
+      "explanation": "Stems differ ('face' vs. 'facet') with meaningful change"
+    },
+    {
+      "word1": "mint",
+      "word2": "mints",
+      "explanation": "Different usage with meaningful change"
     }
   ],
   "disallowed": [
@@ -56,6 +271,186 @@
       "word1": "play",
       "word2": "player",
       "explanation": "Same stem ('play'), trivial extension"
+    },
+    {
+      "word1": "work",
+      "word2": "worker",
+      "explanation": "Same stem ('work'), just adds agent suffix"
+    },
+    {
+      "word1": "teach",
+      "word2": "teacher",
+      "explanation": "Same stem ('teach'), just adds agent suffix"
+    },
+    {
+      "word1": "read",
+      "word2": "reader",
+      "explanation": "Same stem ('read'), just adds agent suffix"
+    },
+    {
+      "word1": "write",
+      "word2": "writer",
+      "explanation": "Same stem ('write'), just adds agent suffix"
+    },
+    {
+      "word1": "paint",
+      "word2": "painter",
+      "explanation": "Same stem ('paint'), just adds agent suffix"
+    },
+    {
+      "word1": "drive",
+      "word2": "driver",
+      "explanation": "Same stem ('drive'), just adds agent suffix"
+    },
+    {
+      "word1": "sing",
+      "word2": "singer",
+      "explanation": "Same stem ('sing'), just adds agent suffix"
+    },
+    {
+      "word1": "dance",
+      "word2": "dancer",
+      "explanation": "Same stem ('dance'), just adds agent suffix"
+    },
+    {
+      "word1": "cook",
+      "word2": "cooker",
+      "explanation": "Same stem ('cook'), just adds agent suffix"
+    },
+    {
+      "word1": "farm",
+      "word2": "farmer",
+      "explanation": "Same stem ('farm'), just adds agent suffix"
+    },
+    {
+      "word1": "hunt",
+      "word2": "hunter",
+      "explanation": "Same stem ('hunt'), just adds agent suffix"
+    },
+    {
+      "word1": "speak",
+      "word2": "speaker",
+      "explanation": "Same stem ('speak'), just adds agent suffix"
+    },
+    {
+      "word1": "walk",
+      "word2": "walker",
+      "explanation": "Same stem ('walk'), just adds agent suffix"
+    },
+    {
+      "word1": "build",
+      "word2": "builder",
+      "explanation": "Same stem ('build'), just adds agent suffix"
+    },
+    {
+      "word1": "lead",
+      "word2": "leader",
+      "explanation": "Same stem ('lead'), just adds agent suffix"
+    },
+    {
+      "word1": "help",
+      "word2": "helper",
+      "explanation": "Same stem ('help'), just adds agent suffix"
+    },
+    {
+      "word1": "book",
+      "word2": "books",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('book')"
+    },
+    {
+      "word1": "dog",
+      "word2": "dogs",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('dog')"
+    },
+    {
+      "word1": "house",
+      "word2": "houses",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('house')"
+    },
+    {
+      "word1": "car",
+      "word2": "cars",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('car')"
+    },
+    {
+      "word1": "tree",
+      "word2": "trees",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('tree')"
+    },
+    {
+      "word1": "bird",
+      "word2": "birds",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('bird')"
+    },
+    {
+      "word1": "phone",
+      "word2": "phones",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('phone')"
+    },
+    {
+      "word1": "table",
+      "word2": "tables",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('table')"
+    },
+    {
+      "word1": "chair",
+      "word2": "chairs",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('chair')"
+    },
+    {
+      "word1": "light",
+      "word2": "lights",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('light')"
+    },
+    {
+      "word1": "jump",
+      "word2": "jumps",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('jump')"
+    },
+    {
+      "word1": "talk",
+      "word2": "talks",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('talk')"
+    },
+    {
+      "word1": "eat",
+      "word2": "eats",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('eat')"
+    },
+    {
+      "word1": "drink",
+      "word2": "drinks",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('drink')"
+    },
+    {
+      "word1": "sleep",
+      "word2": "sleeps",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('sleep')"
+    },
+    {
+      "word1": "think",
+      "word2": "thinks",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('think')"
+    },
+    {
+      "word1": "love",
+      "word2": "loves",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('love')"
+    },
+    {
+      "word1": "hate",
+      "word2": "hates",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('hate')"
+    },
+    {
+      "word1": "like",
+      "word2": "likes",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('like')"
+    },
+    {
+      "word1": "want",
+      "word2": "wants",
+      "explanation": "Just adds an 's' for conjugation. Same stem ('want')"
     }
   ]
 }

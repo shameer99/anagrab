@@ -155,15 +155,17 @@ router.get('/test-cases', (req, res) => {
       <style>
         body {
           font-family: Arial, sans-serif;
-          max-width: 800px;
+          max-width: 1200px;
           margin: 0 auto;
           padding: 20px;
         }
         .test-cases {
           margin-top: 30px;
+          display: flex;
+          gap: 30px;
         }
         .test-section {
-          margin-bottom: 30px;
+          flex: 1;
         }
         .test-case {
           padding: 15px;
