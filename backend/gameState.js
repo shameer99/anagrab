@@ -60,6 +60,10 @@ function flipLetter() {
 }
 
 function claimWord(word, socketId) {
+  if (!gameState.players[socketId]) {
+    return { success: false, error: 'Player not found in game' };
+  }
+
   const validation = isValidWord(word);
   if (!validation.success) {
     return { success: false, error: validation.reason };
