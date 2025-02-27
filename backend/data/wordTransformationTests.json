@@ -456,6 +456,11 @@
       "word1": "wake",
       "word2": "waken",
       "explanation": "Different stems ('wake' vs. 'waken') with meaningful change"
+    },
+    {
+      "word1": "boob",
+      "word2": "boobies",
+      "explanation": "Different stems ('boob' vs. 'boobies') with meaningful change"
     }
   ]
 }
