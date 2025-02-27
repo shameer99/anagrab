@@ -161,11 +161,6 @@
       "explanation": "Different stems ('calm' vs. 'claim') with unrelated meanings"
     },
     {
-      "word1": "date",
-      "word2": "dated",
-      "explanation": "Stems differ with meaningful change in usage"
-    },
-    {
       "word1": "wing",
       "word2": "swing",
       "explanation": "Different stems ('wing' vs. 'swing') with distinct meanings"
@@ -189,11 +184,6 @@
       "word1": "line",
       "word2": "liner",
       "explanation": "Different stems with meaningful change"
-    },
-    {
-      "word1": "game",
-      "word2": "games",
-      "explanation": "Different usage with meaningful change"
     },
     {
       "word1": "word",
@@ -239,11 +229,6 @@
       "word1": "face",
       "word2": "facet",
       "explanation": "Stems differ ('face' vs. 'facet') with meaningful change"
-    },
-    {
-      "word1": "mint",
-      "word2": "mints",
-      "explanation": "Different usage with meaningful change"
     }
   ],
   "disallowed": [
@@ -451,6 +436,21 @@
       "word1": "want",
       "word2": "wants",
       "explanation": "Just adds an 's' for conjugation. Same stem ('want')"
+    },
+    {
+      "word1": "game",
+      "word2": "games",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('game')"
+    },
+    {
+      "word1": "mint",
+      "word2": "mints",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('mint')"
+    },
+    {
+      "word1": "date",
+      "word2": "dated",
+      "explanation": "Same stem ('date'), just adds '-ed' suffix"
     }
   ]
 }
