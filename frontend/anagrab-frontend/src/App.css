@@ -97,13 +97,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F7F3E9;
-  color: #2B2B2B;
+  background-color: #f7f3e9;
+  color: #2b2b2b;
   border-radius: 4px;
   font-weight: bold;
   font-size: 1.2em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #E6DFC7;
+  border: 1px solid #e6dfc7;
   transition: all 0.2s ease;
 }
 
@@ -199,7 +199,7 @@
   align-items: center;
   min-height: 100vh;
   background: transparent;
-  color: #2B2B2B;
+  color: #2b2b2b;
   margin-top: -2rem;
   padding-top: 2rem;
 }
@@ -210,33 +210,33 @@
   gap: 1rem;
   width: 100%;
   max-width: 320px;
-  background: #F7F3E9;
+  background: #f7f3e9;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-  border: 1px solid #E6DFC7;
+  border: 1px solid #e6dfc7;
 }
 
 .join-form input {
   padding: 12px;
   font-size: 16px;
-  border: 2px solid #E6DFC7;
+  border: 2px solid #e6dfc7;
   border-radius: 8px;
-  color: #2B2B2B;
-  background-color: #FFFFFF;
+  color: #2b2b2b;
+  background-color: #ffffff;
   transition: all 0.2s ease;
   width: 100%;
 }
 
 .join-form input:focus {
-  border-color: #2B2B2B;
+  border-color: #2b2b2b;
   outline: none;
   box-shadow: 0 0 0 2px rgba(43, 43, 43, 0.1);
 }
 
 .join-form button {
-  background-color: #2B2B2B;
-  color: #F7F3E9;
+  background-color: #2b2b2b;
+  color: #f7f3e9;
   border: none;
   padding: 12px;
   border-radius: 8px;
@@ -248,7 +248,7 @@
 }
 
 .join-form button:hover {
-  background-color: #3F3F3F;
+  background-color: #3f3f3f;
   transform: translateY(-1px);
 }
 
@@ -258,8 +258,8 @@
 
 .game-controls button,
 .word-form button {
-  background-color: #2B2B2B;
-  color: #F7F3E9;
+  background-color: #2b2b2b;
+  color: #f7f3e9;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -270,7 +270,7 @@
 
 .game-controls button:hover,
 .word-form button:hover {
-  background-color: #3F3F3F;
+  background-color: #3f3f3f;
 }
 
 h2,
@@ -373,22 +373,22 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F7F3E9;
-  color: #2B2B2B;
+  background-color: #f7f3e9;
+  color: #2b2b2b;
   border-radius: 4px;
   font-weight: bold;
   font-size: 2em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  border: 1px solid #E6DFC7;
+  border: 1px solid #e6dfc7;
 }
 
 .title-tile-back {
   transform: rotateY(180deg);
-  background-color: #F7F3E9;
+  background-color: #f7f3e9;
 }
 
 .title-tile-front {
-  background-color: #F7F3E9;
+  background-color: #f7f3e9;
 }
 
 /* Update hover effect */
@@ -401,13 +401,27 @@ h3 {
 }
 
 /* Keep existing animation delays */
-.title-tile:nth-child(1) { animation-delay: 0s; }
-.title-tile:nth-child(2) { animation-delay: 0.1s; }
-.title-tile:nth-child(3) { animation-delay: 0.2s; }
-.title-tile:nth-child(4) { animation-delay: 0.3s; }
-.title-tile:nth-child(5) { animation-delay: 0.4s; }
-.title-tile:nth-child(6) { animation-delay: 0.5s; }
-.title-tile:nth-child(7) { animation-delay: 0.6s; }
+.title-tile:nth-child(1) {
+  animation-delay: 0s;
+}
+.title-tile:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.title-tile:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.title-tile:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.title-tile:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.title-tile:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.title-tile:nth-child(7) {
+  animation-delay: 0.6s;
+}
 
 /* Keep existing tileAppear animation */
 @keyframes tileAppear {
