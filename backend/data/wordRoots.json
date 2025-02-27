@@ -218,5 +218,21 @@
   "write": "write",
   "wrote": "write",
   "written": "write",
-  "writer": "write"
+  "writer": "write",
+  "wake": "wake",
+  "wakes": "wake",
+  "woke": "wake",
+  "woken": "wake",
+  "waking": "wake",
+  "waken": "wake",
+  "wakens": "wake",
+  "wakened": "wake",
+  "emote": "emote",
+  "emotes": "emote",
+  "emoted": "emote",
+  "emoter": "emote",
+  "dink": "dink",
+  "dinky": "dink",
+  "dinked": "dink",
+  "dinks": "dink"
 }
