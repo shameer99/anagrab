@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 
 const lemmatizer = require('wink-lemmatizer');
 
@@ -12,9 +11,7 @@ const dictionary = new Set(
 );
 
 // Load word roots from JSON file
-const wordRoots = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '../data/wordRoots.json'), 'utf8')
-);
+const wordRoots = JSON.parse(fs.readFileSync(__dirname + '/../data/wordRoots.json', 'utf8'));
 
 function isValidWord(word) {
   if (word.length < 4) {
