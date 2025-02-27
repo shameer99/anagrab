@@ -212,12 +212,40 @@ router.get('/test-cases', (req, res) => {
           padding-top: 15px;
           border-top: 1px solid #eee;
         }
+        .toggle-container {
+          margin: 20px 0;
+        }
+        .hidden {
+          display: none;
+        }
       </style>
+      <script>
+        function toggleFailingCases() {
+          const showOnlyFailing = document.getElementById('show-failing').checked;
+          const testCases = document.querySelectorAll('.test-case');
+          
+          testCases.forEach(testCase => {
+            const isFailure = testCase.querySelector('.failure-explanation');
+            if (showOnlyFailing) {
+              testCase.classList.toggle('hidden', !isFailure);
+            } else {
+              testCase.classList.remove('hidden');
+            }
+          });
+        }
+      </script>
     </head>
     <body>
       <h1>Word Transformation Test Cases</h1>
       <p>This page shows examples of allowed and disallowed word transformations and evaluates them with the current algorithm.</p>
       
+      <div class="toggle-container">
+        <label>
+          <input type="checkbox" id="show-failing" onchange="toggleFailingCases()">
+          Show only failing test cases
+        </label>
+      </div>
+
       <div class="test-cases">
         <div class="test-section">
           <h2>Allowed Transformations</h2>
