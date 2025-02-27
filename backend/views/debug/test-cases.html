@@ -1,144 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Word Transformation Test Cases</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .test-cases {
-      margin-top: 30px;
-      display: flex;
-      gap: 30px;
-    }
-    .test-section {
-      flex: 1;
-    }
-    .test-case {
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .allowed {
-      border-left: 5px solid #28a745;
-    }
-    .disallowed {
-      border-left: 5px solid #dc3545;
-    }
-    .test-info {
-      flex: 1;
-    }
-    .test-pair {
-      font-weight: bold;
-      font-size: 1.1em;
-      margin-bottom: 5px;
-    }
-    .test-explanation {
-      font-style: italic;
-      color: #555;
-    }
-    .test-result {
-      margin-left: 20px;
-      font-size: 1.2em;
-    }
-    .failure-explanation {
-      color: #dc3545;
-      font-size: 0.9em;
-      margin-top: 5px;
-    }
-    h1, h2, h3 {
-      margin-top: 30px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-    }
-    .nav-links {
-      margin-top: 30px;
-      padding-top: 15px;
-      border-top: 1px solid #eee;
-    }
-    .toggle-failures {
-      margin: 20px 0;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
-  <script>
-    function toggleFailures() {
-      const showOnlyFailures = document.getElementById('show-failures').checked;
-      document.querySelectorAll('.test-case').forEach(testCase => {
-        const hasFailure = testCase.querySelector('.failure-explanation');
-        testCase.classList.toggle('hidden', showOnlyFailures && !hasFailure);
-      });
-    }
-  </script>
-</head>
-<body>
-  <h1>Word Transformation Test Cases</h1>
-  <p>This page shows examples of allowed and disallowed word transformations and evaluates them with the current algorithm.</p>
-  
-  <div class="toggle-failures">
-    <label>
-      <input type="checkbox" id="show-failures" onchange="toggleFailures()">
-      Show only failures (false positives/negatives)
-    </label>
-  </div>
+  <head>
+    <title>Word Transformation Test Cases</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .test-cases {
+        margin-top: 30px;
+        display: flex;
+        gap: 30px;
+      }
+      .test-section {
+        flex: 1;
+      }
+      .test-case {
+        padding: 15px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .allowed {
+        border-left: 5px solid #28a745;
+      }
+      .disallowed {
+        border-left: 5px solid #dc3545;
+      }
+      .test-info {
+        flex: 1;
+      }
+      .test-pair {
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-bottom: 5px;
+      }
+      .test-explanation {
+        font-style: italic;
+        color: #555;
+      }
+      .test-result {
+        margin-left: 20px;
+        font-size: 1.2em;
+      }
+      .failure-explanation {
+        color: #dc3545;
+        font-size: 0.9em;
+        margin-top: 5px;
+      }
+      h1,
+      h2,
+      h3 {
+        margin-top: 30px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .nav-links {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+      }
+      .toggle-failures {
+        margin: 20px 0;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+    <script>
+      function toggleFailures() {
+        const showOnlyFailures = document.getElementById('show-failures').checked;
+        document.querySelectorAll('.test-case').forEach(testCase => {
+          const hasFailure = testCase.querySelector('.failure-explanation');
+          testCase.classList.toggle('hidden', showOnlyFailures && !hasFailure);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Word Transformation Test Cases</h1>
+    <p>
+      This page shows examples of allowed and disallowed word transformations and evaluates them
+      with the current algorithm.
+    </p>
 
-  <div class="test-cases">
-    <div class="test-section">
-      <h2>Allowed Transformations</h2>
-      <p>These word pairs should be considered to have <strong>different</strong> roots, so they can both be valid words in the game. The algorithm should return <strong>false</strong>.</p>
-      
-      {{#each allowedTests}}
+    <div class="toggle-failures">
+      <label>
+        <input type="checkbox" id="show-failures" onchange="toggleFailures()" />
+        Show only failures (false positives/negatives)
+      </label>
+    </div>
+
+    <div class="test-cases">
+      <div class="test-section">
+        <h2>Allowed Transformations</h2>
+        <p>
+          These word pairs should be considered to have <strong>different</strong> roots, so they
+          can both be valid words in the game. The algorithm should return <strong>false</strong>.
+        </p>
+
+        {{#each allowedTests}}
         <div class="test-case allowed">
           <div class="test-info">
             <div class="test-pair">"{{this.word1}}" → "{{this.word2}}"</div>
             <div class="test-explanation">{{this.explanation}}</div>
             {{#if this.result}}
-              <div class="failure-explanation">
-                False Positive: Algorithm incorrectly identified these as sharing the same root
-              </div>
+            <div class="failure-explanation">
+              False Positive: Algorithm incorrectly identified these as sharing the same root
+            </div>
             {{/if}}
           </div>
-          <div class="test-result">
-            {{#if this.result}}❌{{else}}✅{{/if}}
-          </div>
+          <div class="test-result">{{#if this.result}}❌{{else}}✅{{/if}}</div>
         </div>
-      {{/each}}
-    </div>
-    
-    <div class="test-section">
-      <h2>Disallowed Transformations</h2>
-      <p>These word pairs should be considered to share the <strong>same</strong> root, so they cannot both be valid words in the game. The algorithm should return <strong>true</strong>.</p>
-      
-      {{#each disallowedTests}}
+        {{/each}}
+      </div>
+
+      <div class="test-section">
+        <h2>Disallowed Transformations</h2>
+        <p>
+          These word pairs should be considered to share the <strong>same</strong> root, so they
+          cannot both be valid words in the game. The algorithm should return <strong>true</strong>.
+        </p>
+
+        {{#each disallowedTests}}
         <div class="test-case disallowed">
           <div class="test-info">
             <div class="test-pair">"{{this.word1}}" → "{{this.word2}}"</div>
             <div class="test-explanation">{{this.explanation}}</div>
             {{#unless this.result}}
-              <div class="failure-explanation">
-                False Negative: Algorithm failed to identify these as sharing the same root
-              </div>
+            <div class="failure-explanation">
+              False Negative: Algorithm failed to identify these as sharing the same root
+            </div>
             {{/unless}}
           </div>
-          <div class="test-result">
-            {{#if this.result}}✅{{else}}❌{{/if}}
-          </div>
+          <div class="test-result">{{#if this.result}}✅{{else}}❌{{/if}}</div>
         </div>
-      {{/each}}
+        {{/each}}
+      </div>
     </div>
-  </div>
 
-  <div class="nav-links">
-    <p><a href="/debug/shareroot">Back to Test Tool</a></p>
-  </div>
-</body>
-</html> 
+    <div class="nav-links">
+      <p><a href="/debug/shareroot">Back to Test Tool</a></p>
+    </div>
+  </body>
+</html>
