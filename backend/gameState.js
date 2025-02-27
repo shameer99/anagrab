@@ -92,7 +92,8 @@ function claimWord(word, socketId) {
     };
   }
 
-  return { success: false, error: 'Invalid move' };
+  // Return the specific error message from tryToStealWord
+  return { success: false, error: stealResult.error };
 }
 
 function endGame() {

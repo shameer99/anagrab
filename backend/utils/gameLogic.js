@@ -86,16 +86,25 @@ function tryToStealWord(word, pot, socketId, gameState) {
 
   // Try each existing word to see if it can be used for stealing
   for (const existingWord of allPlayerWords) {
-    // Check if this is an exact anagram - if so, skip this word
-    if (
-      (isAnagram(existingWord, word) && existingWord !== word) ||
-      sharesSameRoot(existingWord, word)
-    )
-      continue;
+    // Check if this is an exact anagram or shares same root - if so, return specific error
+    if (isAnagram(existingWord, word) && existingWord !== word) {
+      return {
+        success: false,
+        error: 'Anagrams are not allowed - must change the root of the word',
+      };
+    }
+
+    if (sharesSameRoot(existingWord, word)) {
+      return {
+        success: false,
+        error: 'Must change the root of the word (adding -s, -ing, -er etc. is not allowed)',
+      };
+    }
 
     let remainingLetters = [...wordLetters];
     let canUseExistingWord = true;
 
+    // Remove letters from existing word
     for (const letter of existingWord) {
       const index = remainingLetters.indexOf(letter);
       if (index === -1) {
@@ -107,6 +116,7 @@ function tryToStealWord(word, pot, socketId, gameState) {
 
     if (!canUseExistingWord) continue;
 
+    // Check if remaining letters are available in pot
     let canFormFromPot = true;
     for (const letter of remainingLetters) {
       const potIndex = potLetters.indexOf(letter);
@@ -116,8 +126,15 @@ function tryToStealWord(word, pot, socketId, gameState) {
       }
       potLetters.splice(potIndex, 1);
     }
-    if (!canFormFromPot) return { success: false };
 
+    if (!canFormFromPot) {
+      return {
+        success: false,
+        error: 'Insufficient letters available to form this word',
+      };
+    }
+
+    // If we get here with an existing word, we can successfully steal
     // Find the player who owns the word
     let stolenFromId;
     for (const [playerId, player] of Object.entries(gameState.players)) {
@@ -146,7 +163,11 @@ function tryToStealWord(word, pot, socketId, gameState) {
       originalWord: existingWord,
     };
   }
-  return { success: false };
+
+  return {
+    success: false,
+    error: 'No valid word found that can be used for stealing',
+  };
 }
 
 module.exports = {
