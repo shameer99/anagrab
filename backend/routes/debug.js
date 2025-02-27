@@ -146,7 +146,6 @@ router.get('/test-cases', (req, res) => {
     ...test,
     result: sharesSameRoot(test.word1, test.word2),
   }));
-
   const html = `
     <!DOCTYPE html>
     <html>
@@ -196,23 +195,12 @@ router.get('/test-cases', (req, res) => {
         }
         .test-result {
           margin-left: 20px;
-          padding: 8px 12px;
-          border-radius: 4px;
-          font-weight: bold;
+          font-size: 1.2em;
         }
-        .result-true {
-          background-color: #d4edda;
-          color: #155724;
-        }
-        .result-false {
-          background-color: #f8d7da;
-          color: #721c24;
-        }
-        .expected-true .result-true, .expected-false .result-false {
-          border: 2px solid #28a745;
-        }
-        .expected-true .result-false, .expected-false .result-true {
-          border: 2px solid #dc3545;
+        .failure-explanation {
+          color: #dc3545;
+          font-size: 0.9em;
+          margin-top: 5px;
         }
         h1, h2, h3 {
           margin-top: 30px;
@@ -238,13 +226,21 @@ router.get('/test-cases', (req, res) => {
           ${evaluatedAllowed
             .map(
               test => `
-            <div class="test-case allowed expected-false">
+            <div class="test-case allowed">
               <div class="test-info">
                 <div class="test-pair">"${test.word1}" → "${test.word2}"</div>
                 <div class="test-explanation">${test.explanation}</div>
+                ${
+                  test.result
+                    ? `
+                <div class="failure-explanation">
+                  False Positive: Algorithm incorrectly identified these as sharing the same root
+                </div>`
+                    : ''
+                }
               </div>
-              <div class="test-result result-${test.result}">
-                ${test.result ? 'Same Root' : 'Different Roots'}
+              <div class="test-result">
+                ${!test.result ? '✅' : '❌'}
               </div>
             </div>
           `
@@ -259,13 +255,21 @@ router.get('/test-cases', (req, res) => {
           ${evaluatedDisallowed
             .map(
               test => `
-            <div class="test-case disallowed expected-true">
+            <div class="test-case disallowed">
               <div class="test-info">
                 <div class="test-pair">"${test.word1}" → "${test.word2}"</div>
                 <div class="test-explanation">${test.explanation}</div>
+                ${
+                  !test.result
+                    ? `
+                <div class="failure-explanation">
+                  False Negative: Algorithm failed to identify these as sharing the same root
+                </div>`
+                    : ''
+                }
               </div>
-              <div class="test-result result-${test.result}">
-                ${test.result ? 'Same Root' : 'Different Roots'}
+              <div class="test-result">
+                ${test.result ? '✅' : '❌'}
               </div>
             </div>
           `
