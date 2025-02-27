@@ -1,8 +1,11 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo {
@@ -94,12 +97,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #4f7df3;
-  color: white;
-  border-radius: 8px;
+  background-color: #f7f3e9;
+  color: #2b2b2b;
+  border-radius: 4px;
   font-weight: bold;
   font-size: 1.2em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e6dfc7;
+  transition: all 0.2s ease;
+}
+
+.letter:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .word-form {
@@ -176,46 +186,97 @@
   padding: 10px 0;
 }
 
+.game-title {
+  display: none;
+}
+
 .join-form {
+  position: relative;
+  z-index: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #ffffff;
-  color: #213547;
+  background: transparent;
+  color: #2b2b2b;
+  margin: 0;
+  padding: 1rem;
 }
 
 .join-form form {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: calc(100% - 2rem);
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f7f3e9;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e6dfc7;
+  align-items: center;
 }
 
 .join-form input {
-  padding: 8px;
+  padding: 12px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #213547;
+  border: 2px solid #e6dfc7;
+  border-radius: 8px;
+  color: #2b2b2b;
   background-color: #ffffff;
+  transition: all 0.2s ease;
+  width: 90%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.join-form input:focus {
+  border-color: #2b2b2b;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(43, 43, 43, 0.1);
+}
+
+.join-form button {
+  background-color: #2b2b2b;
+  color: #f7f3e9;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  width: 90%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.join-form button:hover {
+  background-color: #3f3f3f;
+  transform: translateY(-1px);
+}
+
+.join-form button:active {
+  transform: translateY(1px);
 }
 
 .game-controls button,
-.word-form button,
-.join-form button {
-  background-color: #4a72f5;
-  color: white;
+.word-form button {
+  background-color: #2b2b2b;
+  color: #f7f3e9;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .game-controls button:hover,
-.word-form button:hover,
-.join-form button:hover {
-  background-color: #3557d0;
+.word-form button:hover {
+  background-color: #3f3f3f;
 }
 
 h2,
@@ -275,4 +336,157 @@ h3 {
   font-weight: bold;
   padding: 0 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Update title tiles styling */
+.title-tiles {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+  justify-content: center;
+  perspective: 1000px;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.title-tile {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  position: relative;
+  animation: tileAppear 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.title-tile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.title-tile.flipped .title-tile-inner {
+  transform: rotateY(180deg);
+}
+
+.title-tile-front,
+.title-tile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f3e9;
+  color: #2b2b2b;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e6dfc7;
+}
+
+.title-tile-back {
+  transform: rotateY(180deg);
+  background-color: #f7f3e9;
+}
+
+.title-tile-front {
+  background-color: #f7f3e9;
+}
+
+/* Update hover effect */
+.title-tile:hover .title-tile-inner {
+  transform: translateY(-5px);
+}
+
+.title-tile.flipped:hover .title-tile-inner {
+  transform: rotateY(180deg) translateY(-5px);
+}
+
+/* Keep existing animation delays */
+.title-tile:nth-child(1) {
+  animation-delay: 0s;
+}
+.title-tile:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.title-tile:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.title-tile:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.title-tile:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.title-tile:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.title-tile:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+/* Keep existing tileAppear animation */
+@keyframes tileAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add media queries for different screen sizes */
+@media (max-width: 480px) {
+  .title-tile {
+    width: 40px;
+    height: 40px;
+  }
+
+  .title-tile-front,
+  .title-tile-back {
+    font-size: 1.5em;
+  }
+
+  .join-form form {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .join-form input,
+  .join-form button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .title-tile {
+    width: 45px;
+    height: 45px;
+  }
+
+  .title-tile-front,
+  .title-tile-back {
+    font-size: 1.75em;
+  }
+}
+
+/* Update viewport height handling for mobile browsers */
+@supports (-webkit-touch-callout: none) {
+  .join-form {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Add subtle background gradient */
+body {
+  background: linear-gradient(135deg, #f0f2f5 0%, #ffffff 100%);
 }
