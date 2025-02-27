@@ -56,7 +56,7 @@ function isAnagram(word1, word2) {
 }
 
 // Helper function to check if two words share the same root
-//Since we do not know the part of speech, we check all possible formssing wink-lemmatizer
+//Since we do not know the part of speech, we check all possible forms using wink-lemmatizer
 function sharesSameRoot(word1, word2) {
   // Get all possible lemma forms for both words
   const word1Forms = [
