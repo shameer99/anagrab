@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { sharesSameRoot } = require('../utils/gameLogic');
 const lemmatizer = require('wink-lemmatizer');
+const testCases = require('../data/wordTransformationTests.json');
 
 // Debug route for testing sharesSameRoot function
 router.get('/shareroot', (req, res) => {
@@ -34,7 +35,7 @@ router.get('/shareroot', (req, res) => {
       <style>
         body {
           font-family: Arial, sans-serif;
-          max-width: 600px;
+          max-width: 800px;
           margin: 0 auto;
           padding: 20px;
         }
@@ -70,6 +71,16 @@ router.get('/shareroot', (req, res) => {
         .false {
           background-color: #f8d7da;
           color: #721c24;
+        }
+        h2 {
+          margin-top: 30px;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 10px;
+        }
+        .nav-links {
+          margin-top: 30px;
+          padding-top: 15px;
+          border-top: 1px solid #eee;
         }
       </style>
     </head>
@@ -112,6 +123,158 @@ router.get('/shareroot', (req, res) => {
       `
           : ''
       }
+
+      <div class="nav-links">
+        <p><a href="/debug/test-cases">View Test Cases</a> - See examples of allowed and disallowed word transformations</p>
+      </div>
+    </body>
+    </html>
+  `;
+
+  res.send(html);
+});
+
+// New route for test cases
+router.get('/test-cases', (req, res) => {
+  // Pre-evaluate all test cases
+  const evaluatedAllowed = testCases.allowed.map(test => ({
+    ...test,
+    result: sharesSameRoot(test.word1, test.word2),
+  }));
+
+  const evaluatedDisallowed = testCases.disallowed.map(test => ({
+    ...test,
+    result: sharesSameRoot(test.word1, test.word2),
+  }));
+
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Word Transformation Test Cases</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        .test-cases {
+          margin-top: 30px;
+        }
+        .test-section {
+          margin-bottom: 30px;
+        }
+        .test-case {
+          padding: 15px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .allowed {
+          border-left: 5px solid #28a745;
+        }
+        .disallowed {
+          border-left: 5px solid #dc3545;
+        }
+        .test-info {
+          flex: 1;
+        }
+        .test-pair {
+          font-weight: bold;
+          font-size: 1.1em;
+          margin-bottom: 5px;
+        }
+        .test-explanation {
+          font-style: italic;
+          color: #555;
+        }
+        .test-result {
+          margin-left: 20px;
+          padding: 8px 12px;
+          border-radius: 4px;
+          font-weight: bold;
+        }
+        .result-true {
+          background-color: #d4edda;
+          color: #155724;
+        }
+        .result-false {
+          background-color: #f8d7da;
+          color: #721c24;
+        }
+        .expected-true .result-true, .expected-false .result-false {
+          border: 2px solid #28a745;
+        }
+        .expected-true .result-false, .expected-false .result-true {
+          border: 2px solid #dc3545;
+        }
+        h1, h2, h3 {
+          margin-top: 30px;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 10px;
+        }
+        .nav-links {
+          margin-top: 30px;
+          padding-top: 15px;
+          border-top: 1px solid #eee;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Word Transformation Test Cases</h1>
+      <p>This page shows examples of allowed and disallowed word transformations and evaluates them with the current algorithm.</p>
+      
+      <div class="test-cases">
+        <div class="test-section">
+          <h2>Allowed Transformations</h2>
+          <p>These word pairs should be considered to have <strong>different</strong> roots, so they can both be valid words in the game. The algorithm should return <strong>false</strong>.</p>
+          
+          ${evaluatedAllowed
+            .map(
+              test => `
+            <div class="test-case allowed expected-false">
+              <div class="test-info">
+                <div class="test-pair">"${test.word1}" → "${test.word2}"</div>
+                <div class="test-explanation">${test.explanation}</div>
+              </div>
+              <div class="test-result result-${test.result}">
+                ${test.result ? 'Same Root' : 'Different Roots'}
+              </div>
+            </div>
+          `
+            )
+            .join('')}
+        </div>
+        
+        <div class="test-section">
+          <h2>Disallowed Transformations</h2>
+          <p>These word pairs should be considered to share the <strong>same</strong> root, so they cannot both be valid words in the game. The algorithm should return <strong>true</strong>.</p>
+          
+          ${evaluatedDisallowed
+            .map(
+              test => `
+            <div class="test-case disallowed expected-true">
+              <div class="test-info">
+                <div class="test-pair">"${test.word1}" → "${test.word2}"</div>
+                <div class="test-explanation">${test.explanation}</div>
+              </div>
+              <div class="test-result result-${test.result}">
+                ${test.result ? 'Same Root' : 'Different Roots'}
+              </div>
+            </div>
+          `
+            )
+            .join('')}
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <p><a href="/debug/shareroot">Back to Test Tool</a></p>
+      </div>
     </body>
     </html>
   `;

@@ -1,0 +1,56 @@
+{
+  "allowed": [
+    {
+      "word1": "pat",
+      "word2": "patch",
+      "explanation": "Different stems ('pat' vs. 'patch') and a clear meaning shift"
+    },
+    {
+      "word1": "tap",
+      "word2": "tape",
+      "explanation": "Stems differ ('tap' vs. 'tape'), and the meaning changes"
+    },
+    {
+      "word1": "spar",
+      "word2": "spark",
+      "explanation": "Stems are distinct ('spar' vs. 'spark'), and it's a meaningful jump"
+    },
+    {
+      "word1": "rid",
+      "word2": "ridge",
+      "explanation": "Different stems ('rid' vs. 'ridg') and meanings"
+    },
+    {
+      "word1": "pin",
+      "word2": "pine",
+      "explanation": "Stems differ ('pin' vs. 'pine'), and meanings diverge"
+    }
+  ],
+  "disallowed": [
+    {
+      "word1": "cat",
+      "word2": "cats",
+      "explanation": "Just adds an 's' for pluralization. Same stem ('cat'), no real meaning change"
+    },
+    {
+      "word1": "lose",
+      "word2": "loser",
+      "explanation": "Same stem ('lose'), and it's just a noun form"
+    },
+    {
+      "word1": "run",
+      "word2": "running",
+      "explanation": "Same stem ('run'), too close in meaning"
+    },
+    {
+      "word1": "bake",
+      "word2": "baker",
+      "explanation": "Same stem ('bake'), just a role shift"
+    },
+    {
+      "word1": "play",
+      "word2": "player",
+      "explanation": "Same stem ('play'), trivial extension"
+    }
+  ]
+}
