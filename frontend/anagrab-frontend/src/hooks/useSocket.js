@@ -24,6 +24,40 @@ export const useSocket = () => {
   const [errorData, setErrorData] = useState(null);
   const [successData, setSuccessData] = useState(null);
   const [currentPlayer, setCurrentPlayer] = useState(null);
+  const [connectionState, setConnectionState] = useState('connecting');
+  const [pingLatency, setPingLatency] = useState(null);
+
+  useEffect(() => {
+    socket.on('connect', () => {
+      setConnectionState('connected');
+    });
+
+    socket.on('disconnect', () => {
+      setConnectionState('disconnected');
+    });
+
+    socket.on('connect_error', () => {
+      setConnectionState('error');
+    });
+
+    // Set up ping measurement
+    socket.on('pong', data => {
+      const latency = Date.now() - data.time;
+      setPingLatency(latency);
+    });
+
+    const pingInterval = setInterval(() => {
+      socket.emit('ping', { time: Date.now() });
+    }, 5000);
+
+    return () => {
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('connect_error');
+      socket.off('pong');
+      clearInterval(pingInterval);
+    };
+  }, []);
 
   useEffect(() => {
     socket.on('game_state_update', newState => {
@@ -34,7 +68,6 @@ export const useSocket = () => {
         deckSize: newState ? newState.deck.length : 0,
       });
 
-      // Update current player with their ID from game state
       if (newState?.players && currentPlayer?.name) {
         console.log('[game_state_update] Current player before update:', currentPlayer);
         console.log('[game_state_update] All players:', newState.players);
@@ -130,5 +163,8 @@ export const useSocket = () => {
     successData,
     setSuccessData,
     currentPlayer,
+    connectionState,
+    pingLatency,
+    socket,
   };
 };

@@ -7,6 +7,7 @@ import { WordForm } from './components/WordForm';
 import { PlayersList } from './components/PlayersList';
 import ErrorMessage from './components/ErrorMessage';
 import SuccessMessage from './components/SuccessMessage';
+import ConnectionStatus from './components/ConnectionStatus';
 
 function App() {
   const {
@@ -20,6 +21,8 @@ function App() {
     errorData,
     successData,
     currentPlayer,
+    connectionState,
+    pingLatency,
     socket,
   } = useSocket();
 
@@ -41,6 +44,7 @@ function App() {
 
   return (
     <div className="game-container">
+      <ConnectionStatus state={connectionState} ping={pingLatency} />
       {errorData && <ErrorMessage data={errorData} />}
       {successData && <SuccessMessage data={successData} />}
       <GameControls
