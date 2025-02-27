@@ -155,4 +155,5 @@ module.exports = {
   shuffle,
   tryTakeFromPot,
   tryToStealWord,
+  sharesSameRoot,
 };
