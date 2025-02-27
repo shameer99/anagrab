@@ -451,6 +451,11 @@
       "word1": "date",
       "word2": "dated",
       "explanation": "Same stem ('date'), just adds '-ed' suffix"
+    },
+    {
+      "word1": "wake",
+      "word2": "waken",
+      "explanation": "Different stems ('wake' vs. 'waken') with meaningful change"
     }
   ]
 }
