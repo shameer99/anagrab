@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+const lemmatizer = require('wink-lemmatizer');
 // Load dictionary once at startup
 const dictionary = new Set(
   fs
@@ -55,6 +55,26 @@ function isAnagram(word1, word2) {
   return word1.split('').sort().join('') === word2.split('').sort().join('');
 }
 
+// Helper function to check if two words share the same root
+//Since we do not know the part of speech, we check all possible forms using wink-lemmatizer
+function sharesSameRoot(word1, word2) {
+  // Get all possible lemma forms for both words
+  const word1Forms = [
+    lemmatizer.noun(word1.toLowerCase()),
+    lemmatizer.verb(word1.toLowerCase()),
+    lemmatizer.adjective(word1.toLowerCase()),
+  ];
+
+  const word2Forms = [
+    lemmatizer.noun(word2.toLowerCase()),
+    lemmatizer.verb(word2.toLowerCase()),
+    lemmatizer.adjective(word2.toLowerCase()),
+  ];
+
+  // Check if any form matches between the two words
+  return word1Forms.some(form1 => word2Forms.some(form2 => form1 === form2));
+}
+
 function tryToStealWord(word, pot, socketId, gameState) {
   const potLetters = [...pot];
   const wordLetters = word.split('');
@@ -67,7 +87,11 @@ function tryToStealWord(word, pot, socketId, gameState) {
   // Try each existing word to see if it can be used for stealing
   for (const existingWord of allPlayerWords) {
     // Check if this is an exact anagram - if so, skip this word
-    if (isAnagram(existingWord, word) && existingWord !== word) continue;
+    if (
+      (isAnagram(existingWord, word) && existingWord !== word) ||
+      sharesSameRoot(existingWord, word)
+    )
+      continue;
 
     let remainingLetters = [...wordLetters];
     let canUseExistingWord = true;
