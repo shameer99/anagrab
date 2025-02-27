@@ -1,11 +1,19 @@
 const fs = require('fs');
+const path = require('path');
+
 const lemmatizer = require('wink-lemmatizer');
+
 // Load dictionary once at startup
 const dictionary = new Set(
   fs
     .readFileSync('./dictionary.txt', 'utf8')
     .split('\n')
     .map(word => word.trim().toLowerCase())
+);
+
+// Load word roots from JSON file
+const wordRoots = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '../data/wordRoots.json'), 'utf8')
 );
 
 function isValidWord(word) {
@@ -58,21 +66,27 @@ function isAnagram(word1, word2) {
 // Helper function to check if two words share the same root
 //Since we do not know the part of speech, we check all possible forms using wink-lemmatizer
 function sharesSameRoot(word1, word2) {
-  // Get all possible lemma forms for both words
-  const word1Forms = [
-    lemmatizer.noun(word1.toLowerCase()),
-    lemmatizer.verb(word1.toLowerCase()),
-    lemmatizer.adjective(word1.toLowerCase()),
-  ];
+  word1 = word1.toLowerCase();
+  word2 = word2.toLowerCase();
 
-  const word2Forms = [
-    lemmatizer.noun(word2.toLowerCase()),
-    lemmatizer.verb(word2.toLowerCase()),
-    lemmatizer.adjective(word2.toLowerCase()),
-  ];
+  // First try the lemmatizer
+  const word1Forms = [lemmatizer.noun(word1), lemmatizer.verb(word1), lemmatizer.adjective(word1)];
+
+  const word2Forms = [lemmatizer.noun(word2), lemmatizer.verb(word2), lemmatizer.adjective(word2)];
 
   // Check if any form matches between the two words
-  return word1Forms.some(form1 => word2Forms.some(form2 => form1 === form2));
+  if (word1Forms.some(form1 => word2Forms.some(form2 => form1 === form2))) {
+    return true;
+  }
+
+  // If no match with lemmatizer, check custom word roots mapping
+  if (wordRoots[word1] && wordRoots[word2]) {
+    if (wordRoots[word1] === wordRoots[word2]) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function tryToStealWord(word, pot, socketId, gameState) {
