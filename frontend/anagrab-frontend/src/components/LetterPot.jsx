@@ -8,6 +8,7 @@ export const LetterPot = ({ letters }) => {
           </span>
         ))}
       </div>
+      {letters?.length === 0 && <div className="empty-pot">No letters in play yet</div>}
     </div>
   );
 };

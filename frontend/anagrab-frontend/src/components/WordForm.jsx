@@ -18,8 +18,11 @@ export const WordForm = ({ onClaimWord }) => {
         value={wordInput}
         onChange={e => setWordInput(e.target.value)}
         placeholder="Enter word to claim"
+        className="word-input"
       />
-      <button type="submit">Claim Word</button>
+      <button type="submit" className="claim-button">
+        Claim Word
+      </button>
     </form>
   );
 };

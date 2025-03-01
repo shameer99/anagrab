@@ -180,10 +180,9 @@
 
 .game-board {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
+  justify-content: center;
   padding: 10px 0;
+  width: 100%;
 }
 
 .game-title {
@@ -465,6 +464,28 @@ h3 {
     padding: 10px;
     font-size: 14px;
   }
+
+  .alphabet-letter {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8em;
+  }
+
+  .letter-count {
+    width: 14px;
+    height: 14px;
+    font-size: 0.6em;
+    top: -4px;
+    right: -4px;
+  }
+
+  .alphabet-display {
+    gap: 3px;
+  }
+
+  .alphabet-row {
+    gap: 3px;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -489,4 +510,270 @@ h3 {
 /* Add subtle background gradient */
 body {
   background: linear-gradient(135deg, #f0f2f5 0%, #ffffff 100%);
+}
+
+/* Alphabet Display Styles */
+.alphabet-display {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.alphabet-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+}
+
+.alphabet-letter {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1.1em;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.alphabet-letter.available {
+  background-color: #4f7df3;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alphabet-letter.unavailable {
+  background-color: #e0e0e0;
+  color: #888;
+}
+
+.letter-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Word List Styles */
+.word-list-container {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.word-list-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-chips,
+.sort-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.filter-chip,
+.sort-chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chip.active,
+.sort-chip.active {
+  background-color: #4f7df3;
+  color: white;
+  border-color: #4f7df3;
+}
+
+.word-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.word-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.word-text {
+  font-weight: 500;
+}
+
+.word-player {
+  font-size: 0.85em;
+  color: #666;
+  background-color: #e0e0e0;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.no-words {
+  color: #888;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .game-controls {
+    flex-direction: column;
+  }
+
+  .game-controls .buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .alphabet-display {
+    gap: 4px;
+    padding: 5px;
+  }
+
+  .alphabet-row {
+    gap: 4px;
+  }
+
+  .alphabet-letter {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9em;
+  }
+
+  .letter-count {
+    width: 16px;
+    height: 16px;
+    font-size: 0.65em;
+  }
+
+  .word-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .word-form input {
+    width: 100%;
+  }
+
+  .word-list-controls {
+    gap: 8px;
+  }
+
+  .filter-chip,
+  .sort-chip {
+    padding: 4px 8px;
+    font-size: 0.8em;
+  }
+
+  /* Hide the separate player sections on mobile */
+  .other-players,
+  .your-player {
+    display: none;
+  }
+
+  /* Make the pot take less vertical space */
+  .pot {
+    padding: 5px;
+  }
+
+  .letter {
+    width: 32px;
+    height: 32px;
+    font-size: 1em;
+  }
+
+  .word-input {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .claim-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+  }
+
+  .empty-pot {
+    padding: 10px;
+  }
+}
+
+/* Tablet Specific Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .alphabet-letter {
+    width: 32px;
+    height: 32px;
+  }
+
+  .filter-chip,
+  .sort-chip {
+    padding: 5px 10px;
+  }
+}
+
+.word-input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #213547;
+  background-color: #ffffff;
+  flex: 1;
+  min-width: 0;
+}
+
+.claim-button {
+  padding: 8px 16px;
+  background-color: #4f7df3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.claim-button:hover {
+  background-color: #3a6ae0;
+}
+
+.empty-pot {
+  padding: 20px;
+  color: #888;
+  font-style: italic;
 }
