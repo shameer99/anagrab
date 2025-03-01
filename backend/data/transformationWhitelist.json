@@ -1,94 +1,34 @@
 {
-  "transformations": [
+  "transformationGroups": [
     {
-      "word1": "snip",
-      "word2": "sniper",
-      "explanation": "Different stems ('snip' vs. 'sniper') with distinct meanings"
+      "baseWord": "snip",
+      "variations": ["sniper", "snipe", "snipes", "snipers"],
+      "explanation": "Different stem ('snip' vs. variations) with distinct meanings"
     },
     {
-      "word1": "snip",
-      "word2": "snipe",
-      "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
+      "baseWord": "mess",
+      "variations": ["messenger"],
+      "explanation": "Different stem ('mess' vs. 'messenger') with distinct meanings"
     },
     {
-      "word1": "snip",
-      "word2": "snipes",
-      "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
+      "baseWord": "barb",
+      "variations": ["barber", "barbers"],
+      "explanation": "Different stem ('barb' vs. variations) with distinct meanings"
     },
     {
-      "word1": "snips",
-      "word2": "snipes",
-      "explanation": "Different stems ('snip' vs. 'snipes') with distinct meanings"
+      "baseWord": "live",
+      "variations": ["liver", "livers"],
+      "explanation": "Different stem ('live' vs. variations) with distinct meanings"
     },
     {
-      "word1": "snips",
-      "word2": "snipers",
-      "explanation": "Different stems ('snip' vs. 'sniper') with distinct meanings"
+      "baseWord": "ling",
+      "variations": ["linger", "lingers"],
+      "explanation": "Different stem ('ling' vs. variations) with distinct meanings"
     },
     {
-      "word1": "mess",
-      "word2": "messenger",
-      "explanation": "Different stems ('mess' vs. 'messenger') with distinct meanings"
-    },
-    {
-      "word1": "barb",
-      "word2": "barber",
-      "explanation": "Different stems ('barb' vs. 'barber') with distinct meanings"
-    },
-    {
-      "word1": "barb",
-      "word2": "barbers",
-      "explanation": "Different stems ('barb' vs. 'barbers') with distinct meanings"
-    },
-    {
-      "word1": "barbs",
-      "word2": "barbers",
-      "explanation": "Different stems ('barb' vs. 'barbers') with distinct meanings"
-    },
-    {
-      "word1": "live",
-      "word2": "liver",
-      "explanation": "Different stems ('live' vs. 'liver') with distinct meanings"
-    },
-    {
-      "word1": "live",
-      "word2": "livers",
-      "explanation": "Different stems ('live' vs. 'livers') with distinct meanings"
-    },
-    {
-      "word1": "lives",
-      "word2": "livers",
-      "explanation": "Different stems ('live' vs. 'livers') with distinct meanings"
-    },
-    {
-      "word1": "ling",
-      "word2": "linger",
-      "explanation": "Different stems ('ling' vs. 'linger') with distinct meanings"
-    },
-    {
-      "word1": "ling",
-      "word2": "lingers",
-      "explanation": "Different stems ('ling' vs. 'lingers') with distinct meanings"
-    },
-    {
-      "word1": "lings",
-      "word2": "lingers",
-      "explanation": "Different stems ('ling' vs. 'lingers') with distinct meanings"
-    },
-    {
-      "word1": "flow",
-      "word2": "flower",
-      "explanation": "Stems differ ('flow' vs. 'flower') with clear meaning shift"
-    },
-    {
-      "word1": "flow",
-      "word2": "flowers",
-      "explanation": "Stems differ ('flow' vs. 'flowers') with clear meaning shift"
-    },
-    {
-      "word1": "flows",
-      "word2": "flowers",
-      "explanation": "Stems differ ('flow' vs. 'flowers') with clear meaning shift"
+      "baseWord": "flow",
+      "variations": ["flower", "flowers"],
+      "explanation": "Different stem ('flow' vs. variations) with distinct meanings"
     }
   ]
 }

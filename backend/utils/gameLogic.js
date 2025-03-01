@@ -15,16 +15,28 @@ const transformationWhitelist = JSON.parse(
 
 // Create a map for quick lookup of whitelisted transformations
 const whitelistedTransformations = new Map();
-transformationWhitelist.transformations.forEach(transformation => {
-  // Store both directions for easy lookup
-  whitelistedTransformations.set(
-    `${transformation.word1.toLowerCase()}-${transformation.word2.toLowerCase()}`,
-    true
-  );
-  whitelistedTransformations.set(
-    `${transformation.word2.toLowerCase()}-${transformation.word1.toLowerCase()}`,
-    true
-  );
+transformationWhitelist.transformationGroups.forEach(group => {
+  const baseWord = group.baseWord.toLowerCase();
+  const variations = group.variations.map(v => v.toLowerCase());
+
+  // Store base word to variations mappings
+  variations.forEach(variation => {
+    whitelistedTransformations.set(`${baseWord}-${variation}`, true);
+    whitelistedTransformations.set(`${variation}-${baseWord}`, true);
+
+    // Also store plural form of base word
+    const pluralBase = baseWord + 's';
+    whitelistedTransformations.set(`${pluralBase}-${variation}`, true);
+    whitelistedTransformations.set(`${variation}-${pluralBase}`, true);
+  });
+
+  // Store variation to variation mappings
+  for (let i = 0; i < variations.length; i++) {
+    for (let j = i + 1; j < variations.length; j++) {
+      whitelistedTransformations.set(`${variations[i]}-${variations[j]}`, true);
+      whitelistedTransformations.set(`${variations[j]}-${variations[i]}`, true);
+    }
+  }
 });
 
 function isValidWord(word) {
