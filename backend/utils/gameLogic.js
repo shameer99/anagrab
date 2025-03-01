@@ -1,7 +1,5 @@
 const fs = require('fs');
 
-const lemmatizer = require('wink-lemmatizer');
-
 // Load dictionary once at startup
 const dictionary = new Set(
   fs
@@ -134,36 +132,6 @@ function sharesSameRoot(word1, word2) {
 
   // this breaks expected false cases like flow -> flower, line -> liner, etc
   return commonSuffixes.some(suffix => word2.endsWith(suffix));
-}
-
-// Helper function to check if two words share the same root
-//Since we do not know the part of speech, we check all possible forms using wink-lemmatizer
-function sharesSameRootOld(word1, word2) {
-  word1 = word1.toLowerCase();
-  word2 = word2.toLowerCase();
-
-  // First try the lemmatizer
-  let word1Forms = [lemmatizer.noun(word1), lemmatizer.verb(word1), lemmatizer.adjective(word1)];
-
-  let word2Forms = [lemmatizer.noun(word2), lemmatizer.verb(word2), lemmatizer.adjective(word2)];
-
-  // remove own word from forms
-  word1Forms = word1Forms.filter(form => form !== word1);
-  word2Forms = word2Forms.filter(form => form !== word2);
-
-  // Check if any form matches between the two words
-  if (word1Forms.some(form1 => word2Forms.some(form2 => form1 === form2))) {
-    return true;
-  }
-
-  // // If no match with lemmatizer, check custom word roots mapping
-  // if (wordRoots[word1] && wordRoots[word2]) {
-  //   if (wordRoots[word1] === wordRoots[word2]) {
-  //     return true;
-  //   }
-  // }
-
-  return false;
 }
 
 function tryToStealWord(word, pot, socketId, gameState) {
