@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 export const AlphabetDisplay = ({ letters = [] }) => {
   const prevLetterCountsRef = useRef({});
   const [updatedLetters, setUpdatedLetters] = useState(new Set());
+  const [removingLetters, setRemovingLetters] = useState(new Set());
+  const [shakingLetters, setShakingLetters] = useState(new Set());
   const [recentLetter, setRecentLetter] = useState(null);
 
   // Create a map to count occurrences of each letter
@@ -14,21 +16,51 @@ export const AlphabetDisplay = ({ letters = [] }) => {
   // Check for updates in letter counts
   useEffect(() => {
     const newUpdatedLetters = new Set();
+    const newRemovingLetters = new Set();
+    const newShakingLetters = new Set();
 
     // Compare current counts with previous counts
     Object.entries(letterCounts).forEach(([letter, count]) => {
-      if (count > (prevLetterCountsRef.current[letter] || 0)) {
+      const prevCount = prevLetterCountsRef.current[letter] || 0;
+      if (count > prevCount) {
         newUpdatedLetters.add(letter);
-        // Set this as the most recent letter
         setRecentLetter(letter);
+      } else if (count < prevCount) {
+        // If there's still more than one left, shake it
+        if (count > 0) {
+          newShakingLetters.add(letter);
+        } else {
+          // Otherwise fade it out
+          newRemovingLetters.add(letter);
+        }
+      }
+    });
+
+    // Check for letters that were completely removed
+    Object.entries(prevLetterCountsRef.current).forEach(([letter, prevCount]) => {
+      if (prevCount > 0 && !letterCounts[letter]) {
+        newRemovingLetters.add(letter);
       }
     });
 
     if (newUpdatedLetters.size > 0) {
       setUpdatedLetters(newUpdatedLetters);
-      // Reset only the pop animation after a delay
       setTimeout(() => {
         setUpdatedLetters(new Set());
+      }, 500);
+    }
+
+    if (newRemovingLetters.size > 0) {
+      setRemovingLetters(newRemovingLetters);
+      setTimeout(() => {
+        setRemovingLetters(new Set());
+      }, 500);
+    }
+
+    if (newShakingLetters.size > 0) {
+      setShakingLetters(newShakingLetters);
+      setTimeout(() => {
+        setShakingLetters(new Set());
       }, 500);
     }
 
@@ -83,16 +115,20 @@ export const AlphabetDisplay = ({ letters = [] }) => {
             const count = letterCounts[letter] || 0;
             const isAvailable = count > 0;
             const isUpdated = updatedLetters.has(letter);
+            const isRemoving = removingLetters.has(letter);
+            const isShaking = shakingLetters.has(letter);
             const isRecent = letter === recentLetter;
 
             return (
               <div
                 key={letter}
-                className={`alphabet-letter ${isAvailable ? 'available' : 'unavailable'}`}
+                className={`alphabet-letter ${isAvailable ? 'available' : 'unavailable'} ${
+                  isRemoving ? 'removing' : ''
+                } ${isShaking ? 'shaking' : ''}`}
                 data-updated={isUpdated}
                 data-recent={isRecent}
               >
-                {letter}
+                {isAvailable ? letter : ''}
                 {isAvailable && (
                   <span className="letter-count" data-updated={isUpdated}>
                     {count}
