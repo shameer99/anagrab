@@ -8,6 +8,9 @@ import { PlayersList } from './components/PlayersList';
 import ErrorMessage from './components/ErrorMessage';
 import SuccessMessage from './components/SuccessMessage';
 import ConnectionStatus from './components/ConnectionStatus';
+import { AlphabetDisplay } from './components/AlphabetDisplay';
+import { WordList } from './components/WordList';
+import { useEffect, useState } from 'react';
 
 function App() {
   const {
@@ -25,6 +28,18 @@ function App() {
     pingLatency,
     socket,
   } = useSocket();
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Add a window resize listener to detect mobile/desktop
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   if (!isJoined) {
     return <JoinForm onJoin={joinGame} />;
@@ -55,70 +70,80 @@ function App() {
         gameState={gameState}
       />
 
-      {/* Other players at the top */}
-      {otherPlayers.length > 0 && (
-        <div className="other-players">
-          {otherPlayers.map(([id, player]) => (
-            <div key={id} className="player">
-              <h3>
-                {player.name}
-                {'   '}
-                <span
-                  style={{
-                    backgroundColor: 'red',
-                    color: 'white',
-                    padding: '0 5px', // Adds some padding to make the background color visible around the text
-                    borderRadius: 15,
-                  }}
-                >
-                  {player.words.reduce((total, word) => total + word.length, 0)}
-                </span>
-              </h3>
-              <div className="words">
-                {player.words.map((word, index) => (
-                  <span key={index} className="word">
-                    {word}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      {/* Alphabet display for all 26 letters */}
+      <AlphabetDisplay letters={gameState?.pot || []} />
 
-      {/* Letters in play */}
+      {/* Game board with letter pot and word form */}
       <div className="game-board">
         <LetterPot letters={gameState?.pot || []} />
         <WordForm onClaimWord={claimWord} />
       </div>
 
-      {/* Current player at the bottom */}
-      {currentPlayerEntry && (
-        <div className="your-player">
-          <div className="player">
-            <h3>
-              {currentPlayerEntry[1].name}
-              {'   '}
-              <span
-                style={{
-                  backgroundColor: 'red',
-                  color: 'white',
-                  padding: '0 5px', // Adds some padding to make the background color visible around the text
-                  borderRadius: 15,
-                }}
-              >
-                {currentPlayerEntry[1].words.reduce((total, word) => total + word.length, 0)}
-              </span>
-            </h3>
-            <div className="words">
-              {currentPlayerEntry[1].words.map((word, index) => (
-                <span key={index} className="word">
-                  {word}
-                </span>
+      {/* Responsive layout: Show WordList on mobile, traditional layout on desktop */}
+      {isMobile ? (
+        <WordList players={players} />
+      ) : (
+        <>
+          {/* Other players at the top */}
+          {otherPlayers.length > 0 && (
+            <div className="other-players">
+              {otherPlayers.map(([id, player]) => (
+                <div key={id} className="player">
+                  <h3>
+                    {player.name}
+                    {'   '}
+                    <span
+                      style={{
+                        backgroundColor: 'red',
+                        color: 'white',
+                        padding: '0 5px',
+                        borderRadius: 15,
+                      }}
+                    >
+                      {player.words.reduce((total, word) => total + word.length, 0)}
+                    </span>
+                  </h3>
+                  <div className="words">
+                    {player.words.map((word, index) => (
+                      <span key={index} className="word">
+                        {word}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
-        </div>
+          )}
+
+          {/* Current player at the bottom */}
+          {currentPlayerEntry && (
+            <div className="your-player">
+              <div className="player">
+                <h3>
+                  {currentPlayerEntry[1].name}
+                  {'   '}
+                  <span
+                    style={{
+                      backgroundColor: 'red',
+                      color: 'white',
+                      padding: '0 5px',
+                      borderRadius: 15,
+                    }}
+                  >
+                    {currentPlayerEntry[1].words.reduce((total, word) => total + word.length, 0)}
+                  </span>
+                </h3>
+                <div className="words">
+                  {currentPlayerEntry[1].words.map((word, index) => (
+                    <span key={index} className="word">
+                      {word}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
