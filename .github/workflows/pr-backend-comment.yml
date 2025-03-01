@@ -1,0 +1,33 @@
+name: Backend PR Comment
+
+on:
+  pull_request:
+    paths:
+      - 'backend/**'
+    types: [opened, synchronize, reopened]
+
+jobs:
+  comment-on-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const comment = `🚀 Backend changes detected!
+
+            Once deployed, the preview backend will be available at:
+            https://anagrab-pr-${prNumber}.onrender.com/debug/test-cases
+
+            Please allow a few minutes for the deployment to complete.`;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: comment
+            }); 
