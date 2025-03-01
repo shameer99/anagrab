@@ -131,11 +131,6 @@
       "explanation": "Stems differ ('care' vs. 'scare') with distinct meanings"
     },
     {
-      "word1": "time",
-      "word2": "timer",
-      "explanation": "Different stems ('time' vs. 'timer') with meaningful change"
-    },
-    {
       "word1": "read",
       "word2": "bread",
       "explanation": "Stems differ ('read' vs. 'bread') with unrelated meanings"
@@ -201,11 +196,6 @@
       "explanation": "Stems differ ('coal' vs. 'coast') with unrelated meanings"
     },
     {
-      "word1": "file",
-      "word2": "filer",
-      "explanation": "Different stems with meaningful change"
-    },
-    {
       "word1": "heat",
       "word2": "heart",
       "explanation": "Stems differ ('heat' vs. 'heart') with distinct meanings"
@@ -233,6 +223,21 @@
   ],
   "disallowed": [
     {
+      "word1": "line",
+      "word2": "lining",
+      "explanation": "Same stem ('line'), just adds -ing suffix for gerund form"
+    },
+    {
+      "word1": "file",
+      "word2": "filer",
+      "explanation": "Same stem ('file'), just adds agent suffix"
+    },
+    {
+      "word1": "time",
+      "word2": "timer",
+      "explanation": "Same stem ('time'), just adds agent suffix"
+    },
+    {
       "word1": "cat",
       "word2": "cats",
       "explanation": "Just adds an 's' for pluralization. Same stem ('cat'), no real meaning change"
@@ -250,6 +255,11 @@
     {
       "word1": "bake",
       "word2": "baker",
+      "explanation": "Same stem ('bake'), just a role shift"
+    },
+    {
+      "word1": "bake",
+      "word2": "baked",
       "explanation": "Same stem ('bake'), just a role shift"
     },
     {
