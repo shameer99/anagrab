@@ -5,13 +5,11 @@
       "word2": "sniper",
       "explanation": "Different stems ('snip' vs. 'sniper') with distinct meanings"
     },
-
     {
       "word1": "snip",
       "word2": "snipe",
       "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
     },
-
     {
       "word1": "snip",
       "word2": "snipes",
@@ -63,29 +61,9 @@
       "explanation": "Different stems ('seer' vs. 'steer') with distinct meanings"
     },
     {
-      "word1": "pat",
-      "word2": "patch",
-      "explanation": "Different stems ('pat' vs. 'patch') and a clear meaning shift"
-    },
-    {
-      "word1": "tap",
-      "word2": "tape",
-      "explanation": "Stems differ ('tap' vs. 'tape'), and the meaning changes"
-    },
-    {
       "word1": "spar",
       "word2": "spark",
       "explanation": "Stems are distinct ('spar' vs. 'spark'), and it's a meaningful jump"
-    },
-    {
-      "word1": "rid",
-      "word2": "ridge",
-      "explanation": "Different stems ('rid' vs. 'ridg') and meanings"
-    },
-    {
-      "word1": "pin",
-      "word2": "pine",
-      "explanation": "Stems differ ('pin' vs. 'pine'), and meanings diverge"
     },
     {
       "word1": "star",
@@ -232,7 +210,6 @@
       "word2": "bring",
       "explanation": "Stems differ ('ring' vs. 'bring') with unrelated meanings"
     },
-
     {
       "word1": "word",
       "word2": "sword",
@@ -376,11 +353,6 @@
       "explanation": "Same stem ('move'), adds 'ment' for noun"
     },
     {
-      "word1": "act",
-      "word2": "action",
-      "explanation": "Same stem ('act'), adds 'ion' (missing from suffixes)"
-    },
-    {
       "word1": "line",
       "word2": "liner",
       "explanation": "Different stems with meaningful change"
@@ -400,7 +372,6 @@
       "word2": "baking",
       "explanation": "Same stem ('bake'), adds 'ing' for gerund"
     },
-
     {
       "word1": "line",
       "word2": "liner",
@@ -532,19 +503,9 @@
       "explanation": "Same stem ('time'), just adds agent suffix"
     },
     {
-      "word1": "cat",
-      "word2": "cats",
-      "explanation": "Just adds an 's' for pluralization. Same stem ('cat'), no real meaning change"
-    },
-    {
       "word1": "lose",
       "word2": "loser",
       "explanation": "Same stem ('lose'), and it's just a noun form"
-    },
-    {
-      "word1": "run",
-      "word2": "running",
-      "explanation": "Same stem ('run'), too close in meaning"
     },
     {
       "word1": "bake",
@@ -647,19 +608,9 @@
       "explanation": "Just adds an 's' for pluralization. Same stem ('book')"
     },
     {
-      "word1": "dog",
-      "word2": "dogs",
-      "explanation": "Just adds an 's' for pluralization. Same stem ('dog')"
-    },
-    {
       "word1": "house",
       "word2": "houses",
       "explanation": "Just adds an 's' for pluralization. Same stem ('house')"
-    },
-    {
-      "word1": "car",
-      "word2": "cars",
-      "explanation": "Just adds an 's' for pluralization. Same stem ('car')"
     },
     {
       "word1": "tree",
@@ -700,11 +651,6 @@
       "word1": "talk",
       "word2": "talks",
       "explanation": "Just adds an 's' for conjugation. Same stem ('talk')"
-    },
-    {
-      "word1": "eat",
-      "word2": "eats",
-      "explanation": "Just adds an 's' for conjugation. Same stem ('eat')"
     },
     {
       "word1": "drink",
@@ -765,6 +711,5681 @@
       "word1": "boob",
       "word2": "boobies",
       "explanation": "Different stems ('boob' vs. 'boobies') with meaningful change"
+    },
+    {
+      "word1": "able",
+      "word2": "abled",
+      "explanation": "Word2 (abled) is longer than word1 (able) and contains all letters from word1"
+    },
+    {
+      "word1": "able",
+      "word2": "abler",
+      "explanation": "Word2 (abler) is longer than word1 (able) and contains all letters from word1"
+    },
+    {
+      "word1": "able",
+      "word2": "ables",
+      "explanation": "Word2 (ables) is longer than word1 (able) and contains all letters from word1"
+    },
+    {
+      "word1": "able",
+      "word2": "ablest",
+      "explanation": "Word2 (ablest) is longer than word1 (able) and contains all letters from word1"
+    },
+    {
+      "word1": "acid",
+      "word2": "acids",
+      "explanation": "Word2 (acids) is longer than word1 (acid) and contains all letters from word1"
+    },
+    {
+      "word1": "alan",
+      "word2": "alans",
+      "explanation": "Word2 (alans) is longer than word1 (alan) and contains all letters from word1"
+    },
+    {
+      "word1": "anti",
+      "word2": "antis",
+      "explanation": "Word2 (antis) is longer than word1 (anti) and contains all letters from word1"
+    },
+    {
+      "word1": "area",
+      "word2": "areas",
+      "explanation": "Word2 (areas) is longer than word1 (area) and contains all letters from word1"
+    },
+    {
+      "word1": "atom",
+      "word2": "atoms",
+      "explanation": "Word2 (atoms) is longer than word1 (atom) and contains all letters from word1"
+    },
+    {
+      "word1": "auto",
+      "word2": "autoed",
+      "explanation": "Word2 (autoed) is longer than word1 (auto) and contains all letters from word1"
+    },
+    {
+      "word1": "auto",
+      "word2": "autoing",
+      "explanation": "Word2 (autoing) is longer than word1 (auto) and contains all letters from word1"
+    },
+    {
+      "word1": "auto",
+      "word2": "autos",
+      "explanation": "Word2 (autos) is longer than word1 (auto) and contains all letters from word1"
+    },
+    {
+      "word1": "babe",
+      "word2": "babes",
+      "explanation": "Word2 (babes) is longer than word1 (babe) and contains all letters from word1"
+    },
+    {
+      "word1": "baby",
+      "word2": "babying",
+      "explanation": "Word2 (babying) is longer than word1 (baby) and contains all letters from word1"
+    },
+    {
+      "word1": "back",
+      "word2": "backed",
+      "explanation": "Word2 (backed) is longer than word1 (back) and contains all letters from word1"
+    },
+    {
+      "word1": "back",
+      "word2": "backer",
+      "explanation": "Word2 (backer) is longer than word1 (back) and contains all letters from word1"
+    },
+    {
+      "word1": "back",
+      "word2": "backing",
+      "explanation": "Word2 (backing) is longer than word1 (back) and contains all letters from word1"
+    },
+    {
+      "word1": "back",
+      "word2": "backs",
+      "explanation": "Word2 (backs) is longer than word1 (back) and contains all letters from word1"
+    },
+    {
+      "word1": "ball",
+      "word2": "balled",
+      "explanation": "Word2 (balled) is longer than word1 (ball) and contains all letters from word1"
+    },
+    {
+      "word1": "ball",
+      "word2": "baller",
+      "explanation": "Word2 (baller) is longer than word1 (ball) and contains all letters from word1"
+    },
+    {
+      "word1": "ball",
+      "word2": "balling",
+      "explanation": "Word2 (balling) is longer than word1 (ball) and contains all letters from word1"
+    },
+    {
+      "word1": "ball",
+      "word2": "balls",
+      "explanation": "Word2 (balls) is longer than word1 (ball) and contains all letters from word1"
+    },
+    {
+      "word1": "band",
+      "word2": "banded",
+      "explanation": "Word2 (banded) is longer than word1 (band) and contains all letters from word1"
+    },
+    {
+      "word1": "band",
+      "word2": "bander",
+      "explanation": "Word2 (bander) is longer than word1 (band) and contains all letters from word1"
+    },
+    {
+      "word1": "band",
+      "word2": "banding",
+      "explanation": "Word2 (banding) is longer than word1 (band) and contains all letters from word1"
+    },
+    {
+      "word1": "band",
+      "word2": "bands",
+      "explanation": "Word2 (bands) is longer than word1 (band) and contains all letters from word1"
+    },
+    {
+      "word1": "bank",
+      "word2": "banked",
+      "explanation": "Word2 (banked) is longer than word1 (bank) and contains all letters from word1"
+    },
+    {
+      "word1": "bank",
+      "word2": "banker",
+      "explanation": "Word2 (banker) is longer than word1 (bank) and contains all letters from word1"
+    },
+    {
+      "word1": "bank",
+      "word2": "banking",
+      "explanation": "Word2 (banking) is longer than word1 (bank) and contains all letters from word1"
+    },
+    {
+      "word1": "bank",
+      "word2": "banks",
+      "explanation": "Word2 (banks) is longer than word1 (bank) and contains all letters from word1"
+    },
+    {
+      "word1": "base",
+      "word2": "based",
+      "explanation": "Word2 (based) is longer than word1 (base) and contains all letters from word1"
+    },
+    {
+      "word1": "base",
+      "word2": "baser",
+      "explanation": "Word2 (baser) is longer than word1 (base) and contains all letters from word1"
+    },
+    {
+      "word1": "base",
+      "word2": "bases",
+      "explanation": "Word2 (bases) is longer than word1 (base) and contains all letters from word1"
+    },
+    {
+      "word1": "base",
+      "word2": "basest",
+      "explanation": "Word2 (basest) is longer than word1 (base) and contains all letters from word1"
+    },
+    {
+      "word1": "bath",
+      "word2": "bathed",
+      "explanation": "Word2 (bathed) is longer than word1 (bath) and contains all letters from word1"
+    },
+    {
+      "word1": "bath",
+      "word2": "bather",
+      "explanation": "Word2 (bather) is longer than word1 (bath) and contains all letters from word1"
+    },
+    {
+      "word1": "bath",
+      "word2": "bathing",
+      "explanation": "Word2 (bathing) is longer than word1 (bath) and contains all letters from word1"
+    },
+    {
+      "word1": "bath",
+      "word2": "baths",
+      "explanation": "Word2 (baths) is longer than word1 (bath) and contains all letters from word1"
+    },
+    {
+      "word1": "bear",
+      "word2": "bearer",
+      "explanation": "Word2 (bearer) is longer than word1 (bear) and contains all letters from word1"
+    },
+    {
+      "word1": "bear",
+      "word2": "bearing",
+      "explanation": "Word2 (bearing) is longer than word1 (bear) and contains all letters from word1"
+    },
+    {
+      "word1": "bear",
+      "word2": "bears",
+      "explanation": "Word2 (bears) is longer than word1 (bear) and contains all letters from word1"
+    },
+    {
+      "word1": "beat",
+      "word2": "beater",
+      "explanation": "Word2 (beater) is longer than word1 (beat) and contains all letters from word1"
+    },
+    {
+      "word1": "beat",
+      "word2": "beating",
+      "explanation": "Word2 (beating) is longer than word1 (beat) and contains all letters from word1"
+    },
+    {
+      "word1": "beat",
+      "word2": "beats",
+      "explanation": "Word2 (beats) is longer than word1 (beat) and contains all letters from word1"
+    },
+    {
+      "word1": "beer",
+      "word2": "beers",
+      "explanation": "Word2 (beers) is longer than word1 (beer) and contains all letters from word1"
+    },
+    {
+      "word1": "bell",
+      "word2": "belled",
+      "explanation": "Word2 (belled) is longer than word1 (bell) and contains all letters from word1"
+    },
+    {
+      "word1": "bell",
+      "word2": "belling",
+      "explanation": "Word2 (belling) is longer than word1 (bell) and contains all letters from word1"
+    },
+    {
+      "word1": "bell",
+      "word2": "bells",
+      "explanation": "Word2 (bells) is longer than word1 (bell) and contains all letters from word1"
+    },
+    {
+      "word1": "best",
+      "word2": "bested",
+      "explanation": "Word2 (bested) is longer than word1 (best) and contains all letters from word1"
+    },
+    {
+      "word1": "best",
+      "word2": "besting",
+      "explanation": "Word2 (besting) is longer than word1 (best) and contains all letters from word1"
+    },
+    {
+      "word1": "best",
+      "word2": "bests",
+      "explanation": "Word2 (bests) is longer than word1 (best) and contains all letters from word1"
+    },
+    {
+      "word1": "beta",
+      "word2": "betas",
+      "explanation": "Word2 (betas) is longer than word1 (beta) and contains all letters from word1"
+    },
+    {
+      "word1": "bike",
+      "word2": "biked",
+      "explanation": "Word2 (biked) is longer than word1 (bike) and contains all letters from word1"
+    },
+    {
+      "word1": "bike",
+      "word2": "biker",
+      "explanation": "Word2 (biker) is longer than word1 (bike) and contains all letters from word1"
+    },
+    {
+      "word1": "bike",
+      "word2": "bikes",
+      "explanation": "Word2 (bikes) is longer than word1 (bike) and contains all letters from word1"
+    },
+    {
+      "word1": "bill",
+      "word2": "billed",
+      "explanation": "Word2 (billed) is longer than word1 (bill) and contains all letters from word1"
+    },
+    {
+      "word1": "bill",
+      "word2": "biller",
+      "explanation": "Word2 (biller) is longer than word1 (bill) and contains all letters from word1"
+    },
+    {
+      "word1": "bill",
+      "word2": "billing",
+      "explanation": "Word2 (billing) is longer than word1 (bill) and contains all letters from word1"
+    },
+    {
+      "word1": "bill",
+      "word2": "bills",
+      "explanation": "Word2 (bills) is longer than word1 (bill) and contains all letters from word1"
+    },
+    {
+      "word1": "bird",
+      "word2": "birded",
+      "explanation": "Word2 (birded) is longer than word1 (bird) and contains all letters from word1"
+    },
+    {
+      "word1": "bird",
+      "word2": "birder",
+      "explanation": "Word2 (birder) is longer than word1 (bird) and contains all letters from word1"
+    },
+    {
+      "word1": "bird",
+      "word2": "birding",
+      "explanation": "Word2 (birding) is longer than word1 (bird) and contains all letters from word1"
+    },
+    {
+      "word1": "bird",
+      "word2": "birds",
+      "explanation": "Word2 (birds) is longer than word1 (bird) and contains all letters from word1"
+    },
+    {
+      "word1": "blog",
+      "word2": "blogging",
+      "explanation": "Word2 (blogging) is longer than word1 (blog) and contains all letters from word1"
+    },
+    {
+      "word1": "blog",
+      "word2": "blogs",
+      "explanation": "Word2 (blogs) is longer than word1 (blog) and contains all letters from word1"
+    },
+    {
+      "word1": "blow",
+      "word2": "blower",
+      "explanation": "Word2 (blower) is longer than word1 (blow) and contains all letters from word1"
+    },
+    {
+      "word1": "blow",
+      "word2": "blows",
+      "explanation": "Word2 (blows) is longer than word1 (blow) and contains all letters from word1"
+    },
+    {
+      "word1": "blue",
+      "word2": "blued",
+      "explanation": "Word2 (blued) is longer than word1 (blue) and contains all letters from word1"
+    },
+    {
+      "word1": "blue",
+      "word2": "bluer",
+      "explanation": "Word2 (bluer) is longer than word1 (blue) and contains all letters from word1"
+    },
+    {
+      "word1": "blue",
+      "word2": "blues",
+      "explanation": "Word2 (blues) is longer than word1 (blue) and contains all letters from word1"
+    },
+    {
+      "word1": "blue",
+      "word2": "bluest",
+      "explanation": "Word2 (bluest) is longer than word1 (blue) and contains all letters from word1"
+    },
+    {
+      "word1": "boat",
+      "word2": "boated",
+      "explanation": "Word2 (boated) is longer than word1 (boat) and contains all letters from word1"
+    },
+    {
+      "word1": "boat",
+      "word2": "boater",
+      "explanation": "Word2 (boater) is longer than word1 (boat) and contains all letters from word1"
+    },
+    {
+      "word1": "boat",
+      "word2": "boating",
+      "explanation": "Word2 (boating) is longer than word1 (boat) and contains all letters from word1"
+    },
+    {
+      "word1": "boat",
+      "word2": "boats",
+      "explanation": "Word2 (boats) is longer than word1 (boat) and contains all letters from word1"
+    },
+    {
+      "word1": "body",
+      "word2": "bodying",
+      "explanation": "Word2 (bodying) is longer than word1 (body) and contains all letters from word1"
+    },
+    {
+      "word1": "bond",
+      "word2": "bonded",
+      "explanation": "Word2 (bonded) is longer than word1 (bond) and contains all letters from word1"
+    },
+    {
+      "word1": "bond",
+      "word2": "bonder",
+      "explanation": "Word2 (bonder) is longer than word1 (bond) and contains all letters from word1"
+    },
+    {
+      "word1": "bond",
+      "word2": "bonding",
+      "explanation": "Word2 (bonding) is longer than word1 (bond) and contains all letters from word1"
+    },
+    {
+      "word1": "bond",
+      "word2": "bonds",
+      "explanation": "Word2 (bonds) is longer than word1 (bond) and contains all letters from word1"
+    },
+    {
+      "word1": "book",
+      "word2": "booked",
+      "explanation": "Word2 (booked) is longer than word1 (book) and contains all letters from word1"
+    },
+    {
+      "word1": "book",
+      "word2": "booker",
+      "explanation": "Word2 (booker) is longer than word1 (book) and contains all letters from word1"
+    },
+    {
+      "word1": "book",
+      "word2": "booking",
+      "explanation": "Word2 (booking) is longer than word1 (book) and contains all letters from word1"
+    },
+    {
+      "word1": "book",
+      "word2": "books",
+      "explanation": "Word2 (books) is longer than word1 (book) and contains all letters from word1"
+    },
+    {
+      "word1": "boot",
+      "word2": "booted",
+      "explanation": "Word2 (booted) is longer than word1 (boot) and contains all letters from word1"
+    },
+    {
+      "word1": "boot",
+      "word2": "booting",
+      "explanation": "Word2 (booting) is longer than word1 (boot) and contains all letters from word1"
+    },
+    {
+      "word1": "boot",
+      "word2": "boots",
+      "explanation": "Word2 (boots) is longer than word1 (boot) and contains all letters from word1"
+    },
+    {
+      "word1": "both",
+      "word2": "bother",
+      "explanation": "Word2 (bother) is longer than word1 (both) and contains all letters from word1"
+    },
+    {
+      "word1": "bowl",
+      "word2": "bowled",
+      "explanation": "Word2 (bowled) is longer than word1 (bowl) and contains all letters from word1"
+    },
+    {
+      "word1": "bowl",
+      "word2": "bowler",
+      "explanation": "Word2 (bowler) is longer than word1 (bowl) and contains all letters from word1"
+    },
+    {
+      "word1": "bowl",
+      "word2": "bowling",
+      "explanation": "Word2 (bowling) is longer than word1 (bowl) and contains all letters from word1"
+    },
+    {
+      "word1": "bowl",
+      "word2": "bowls",
+      "explanation": "Word2 (bowls) is longer than word1 (bowl) and contains all letters from word1"
+    },
+    {
+      "word1": "bush",
+      "word2": "bushed",
+      "explanation": "Word2 (bushed) is longer than word1 (bush) and contains all letters from word1"
+    },
+    {
+      "word1": "bush",
+      "word2": "busher",
+      "explanation": "Word2 (busher) is longer than word1 (bush) and contains all letters from word1"
+    },
+    {
+      "word1": "bush",
+      "word2": "bushing",
+      "explanation": "Word2 (bushing) is longer than word1 (bush) and contains all letters from word1"
+    },
+    {
+      "word1": "call",
+      "word2": "called",
+      "explanation": "Word2 (called) is longer than word1 (call) and contains all letters from word1"
+    },
+    {
+      "word1": "call",
+      "word2": "caller",
+      "explanation": "Word2 (caller) is longer than word1 (call) and contains all letters from word1"
+    },
+    {
+      "word1": "call",
+      "word2": "calling",
+      "explanation": "Word2 (calling) is longer than word1 (call) and contains all letters from word1"
+    },
+    {
+      "word1": "call",
+      "word2": "calls",
+      "explanation": "Word2 (calls) is longer than word1 (call) and contains all letters from word1"
+    },
+    {
+      "word1": "camp",
+      "word2": "camped",
+      "explanation": "Word2 (camped) is longer than word1 (camp) and contains all letters from word1"
+    },
+    {
+      "word1": "camp",
+      "word2": "camper",
+      "explanation": "Word2 (camper) is longer than word1 (camp) and contains all letters from word1"
+    },
+    {
+      "word1": "camp",
+      "word2": "camping",
+      "explanation": "Word2 (camping) is longer than word1 (camp) and contains all letters from word1"
+    },
+    {
+      "word1": "camp",
+      "word2": "camps",
+      "explanation": "Word2 (camps) is longer than word1 (camp) and contains all letters from word1"
+    },
+    {
+      "word1": "cape",
+      "word2": "caped",
+      "explanation": "Word2 (caped) is longer than word1 (cape) and contains all letters from word1"
+    },
+    {
+      "word1": "cape",
+      "word2": "caper",
+      "explanation": "Word2 (caper) is longer than word1 (cape) and contains all letters from word1"
+    },
+    {
+      "word1": "cape",
+      "word2": "capes",
+      "explanation": "Word2 (capes) is longer than word1 (cape) and contains all letters from word1"
+    },
+    {
+      "word1": "card",
+      "word2": "carded",
+      "explanation": "Word2 (carded) is longer than word1 (card) and contains all letters from word1"
+    },
+    {
+      "word1": "card",
+      "word2": "carder",
+      "explanation": "Word2 (carder) is longer than word1 (card) and contains all letters from word1"
+    },
+    {
+      "word1": "card",
+      "word2": "carding",
+      "explanation": "Word2 (carding) is longer than word1 (card) and contains all letters from word1"
+    },
+    {
+      "word1": "card",
+      "word2": "cards",
+      "explanation": "Word2 (cards) is longer than word1 (card) and contains all letters from word1"
+    },
+    {
+      "word1": "care",
+      "word2": "cared",
+      "explanation": "Word2 (cared) is longer than word1 (care) and contains all letters from word1"
+    },
+    {
+      "word1": "care",
+      "word2": "carer",
+      "explanation": "Word2 (carer) is longer than word1 (care) and contains all letters from word1"
+    },
+    {
+      "word1": "care",
+      "word2": "cares",
+      "explanation": "Word2 (cares) is longer than word1 (care) and contains all letters from word1"
+    },
+    {
+      "word1": "cart",
+      "word2": "carted",
+      "explanation": "Word2 (carted) is longer than word1 (cart) and contains all letters from word1"
+    },
+    {
+      "word1": "cart",
+      "word2": "carter",
+      "explanation": "Word2 (carter) is longer than word1 (cart) and contains all letters from word1"
+    },
+    {
+      "word1": "cart",
+      "word2": "carting",
+      "explanation": "Word2 (carting) is longer than word1 (cart) and contains all letters from word1"
+    },
+    {
+      "word1": "cart",
+      "word2": "carts",
+      "explanation": "Word2 (carts) is longer than word1 (cart) and contains all letters from word1"
+    },
+    {
+      "word1": "case",
+      "word2": "cased",
+      "explanation": "Word2 (cased) is longer than word1 (case) and contains all letters from word1"
+    },
+    {
+      "word1": "case",
+      "word2": "cases",
+      "explanation": "Word2 (cases) is longer than word1 (case) and contains all letters from word1"
+    },
+    {
+      "word1": "cash",
+      "word2": "cashed",
+      "explanation": "Word2 (cashed) is longer than word1 (cash) and contains all letters from word1"
+    },
+    {
+      "word1": "cash",
+      "word2": "cashing",
+      "explanation": "Word2 (cashing) is longer than word1 (cash) and contains all letters from word1"
+    },
+    {
+      "word1": "cast",
+      "word2": "caster",
+      "explanation": "Word2 (caster) is longer than word1 (cast) and contains all letters from word1"
+    },
+    {
+      "word1": "cast",
+      "word2": "casting",
+      "explanation": "Word2 (casting) is longer than word1 (cast) and contains all letters from word1"
+    },
+    {
+      "word1": "cast",
+      "word2": "casts",
+      "explanation": "Word2 (casts) is longer than word1 (cast) and contains all letters from word1"
+    },
+    {
+      "word1": "cell",
+      "word2": "celled",
+      "explanation": "Word2 (celled) is longer than word1 (cell) and contains all letters from word1"
+    },
+    {
+      "word1": "cell",
+      "word2": "celling",
+      "explanation": "Word2 (celling) is longer than word1 (cell) and contains all letters from word1"
+    },
+    {
+      "word1": "cell",
+      "word2": "cells",
+      "explanation": "Word2 (cells) is longer than word1 (cell) and contains all letters from word1"
+    },
+    {
+      "word1": "cent",
+      "word2": "center",
+      "explanation": "Word2 (center) is longer than word1 (cent) and contains all letters from word1"
+    },
+    {
+      "word1": "cent",
+      "word2": "cents",
+      "explanation": "Word2 (cents) is longer than word1 (cent) and contains all letters from word1"
+    },
+    {
+      "word1": "char",
+      "word2": "charred",
+      "explanation": "Word2 (charred) is longer than word1 (char) and contains all letters from word1"
+    },
+    {
+      "word1": "char",
+      "word2": "charring",
+      "explanation": "Word2 (charring) is longer than word1 (char) and contains all letters from word1"
+    },
+    {
+      "word1": "char",
+      "word2": "chars",
+      "explanation": "Word2 (chars) is longer than word1 (char) and contains all letters from word1"
+    },
+    {
+      "word1": "chat",
+      "word2": "chats",
+      "explanation": "Word2 (chats) is longer than word1 (chat) and contains all letters from word1"
+    },
+    {
+      "word1": "chat",
+      "word2": "chatted",
+      "explanation": "Word2 (chatted) is longer than word1 (chat) and contains all letters from word1"
+    },
+    {
+      "word1": "chat",
+      "word2": "chatting",
+      "explanation": "Word2 (chatting) is longer than word1 (chat) and contains all letters from word1"
+    },
+    {
+      "word1": "child",
+      "word2": "children",
+      "explanation": "Word2 (children) is longer than word1 (child) and contains all letters from word1"
+    },
+    {
+      "word1": "chip",
+      "word2": "chipped",
+      "explanation": "Word2 (chipped) is longer than word1 (chip) and contains all letters from word1"
+    },
+    {
+      "word1": "chip",
+      "word2": "chipping",
+      "explanation": "Word2 (chipping) is longer than word1 (chip) and contains all letters from word1"
+    },
+    {
+      "word1": "chip",
+      "word2": "chips",
+      "explanation": "Word2 (chips) is longer than word1 (chip) and contains all letters from word1"
+    },
+    {
+      "word1": "clip",
+      "word2": "clipped",
+      "explanation": "Word2 (clipped) is longer than word1 (clip) and contains all letters from word1"
+    },
+    {
+      "word1": "clip",
+      "word2": "clipping",
+      "explanation": "Word2 (clipping) is longer than word1 (clip) and contains all letters from word1"
+    },
+    {
+      "word1": "clip",
+      "word2": "clips",
+      "explanation": "Word2 (clips) is longer than word1 (clip) and contains all letters from word1"
+    },
+    {
+      "word1": "club",
+      "word2": "clubbed",
+      "explanation": "Word2 (clubbed) is longer than word1 (club) and contains all letters from word1"
+    },
+    {
+      "word1": "club",
+      "word2": "clubbing",
+      "explanation": "Word2 (clubbing) is longer than word1 (club) and contains all letters from word1"
+    },
+    {
+      "word1": "club",
+      "word2": "clubs",
+      "explanation": "Word2 (clubs) is longer than word1 (club) and contains all letters from word1"
+    },
+    {
+      "word1": "code",
+      "word2": "coded",
+      "explanation": "Word2 (coded) is longer than word1 (code) and contains all letters from word1"
+    },
+    {
+      "word1": "code",
+      "word2": "coder",
+      "explanation": "Word2 (coder) is longer than word1 (code) and contains all letters from word1"
+    },
+    {
+      "word1": "code",
+      "word2": "codes",
+      "explanation": "Word2 (codes) is longer than word1 (code) and contains all letters from word1"
+    },
+    {
+      "word1": "cold",
+      "word2": "colder",
+      "explanation": "Word2 (colder) is longer than word1 (cold) and contains all letters from word1"
+    },
+    {
+      "word1": "cold",
+      "word2": "coldest",
+      "explanation": "Word2 (coldest) is longer than word1 (cold) and contains all letters from word1"
+    },
+    {
+      "word1": "cold",
+      "word2": "colds",
+      "explanation": "Word2 (colds) is longer than word1 (cold) and contains all letters from word1"
+    },
+    {
+      "word1": "come",
+      "word2": "comer",
+      "explanation": "Word2 (comer) is longer than word1 (come) and contains all letters from word1"
+    },
+    {
+      "word1": "come",
+      "word2": "comes",
+      "explanation": "Word2 (comes) is longer than word1 (come) and contains all letters from word1"
+    },
+    {
+      "word1": "cook",
+      "word2": "cooked",
+      "explanation": "Word2 (cooked) is longer than word1 (cook) and contains all letters from word1"
+    },
+    {
+      "word1": "cook",
+      "word2": "cooker",
+      "explanation": "Word2 (cooker) is longer than word1 (cook) and contains all letters from word1"
+    },
+    {
+      "word1": "cook",
+      "word2": "cooking",
+      "explanation": "Word2 (cooking) is longer than word1 (cook) and contains all letters from word1"
+    },
+    {
+      "word1": "cook",
+      "word2": "cooks",
+      "explanation": "Word2 (cooks) is longer than word1 (cook) and contains all letters from word1"
+    },
+    {
+      "word1": "cool",
+      "word2": "cooled",
+      "explanation": "Word2 (cooled) is longer than word1 (cool) and contains all letters from word1"
+    },
+    {
+      "word1": "cool",
+      "word2": "cooler",
+      "explanation": "Word2 (cooler) is longer than word1 (cool) and contains all letters from word1"
+    },
+    {
+      "word1": "cool",
+      "word2": "coolest",
+      "explanation": "Word2 (coolest) is longer than word1 (cool) and contains all letters from word1"
+    },
+    {
+      "word1": "cool",
+      "word2": "cooling",
+      "explanation": "Word2 (cooling) is longer than word1 (cool) and contains all letters from word1"
+    },
+    {
+      "word1": "cool",
+      "word2": "cools",
+      "explanation": "Word2 (cools) is longer than word1 (cool) and contains all letters from word1"
+    },
+    {
+      "word1": "copy",
+      "word2": "copying",
+      "explanation": "Word2 (copying) is longer than word1 (copy) and contains all letters from word1"
+    },
+    {
+      "word1": "core",
+      "word2": "cored",
+      "explanation": "Word2 (cored) is longer than word1 (core) and contains all letters from word1"
+    },
+    {
+      "word1": "core",
+      "word2": "corer",
+      "explanation": "Word2 (corer) is longer than word1 (core) and contains all letters from word1"
+    },
+    {
+      "word1": "core",
+      "word2": "cores",
+      "explanation": "Word2 (cores) is longer than word1 (core) and contains all letters from word1"
+    },
+    {
+      "word1": "cost",
+      "word2": "costed",
+      "explanation": "Word2 (costed) is longer than word1 (cost) and contains all letters from word1"
+    },
+    {
+      "word1": "cost",
+      "word2": "coster",
+      "explanation": "Word2 (coster) is longer than word1 (cost) and contains all letters from word1"
+    },
+    {
+      "word1": "cost",
+      "word2": "costing",
+      "explanation": "Word2 (costing) is longer than word1 (cost) and contains all letters from word1"
+    },
+    {
+      "word1": "cost",
+      "word2": "costs",
+      "explanation": "Word2 (costs) is longer than word1 (cost) and contains all letters from word1"
+    },
+    {
+      "word1": "crew",
+      "word2": "crews",
+      "explanation": "Word2 (crews) is longer than word1 (crew) and contains all letters from word1"
+    },
+    {
+      "word1": "dark",
+      "word2": "darked",
+      "explanation": "Word2 (darked) is longer than word1 (dark) and contains all letters from word1"
+    },
+    {
+      "word1": "dark",
+      "word2": "darker",
+      "explanation": "Word2 (darker) is longer than word1 (dark) and contains all letters from word1"
+    },
+    {
+      "word1": "dark",
+      "word2": "darkest",
+      "explanation": "Word2 (darkest) is longer than word1 (dark) and contains all letters from word1"
+    },
+    {
+      "word1": "dark",
+      "word2": "darking",
+      "explanation": "Word2 (darking) is longer than word1 (dark) and contains all letters from word1"
+    },
+    {
+      "word1": "dark",
+      "word2": "darks",
+      "explanation": "Word2 (darks) is longer than word1 (dark) and contains all letters from word1"
+    },
+    {
+      "word1": "date",
+      "word2": "dated",
+      "explanation": "Word2 (dated) is longer than word1 (date) and contains all letters from word1"
+    },
+    {
+      "word1": "date",
+      "word2": "dater",
+      "explanation": "Word2 (dater) is longer than word1 (date) and contains all letters from word1"
+    },
+    {
+      "word1": "date",
+      "word2": "dates",
+      "explanation": "Word2 (dates) is longer than word1 (date) and contains all letters from word1"
+    },
+    {
+      "word1": "dead",
+      "word2": "deader",
+      "explanation": "Word2 (deader) is longer than word1 (dead) and contains all letters from word1"
+    },
+    {
+      "word1": "dead",
+      "word2": "deadest",
+      "explanation": "Word2 (deadest) is longer than word1 (dead) and contains all letters from word1"
+    },
+    {
+      "word1": "dead",
+      "word2": "deads",
+      "explanation": "Word2 (deads) is longer than word1 (dead) and contains all letters from word1"
+    },
+    {
+      "word1": "deal",
+      "word2": "dealer",
+      "explanation": "Word2 (dealer) is longer than word1 (deal) and contains all letters from word1"
+    },
+    {
+      "word1": "deal",
+      "word2": "dealing",
+      "explanation": "Word2 (dealing) is longer than word1 (deal) and contains all letters from word1"
+    },
+    {
+      "word1": "deal",
+      "word2": "deals",
+      "explanation": "Word2 (deals) is longer than word1 (deal) and contains all letters from word1"
+    },
+    {
+      "word1": "dean",
+      "word2": "deaned",
+      "explanation": "Word2 (deaned) is longer than word1 (dean) and contains all letters from word1"
+    },
+    {
+      "word1": "dean",
+      "word2": "deaning",
+      "explanation": "Word2 (deaning) is longer than word1 (dean) and contains all letters from word1"
+    },
+    {
+      "word1": "dean",
+      "word2": "deans",
+      "explanation": "Word2 (deans) is longer than word1 (dean) and contains all letters from word1"
+    },
+    {
+      "word1": "dear",
+      "word2": "dearer",
+      "explanation": "Word2 (dearer) is longer than word1 (dear) and contains all letters from word1"
+    },
+    {
+      "word1": "dear",
+      "word2": "dearest",
+      "explanation": "Word2 (dearest) is longer than word1 (dear) and contains all letters from word1"
+    },
+    {
+      "word1": "dear",
+      "word2": "dears",
+      "explanation": "Word2 (dears) is longer than word1 (dear) and contains all letters from word1"
+    },
+    {
+      "word1": "debt",
+      "word2": "debts",
+      "explanation": "Word2 (debts) is longer than word1 (debt) and contains all letters from word1"
+    },
+    {
+      "word1": "deep",
+      "word2": "deeper",
+      "explanation": "Word2 (deeper) is longer than word1 (deep) and contains all letters from word1"
+    },
+    {
+      "word1": "deep",
+      "word2": "deepest",
+      "explanation": "Word2 (deepest) is longer than word1 (deep) and contains all letters from word1"
+    },
+    {
+      "word1": "deep",
+      "word2": "deeps",
+      "explanation": "Word2 (deeps) is longer than word1 (deep) and contains all letters from word1"
+    },
+    {
+      "word1": "dell",
+      "word2": "dells",
+      "explanation": "Word2 (dells) is longer than word1 (dell) and contains all letters from word1"
+    },
+    {
+      "word1": "demo",
+      "word2": "demoed",
+      "explanation": "Word2 (demoed) is longer than word1 (demo) and contains all letters from word1"
+    },
+    {
+      "word1": "demo",
+      "word2": "demoing",
+      "explanation": "Word2 (demoing) is longer than word1 (demo) and contains all letters from word1"
+    },
+    {
+      "word1": "demo",
+      "word2": "demos",
+      "explanation": "Word2 (demos) is longer than word1 (demo) and contains all letters from word1"
+    },
+    {
+      "word1": "desk",
+      "word2": "desks",
+      "explanation": "Word2 (desks) is longer than word1 (desk) and contains all letters from word1"
+    },
+    {
+      "word1": "diet",
+      "word2": "dieted",
+      "explanation": "Word2 (dieted) is longer than word1 (diet) and contains all letters from word1"
+    },
+    {
+      "word1": "diet",
+      "word2": "dieter",
+      "explanation": "Word2 (dieter) is longer than word1 (diet) and contains all letters from word1"
+    },
+    {
+      "word1": "diet",
+      "word2": "dieting",
+      "explanation": "Word2 (dieting) is longer than word1 (diet) and contains all letters from word1"
+    },
+    {
+      "word1": "diet",
+      "word2": "diets",
+      "explanation": "Word2 (diets) is longer than word1 (diet) and contains all letters from word1"
+    },
+    {
+      "word1": "diff",
+      "word2": "differ",
+      "explanation": "Word2 (differ) is longer than word1 (diff) and contains all letters from word1"
+    },
+    {
+      "word1": "diff",
+      "word2": "diffs",
+      "explanation": "Word2 (diffs) is longer than word1 (diff) and contains all letters from word1"
+    },
+    {
+      "word1": "disc",
+      "word2": "disced",
+      "explanation": "Word2 (disced) is longer than word1 (disc) and contains all letters from word1"
+    },
+    {
+      "word1": "disc",
+      "word2": "discing",
+      "explanation": "Word2 (discing) is longer than word1 (disc) and contains all letters from word1"
+    },
+    {
+      "word1": "disc",
+      "word2": "discs",
+      "explanation": "Word2 (discs) is longer than word1 (disc) and contains all letters from word1"
+    },
+    {
+      "word1": "dish",
+      "word2": "dished",
+      "explanation": "Word2 (dished) is longer than word1 (dish) and contains all letters from word1"
+    },
+    {
+      "word1": "dish",
+      "word2": "dishing",
+      "explanation": "Word2 (dishing) is longer than word1 (dish) and contains all letters from word1"
+    },
+    {
+      "word1": "disk",
+      "word2": "disked",
+      "explanation": "Word2 (disked) is longer than word1 (disk) and contains all letters from word1"
+    },
+    {
+      "word1": "disk",
+      "word2": "disking",
+      "explanation": "Word2 (disking) is longer than word1 (disk) and contains all letters from word1"
+    },
+    {
+      "word1": "disk",
+      "word2": "disks",
+      "explanation": "Word2 (disks) is longer than word1 (disk) and contains all letters from word1"
+    },
+    {
+      "word1": "door",
+      "word2": "doors",
+      "explanation": "Word2 (doors) is longer than word1 (door) and contains all letters from word1"
+    },
+    {
+      "word1": "down",
+      "word2": "downed",
+      "explanation": "Word2 (downed) is longer than word1 (down) and contains all letters from word1"
+    },
+    {
+      "word1": "down",
+      "word2": "downer",
+      "explanation": "Word2 (downer) is longer than word1 (down) and contains all letters from word1"
+    },
+    {
+      "word1": "down",
+      "word2": "downing",
+      "explanation": "Word2 (downing) is longer than word1 (down) and contains all letters from word1"
+    },
+    {
+      "word1": "down",
+      "word2": "downs",
+      "explanation": "Word2 (downs) is longer than word1 (down) and contains all letters from word1"
+    },
+    {
+      "word1": "draw",
+      "word2": "drawer",
+      "explanation": "Word2 (drawer) is longer than word1 (draw) and contains all letters from word1"
+    },
+    {
+      "word1": "draw",
+      "word2": "draws",
+      "explanation": "Word2 (draws) is longer than word1 (draw) and contains all letters from word1"
+    },
+    {
+      "word1": "drop",
+      "word2": "dropped",
+      "explanation": "Word2 (dropped) is longer than word1 (drop) and contains all letters from word1"
+    },
+    {
+      "word1": "drop",
+      "word2": "dropping",
+      "explanation": "Word2 (dropping) is longer than word1 (drop) and contains all letters from word1"
+    },
+    {
+      "word1": "drop",
+      "word2": "drops",
+      "explanation": "Word2 (drops) is longer than word1 (drop) and contains all letters from word1"
+    },
+    {
+      "word1": "drug",
+      "word2": "drugged",
+      "explanation": "Word2 (drugged) is longer than word1 (drug) and contains all letters from word1"
+    },
+    {
+      "word1": "drug",
+      "word2": "drugging",
+      "explanation": "Word2 (drugging) is longer than word1 (drug) and contains all letters from word1"
+    },
+    {
+      "word1": "drug",
+      "word2": "drugs",
+      "explanation": "Word2 (drugs) is longer than word1 (drug) and contains all letters from word1"
+    },
+    {
+      "word1": "dual",
+      "word2": "duals",
+      "explanation": "Word2 (duals) is longer than word1 (dual) and contains all letters from word1"
+    },
+    {
+      "word1": "earn",
+      "word2": "earned",
+      "explanation": "Word2 (earned) is longer than word1 (earn) and contains all letters from word1"
+    },
+    {
+      "word1": "earn",
+      "word2": "earner",
+      "explanation": "Word2 (earner) is longer than word1 (earn) and contains all letters from word1"
+    },
+    {
+      "word1": "earn",
+      "word2": "earnest",
+      "explanation": "Word2 (earnest) is longer than word1 (earn) and contains all letters from word1"
+    },
+    {
+      "word1": "earn",
+      "word2": "earning",
+      "explanation": "Word2 (earning) is longer than word1 (earn) and contains all letters from word1"
+    },
+    {
+      "word1": "earn",
+      "word2": "earns",
+      "explanation": "Word2 (earns) is longer than word1 (earn) and contains all letters from word1"
+    },
+    {
+      "word1": "east",
+      "word2": "easter",
+      "explanation": "Word2 (easter) is longer than word1 (east) and contains all letters from word1"
+    },
+    {
+      "word1": "east",
+      "word2": "easting",
+      "explanation": "Word2 (easting) is longer than word1 (east) and contains all letters from word1"
+    },
+    {
+      "word1": "east",
+      "word2": "easts",
+      "explanation": "Word2 (easts) is longer than word1 (east) and contains all letters from word1"
+    },
+    {
+      "word1": "echo",
+      "word2": "echoed",
+      "explanation": "Word2 (echoed) is longer than word1 (echo) and contains all letters from word1"
+    },
+    {
+      "word1": "echo",
+      "word2": "echoer",
+      "explanation": "Word2 (echoer) is longer than word1 (echo) and contains all letters from word1"
+    },
+    {
+      "word1": "echo",
+      "word2": "echoing",
+      "explanation": "Word2 (echoing) is longer than word1 (echo) and contains all letters from word1"
+    },
+    {
+      "word1": "echo",
+      "word2": "echos",
+      "explanation": "Word2 (echos) is longer than word1 (echo) and contains all letters from word1"
+    },
+    {
+      "word1": "edge",
+      "word2": "edged",
+      "explanation": "Word2 (edged) is longer than word1 (edge) and contains all letters from word1"
+    },
+    {
+      "word1": "edge",
+      "word2": "edger",
+      "explanation": "Word2 (edger) is longer than word1 (edge) and contains all letters from word1"
+    },
+    {
+      "word1": "edge",
+      "word2": "edges",
+      "explanation": "Word2 (edges) is longer than word1 (edge) and contains all letters from word1"
+    },
+    {
+      "word1": "edit",
+      "word2": "edits",
+      "explanation": "Word2 (edits) is longer than word1 (edit) and contains all letters from word1"
+    },
+    {
+      "word1": "euro",
+      "word2": "euros",
+      "explanation": "Word2 (euros) is longer than word1 (euro) and contains all letters from word1"
+    },
+    {
+      "word1": "even",
+      "word2": "evener",
+      "explanation": "Word2 (evener) is longer than word1 (even) and contains all letters from word1"
+    },
+    {
+      "word1": "even",
+      "word2": "evenest",
+      "explanation": "Word2 (evenest) is longer than word1 (even) and contains all letters from word1"
+    },
+    {
+      "word1": "even",
+      "word2": "evens",
+      "explanation": "Word2 (evens) is longer than word1 (even) and contains all letters from word1"
+    },
+    {
+      "word1": "evil",
+      "word2": "eviler",
+      "explanation": "Word2 (eviler) is longer than word1 (evil) and contains all letters from word1"
+    },
+    {
+      "word1": "evil",
+      "word2": "evilest",
+      "explanation": "Word2 (evilest) is longer than word1 (evil) and contains all letters from word1"
+    },
+    {
+      "word1": "evil",
+      "word2": "evils",
+      "explanation": "Word2 (evils) is longer than word1 (evil) and contains all letters from word1"
+    },
+    {
+      "word1": "exit",
+      "word2": "exits",
+      "explanation": "Word2 (exits) is longer than word1 (exit) and contains all letters from word1"
+    },
+    {
+      "word1": "face",
+      "word2": "faced",
+      "explanation": "Word2 (faced) is longer than word1 (face) and contains all letters from word1"
+    },
+    {
+      "word1": "face",
+      "word2": "facer",
+      "explanation": "Word2 (facer) is longer than word1 (face) and contains all letters from word1"
+    },
+    {
+      "word1": "face",
+      "word2": "faces",
+      "explanation": "Word2 (faces) is longer than word1 (face) and contains all letters from word1"
+    },
+    {
+      "word1": "fact",
+      "word2": "facts",
+      "explanation": "Word2 (facts) is longer than word1 (fact) and contains all letters from word1"
+    },
+    {
+      "word1": "fail",
+      "word2": "failed",
+      "explanation": "Word2 (failed) is longer than word1 (fail) and contains all letters from word1"
+    },
+    {
+      "word1": "fail",
+      "word2": "failing",
+      "explanation": "Word2 (failing) is longer than word1 (fail) and contains all letters from word1"
+    },
+    {
+      "word1": "fail",
+      "word2": "fails",
+      "explanation": "Word2 (fails) is longer than word1 (fail) and contains all letters from word1"
+    },
+    {
+      "word1": "fair",
+      "word2": "faired",
+      "explanation": "Word2 (faired) is longer than word1 (fair) and contains all letters from word1"
+    },
+    {
+      "word1": "fair",
+      "word2": "fairer",
+      "explanation": "Word2 (fairer) is longer than word1 (fair) and contains all letters from word1"
+    },
+    {
+      "word1": "fair",
+      "word2": "fairest",
+      "explanation": "Word2 (fairest) is longer than word1 (fair) and contains all letters from word1"
+    },
+    {
+      "word1": "fair",
+      "word2": "fairing",
+      "explanation": "Word2 (fairing) is longer than word1 (fair) and contains all letters from word1"
+    },
+    {
+      "word1": "fair",
+      "word2": "fairs",
+      "explanation": "Word2 (fairs) is longer than word1 (fair) and contains all letters from word1"
+    },
+    {
+      "word1": "fall",
+      "word2": "faller",
+      "explanation": "Word2 (faller) is longer than word1 (fall) and contains all letters from word1"
+    },
+    {
+      "word1": "fall",
+      "word2": "falling",
+      "explanation": "Word2 (falling) is longer than word1 (fall) and contains all letters from word1"
+    },
+    {
+      "word1": "fall",
+      "word2": "falls",
+      "explanation": "Word2 (falls) is longer than word1 (fall) and contains all letters from word1"
+    },
+    {
+      "word1": "farm",
+      "word2": "farmed",
+      "explanation": "Word2 (farmed) is longer than word1 (farm) and contains all letters from word1"
+    },
+    {
+      "word1": "farm",
+      "word2": "farmer",
+      "explanation": "Word2 (farmer) is longer than word1 (farm) and contains all letters from word1"
+    },
+    {
+      "word1": "farm",
+      "word2": "farming",
+      "explanation": "Word2 (farming) is longer than word1 (farm) and contains all letters from word1"
+    },
+    {
+      "word1": "farm",
+      "word2": "farms",
+      "explanation": "Word2 (farms) is longer than word1 (farm) and contains all letters from word1"
+    },
+    {
+      "word1": "fast",
+      "word2": "fasted",
+      "explanation": "Word2 (fasted) is longer than word1 (fast) and contains all letters from word1"
+    },
+    {
+      "word1": "fast",
+      "word2": "faster",
+      "explanation": "Word2 (faster) is longer than word1 (fast) and contains all letters from word1"
+    },
+    {
+      "word1": "fast",
+      "word2": "fastest",
+      "explanation": "Word2 (fastest) is longer than word1 (fast) and contains all letters from word1"
+    },
+    {
+      "word1": "fast",
+      "word2": "fasting",
+      "explanation": "Word2 (fasting) is longer than word1 (fast) and contains all letters from word1"
+    },
+    {
+      "word1": "fast",
+      "word2": "fasts",
+      "explanation": "Word2 (fasts) is longer than word1 (fast) and contains all letters from word1"
+    },
+    {
+      "word1": "fear",
+      "word2": "feared",
+      "explanation": "Word2 (feared) is longer than word1 (fear) and contains all letters from word1"
+    },
+    {
+      "word1": "fear",
+      "word2": "fearer",
+      "explanation": "Word2 (fearer) is longer than word1 (fear) and contains all letters from word1"
+    },
+    {
+      "word1": "fear",
+      "word2": "fearing",
+      "explanation": "Word2 (fearing) is longer than word1 (fear) and contains all letters from word1"
+    },
+    {
+      "word1": "fear",
+      "word2": "fears",
+      "explanation": "Word2 (fears) is longer than word1 (fear) and contains all letters from word1"
+    },
+    {
+      "word1": "feed",
+      "word2": "feeder",
+      "explanation": "Word2 (feeder) is longer than word1 (feed) and contains all letters from word1"
+    },
+    {
+      "word1": "feed",
+      "word2": "feeding",
+      "explanation": "Word2 (feeding) is longer than word1 (feed) and contains all letters from word1"
+    },
+    {
+      "word1": "feed",
+      "word2": "feeds",
+      "explanation": "Word2 (feeds) is longer than word1 (feed) and contains all letters from word1"
+    },
+    {
+      "word1": "feel",
+      "word2": "feeler",
+      "explanation": "Word2 (feeler) is longer than word1 (feel) and contains all letters from word1"
+    },
+    {
+      "word1": "feel",
+      "word2": "feeling",
+      "explanation": "Word2 (feeling) is longer than word1 (feel) and contains all letters from word1"
+    },
+    {
+      "word1": "feel",
+      "word2": "feels",
+      "explanation": "Word2 (feels) is longer than word1 (feel) and contains all letters from word1"
+    },
+    {
+      "word1": "felt",
+      "word2": "felted",
+      "explanation": "Word2 (felted) is longer than word1 (felt) and contains all letters from word1"
+    },
+    {
+      "word1": "felt",
+      "word2": "felting",
+      "explanation": "Word2 (felting) is longer than word1 (felt) and contains all letters from word1"
+    },
+    {
+      "word1": "felt",
+      "word2": "felts",
+      "explanation": "Word2 (felts) is longer than word1 (felt) and contains all letters from word1"
+    },
+    {
+      "word1": "file",
+      "word2": "filed",
+      "explanation": "Word2 (filed) is longer than word1 (file) and contains all letters from word1"
+    },
+    {
+      "word1": "file",
+      "word2": "filer",
+      "explanation": "Word2 (filer) is longer than word1 (file) and contains all letters from word1"
+    },
+    {
+      "word1": "file",
+      "word2": "files",
+      "explanation": "Word2 (files) is longer than word1 (file) and contains all letters from word1"
+    },
+    {
+      "word1": "fill",
+      "word2": "filled",
+      "explanation": "Word2 (filled) is longer than word1 (fill) and contains all letters from word1"
+    },
+    {
+      "word1": "fill",
+      "word2": "filler",
+      "explanation": "Word2 (filler) is longer than word1 (fill) and contains all letters from word1"
+    },
+    {
+      "word1": "fill",
+      "word2": "filling",
+      "explanation": "Word2 (filling) is longer than word1 (fill) and contains all letters from word1"
+    },
+    {
+      "word1": "fill",
+      "word2": "fills",
+      "explanation": "Word2 (fills) is longer than word1 (fill) and contains all letters from word1"
+    },
+    {
+      "word1": "film",
+      "word2": "filmed",
+      "explanation": "Word2 (filmed) is longer than word1 (film) and contains all letters from word1"
+    },
+    {
+      "word1": "film",
+      "word2": "filmer",
+      "explanation": "Word2 (filmer) is longer than word1 (film) and contains all letters from word1"
+    },
+    {
+      "word1": "film",
+      "word2": "filming",
+      "explanation": "Word2 (filming) is longer than word1 (film) and contains all letters from word1"
+    },
+    {
+      "word1": "film",
+      "word2": "films",
+      "explanation": "Word2 (films) is longer than word1 (film) and contains all letters from word1"
+    },
+    {
+      "word1": "find",
+      "word2": "finder",
+      "explanation": "Word2 (finder) is longer than word1 (find) and contains all letters from word1"
+    },
+    {
+      "word1": "find",
+      "word2": "finding",
+      "explanation": "Word2 (finding) is longer than word1 (find) and contains all letters from word1"
+    },
+    {
+      "word1": "find",
+      "word2": "finds",
+      "explanation": "Word2 (finds) is longer than word1 (find) and contains all letters from word1"
+    },
+    {
+      "word1": "fine",
+      "word2": "fined",
+      "explanation": "Word2 (fined) is longer than word1 (fine) and contains all letters from word1"
+    },
+    {
+      "word1": "fine",
+      "word2": "finer",
+      "explanation": "Word2 (finer) is longer than word1 (fine) and contains all letters from word1"
+    },
+    {
+      "word1": "fine",
+      "word2": "fines",
+      "explanation": "Word2 (fines) is longer than word1 (fine) and contains all letters from word1"
+    },
+    {
+      "word1": "fine",
+      "word2": "finest",
+      "explanation": "Word2 (finest) is longer than word1 (fine) and contains all letters from word1"
+    },
+    {
+      "word1": "fire",
+      "word2": "fired",
+      "explanation": "Word2 (fired) is longer than word1 (fire) and contains all letters from word1"
+    },
+    {
+      "word1": "fire",
+      "word2": "firer",
+      "explanation": "Word2 (firer) is longer than word1 (fire) and contains all letters from word1"
+    },
+    {
+      "word1": "fire",
+      "word2": "fires",
+      "explanation": "Word2 (fires) is longer than word1 (fire) and contains all letters from word1"
+    },
+    {
+      "word1": "firm",
+      "word2": "firmed",
+      "explanation": "Word2 (firmed) is longer than word1 (firm) and contains all letters from word1"
+    },
+    {
+      "word1": "firm",
+      "word2": "firmer",
+      "explanation": "Word2 (firmer) is longer than word1 (firm) and contains all letters from word1"
+    },
+    {
+      "word1": "firm",
+      "word2": "firmest",
+      "explanation": "Word2 (firmest) is longer than word1 (firm) and contains all letters from word1"
+    },
+    {
+      "word1": "firm",
+      "word2": "firming",
+      "explanation": "Word2 (firming) is longer than word1 (firm) and contains all letters from word1"
+    },
+    {
+      "word1": "firm",
+      "word2": "firms",
+      "explanation": "Word2 (firms) is longer than word1 (firm) and contains all letters from word1"
+    },
+    {
+      "word1": "fish",
+      "word2": "fished",
+      "explanation": "Word2 (fished) is longer than word1 (fish) and contains all letters from word1"
+    },
+    {
+      "word1": "fish",
+      "word2": "fisher",
+      "explanation": "Word2 (fisher) is longer than word1 (fish) and contains all letters from word1"
+    },
+    {
+      "word1": "fish",
+      "word2": "fishing",
+      "explanation": "Word2 (fishing) is longer than word1 (fish) and contains all letters from word1"
+    },
+    {
+      "word1": "five",
+      "word2": "fiver",
+      "explanation": "Word2 (fiver) is longer than word1 (five) and contains all letters from word1"
+    },
+    {
+      "word1": "five",
+      "word2": "fives",
+      "explanation": "Word2 (fives) is longer than word1 (five) and contains all letters from word1"
+    },
+    {
+      "word1": "flag",
+      "word2": "flagged",
+      "explanation": "Word2 (flagged) is longer than word1 (flag) and contains all letters from word1"
+    },
+    {
+      "word1": "flag",
+      "word2": "flagging",
+      "explanation": "Word2 (flagging) is longer than word1 (flag) and contains all letters from word1"
+    },
+    {
+      "word1": "flag",
+      "word2": "flags",
+      "explanation": "Word2 (flags) is longer than word1 (flag) and contains all letters from word1"
+    },
+    {
+      "word1": "flat",
+      "word2": "flats",
+      "explanation": "Word2 (flats) is longer than word1 (flat) and contains all letters from word1"
+    },
+    {
+      "word1": "flat",
+      "word2": "flatted",
+      "explanation": "Word2 (flatted) is longer than word1 (flat) and contains all letters from word1"
+    },
+    {
+      "word1": "flat",
+      "word2": "flatting",
+      "explanation": "Word2 (flatting) is longer than word1 (flat) and contains all letters from word1"
+    },
+    {
+      "word1": "flow",
+      "word2": "flows",
+      "explanation": "Word2 (flows) is longer than word1 (flow) and contains all letters from word1"
+    },
+    {
+      "word1": "font",
+      "word2": "fonts",
+      "explanation": "Word2 (fonts) is longer than word1 (font) and contains all letters from word1"
+    },
+    {
+      "word1": "food",
+      "word2": "foods",
+      "explanation": "Word2 (foods) is longer than word1 (food) and contains all letters from word1"
+    },
+    {
+      "word1": "foot",
+      "word2": "footed",
+      "explanation": "Word2 (footed) is longer than word1 (foot) and contains all letters from word1"
+    },
+    {
+      "word1": "foot",
+      "word2": "footer",
+      "explanation": "Word2 (footer) is longer than word1 (foot) and contains all letters from word1"
+    },
+    {
+      "word1": "foot",
+      "word2": "footing",
+      "explanation": "Word2 (footing) is longer than word1 (foot) and contains all letters from word1"
+    },
+    {
+      "word1": "foot",
+      "word2": "foots",
+      "explanation": "Word2 (foots) is longer than word1 (foot) and contains all letters from word1"
+    },
+    {
+      "word1": "ford",
+      "word2": "forded",
+      "explanation": "Word2 (forded) is longer than word1 (ford) and contains all letters from word1"
+    },
+    {
+      "word1": "ford",
+      "word2": "fording",
+      "explanation": "Word2 (fording) is longer than word1 (ford) and contains all letters from word1"
+    },
+    {
+      "word1": "ford",
+      "word2": "fords",
+      "explanation": "Word2 (fords) is longer than word1 (ford) and contains all letters from word1"
+    },
+    {
+      "word1": "form",
+      "word2": "formed",
+      "explanation": "Word2 (formed) is longer than word1 (form) and contains all letters from word1"
+    },
+    {
+      "word1": "form",
+      "word2": "former",
+      "explanation": "Word2 (former) is longer than word1 (form) and contains all letters from word1"
+    },
+    {
+      "word1": "form",
+      "word2": "forming",
+      "explanation": "Word2 (forming) is longer than word1 (form) and contains all letters from word1"
+    },
+    {
+      "word1": "form",
+      "word2": "forms",
+      "explanation": "Word2 (forms) is longer than word1 (form) and contains all letters from word1"
+    },
+    {
+      "word1": "fort",
+      "word2": "forts",
+      "explanation": "Word2 (forts) is longer than word1 (fort) and contains all letters from word1"
+    },
+    {
+      "word1": "four",
+      "word2": "fours",
+      "explanation": "Word2 (fours) is longer than word1 (four) and contains all letters from word1"
+    },
+    {
+      "word1": "free",
+      "word2": "freed",
+      "explanation": "Word2 (freed) is longer than word1 (free) and contains all letters from word1"
+    },
+    {
+      "word1": "free",
+      "word2": "freer",
+      "explanation": "Word2 (freer) is longer than word1 (free) and contains all letters from word1"
+    },
+    {
+      "word1": "free",
+      "word2": "frees",
+      "explanation": "Word2 (frees) is longer than word1 (free) and contains all letters from word1"
+    },
+    {
+      "word1": "free",
+      "word2": "freest",
+      "explanation": "Word2 (freest) is longer than word1 (free) and contains all letters from word1"
+    },
+    {
+      "word1": "fuel",
+      "word2": "fueled",
+      "explanation": "Word2 (fueled) is longer than word1 (fuel) and contains all letters from word1"
+    },
+    {
+      "word1": "fuel",
+      "word2": "fueler",
+      "explanation": "Word2 (fueler) is longer than word1 (fuel) and contains all letters from word1"
+    },
+    {
+      "word1": "fuel",
+      "word2": "fueling",
+      "explanation": "Word2 (fueling) is longer than word1 (fuel) and contains all letters from word1"
+    },
+    {
+      "word1": "fuel",
+      "word2": "fuels",
+      "explanation": "Word2 (fuels) is longer than word1 (fuel) and contains all letters from word1"
+    },
+    {
+      "word1": "full",
+      "word2": "fulled",
+      "explanation": "Word2 (fulled) is longer than word1 (full) and contains all letters from word1"
+    },
+    {
+      "word1": "full",
+      "word2": "fuller",
+      "explanation": "Word2 (fuller) is longer than word1 (full) and contains all letters from word1"
+    },
+    {
+      "word1": "full",
+      "word2": "fullest",
+      "explanation": "Word2 (fullest) is longer than word1 (full) and contains all letters from word1"
+    },
+    {
+      "word1": "full",
+      "word2": "fulling",
+      "explanation": "Word2 (fulling) is longer than word1 (full) and contains all letters from word1"
+    },
+    {
+      "word1": "full",
+      "word2": "fulls",
+      "explanation": "Word2 (fulls) is longer than word1 (full) and contains all letters from word1"
+    },
+    {
+      "word1": "fund",
+      "word2": "funded",
+      "explanation": "Word2 (funded) is longer than word1 (fund) and contains all letters from word1"
+    },
+    {
+      "word1": "fund",
+      "word2": "funder",
+      "explanation": "Word2 (funder) is longer than word1 (fund) and contains all letters from word1"
+    },
+    {
+      "word1": "fund",
+      "word2": "funding",
+      "explanation": "Word2 (funding) is longer than word1 (fund) and contains all letters from word1"
+    },
+    {
+      "word1": "fund",
+      "word2": "funds",
+      "explanation": "Word2 (funds) is longer than word1 (fund) and contains all letters from word1"
+    },
+    {
+      "word1": "gain",
+      "word2": "gained",
+      "explanation": "Word2 (gained) is longer than word1 (gain) and contains all letters from word1"
+    },
+    {
+      "word1": "gain",
+      "word2": "gainer",
+      "explanation": "Word2 (gainer) is longer than word1 (gain) and contains all letters from word1"
+    },
+    {
+      "word1": "gain",
+      "word2": "gaining",
+      "explanation": "Word2 (gaining) is longer than word1 (gain) and contains all letters from word1"
+    },
+    {
+      "word1": "gain",
+      "word2": "gains",
+      "explanation": "Word2 (gains) is longer than word1 (gain) and contains all letters from word1"
+    },
+    {
+      "word1": "game",
+      "word2": "gamed",
+      "explanation": "Word2 (gamed) is longer than word1 (game) and contains all letters from word1"
+    },
+    {
+      "word1": "game",
+      "word2": "gamer",
+      "explanation": "Word2 (gamer) is longer than word1 (game) and contains all letters from word1"
+    },
+    {
+      "word1": "game",
+      "word2": "games",
+      "explanation": "Word2 (games) is longer than word1 (game) and contains all letters from word1"
+    },
+    {
+      "word1": "game",
+      "word2": "gamest",
+      "explanation": "Word2 (gamest) is longer than word1 (game) and contains all letters from word1"
+    },
+    {
+      "word1": "gear",
+      "word2": "geared",
+      "explanation": "Word2 (geared) is longer than word1 (gear) and contains all letters from word1"
+    },
+    {
+      "word1": "gear",
+      "word2": "gearing",
+      "explanation": "Word2 (gearing) is longer than word1 (gear) and contains all letters from word1"
+    },
+    {
+      "word1": "gear",
+      "word2": "gears",
+      "explanation": "Word2 (gears) is longer than word1 (gear) and contains all letters from word1"
+    },
+    {
+      "word1": "gene",
+      "word2": "genes",
+      "explanation": "Word2 (genes) is longer than word1 (gene) and contains all letters from word1"
+    },
+    {
+      "word1": "gift",
+      "word2": "gifted",
+      "explanation": "Word2 (gifted) is longer than word1 (gift) and contains all letters from word1"
+    },
+    {
+      "word1": "gift",
+      "word2": "gifting",
+      "explanation": "Word2 (gifting) is longer than word1 (gift) and contains all letters from word1"
+    },
+    {
+      "word1": "gift",
+      "word2": "gifts",
+      "explanation": "Word2 (gifts) is longer than word1 (gift) and contains all letters from word1"
+    },
+    {
+      "word1": "girl",
+      "word2": "girls",
+      "explanation": "Word2 (girls) is longer than word1 (girl) and contains all letters from word1"
+    },
+    {
+      "word1": "give",
+      "word2": "given",
+      "explanation": "Word2 (given) is longer than word1 (give) and contains all letters from word1"
+    },
+    {
+      "word1": "give",
+      "word2": "giver",
+      "explanation": "Word2 (giver) is longer than word1 (give) and contains all letters from word1"
+    },
+    {
+      "word1": "give",
+      "word2": "gives",
+      "explanation": "Word2 (gives) is longer than word1 (give) and contains all letters from word1"
+    },
+    {
+      "word1": "goal",
+      "word2": "goaled",
+      "explanation": "Word2 (goaled) is longer than word1 (goal) and contains all letters from word1"
+    },
+    {
+      "word1": "goal",
+      "word2": "goaling",
+      "explanation": "Word2 (goaling) is longer than word1 (goal) and contains all letters from word1"
+    },
+    {
+      "word1": "goal",
+      "word2": "goals",
+      "explanation": "Word2 (goals) is longer than word1 (goal) and contains all letters from word1"
+    },
+    {
+      "word1": "gold",
+      "word2": "golder",
+      "explanation": "Word2 (golder) is longer than word1 (gold) and contains all letters from word1"
+    },
+    {
+      "word1": "gold",
+      "word2": "goldest",
+      "explanation": "Word2 (goldest) is longer than word1 (gold) and contains all letters from word1"
+    },
+    {
+      "word1": "gold",
+      "word2": "golds",
+      "explanation": "Word2 (golds) is longer than word1 (gold) and contains all letters from word1"
+    },
+    {
+      "word1": "golf",
+      "word2": "golfed",
+      "explanation": "Word2 (golfed) is longer than word1 (golf) and contains all letters from word1"
+    },
+    {
+      "word1": "golf",
+      "word2": "golfer",
+      "explanation": "Word2 (golfer) is longer than word1 (golf) and contains all letters from word1"
+    },
+    {
+      "word1": "golf",
+      "word2": "golfing",
+      "explanation": "Word2 (golfing) is longer than word1 (golf) and contains all letters from word1"
+    },
+    {
+      "word1": "golf",
+      "word2": "golfs",
+      "explanation": "Word2 (golfs) is longer than word1 (golf) and contains all letters from word1"
+    },
+    {
+      "word1": "good",
+      "word2": "goods",
+      "explanation": "Word2 (goods) is longer than word1 (good) and contains all letters from word1"
+    },
+    {
+      "word1": "gray",
+      "word2": "grayed",
+      "explanation": "Word2 (grayed) is longer than word1 (gray) and contains all letters from word1"
+    },
+    {
+      "word1": "gray",
+      "word2": "graying",
+      "explanation": "Word2 (graying) is longer than word1 (gray) and contains all letters from word1"
+    },
+    {
+      "word1": "gray",
+      "word2": "grays",
+      "explanation": "Word2 (grays) is longer than word1 (gray) and contains all letters from word1"
+    },
+    {
+      "word1": "grid",
+      "word2": "gridded",
+      "explanation": "Word2 (gridded) is longer than word1 (grid) and contains all letters from word1"
+    },
+    {
+      "word1": "grid",
+      "word2": "grids",
+      "explanation": "Word2 (grids) is longer than word1 (grid) and contains all letters from word1"
+    },
+    {
+      "word1": "grow",
+      "word2": "grower",
+      "explanation": "Word2 (grower) is longer than word1 (grow) and contains all letters from word1"
+    },
+    {
+      "word1": "grow",
+      "word2": "grows",
+      "explanation": "Word2 (grows) is longer than word1 (grow) and contains all letters from word1"
+    },
+    {
+      "word1": "hair",
+      "word2": "haired",
+      "explanation": "Word2 (haired) is longer than word1 (hair) and contains all letters from word1"
+    },
+    {
+      "word1": "hair",
+      "word2": "hairs",
+      "explanation": "Word2 (hairs) is longer than word1 (hair) and contains all letters from word1"
+    },
+    {
+      "word1": "hall",
+      "word2": "halls",
+      "explanation": "Word2 (halls) is longer than word1 (hall) and contains all letters from word1"
+    },
+    {
+      "word1": "hand",
+      "word2": "handed",
+      "explanation": "Word2 (handed) is longer than word1 (hand) and contains all letters from word1"
+    },
+    {
+      "word1": "hand",
+      "word2": "hander",
+      "explanation": "Word2 (hander) is longer than word1 (hand) and contains all letters from word1"
+    },
+    {
+      "word1": "hand",
+      "word2": "handing",
+      "explanation": "Word2 (handing) is longer than word1 (hand) and contains all letters from word1"
+    },
+    {
+      "word1": "hand",
+      "word2": "hands",
+      "explanation": "Word2 (hands) is longer than word1 (hand) and contains all letters from word1"
+    },
+    {
+      "word1": "hard",
+      "word2": "harder",
+      "explanation": "Word2 (harder) is longer than word1 (hard) and contains all letters from word1"
+    },
+    {
+      "word1": "hard",
+      "word2": "hardest",
+      "explanation": "Word2 (hardest) is longer than word1 (hard) and contains all letters from word1"
+    },
+    {
+      "word1": "hard",
+      "word2": "hards",
+      "explanation": "Word2 (hards) is longer than word1 (hard) and contains all letters from word1"
+    },
+    {
+      "word1": "hate",
+      "word2": "hated",
+      "explanation": "Word2 (hated) is longer than word1 (hate) and contains all letters from word1"
+    },
+    {
+      "word1": "hate",
+      "word2": "hater",
+      "explanation": "Word2 (hater) is longer than word1 (hate) and contains all letters from word1"
+    },
+    {
+      "word1": "hate",
+      "word2": "hates",
+      "explanation": "Word2 (hates) is longer than word1 (hate) and contains all letters from word1"
+    },
+    {
+      "word1": "have",
+      "word2": "haver",
+      "explanation": "Word2 (haver) is longer than word1 (have) and contains all letters from word1"
+    },
+    {
+      "word1": "have",
+      "word2": "haves",
+      "explanation": "Word2 (haves) is longer than word1 (have) and contains all letters from word1"
+    },
+    {
+      "word1": "head",
+      "word2": "headed",
+      "explanation": "Word2 (headed) is longer than word1 (head) and contains all letters from word1"
+    },
+    {
+      "word1": "head",
+      "word2": "header",
+      "explanation": "Word2 (header) is longer than word1 (head) and contains all letters from word1"
+    },
+    {
+      "word1": "head",
+      "word2": "heading",
+      "explanation": "Word2 (heading) is longer than word1 (head) and contains all letters from word1"
+    },
+    {
+      "word1": "head",
+      "word2": "heads",
+      "explanation": "Word2 (heads) is longer than word1 (head) and contains all letters from word1"
+    },
+    {
+      "word1": "hear",
+      "word2": "hearer",
+      "explanation": "Word2 (hearer) is longer than word1 (hear) and contains all letters from word1"
+    },
+    {
+      "word1": "hear",
+      "word2": "hearing",
+      "explanation": "Word2 (hearing) is longer than word1 (hear) and contains all letters from word1"
+    },
+    {
+      "word1": "hear",
+      "word2": "hears",
+      "explanation": "Word2 (hears) is longer than word1 (hear) and contains all letters from word1"
+    },
+    {
+      "word1": "heat",
+      "word2": "heated",
+      "explanation": "Word2 (heated) is longer than word1 (heat) and contains all letters from word1"
+    },
+    {
+      "word1": "heat",
+      "word2": "heater",
+      "explanation": "Word2 (heater) is longer than word1 (heat) and contains all letters from word1"
+    },
+    {
+      "word1": "heat",
+      "word2": "heating",
+      "explanation": "Word2 (heating) is longer than word1 (heat) and contains all letters from word1"
+    },
+    {
+      "word1": "heat",
+      "word2": "heats",
+      "explanation": "Word2 (heats) is longer than word1 (heat) and contains all letters from word1"
+    },
+    {
+      "word1": "help",
+      "word2": "helped",
+      "explanation": "Word2 (helped) is longer than word1 (help) and contains all letters from word1"
+    },
+    {
+      "word1": "help",
+      "word2": "helper",
+      "explanation": "Word2 (helper) is longer than word1 (help) and contains all letters from word1"
+    },
+    {
+      "word1": "help",
+      "word2": "helping",
+      "explanation": "Word2 (helping) is longer than word1 (help) and contains all letters from word1"
+    },
+    {
+      "word1": "help",
+      "word2": "helps",
+      "explanation": "Word2 (helps) is longer than word1 (help) and contains all letters from word1"
+    },
+    {
+      "word1": "here",
+      "word2": "heres",
+      "explanation": "Word2 (heres) is longer than word1 (here) and contains all letters from word1"
+    },
+    {
+      "word1": "hide",
+      "word2": "hided",
+      "explanation": "Word2 (hided) is longer than word1 (hide) and contains all letters from word1"
+    },
+    {
+      "word1": "hide",
+      "word2": "hider",
+      "explanation": "Word2 (hider) is longer than word1 (hide) and contains all letters from word1"
+    },
+    {
+      "word1": "hide",
+      "word2": "hides",
+      "explanation": "Word2 (hides) is longer than word1 (hide) and contains all letters from word1"
+    },
+    {
+      "word1": "high",
+      "word2": "higher",
+      "explanation": "Word2 (higher) is longer than word1 (high) and contains all letters from word1"
+    },
+    {
+      "word1": "high",
+      "word2": "highest",
+      "explanation": "Word2 (highest) is longer than word1 (high) and contains all letters from word1"
+    },
+    {
+      "word1": "high",
+      "word2": "highs",
+      "explanation": "Word2 (highs) is longer than word1 (high) and contains all letters from word1"
+    },
+    {
+      "word1": "hill",
+      "word2": "hilled",
+      "explanation": "Word2 (hilled) is longer than word1 (hill) and contains all letters from word1"
+    },
+    {
+      "word1": "hill",
+      "word2": "hiller",
+      "explanation": "Word2 (hiller) is longer than word1 (hill) and contains all letters from word1"
+    },
+    {
+      "word1": "hill",
+      "word2": "hilling",
+      "explanation": "Word2 (hilling) is longer than word1 (hill) and contains all letters from word1"
+    },
+    {
+      "word1": "hill",
+      "word2": "hills",
+      "explanation": "Word2 (hills) is longer than word1 (hill) and contains all letters from word1"
+    },
+    {
+      "word1": "hire",
+      "word2": "hired",
+      "explanation": "Word2 (hired) is longer than word1 (hire) and contains all letters from word1"
+    },
+    {
+      "word1": "hire",
+      "word2": "hirer",
+      "explanation": "Word2 (hirer) is longer than word1 (hire) and contains all letters from word1"
+    },
+    {
+      "word1": "hire",
+      "word2": "hires",
+      "explanation": "Word2 (hires) is longer than word1 (hire) and contains all letters from word1"
+    },
+    {
+      "word1": "hold",
+      "word2": "holder",
+      "explanation": "Word2 (holder) is longer than word1 (hold) and contains all letters from word1"
+    },
+    {
+      "word1": "hold",
+      "word2": "holding",
+      "explanation": "Word2 (holding) is longer than word1 (hold) and contains all letters from word1"
+    },
+    {
+      "word1": "hold",
+      "word2": "holds",
+      "explanation": "Word2 (holds) is longer than word1 (hold) and contains all letters from word1"
+    },
+    {
+      "word1": "hole",
+      "word2": "holed",
+      "explanation": "Word2 (holed) is longer than word1 (hole) and contains all letters from word1"
+    },
+    {
+      "word1": "hole",
+      "word2": "holes",
+      "explanation": "Word2 (holes) is longer than word1 (hole) and contains all letters from word1"
+    },
+    {
+      "word1": "home",
+      "word2": "homed",
+      "explanation": "Word2 (homed) is longer than word1 (home) and contains all letters from word1"
+    },
+    {
+      "word1": "home",
+      "word2": "homer",
+      "explanation": "Word2 (homer) is longer than word1 (home) and contains all letters from word1"
+    },
+    {
+      "word1": "home",
+      "word2": "homes",
+      "explanation": "Word2 (homes) is longer than word1 (home) and contains all letters from word1"
+    },
+    {
+      "word1": "hong",
+      "word2": "hongs",
+      "explanation": "Word2 (hongs) is longer than word1 (hong) and contains all letters from word1"
+    },
+    {
+      "word1": "hope",
+      "word2": "hoped",
+      "explanation": "Word2 (hoped) is longer than word1 (hope) and contains all letters from word1"
+    },
+    {
+      "word1": "hope",
+      "word2": "hoper",
+      "explanation": "Word2 (hoper) is longer than word1 (hope) and contains all letters from word1"
+    },
+    {
+      "word1": "hope",
+      "word2": "hopes",
+      "explanation": "Word2 (hopes) is longer than word1 (hope) and contains all letters from word1"
+    },
+    {
+      "word1": "host",
+      "word2": "hosted",
+      "explanation": "Word2 (hosted) is longer than word1 (host) and contains all letters from word1"
+    },
+    {
+      "word1": "host",
+      "word2": "hosting",
+      "explanation": "Word2 (hosting) is longer than word1 (host) and contains all letters from word1"
+    },
+    {
+      "word1": "host",
+      "word2": "hosts",
+      "explanation": "Word2 (hosts) is longer than word1 (host) and contains all letters from word1"
+    },
+    {
+      "word1": "hour",
+      "word2": "hours",
+      "explanation": "Word2 (hours) is longer than word1 (hour) and contains all letters from word1"
+    },
+    {
+      "word1": "huge",
+      "word2": "huger",
+      "explanation": "Word2 (huger) is longer than word1 (huge) and contains all letters from word1"
+    },
+    {
+      "word1": "huge",
+      "word2": "hugest",
+      "explanation": "Word2 (hugest) is longer than word1 (huge) and contains all letters from word1"
+    },
+    {
+      "word1": "icon",
+      "word2": "icons",
+      "explanation": "Word2 (icons) is longer than word1 (icon) and contains all letters from word1"
+    },
+    {
+      "word1": "idea",
+      "word2": "ideas",
+      "explanation": "Word2 (ideas) is longer than word1 (idea) and contains all letters from word1"
+    },
+    {
+      "word1": "inch",
+      "word2": "inched",
+      "explanation": "Word2 (inched) is longer than word1 (inch) and contains all letters from word1"
+    },
+    {
+      "word1": "inch",
+      "word2": "incher",
+      "explanation": "Word2 (incher) is longer than word1 (inch) and contains all letters from word1"
+    },
+    {
+      "word1": "inch",
+      "word2": "inching",
+      "explanation": "Word2 (inching) is longer than word1 (inch) and contains all letters from word1"
+    },
+    {
+      "word1": "info",
+      "word2": "infos",
+      "explanation": "Word2 (infos) is longer than word1 (info) and contains all letters from word1"
+    },
+    {
+      "word1": "iron",
+      "word2": "ironer",
+      "explanation": "Word2 (ironer) is longer than word1 (iron) and contains all letters from word1"
+    },
+    {
+      "word1": "iron",
+      "word2": "irons",
+      "explanation": "Word2 (irons) is longer than word1 (iron) and contains all letters from word1"
+    },
+    {
+      "word1": "item",
+      "word2": "items",
+      "explanation": "Word2 (items) is longer than word1 (item) and contains all letters from word1"
+    },
+    {
+      "word1": "jack",
+      "word2": "jacked",
+      "explanation": "Word2 (jacked) is longer than word1 (jack) and contains all letters from word1"
+    },
+    {
+      "word1": "jack",
+      "word2": "jacker",
+      "explanation": "Word2 (jacker) is longer than word1 (jack) and contains all letters from word1"
+    },
+    {
+      "word1": "jack",
+      "word2": "jacking",
+      "explanation": "Word2 (jacking) is longer than word1 (jack) and contains all letters from word1"
+    },
+    {
+      "word1": "jack",
+      "word2": "jacks",
+      "explanation": "Word2 (jacks) is longer than word1 (jack) and contains all letters from word1"
+    },
+    {
+      "word1": "jane",
+      "word2": "janes",
+      "explanation": "Word2 (janes) is longer than word1 (jane) and contains all letters from word1"
+    },
+    {
+      "word1": "java",
+      "word2": "javas",
+      "explanation": "Word2 (javas) is longer than word1 (java) and contains all letters from word1"
+    },
+    {
+      "word1": "jazz",
+      "word2": "jazzed",
+      "explanation": "Word2 (jazzed) is longer than word1 (jazz) and contains all letters from word1"
+    },
+    {
+      "word1": "jazz",
+      "word2": "jazzer",
+      "explanation": "Word2 (jazzer) is longer than word1 (jazz) and contains all letters from word1"
+    },
+    {
+      "word1": "jazz",
+      "word2": "jazzing",
+      "explanation": "Word2 (jazzing) is longer than word1 (jazz) and contains all letters from word1"
+    },
+    {
+      "word1": "jean",
+      "word2": "jeaned",
+      "explanation": "Word2 (jeaned) is longer than word1 (jean) and contains all letters from word1"
+    },
+    {
+      "word1": "jean",
+      "word2": "jeans",
+      "explanation": "Word2 (jeans) is longer than word1 (jean) and contains all letters from word1"
+    },
+    {
+      "word1": "john",
+      "word2": "johns",
+      "explanation": "Word2 (johns) is longer than word1 (john) and contains all letters from word1"
+    },
+    {
+      "word1": "join",
+      "word2": "joined",
+      "explanation": "Word2 (joined) is longer than word1 (join) and contains all letters from word1"
+    },
+    {
+      "word1": "join",
+      "word2": "joiner",
+      "explanation": "Word2 (joiner) is longer than word1 (join) and contains all letters from word1"
+    },
+    {
+      "word1": "join",
+      "word2": "joining",
+      "explanation": "Word2 (joining) is longer than word1 (join) and contains all letters from word1"
+    },
+    {
+      "word1": "join",
+      "word2": "joins",
+      "explanation": "Word2 (joins) is longer than word1 (join) and contains all letters from word1"
+    },
+    {
+      "word1": "jump",
+      "word2": "jumped",
+      "explanation": "Word2 (jumped) is longer than word1 (jump) and contains all letters from word1"
+    },
+    {
+      "word1": "jump",
+      "word2": "jumper",
+      "explanation": "Word2 (jumper) is longer than word1 (jump) and contains all letters from word1"
+    },
+    {
+      "word1": "jump",
+      "word2": "jumping",
+      "explanation": "Word2 (jumping) is longer than word1 (jump) and contains all letters from word1"
+    },
+    {
+      "word1": "jump",
+      "word2": "jumps",
+      "explanation": "Word2 (jumps) is longer than word1 (jump) and contains all letters from word1"
+    },
+    {
+      "word1": "just",
+      "word2": "justed",
+      "explanation": "Word2 (justed) is longer than word1 (just) and contains all letters from word1"
+    },
+    {
+      "word1": "just",
+      "word2": "juster",
+      "explanation": "Word2 (juster) is longer than word1 (just) and contains all letters from word1"
+    },
+    {
+      "word1": "just",
+      "word2": "justest",
+      "explanation": "Word2 (justest) is longer than word1 (just) and contains all letters from word1"
+    },
+    {
+      "word1": "just",
+      "word2": "justing",
+      "explanation": "Word2 (justing) is longer than word1 (just) and contains all letters from word1"
+    },
+    {
+      "word1": "just",
+      "word2": "justs",
+      "explanation": "Word2 (justs) is longer than word1 (just) and contains all letters from word1"
+    },
+    {
+      "word1": "keep",
+      "word2": "keeper",
+      "explanation": "Word2 (keeper) is longer than word1 (keep) and contains all letters from word1"
+    },
+    {
+      "word1": "keep",
+      "word2": "keeping",
+      "explanation": "Word2 (keeping) is longer than word1 (keep) and contains all letters from word1"
+    },
+    {
+      "word1": "keep",
+      "word2": "keeps",
+      "explanation": "Word2 (keeps) is longer than word1 (keep) and contains all letters from word1"
+    },
+    {
+      "word1": "kill",
+      "word2": "killed",
+      "explanation": "Word2 (killed) is longer than word1 (kill) and contains all letters from word1"
+    },
+    {
+      "word1": "kill",
+      "word2": "killer",
+      "explanation": "Word2 (killer) is longer than word1 (kill) and contains all letters from word1"
+    },
+    {
+      "word1": "kill",
+      "word2": "killing",
+      "explanation": "Word2 (killing) is longer than word1 (kill) and contains all letters from word1"
+    },
+    {
+      "word1": "kill",
+      "word2": "kills",
+      "explanation": "Word2 (kills) is longer than word1 (kill) and contains all letters from word1"
+    },
+    {
+      "word1": "kind",
+      "word2": "kinder",
+      "explanation": "Word2 (kinder) is longer than word1 (kind) and contains all letters from word1"
+    },
+    {
+      "word1": "kind",
+      "word2": "kindest",
+      "explanation": "Word2 (kindest) is longer than word1 (kind) and contains all letters from word1"
+    },
+    {
+      "word1": "kind",
+      "word2": "kinds",
+      "explanation": "Word2 (kinds) is longer than word1 (kind) and contains all letters from word1"
+    },
+    {
+      "word1": "king",
+      "word2": "kinged",
+      "explanation": "Word2 (kinged) is longer than word1 (king) and contains all letters from word1"
+    },
+    {
+      "word1": "king",
+      "word2": "kinging",
+      "explanation": "Word2 (kinging) is longer than word1 (king) and contains all letters from word1"
+    },
+    {
+      "word1": "king",
+      "word2": "kings",
+      "explanation": "Word2 (kings) is longer than word1 (king) and contains all letters from word1"
+    },
+    {
+      "word1": "know",
+      "word2": "knower",
+      "explanation": "Word2 (knower) is longer than word1 (know) and contains all letters from word1"
+    },
+    {
+      "word1": "know",
+      "word2": "knowing",
+      "explanation": "Word2 (knowing) is longer than word1 (know) and contains all letters from word1"
+    },
+    {
+      "word1": "know",
+      "word2": "known",
+      "explanation": "Word2 (known) is longer than word1 (know) and contains all letters from word1"
+    },
+    {
+      "word1": "know",
+      "word2": "knows",
+      "explanation": "Word2 (knows) is longer than word1 (know) and contains all letters from word1"
+    },
+    {
+      "word1": "lack",
+      "word2": "lacked",
+      "explanation": "Word2 (lacked) is longer than word1 (lack) and contains all letters from word1"
+    },
+    {
+      "word1": "lack",
+      "word2": "lacker",
+      "explanation": "Word2 (lacker) is longer than word1 (lack) and contains all letters from word1"
+    },
+    {
+      "word1": "lack",
+      "word2": "lacking",
+      "explanation": "Word2 (lacking) is longer than word1 (lack) and contains all letters from word1"
+    },
+    {
+      "word1": "lack",
+      "word2": "lacks",
+      "explanation": "Word2 (lacks) is longer than word1 (lack) and contains all letters from word1"
+    },
+    {
+      "word1": "lake",
+      "word2": "laked",
+      "explanation": "Word2 (laked) is longer than word1 (lake) and contains all letters from word1"
+    },
+    {
+      "word1": "lake",
+      "word2": "laker",
+      "explanation": "Word2 (laker) is longer than word1 (lake) and contains all letters from word1"
+    },
+    {
+      "word1": "lake",
+      "word2": "lakes",
+      "explanation": "Word2 (lakes) is longer than word1 (lake) and contains all letters from word1"
+    },
+    {
+      "word1": "land",
+      "word2": "landed",
+      "explanation": "Word2 (landed) is longer than word1 (land) and contains all letters from word1"
+    },
+    {
+      "word1": "land",
+      "word2": "lander",
+      "explanation": "Word2 (lander) is longer than word1 (land) and contains all letters from word1"
+    },
+    {
+      "word1": "land",
+      "word2": "landing",
+      "explanation": "Word2 (landing) is longer than word1 (land) and contains all letters from word1"
+    },
+    {
+      "word1": "land",
+      "word2": "lands",
+      "explanation": "Word2 (lands) is longer than word1 (land) and contains all letters from word1"
+    },
+    {
+      "word1": "lane",
+      "word2": "lanes",
+      "explanation": "Word2 (lanes) is longer than word1 (lane) and contains all letters from word1"
+    },
+    {
+      "word1": "last",
+      "word2": "lasted",
+      "explanation": "Word2 (lasted) is longer than word1 (last) and contains all letters from word1"
+    },
+    {
+      "word1": "last",
+      "word2": "laster",
+      "explanation": "Word2 (laster) is longer than word1 (last) and contains all letters from word1"
+    },
+    {
+      "word1": "last",
+      "word2": "lasting",
+      "explanation": "Word2 (lasting) is longer than word1 (last) and contains all letters from word1"
+    },
+    {
+      "word1": "last",
+      "word2": "lasts",
+      "explanation": "Word2 (lasts) is longer than word1 (last) and contains all letters from word1"
+    },
+    {
+      "word1": "late",
+      "word2": "lated",
+      "explanation": "Word2 (lated) is longer than word1 (late) and contains all letters from word1"
+    },
+    {
+      "word1": "late",
+      "word2": "later",
+      "explanation": "Word2 (later) is longer than word1 (late) and contains all letters from word1"
+    },
+    {
+      "word1": "late",
+      "word2": "latest",
+      "explanation": "Word2 (latest) is longer than word1 (late) and contains all letters from word1"
+    },
+    {
+      "word1": "lead",
+      "word2": "leaded",
+      "explanation": "Word2 (leaded) is longer than word1 (lead) and contains all letters from word1"
+    },
+    {
+      "word1": "lead",
+      "word2": "leader",
+      "explanation": "Word2 (leader) is longer than word1 (lead) and contains all letters from word1"
+    },
+    {
+      "word1": "lead",
+      "word2": "leading",
+      "explanation": "Word2 (leading) is longer than word1 (lead) and contains all letters from word1"
+    },
+    {
+      "word1": "lead",
+      "word2": "leads",
+      "explanation": "Word2 (leads) is longer than word1 (lead) and contains all letters from word1"
+    },
+    {
+      "word1": "left",
+      "word2": "lefter",
+      "explanation": "Word2 (lefter) is longer than word1 (left) and contains all letters from word1"
+    },
+    {
+      "word1": "left",
+      "word2": "leftest",
+      "explanation": "Word2 (leftest) is longer than word1 (left) and contains all letters from word1"
+    },
+    {
+      "word1": "left",
+      "word2": "lefts",
+      "explanation": "Word2 (lefts) is longer than word1 (left) and contains all letters from word1"
+    },
+    {
+      "word1": "lens",
+      "word2": "lensed",
+      "explanation": "Word2 (lensed) is longer than word1 (lens) and contains all letters from word1"
+    },
+    {
+      "word1": "lens",
+      "word2": "lensing",
+      "explanation": "Word2 (lensing) is longer than word1 (lens) and contains all letters from word1"
+    },
+    {
+      "word1": "less",
+      "word2": "lesser",
+      "explanation": "Word2 (lesser) is longer than word1 (less) and contains all letters from word1"
+    },
+    {
+      "word1": "life",
+      "word2": "lifer",
+      "explanation": "Word2 (lifer) is longer than word1 (life) and contains all letters from word1"
+    },
+    {
+      "word1": "like",
+      "word2": "liked",
+      "explanation": "Word2 (liked) is longer than word1 (like) and contains all letters from word1"
+    },
+    {
+      "word1": "like",
+      "word2": "liker",
+      "explanation": "Word2 (liker) is longer than word1 (like) and contains all letters from word1"
+    },
+    {
+      "word1": "like",
+      "word2": "likes",
+      "explanation": "Word2 (likes) is longer than word1 (like) and contains all letters from word1"
+    },
+    {
+      "word1": "like",
+      "word2": "likest",
+      "explanation": "Word2 (likest) is longer than word1 (like) and contains all letters from word1"
+    },
+    {
+      "word1": "line",
+      "word2": "lined",
+      "explanation": "Word2 (lined) is longer than word1 (line) and contains all letters from word1"
+    },
+    {
+      "word1": "line",
+      "word2": "liner",
+      "explanation": "Word2 (liner) is longer than word1 (line) and contains all letters from word1"
+    },
+    {
+      "word1": "line",
+      "word2": "lines",
+      "explanation": "Word2 (lines) is longer than word1 (line) and contains all letters from word1"
+    },
+    {
+      "word1": "link",
+      "word2": "linked",
+      "explanation": "Word2 (linked) is longer than word1 (link) and contains all letters from word1"
+    },
+    {
+      "word1": "link",
+      "word2": "linker",
+      "explanation": "Word2 (linker) is longer than word1 (link) and contains all letters from word1"
+    },
+    {
+      "word1": "link",
+      "word2": "linking",
+      "explanation": "Word2 (linking) is longer than word1 (link) and contains all letters from word1"
+    },
+    {
+      "word1": "link",
+      "word2": "links",
+      "explanation": "Word2 (links) is longer than word1 (link) and contains all letters from word1"
+    },
+    {
+      "word1": "list",
+      "word2": "listed",
+      "explanation": "Word2 (listed) is longer than word1 (list) and contains all letters from word1"
+    },
+    {
+      "word1": "list",
+      "word2": "lister",
+      "explanation": "Word2 (lister) is longer than word1 (list) and contains all letters from word1"
+    },
+    {
+      "word1": "list",
+      "word2": "listing",
+      "explanation": "Word2 (listing) is longer than word1 (list) and contains all letters from word1"
+    },
+    {
+      "word1": "list",
+      "word2": "lists",
+      "explanation": "Word2 (lists) is longer than word1 (list) and contains all letters from word1"
+    },
+    {
+      "word1": "live",
+      "word2": "lived",
+      "explanation": "Word2 (lived) is longer than word1 (live) and contains all letters from word1"
+    },
+    {
+      "word1": "live",
+      "word2": "lives",
+      "explanation": "Word2 (lives) is longer than word1 (live) and contains all letters from word1"
+    },
+    {
+      "word1": "live",
+      "word2": "livest",
+      "explanation": "Word2 (livest) is longer than word1 (live) and contains all letters from word1"
+    },
+    {
+      "word1": "load",
+      "word2": "loaded",
+      "explanation": "Word2 (loaded) is longer than word1 (load) and contains all letters from word1"
+    },
+    {
+      "word1": "load",
+      "word2": "loader",
+      "explanation": "Word2 (loader) is longer than word1 (load) and contains all letters from word1"
+    },
+    {
+      "word1": "load",
+      "word2": "loading",
+      "explanation": "Word2 (loading) is longer than word1 (load) and contains all letters from word1"
+    },
+    {
+      "word1": "load",
+      "word2": "loads",
+      "explanation": "Word2 (loads) is longer than word1 (load) and contains all letters from word1"
+    },
+    {
+      "word1": "loan",
+      "word2": "loaned",
+      "explanation": "Word2 (loaned) is longer than word1 (loan) and contains all letters from word1"
+    },
+    {
+      "word1": "loan",
+      "word2": "loaner",
+      "explanation": "Word2 (loaner) is longer than word1 (loan) and contains all letters from word1"
+    },
+    {
+      "word1": "loan",
+      "word2": "loaning",
+      "explanation": "Word2 (loaning) is longer than word1 (loan) and contains all letters from word1"
+    },
+    {
+      "word1": "loan",
+      "word2": "loans",
+      "explanation": "Word2 (loans) is longer than word1 (loan) and contains all letters from word1"
+    },
+    {
+      "word1": "lock",
+      "word2": "locked",
+      "explanation": "Word2 (locked) is longer than word1 (lock) and contains all letters from word1"
+    },
+    {
+      "word1": "lock",
+      "word2": "locker",
+      "explanation": "Word2 (locker) is longer than word1 (lock) and contains all letters from word1"
+    },
+    {
+      "word1": "lock",
+      "word2": "locking",
+      "explanation": "Word2 (locking) is longer than word1 (lock) and contains all letters from word1"
+    },
+    {
+      "word1": "lock",
+      "word2": "locks",
+      "explanation": "Word2 (locks) is longer than word1 (lock) and contains all letters from word1"
+    },
+    {
+      "word1": "logo",
+      "word2": "logos",
+      "explanation": "Word2 (logos) is longer than word1 (logo) and contains all letters from word1"
+    },
+    {
+      "word1": "long",
+      "word2": "longed",
+      "explanation": "Word2 (longed) is longer than word1 (long) and contains all letters from word1"
+    },
+    {
+      "word1": "long",
+      "word2": "longer",
+      "explanation": "Word2 (longer) is longer than word1 (long) and contains all letters from word1"
+    },
+    {
+      "word1": "long",
+      "word2": "longest",
+      "explanation": "Word2 (longest) is longer than word1 (long) and contains all letters from word1"
+    },
+    {
+      "word1": "long",
+      "word2": "longing",
+      "explanation": "Word2 (longing) is longer than word1 (long) and contains all letters from word1"
+    },
+    {
+      "word1": "long",
+      "word2": "longs",
+      "explanation": "Word2 (longs) is longer than word1 (long) and contains all letters from word1"
+    },
+    {
+      "word1": "look",
+      "word2": "looked",
+      "explanation": "Word2 (looked) is longer than word1 (look) and contains all letters from word1"
+    },
+    {
+      "word1": "look",
+      "word2": "looker",
+      "explanation": "Word2 (looker) is longer than word1 (look) and contains all letters from word1"
+    },
+    {
+      "word1": "look",
+      "word2": "looking",
+      "explanation": "Word2 (looking) is longer than word1 (look) and contains all letters from word1"
+    },
+    {
+      "word1": "look",
+      "word2": "looks",
+      "explanation": "Word2 (looks) is longer than word1 (look) and contains all letters from word1"
+    },
+    {
+      "word1": "loop",
+      "word2": "looped",
+      "explanation": "Word2 (looped) is longer than word1 (loop) and contains all letters from word1"
+    },
+    {
+      "word1": "loop",
+      "word2": "looper",
+      "explanation": "Word2 (looper) is longer than word1 (loop) and contains all letters from word1"
+    },
+    {
+      "word1": "loop",
+      "word2": "looping",
+      "explanation": "Word2 (looping) is longer than word1 (loop) and contains all letters from word1"
+    },
+    {
+      "word1": "loop",
+      "word2": "loops",
+      "explanation": "Word2 (loops) is longer than word1 (loop) and contains all letters from word1"
+    },
+    {
+      "word1": "lord",
+      "word2": "lorded",
+      "explanation": "Word2 (lorded) is longer than word1 (lord) and contains all letters from word1"
+    },
+    {
+      "word1": "lord",
+      "word2": "lording",
+      "explanation": "Word2 (lording) is longer than word1 (lord) and contains all letters from word1"
+    },
+    {
+      "word1": "lord",
+      "word2": "lords",
+      "explanation": "Word2 (lords) is longer than word1 (lord) and contains all letters from word1"
+    },
+    {
+      "word1": "lose",
+      "word2": "loser",
+      "explanation": "Word2 (loser) is longer than word1 (lose) and contains all letters from word1"
+    },
+    {
+      "word1": "lose",
+      "word2": "loses",
+      "explanation": "Word2 (loses) is longer than word1 (lose) and contains all letters from word1"
+    },
+    {
+      "word1": "love",
+      "word2": "loved",
+      "explanation": "Word2 (loved) is longer than word1 (love) and contains all letters from word1"
+    },
+    {
+      "word1": "love",
+      "word2": "lover",
+      "explanation": "Word2 (lover) is longer than word1 (love) and contains all letters from word1"
+    },
+    {
+      "word1": "love",
+      "word2": "loves",
+      "explanation": "Word2 (loves) is longer than word1 (love) and contains all letters from word1"
+    },
+    {
+      "word1": "mail",
+      "word2": "mailed",
+      "explanation": "Word2 (mailed) is longer than word1 (mail) and contains all letters from word1"
+    },
+    {
+      "word1": "mail",
+      "word2": "mailer",
+      "explanation": "Word2 (mailer) is longer than word1 (mail) and contains all letters from word1"
+    },
+    {
+      "word1": "mail",
+      "word2": "mailing",
+      "explanation": "Word2 (mailing) is longer than word1 (mail) and contains all letters from word1"
+    },
+    {
+      "word1": "mail",
+      "word2": "mails",
+      "explanation": "Word2 (mails) is longer than word1 (mail) and contains all letters from word1"
+    },
+    {
+      "word1": "main",
+      "word2": "mains",
+      "explanation": "Word2 (mains) is longer than word1 (main) and contains all letters from word1"
+    },
+    {
+      "word1": "make",
+      "word2": "maker",
+      "explanation": "Word2 (maker) is longer than word1 (make) and contains all letters from word1"
+    },
+    {
+      "word1": "make",
+      "word2": "makes",
+      "explanation": "Word2 (makes) is longer than word1 (make) and contains all letters from word1"
+    },
+    {
+      "word1": "male",
+      "word2": "males",
+      "explanation": "Word2 (males) is longer than word1 (male) and contains all letters from word1"
+    },
+    {
+      "word1": "mark",
+      "word2": "marked",
+      "explanation": "Word2 (marked) is longer than word1 (mark) and contains all letters from word1"
+    },
+    {
+      "word1": "mark",
+      "word2": "marker",
+      "explanation": "Word2 (marker) is longer than word1 (mark) and contains all letters from word1"
+    },
+    {
+      "word1": "mark",
+      "word2": "marking",
+      "explanation": "Word2 (marking) is longer than word1 (mark) and contains all letters from word1"
+    },
+    {
+      "word1": "mark",
+      "word2": "marks",
+      "explanation": "Word2 (marks) is longer than word1 (mark) and contains all letters from word1"
+    },
+    {
+      "word1": "mass",
+      "word2": "massed",
+      "explanation": "Word2 (massed) is longer than word1 (mass) and contains all letters from word1"
+    },
+    {
+      "word1": "mass",
+      "word2": "massing",
+      "explanation": "Word2 (massing) is longer than word1 (mass) and contains all letters from word1"
+    },
+    {
+      "word1": "math",
+      "word2": "maths",
+      "explanation": "Word2 (maths) is longer than word1 (math) and contains all letters from word1"
+    },
+    {
+      "word1": "matt",
+      "word2": "matted",
+      "explanation": "Word2 (matted) is longer than word1 (matt) and contains all letters from word1"
+    },
+    {
+      "word1": "matt",
+      "word2": "matter",
+      "explanation": "Word2 (matter) is longer than word1 (matt) and contains all letters from word1"
+    },
+    {
+      "word1": "matt",
+      "word2": "matting",
+      "explanation": "Word2 (matting) is longer than word1 (matt) and contains all letters from word1"
+    },
+    {
+      "word1": "matt",
+      "word2": "matts",
+      "explanation": "Word2 (matts) is longer than word1 (matt) and contains all letters from word1"
+    },
+    {
+      "word1": "mean",
+      "word2": "meaner",
+      "explanation": "Word2 (meaner) is longer than word1 (mean) and contains all letters from word1"
+    },
+    {
+      "word1": "mean",
+      "word2": "meanest",
+      "explanation": "Word2 (meanest) is longer than word1 (mean) and contains all letters from word1"
+    },
+    {
+      "word1": "mean",
+      "word2": "meaning",
+      "explanation": "Word2 (meaning) is longer than word1 (mean) and contains all letters from word1"
+    },
+    {
+      "word1": "mean",
+      "word2": "means",
+      "explanation": "Word2 (means) is longer than word1 (mean) and contains all letters from word1"
+    },
+    {
+      "word1": "meet",
+      "word2": "meeter",
+      "explanation": "Word2 (meeter) is longer than word1 (meet) and contains all letters from word1"
+    },
+    {
+      "word1": "meet",
+      "word2": "meeting",
+      "explanation": "Word2 (meeting) is longer than word1 (meet) and contains all letters from word1"
+    },
+    {
+      "word1": "meet",
+      "word2": "meets",
+      "explanation": "Word2 (meets) is longer than word1 (meet) and contains all letters from word1"
+    },
+    {
+      "word1": "menu",
+      "word2": "menus",
+      "explanation": "Word2 (menus) is longer than word1 (menu) and contains all letters from word1"
+    },
+    {
+      "word1": "mesh",
+      "word2": "meshed",
+      "explanation": "Word2 (meshed) is longer than word1 (mesh) and contains all letters from word1"
+    },
+    {
+      "word1": "mesh",
+      "word2": "meshing",
+      "explanation": "Word2 (meshing) is longer than word1 (mesh) and contains all letters from word1"
+    },
+    {
+      "word1": "mike",
+      "word2": "miked",
+      "explanation": "Word2 (miked) is longer than word1 (mike) and contains all letters from word1"
+    },
+    {
+      "word1": "mike",
+      "word2": "mikes",
+      "explanation": "Word2 (mikes) is longer than word1 (mike) and contains all letters from word1"
+    },
+    {
+      "word1": "mile",
+      "word2": "miler",
+      "explanation": "Word2 (miler) is longer than word1 (mile) and contains all letters from word1"
+    },
+    {
+      "word1": "mile",
+      "word2": "miles",
+      "explanation": "Word2 (miles) is longer than word1 (mile) and contains all letters from word1"
+    },
+    {
+      "word1": "milk",
+      "word2": "milked",
+      "explanation": "Word2 (milked) is longer than word1 (milk) and contains all letters from word1"
+    },
+    {
+      "word1": "milk",
+      "word2": "milker",
+      "explanation": "Word2 (milker) is longer than word1 (milk) and contains all letters from word1"
+    },
+    {
+      "word1": "milk",
+      "word2": "milking",
+      "explanation": "Word2 (milking) is longer than word1 (milk) and contains all letters from word1"
+    },
+    {
+      "word1": "milk",
+      "word2": "milks",
+      "explanation": "Word2 (milks) is longer than word1 (milk) and contains all letters from word1"
+    },
+    {
+      "word1": "mind",
+      "word2": "minded",
+      "explanation": "Word2 (minded) is longer than word1 (mind) and contains all letters from word1"
+    },
+    {
+      "word1": "mind",
+      "word2": "minder",
+      "explanation": "Word2 (minder) is longer than word1 (mind) and contains all letters from word1"
+    },
+    {
+      "word1": "mind",
+      "word2": "minding",
+      "explanation": "Word2 (minding) is longer than word1 (mind) and contains all letters from word1"
+    },
+    {
+      "word1": "mind",
+      "word2": "minds",
+      "explanation": "Word2 (minds) is longer than word1 (mind) and contains all letters from word1"
+    },
+    {
+      "word1": "mine",
+      "word2": "mined",
+      "explanation": "Word2 (mined) is longer than word1 (mine) and contains all letters from word1"
+    },
+    {
+      "word1": "mine",
+      "word2": "miner",
+      "explanation": "Word2 (miner) is longer than word1 (mine) and contains all letters from word1"
+    },
+    {
+      "word1": "mine",
+      "word2": "mines",
+      "explanation": "Word2 (mines) is longer than word1 (mine) and contains all letters from word1"
+    },
+    {
+      "word1": "mini",
+      "word2": "minis",
+      "explanation": "Word2 (minis) is longer than word1 (mini) and contains all letters from word1"
+    },
+    {
+      "word1": "miss",
+      "word2": "missed",
+      "explanation": "Word2 (missed) is longer than word1 (miss) and contains all letters from word1"
+    },
+    {
+      "word1": "miss",
+      "word2": "missing",
+      "explanation": "Word2 (missing) is longer than word1 (miss) and contains all letters from word1"
+    },
+    {
+      "word1": "mode",
+      "word2": "modes",
+      "explanation": "Word2 (modes) is longer than word1 (mode) and contains all letters from word1"
+    },
+    {
+      "word1": "mode",
+      "word2": "modest",
+      "explanation": "Word2 (modest) is longer than word1 (mode) and contains all letters from word1"
+    },
+    {
+      "word1": "moon",
+      "word2": "mooned",
+      "explanation": "Word2 (mooned) is longer than word1 (moon) and contains all letters from word1"
+    },
+    {
+      "word1": "moon",
+      "word2": "mooner",
+      "explanation": "Word2 (mooner) is longer than word1 (moon) and contains all letters from word1"
+    },
+    {
+      "word1": "moon",
+      "word2": "mooning",
+      "explanation": "Word2 (mooning) is longer than word1 (moon) and contains all letters from word1"
+    },
+    {
+      "word1": "moon",
+      "word2": "moons",
+      "explanation": "Word2 (moons) is longer than word1 (moon) and contains all letters from word1"
+    },
+    {
+      "word1": "more",
+      "word2": "mores",
+      "explanation": "Word2 (mores) is longer than word1 (more) and contains all letters from word1"
+    },
+    {
+      "word1": "most",
+      "word2": "mostest",
+      "explanation": "Word2 (mostest) is longer than word1 (most) and contains all letters from word1"
+    },
+    {
+      "word1": "most",
+      "word2": "mosts",
+      "explanation": "Word2 (mosts) is longer than word1 (most) and contains all letters from word1"
+    },
+    {
+      "word1": "move",
+      "word2": "moved",
+      "explanation": "Word2 (moved) is longer than word1 (move) and contains all letters from word1"
+    },
+    {
+      "word1": "move",
+      "word2": "mover",
+      "explanation": "Word2 (mover) is longer than word1 (move) and contains all letters from word1"
+    },
+    {
+      "word1": "move",
+      "word2": "moves",
+      "explanation": "Word2 (moves) is longer than word1 (move) and contains all letters from word1"
+    },
+    {
+      "word1": "must",
+      "word2": "musted",
+      "explanation": "Word2 (musted) is longer than word1 (must) and contains all letters from word1"
+    },
+    {
+      "word1": "must",
+      "word2": "muster",
+      "explanation": "Word2 (muster) is longer than word1 (must) and contains all letters from word1"
+    },
+    {
+      "word1": "must",
+      "word2": "musting",
+      "explanation": "Word2 (musting) is longer than word1 (must) and contains all letters from word1"
+    },
+    {
+      "word1": "must",
+      "word2": "musts",
+      "explanation": "Word2 (musts) is longer than word1 (must) and contains all letters from word1"
+    },
+    {
+      "word1": "name",
+      "word2": "named",
+      "explanation": "Word2 (named) is longer than word1 (name) and contains all letters from word1"
+    },
+    {
+      "word1": "name",
+      "word2": "namer",
+      "explanation": "Word2 (namer) is longer than word1 (name) and contains all letters from word1"
+    },
+    {
+      "word1": "name",
+      "word2": "names",
+      "explanation": "Word2 (names) is longer than word1 (name) and contains all letters from word1"
+    },
+    {
+      "word1": "near",
+      "word2": "neared",
+      "explanation": "Word2 (neared) is longer than word1 (near) and contains all letters from word1"
+    },
+    {
+      "word1": "near",
+      "word2": "nearer",
+      "explanation": "Word2 (nearer) is longer than word1 (near) and contains all letters from word1"
+    },
+    {
+      "word1": "near",
+      "word2": "nearest",
+      "explanation": "Word2 (nearest) is longer than word1 (near) and contains all letters from word1"
+    },
+    {
+      "word1": "near",
+      "word2": "nearing",
+      "explanation": "Word2 (nearing) is longer than word1 (near) and contains all letters from word1"
+    },
+    {
+      "word1": "near",
+      "word2": "nears",
+      "explanation": "Word2 (nears) is longer than word1 (near) and contains all letters from word1"
+    },
+    {
+      "word1": "need",
+      "word2": "needed",
+      "explanation": "Word2 (needed) is longer than word1 (need) and contains all letters from word1"
+    },
+    {
+      "word1": "need",
+      "word2": "needer",
+      "explanation": "Word2 (needer) is longer than word1 (need) and contains all letters from word1"
+    },
+    {
+      "word1": "need",
+      "word2": "needing",
+      "explanation": "Word2 (needing) is longer than word1 (need) and contains all letters from word1"
+    },
+    {
+      "word1": "need",
+      "word2": "needs",
+      "explanation": "Word2 (needs) is longer than word1 (need) and contains all letters from word1"
+    },
+    {
+      "word1": "nice",
+      "word2": "nicer",
+      "explanation": "Word2 (nicer) is longer than word1 (nice) and contains all letters from word1"
+    },
+    {
+      "word1": "nice",
+      "word2": "nicest",
+      "explanation": "Word2 (nicest) is longer than word1 (nice) and contains all letters from word1"
+    },
+    {
+      "word1": "nick",
+      "word2": "nicked",
+      "explanation": "Word2 (nicked) is longer than word1 (nick) and contains all letters from word1"
+    },
+    {
+      "word1": "nick",
+      "word2": "nicker",
+      "explanation": "Word2 (nicker) is longer than word1 (nick) and contains all letters from word1"
+    },
+    {
+      "word1": "nick",
+      "word2": "nicking",
+      "explanation": "Word2 (nicking) is longer than word1 (nick) and contains all letters from word1"
+    },
+    {
+      "word1": "nick",
+      "word2": "nicks",
+      "explanation": "Word2 (nicks) is longer than word1 (nick) and contains all letters from word1"
+    },
+    {
+      "word1": "nine",
+      "word2": "nines",
+      "explanation": "Word2 (nines) is longer than word1 (nine) and contains all letters from word1"
+    },
+    {
+      "word1": "node",
+      "word2": "nodes",
+      "explanation": "Word2 (nodes) is longer than word1 (node) and contains all letters from word1"
+    },
+    {
+      "word1": "none",
+      "word2": "nones",
+      "explanation": "Word2 (nones) is longer than word1 (none) and contains all letters from word1"
+    },
+    {
+      "word1": "note",
+      "word2": "noted",
+      "explanation": "Word2 (noted) is longer than word1 (note) and contains all letters from word1"
+    },
+    {
+      "word1": "note",
+      "word2": "noter",
+      "explanation": "Word2 (noter) is longer than word1 (note) and contains all letters from word1"
+    },
+    {
+      "word1": "note",
+      "word2": "notes",
+      "explanation": "Word2 (notes) is longer than word1 (note) and contains all letters from word1"
+    },
+    {
+      "word1": "null",
+      "word2": "nulled",
+      "explanation": "Word2 (nulled) is longer than word1 (null) and contains all letters from word1"
+    },
+    {
+      "word1": "null",
+      "word2": "nulling",
+      "explanation": "Word2 (nulling) is longer than word1 (null) and contains all letters from word1"
+    },
+    {
+      "word1": "null",
+      "word2": "nulls",
+      "explanation": "Word2 (nulls) is longer than word1 (null) and contains all letters from word1"
+    },
+    {
+      "word1": "open",
+      "word2": "opener",
+      "explanation": "Word2 (opener) is longer than word1 (open) and contains all letters from word1"
+    },
+    {
+      "word1": "open",
+      "word2": "openest",
+      "explanation": "Word2 (openest) is longer than word1 (open) and contains all letters from word1"
+    },
+    {
+      "word1": "open",
+      "word2": "opens",
+      "explanation": "Word2 (opens) is longer than word1 (open) and contains all letters from word1"
+    },
+    {
+      "word1": "oral",
+      "word2": "orals",
+      "explanation": "Word2 (orals) is longer than word1 (oral) and contains all letters from word1"
+    },
+    {
+      "word1": "over",
+      "word2": "overs",
+      "explanation": "Word2 (overs) is longer than word1 (over) and contains all letters from word1"
+    },
+    {
+      "word1": "pack",
+      "word2": "packed",
+      "explanation": "Word2 (packed) is longer than word1 (pack) and contains all letters from word1"
+    },
+    {
+      "word1": "pack",
+      "word2": "packer",
+      "explanation": "Word2 (packer) is longer than word1 (pack) and contains all letters from word1"
+    },
+    {
+      "word1": "pack",
+      "word2": "packing",
+      "explanation": "Word2 (packing) is longer than word1 (pack) and contains all letters from word1"
+    },
+    {
+      "word1": "pack",
+      "word2": "packs",
+      "explanation": "Word2 (packs) is longer than word1 (pack) and contains all letters from word1"
+    },
+    {
+      "word1": "page",
+      "word2": "paged",
+      "explanation": "Word2 (paged) is longer than word1 (page) and contains all letters from word1"
+    },
+    {
+      "word1": "page",
+      "word2": "pager",
+      "explanation": "Word2 (pager) is longer than word1 (page) and contains all letters from word1"
+    },
+    {
+      "word1": "page",
+      "word2": "pages",
+      "explanation": "Word2 (pages) is longer than word1 (page) and contains all letters from word1"
+    },
+    {
+      "word1": "pain",
+      "word2": "pained",
+      "explanation": "Word2 (pained) is longer than word1 (pain) and contains all letters from word1"
+    },
+    {
+      "word1": "pain",
+      "word2": "paining",
+      "explanation": "Word2 (paining) is longer than word1 (pain) and contains all letters from word1"
+    },
+    {
+      "word1": "pain",
+      "word2": "pains",
+      "explanation": "Word2 (pains) is longer than word1 (pain) and contains all letters from word1"
+    },
+    {
+      "word1": "pair",
+      "word2": "paired",
+      "explanation": "Word2 (paired) is longer than word1 (pair) and contains all letters from word1"
+    },
+    {
+      "word1": "pair",
+      "word2": "pairing",
+      "explanation": "Word2 (pairing) is longer than word1 (pair) and contains all letters from word1"
+    },
+    {
+      "word1": "pair",
+      "word2": "pairs",
+      "explanation": "Word2 (pairs) is longer than word1 (pair) and contains all letters from word1"
+    },
+    {
+      "word1": "palm",
+      "word2": "palmed",
+      "explanation": "Word2 (palmed) is longer than word1 (palm) and contains all letters from word1"
+    },
+    {
+      "word1": "palm",
+      "word2": "palmer",
+      "explanation": "Word2 (palmer) is longer than word1 (palm) and contains all letters from word1"
+    },
+    {
+      "word1": "palm",
+      "word2": "palming",
+      "explanation": "Word2 (palming) is longer than word1 (palm) and contains all letters from word1"
+    },
+    {
+      "word1": "palm",
+      "word2": "palms",
+      "explanation": "Word2 (palms) is longer than word1 (palm) and contains all letters from word1"
+    },
+    {
+      "word1": "park",
+      "word2": "parked",
+      "explanation": "Word2 (parked) is longer than word1 (park) and contains all letters from word1"
+    },
+    {
+      "word1": "park",
+      "word2": "parker",
+      "explanation": "Word2 (parker) is longer than word1 (park) and contains all letters from word1"
+    },
+    {
+      "word1": "park",
+      "word2": "parking",
+      "explanation": "Word2 (parking) is longer than word1 (park) and contains all letters from word1"
+    },
+    {
+      "word1": "park",
+      "word2": "parks",
+      "explanation": "Word2 (parks) is longer than word1 (park) and contains all letters from word1"
+    },
+    {
+      "word1": "part",
+      "word2": "parted",
+      "explanation": "Word2 (parted) is longer than word1 (part) and contains all letters from word1"
+    },
+    {
+      "word1": "part",
+      "word2": "parting",
+      "explanation": "Word2 (parting) is longer than word1 (part) and contains all letters from word1"
+    },
+    {
+      "word1": "part",
+      "word2": "parts",
+      "explanation": "Word2 (parts) is longer than word1 (part) and contains all letters from word1"
+    },
+    {
+      "word1": "past",
+      "word2": "pasted",
+      "explanation": "Word2 (pasted) is longer than word1 (past) and contains all letters from word1"
+    },
+    {
+      "word1": "past",
+      "word2": "paster",
+      "explanation": "Word2 (paster) is longer than word1 (past) and contains all letters from word1"
+    },
+    {
+      "word1": "past",
+      "word2": "pasting",
+      "explanation": "Word2 (pasting) is longer than word1 (past) and contains all letters from word1"
+    },
+    {
+      "word1": "past",
+      "word2": "pasts",
+      "explanation": "Word2 (pasts) is longer than word1 (past) and contains all letters from word1"
+    },
+    {
+      "word1": "path",
+      "word2": "paths",
+      "explanation": "Word2 (paths) is longer than word1 (path) and contains all letters from word1"
+    },
+    {
+      "word1": "peak",
+      "word2": "peaked",
+      "explanation": "Word2 (peaked) is longer than word1 (peak) and contains all letters from word1"
+    },
+    {
+      "word1": "peak",
+      "word2": "peaking",
+      "explanation": "Word2 (peaking) is longer than word1 (peak) and contains all letters from word1"
+    },
+    {
+      "word1": "peak",
+      "word2": "peaks",
+      "explanation": "Word2 (peaks) is longer than word1 (peak) and contains all letters from word1"
+    },
+    {
+      "word1": "pick",
+      "word2": "picked",
+      "explanation": "Word2 (picked) is longer than word1 (pick) and contains all letters from word1"
+    },
+    {
+      "word1": "pick",
+      "word2": "picker",
+      "explanation": "Word2 (picker) is longer than word1 (pick) and contains all letters from word1"
+    },
+    {
+      "word1": "pick",
+      "word2": "picking",
+      "explanation": "Word2 (picking) is longer than word1 (pick) and contains all letters from word1"
+    },
+    {
+      "word1": "pick",
+      "word2": "picks",
+      "explanation": "Word2 (picks) is longer than word1 (pick) and contains all letters from word1"
+    },
+    {
+      "word1": "pink",
+      "word2": "pinked",
+      "explanation": "Word2 (pinked) is longer than word1 (pink) and contains all letters from word1"
+    },
+    {
+      "word1": "pink",
+      "word2": "pinker",
+      "explanation": "Word2 (pinker) is longer than word1 (pink) and contains all letters from word1"
+    },
+    {
+      "word1": "pink",
+      "word2": "pinkest",
+      "explanation": "Word2 (pinkest) is longer than word1 (pink) and contains all letters from word1"
+    },
+    {
+      "word1": "pink",
+      "word2": "pinking",
+      "explanation": "Word2 (pinking) is longer than word1 (pink) and contains all letters from word1"
+    },
+    {
+      "word1": "pink",
+      "word2": "pinks",
+      "explanation": "Word2 (pinks) is longer than word1 (pink) and contains all letters from word1"
+    },
+    {
+      "word1": "plan",
+      "word2": "planer",
+      "explanation": "Word2 (planer) is longer than word1 (plan) and contains all letters from word1"
+    },
+    {
+      "word1": "plan",
+      "word2": "planned",
+      "explanation": "Word2 (planned) is longer than word1 (plan) and contains all letters from word1"
+    },
+    {
+      "word1": "plan",
+      "word2": "planning",
+      "explanation": "Word2 (planning) is longer than word1 (plan) and contains all letters from word1"
+    },
+    {
+      "word1": "plan",
+      "word2": "plans",
+      "explanation": "Word2 (plans) is longer than word1 (plan) and contains all letters from word1"
+    },
+    {
+      "word1": "play",
+      "word2": "played",
+      "explanation": "Word2 (played) is longer than word1 (play) and contains all letters from word1"
+    },
+    {
+      "word1": "play",
+      "word2": "player",
+      "explanation": "Word2 (player) is longer than word1 (play) and contains all letters from word1"
+    },
+    {
+      "word1": "play",
+      "word2": "playing",
+      "explanation": "Word2 (playing) is longer than word1 (play) and contains all letters from word1"
+    },
+    {
+      "word1": "play",
+      "word2": "plays",
+      "explanation": "Word2 (plays) is longer than word1 (play) and contains all letters from word1"
+    },
+    {
+      "word1": "plot",
+      "word2": "plots",
+      "explanation": "Word2 (plots) is longer than word1 (plot) and contains all letters from word1"
+    },
+    {
+      "word1": "plot",
+      "word2": "plotted",
+      "explanation": "Word2 (plotted) is longer than word1 (plot) and contains all letters from word1"
+    },
+    {
+      "word1": "plot",
+      "word2": "plotting",
+      "explanation": "Word2 (plotting) is longer than word1 (plot) and contains all letters from word1"
+    },
+    {
+      "word1": "plug",
+      "word2": "plugged",
+      "explanation": "Word2 (plugged) is longer than word1 (plug) and contains all letters from word1"
+    },
+    {
+      "word1": "plug",
+      "word2": "plugging",
+      "explanation": "Word2 (plugging) is longer than word1 (plug) and contains all letters from word1"
+    },
+    {
+      "word1": "plug",
+      "word2": "plugs",
+      "explanation": "Word2 (plugs) is longer than word1 (plug) and contains all letters from word1"
+    },
+    {
+      "word1": "poll",
+      "word2": "polled",
+      "explanation": "Word2 (polled) is longer than word1 (poll) and contains all letters from word1"
+    },
+    {
+      "word1": "poll",
+      "word2": "poller",
+      "explanation": "Word2 (poller) is longer than word1 (poll) and contains all letters from word1"
+    },
+    {
+      "word1": "poll",
+      "word2": "polling",
+      "explanation": "Word2 (polling) is longer than word1 (poll) and contains all letters from word1"
+    },
+    {
+      "word1": "poll",
+      "word2": "polls",
+      "explanation": "Word2 (polls) is longer than word1 (poll) and contains all letters from word1"
+    },
+    {
+      "word1": "pool",
+      "word2": "pooled",
+      "explanation": "Word2 (pooled) is longer than word1 (pool) and contains all letters from word1"
+    },
+    {
+      "word1": "pool",
+      "word2": "pooler",
+      "explanation": "Word2 (pooler) is longer than word1 (pool) and contains all letters from word1"
+    },
+    {
+      "word1": "pool",
+      "word2": "pooling",
+      "explanation": "Word2 (pooling) is longer than word1 (pool) and contains all letters from word1"
+    },
+    {
+      "word1": "pool",
+      "word2": "pools",
+      "explanation": "Word2 (pools) is longer than word1 (pool) and contains all letters from word1"
+    },
+    {
+      "word1": "poor",
+      "word2": "poorer",
+      "explanation": "Word2 (poorer) is longer than word1 (poor) and contains all letters from word1"
+    },
+    {
+      "word1": "poor",
+      "word2": "poorest",
+      "explanation": "Word2 (poorest) is longer than word1 (poor) and contains all letters from word1"
+    },
+    {
+      "word1": "port",
+      "word2": "ported",
+      "explanation": "Word2 (ported) is longer than word1 (port) and contains all letters from word1"
+    },
+    {
+      "word1": "port",
+      "word2": "porter",
+      "explanation": "Word2 (porter) is longer than word1 (port) and contains all letters from word1"
+    },
+    {
+      "word1": "port",
+      "word2": "porting",
+      "explanation": "Word2 (porting) is longer than word1 (port) and contains all letters from word1"
+    },
+    {
+      "word1": "port",
+      "word2": "ports",
+      "explanation": "Word2 (ports) is longer than word1 (port) and contains all letters from word1"
+    },
+    {
+      "word1": "post",
+      "word2": "posted",
+      "explanation": "Word2 (posted) is longer than word1 (post) and contains all letters from word1"
+    },
+    {
+      "word1": "post",
+      "word2": "poster",
+      "explanation": "Word2 (poster) is longer than word1 (post) and contains all letters from word1"
+    },
+    {
+      "word1": "post",
+      "word2": "posting",
+      "explanation": "Word2 (posting) is longer than word1 (post) and contains all letters from word1"
+    },
+    {
+      "word1": "post",
+      "word2": "posts",
+      "explanation": "Word2 (posts) is longer than word1 (post) and contains all letters from word1"
+    },
+    {
+      "word1": "pull",
+      "word2": "pulled",
+      "explanation": "Word2 (pulled) is longer than word1 (pull) and contains all letters from word1"
+    },
+    {
+      "word1": "pull",
+      "word2": "puller",
+      "explanation": "Word2 (puller) is longer than word1 (pull) and contains all letters from word1"
+    },
+    {
+      "word1": "pull",
+      "word2": "pulling",
+      "explanation": "Word2 (pulling) is longer than word1 (pull) and contains all letters from word1"
+    },
+    {
+      "word1": "pull",
+      "word2": "pulls",
+      "explanation": "Word2 (pulls) is longer than word1 (pull) and contains all letters from word1"
+    },
+    {
+      "word1": "pump",
+      "word2": "pumped",
+      "explanation": "Word2 (pumped) is longer than word1 (pump) and contains all letters from word1"
+    },
+    {
+      "word1": "pump",
+      "word2": "pumper",
+      "explanation": "Word2 (pumper) is longer than word1 (pump) and contains all letters from word1"
+    },
+    {
+      "word1": "pump",
+      "word2": "pumping",
+      "explanation": "Word2 (pumping) is longer than word1 (pump) and contains all letters from word1"
+    },
+    {
+      "word1": "pump",
+      "word2": "pumps",
+      "explanation": "Word2 (pumps) is longer than word1 (pump) and contains all letters from word1"
+    },
+    {
+      "word1": "pure",
+      "word2": "purer",
+      "explanation": "Word2 (purer) is longer than word1 (pure) and contains all letters from word1"
+    },
+    {
+      "word1": "pure",
+      "word2": "purest",
+      "explanation": "Word2 (purest) is longer than word1 (pure) and contains all letters from word1"
+    },
+    {
+      "word1": "push",
+      "word2": "pushed",
+      "explanation": "Word2 (pushed) is longer than word1 (push) and contains all letters from word1"
+    },
+    {
+      "word1": "push",
+      "word2": "pusher",
+      "explanation": "Word2 (pusher) is longer than word1 (push) and contains all letters from word1"
+    },
+    {
+      "word1": "push",
+      "word2": "pushing",
+      "explanation": "Word2 (pushing) is longer than word1 (push) and contains all letters from word1"
+    },
+    {
+      "word1": "race",
+      "word2": "raced",
+      "explanation": "Word2 (raced) is longer than word1 (race) and contains all letters from word1"
+    },
+    {
+      "word1": "race",
+      "word2": "racer",
+      "explanation": "Word2 (racer) is longer than word1 (race) and contains all letters from word1"
+    },
+    {
+      "word1": "race",
+      "word2": "races",
+      "explanation": "Word2 (races) is longer than word1 (race) and contains all letters from word1"
+    },
+    {
+      "word1": "rain",
+      "word2": "rained",
+      "explanation": "Word2 (rained) is longer than word1 (rain) and contains all letters from word1"
+    },
+    {
+      "word1": "rain",
+      "word2": "raining",
+      "explanation": "Word2 (raining) is longer than word1 (rain) and contains all letters from word1"
+    },
+    {
+      "word1": "rain",
+      "word2": "rains",
+      "explanation": "Word2 (rains) is longer than word1 (rain) and contains all letters from word1"
+    },
+    {
+      "word1": "rank",
+      "word2": "ranked",
+      "explanation": "Word2 (ranked) is longer than word1 (rank) and contains all letters from word1"
+    },
+    {
+      "word1": "rank",
+      "word2": "ranker",
+      "explanation": "Word2 (ranker) is longer than word1 (rank) and contains all letters from word1"
+    },
+    {
+      "word1": "rank",
+      "word2": "rankest",
+      "explanation": "Word2 (rankest) is longer than word1 (rank) and contains all letters from word1"
+    },
+    {
+      "word1": "rank",
+      "word2": "ranking",
+      "explanation": "Word2 (ranking) is longer than word1 (rank) and contains all letters from word1"
+    },
+    {
+      "word1": "rank",
+      "word2": "ranks",
+      "explanation": "Word2 (ranks) is longer than word1 (rank) and contains all letters from word1"
+    },
+    {
+      "word1": "rare",
+      "word2": "rared",
+      "explanation": "Word2 (rared) is longer than word1 (rare) and contains all letters from word1"
+    },
+    {
+      "word1": "rare",
+      "word2": "rarer",
+      "explanation": "Word2 (rarer) is longer than word1 (rare) and contains all letters from word1"
+    },
+    {
+      "word1": "rare",
+      "word2": "rares",
+      "explanation": "Word2 (rares) is longer than word1 (rare) and contains all letters from word1"
+    },
+    {
+      "word1": "rare",
+      "word2": "rarest",
+      "explanation": "Word2 (rarest) is longer than word1 (rare) and contains all letters from word1"
+    },
+    {
+      "word1": "rate",
+      "word2": "rated",
+      "explanation": "Word2 (rated) is longer than word1 (rate) and contains all letters from word1"
+    },
+    {
+      "word1": "rate",
+      "word2": "rater",
+      "explanation": "Word2 (rater) is longer than word1 (rate) and contains all letters from word1"
+    },
+    {
+      "word1": "rate",
+      "word2": "rates",
+      "explanation": "Word2 (rates) is longer than word1 (rate) and contains all letters from word1"
+    },
+    {
+      "word1": "read",
+      "word2": "reader",
+      "explanation": "Word2 (reader) is longer than word1 (read) and contains all letters from word1"
+    },
+    {
+      "word1": "read",
+      "word2": "reading",
+      "explanation": "Word2 (reading) is longer than word1 (read) and contains all letters from word1"
+    },
+    {
+      "word1": "read",
+      "word2": "reads",
+      "explanation": "Word2 (reads) is longer than word1 (read) and contains all letters from word1"
+    },
+    {
+      "word1": "real",
+      "word2": "realer",
+      "explanation": "Word2 (realer) is longer than word1 (real) and contains all letters from word1"
+    },
+    {
+      "word1": "real",
+      "word2": "realest",
+      "explanation": "Word2 (realest) is longer than word1 (real) and contains all letters from word1"
+    },
+    {
+      "word1": "real",
+      "word2": "reals",
+      "explanation": "Word2 (reals) is longer than word1 (real) and contains all letters from word1"
+    },
+    {
+      "word1": "rear",
+      "word2": "reared",
+      "explanation": "Word2 (reared) is longer than word1 (rear) and contains all letters from word1"
+    },
+    {
+      "word1": "rear",
+      "word2": "rearer",
+      "explanation": "Word2 (rearer) is longer than word1 (rear) and contains all letters from word1"
+    },
+    {
+      "word1": "rear",
+      "word2": "rearing",
+      "explanation": "Word2 (rearing) is longer than word1 (rear) and contains all letters from word1"
+    },
+    {
+      "word1": "rear",
+      "word2": "rears",
+      "explanation": "Word2 (rears) is longer than word1 (rear) and contains all letters from word1"
+    },
+    {
+      "word1": "rent",
+      "word2": "rented",
+      "explanation": "Word2 (rented) is longer than word1 (rent) and contains all letters from word1"
+    },
+    {
+      "word1": "rent",
+      "word2": "renter",
+      "explanation": "Word2 (renter) is longer than word1 (rent) and contains all letters from word1"
+    },
+    {
+      "word1": "rent",
+      "word2": "renting",
+      "explanation": "Word2 (renting) is longer than word1 (rent) and contains all letters from word1"
+    },
+    {
+      "word1": "rent",
+      "word2": "rents",
+      "explanation": "Word2 (rents) is longer than word1 (rent) and contains all letters from word1"
+    },
+    {
+      "word1": "rest",
+      "word2": "rested",
+      "explanation": "Word2 (rested) is longer than word1 (rest) and contains all letters from word1"
+    },
+    {
+      "word1": "rest",
+      "word2": "rester",
+      "explanation": "Word2 (rester) is longer than word1 (rest) and contains all letters from word1"
+    },
+    {
+      "word1": "rest",
+      "word2": "resting",
+      "explanation": "Word2 (resting) is longer than word1 (rest) and contains all letters from word1"
+    },
+    {
+      "word1": "rest",
+      "word2": "rests",
+      "explanation": "Word2 (rests) is longer than word1 (rest) and contains all letters from word1"
+    },
+    {
+      "word1": "rice",
+      "word2": "riced",
+      "explanation": "Word2 (riced) is longer than word1 (rice) and contains all letters from word1"
+    },
+    {
+      "word1": "rice",
+      "word2": "ricer",
+      "explanation": "Word2 (ricer) is longer than word1 (rice) and contains all letters from word1"
+    },
+    {
+      "word1": "rice",
+      "word2": "rices",
+      "explanation": "Word2 (rices) is longer than word1 (rice) and contains all letters from word1"
+    },
+    {
+      "word1": "rich",
+      "word2": "richer",
+      "explanation": "Word2 (richer) is longer than word1 (rich) and contains all letters from word1"
+    },
+    {
+      "word1": "rich",
+      "word2": "richest",
+      "explanation": "Word2 (richest) is longer than word1 (rich) and contains all letters from word1"
+    },
+    {
+      "word1": "ride",
+      "word2": "rider",
+      "explanation": "Word2 (rider) is longer than word1 (ride) and contains all letters from word1"
+    },
+    {
+      "word1": "ride",
+      "word2": "rides",
+      "explanation": "Word2 (rides) is longer than word1 (ride) and contains all letters from word1"
+    },
+    {
+      "word1": "ring",
+      "word2": "ringed",
+      "explanation": "Word2 (ringed) is longer than word1 (ring) and contains all letters from word1"
+    },
+    {
+      "word1": "ring",
+      "word2": "ringer",
+      "explanation": "Word2 (ringer) is longer than word1 (ring) and contains all letters from word1"
+    },
+    {
+      "word1": "ring",
+      "word2": "ringing",
+      "explanation": "Word2 (ringing) is longer than word1 (ring) and contains all letters from word1"
+    },
+    {
+      "word1": "ring",
+      "word2": "rings",
+      "explanation": "Word2 (rings) is longer than word1 (ring) and contains all letters from word1"
+    },
+    {
+      "word1": "rise",
+      "word2": "riser",
+      "explanation": "Word2 (riser) is longer than word1 (rise) and contains all letters from word1"
+    },
+    {
+      "word1": "rise",
+      "word2": "rises",
+      "explanation": "Word2 (rises) is longer than word1 (rise) and contains all letters from word1"
+    },
+    {
+      "word1": "risk",
+      "word2": "risked",
+      "explanation": "Word2 (risked) is longer than word1 (risk) and contains all letters from word1"
+    },
+    {
+      "word1": "risk",
+      "word2": "risker",
+      "explanation": "Word2 (risker) is longer than word1 (risk) and contains all letters from word1"
+    },
+    {
+      "word1": "risk",
+      "word2": "risking",
+      "explanation": "Word2 (risking) is longer than word1 (risk) and contains all letters from word1"
+    },
+    {
+      "word1": "risk",
+      "word2": "risks",
+      "explanation": "Word2 (risks) is longer than word1 (risk) and contains all letters from word1"
+    },
+    {
+      "word1": "road",
+      "word2": "roads",
+      "explanation": "Word2 (roads) is longer than word1 (road) and contains all letters from word1"
+    },
+    {
+      "word1": "rock",
+      "word2": "rocked",
+      "explanation": "Word2 (rocked) is longer than word1 (rock) and contains all letters from word1"
+    },
+    {
+      "word1": "rock",
+      "word2": "rocker",
+      "explanation": "Word2 (rocker) is longer than word1 (rock) and contains all letters from word1"
+    },
+    {
+      "word1": "rock",
+      "word2": "rocking",
+      "explanation": "Word2 (rocking) is longer than word1 (rock) and contains all letters from word1"
+    },
+    {
+      "word1": "rock",
+      "word2": "rocks",
+      "explanation": "Word2 (rocks) is longer than word1 (rock) and contains all letters from word1"
+    },
+    {
+      "word1": "role",
+      "word2": "roles",
+      "explanation": "Word2 (roles) is longer than word1 (role) and contains all letters from word1"
+    },
+    {
+      "word1": "roll",
+      "word2": "rolled",
+      "explanation": "Word2 (rolled) is longer than word1 (roll) and contains all letters from word1"
+    },
+    {
+      "word1": "roll",
+      "word2": "roller",
+      "explanation": "Word2 (roller) is longer than word1 (roll) and contains all letters from word1"
+    },
+    {
+      "word1": "roll",
+      "word2": "rolling",
+      "explanation": "Word2 (rolling) is longer than word1 (roll) and contains all letters from word1"
+    },
+    {
+      "word1": "roll",
+      "word2": "rolls",
+      "explanation": "Word2 (rolls) is longer than word1 (roll) and contains all letters from word1"
+    },
+    {
+      "word1": "room",
+      "word2": "roomed",
+      "explanation": "Word2 (roomed) is longer than word1 (room) and contains all letters from word1"
+    },
+    {
+      "word1": "room",
+      "word2": "roomer",
+      "explanation": "Word2 (roomer) is longer than word1 (room) and contains all letters from word1"
+    },
+    {
+      "word1": "room",
+      "word2": "rooming",
+      "explanation": "Word2 (rooming) is longer than word1 (room) and contains all letters from word1"
+    },
+    {
+      "word1": "room",
+      "word2": "rooms",
+      "explanation": "Word2 (rooms) is longer than word1 (room) and contains all letters from word1"
+    },
+    {
+      "word1": "root",
+      "word2": "rooted",
+      "explanation": "Word2 (rooted) is longer than word1 (root) and contains all letters from word1"
+    },
+    {
+      "word1": "root",
+      "word2": "rooter",
+      "explanation": "Word2 (rooter) is longer than word1 (root) and contains all letters from word1"
+    },
+    {
+      "word1": "root",
+      "word2": "rooting",
+      "explanation": "Word2 (rooting) is longer than word1 (root) and contains all letters from word1"
+    },
+    {
+      "word1": "root",
+      "word2": "roots",
+      "explanation": "Word2 (roots) is longer than word1 (root) and contains all letters from word1"
+    },
+    {
+      "word1": "rule",
+      "word2": "ruled",
+      "explanation": "Word2 (ruled) is longer than word1 (rule) and contains all letters from word1"
+    },
+    {
+      "word1": "rule",
+      "word2": "ruler",
+      "explanation": "Word2 (ruler) is longer than word1 (rule) and contains all letters from word1"
+    },
+    {
+      "word1": "rule",
+      "word2": "rules",
+      "explanation": "Word2 (rules) is longer than word1 (rule) and contains all letters from word1"
+    },
+    {
+      "word1": "safe",
+      "word2": "safer",
+      "explanation": "Word2 (safer) is longer than word1 (safe) and contains all letters from word1"
+    },
+    {
+      "word1": "safe",
+      "word2": "safes",
+      "explanation": "Word2 (safes) is longer than word1 (safe) and contains all letters from word1"
+    },
+    {
+      "word1": "safe",
+      "word2": "safest",
+      "explanation": "Word2 (safest) is longer than word1 (safe) and contains all letters from word1"
+    },
+    {
+      "word1": "sale",
+      "word2": "sales",
+      "explanation": "Word2 (sales) is longer than word1 (sale) and contains all letters from word1"
+    },
+    {
+      "word1": "salt",
+      "word2": "salted",
+      "explanation": "Word2 (salted) is longer than word1 (salt) and contains all letters from word1"
+    },
+    {
+      "word1": "salt",
+      "word2": "salter",
+      "explanation": "Word2 (salter) is longer than word1 (salt) and contains all letters from word1"
+    },
+    {
+      "word1": "salt",
+      "word2": "saltest",
+      "explanation": "Word2 (saltest) is longer than word1 (salt) and contains all letters from word1"
+    },
+    {
+      "word1": "salt",
+      "word2": "salting",
+      "explanation": "Word2 (salting) is longer than word1 (salt) and contains all letters from word1"
+    },
+    {
+      "word1": "salt",
+      "word2": "salts",
+      "explanation": "Word2 (salts) is longer than word1 (salt) and contains all letters from word1"
+    },
+    {
+      "word1": "save",
+      "word2": "saved",
+      "explanation": "Word2 (saved) is longer than word1 (save) and contains all letters from word1"
+    },
+    {
+      "word1": "save",
+      "word2": "saver",
+      "explanation": "Word2 (saver) is longer than word1 (save) and contains all letters from word1"
+    },
+    {
+      "word1": "save",
+      "word2": "saves",
+      "explanation": "Word2 (saves) is longer than word1 (save) and contains all letters from word1"
+    },
+    {
+      "word1": "seat",
+      "word2": "seated",
+      "explanation": "Word2 (seated) is longer than word1 (seat) and contains all letters from word1"
+    },
+    {
+      "word1": "seat",
+      "word2": "seater",
+      "explanation": "Word2 (seater) is longer than word1 (seat) and contains all letters from word1"
+    },
+    {
+      "word1": "seat",
+      "word2": "seating",
+      "explanation": "Word2 (seating) is longer than word1 (seat) and contains all letters from word1"
+    },
+    {
+      "word1": "seat",
+      "word2": "seats",
+      "explanation": "Word2 (seats) is longer than word1 (seat) and contains all letters from word1"
+    },
+    {
+      "word1": "seek",
+      "word2": "seeker",
+      "explanation": "Word2 (seeker) is longer than word1 (seek) and contains all letters from word1"
+    },
+    {
+      "word1": "seek",
+      "word2": "seeking",
+      "explanation": "Word2 (seeking) is longer than word1 (seek) and contains all letters from word1"
+    },
+    {
+      "word1": "seek",
+      "word2": "seeks",
+      "explanation": "Word2 (seeks) is longer than word1 (seek) and contains all letters from word1"
+    },
+    {
+      "word1": "seem",
+      "word2": "seemed",
+      "explanation": "Word2 (seemed) is longer than word1 (seem) and contains all letters from word1"
+    },
+    {
+      "word1": "seem",
+      "word2": "seemer",
+      "explanation": "Word2 (seemer) is longer than word1 (seem) and contains all letters from word1"
+    },
+    {
+      "word1": "seem",
+      "word2": "seeming",
+      "explanation": "Word2 (seeming) is longer than word1 (seem) and contains all letters from word1"
+    },
+    {
+      "word1": "seem",
+      "word2": "seems",
+      "explanation": "Word2 (seems) is longer than word1 (seem) and contains all letters from word1"
+    },
+    {
+      "word1": "self",
+      "word2": "selfed",
+      "explanation": "Word2 (selfed) is longer than word1 (self) and contains all letters from word1"
+    },
+    {
+      "word1": "self",
+      "word2": "selfing",
+      "explanation": "Word2 (selfing) is longer than word1 (self) and contains all letters from word1"
+    },
+    {
+      "word1": "self",
+      "word2": "selfs",
+      "explanation": "Word2 (selfs) is longer than word1 (self) and contains all letters from word1"
+    },
+    {
+      "word1": "sell",
+      "word2": "seller",
+      "explanation": "Word2 (seller) is longer than word1 (sell) and contains all letters from word1"
+    },
+    {
+      "word1": "sell",
+      "word2": "selling",
+      "explanation": "Word2 (selling) is longer than word1 (sell) and contains all letters from word1"
+    },
+    {
+      "word1": "sell",
+      "word2": "sells",
+      "explanation": "Word2 (sells) is longer than word1 (sell) and contains all letters from word1"
+    },
+    {
+      "word1": "send",
+      "word2": "sended",
+      "explanation": "Word2 (sended) is longer than word1 (send) and contains all letters from word1"
+    },
+    {
+      "word1": "send",
+      "word2": "sender",
+      "explanation": "Word2 (sender) is longer than word1 (send) and contains all letters from word1"
+    },
+    {
+      "word1": "send",
+      "word2": "sending",
+      "explanation": "Word2 (sending) is longer than word1 (send) and contains all letters from word1"
+    },
+    {
+      "word1": "send",
+      "word2": "sends",
+      "explanation": "Word2 (sends) is longer than word1 (send) and contains all letters from word1"
+    },
+    {
+      "word1": "ship",
+      "word2": "shipped",
+      "explanation": "Word2 (shipped) is longer than word1 (ship) and contains all letters from word1"
+    },
+    {
+      "word1": "ship",
+      "word2": "shipping",
+      "explanation": "Word2 (shipping) is longer than word1 (ship) and contains all letters from word1"
+    },
+    {
+      "word1": "ship",
+      "word2": "ships",
+      "explanation": "Word2 (ships) is longer than word1 (ship) and contains all letters from word1"
+    },
+    {
+      "word1": "shop",
+      "word2": "shopped",
+      "explanation": "Word2 (shopped) is longer than word1 (shop) and contains all letters from word1"
+    },
+    {
+      "word1": "shop",
+      "word2": "shopping",
+      "explanation": "Word2 (shopping) is longer than word1 (shop) and contains all letters from word1"
+    },
+    {
+      "word1": "shop",
+      "word2": "shops",
+      "explanation": "Word2 (shops) is longer than word1 (shop) and contains all letters from word1"
+    },
+    {
+      "word1": "shot",
+      "word2": "shots",
+      "explanation": "Word2 (shots) is longer than word1 (shot) and contains all letters from word1"
+    },
+    {
+      "word1": "shot",
+      "word2": "shotted",
+      "explanation": "Word2 (shotted) is longer than word1 (shot) and contains all letters from word1"
+    },
+    {
+      "word1": "shot",
+      "word2": "shotting",
+      "explanation": "Word2 (shotting) is longer than word1 (shot) and contains all letters from word1"
+    },
+    {
+      "word1": "show",
+      "word2": "shower",
+      "explanation": "Word2 (shower) is longer than word1 (show) and contains all letters from word1"
+    },
+    {
+      "word1": "show",
+      "word2": "shows",
+      "explanation": "Word2 (shows) is longer than word1 (show) and contains all letters from word1"
+    },
+    {
+      "word1": "side",
+      "word2": "sided",
+      "explanation": "Word2 (sided) is longer than word1 (side) and contains all letters from word1"
+    },
+    {
+      "word1": "side",
+      "word2": "sides",
+      "explanation": "Word2 (sides) is longer than word1 (side) and contains all letters from word1"
+    },
+    {
+      "word1": "sign",
+      "word2": "signed",
+      "explanation": "Word2 (signed) is longer than word1 (sign) and contains all letters from word1"
+    },
+    {
+      "word1": "sign",
+      "word2": "signer",
+      "explanation": "Word2 (signer) is longer than word1 (sign) and contains all letters from word1"
+    },
+    {
+      "word1": "sign",
+      "word2": "signing",
+      "explanation": "Word2 (signing) is longer than word1 (sign) and contains all letters from word1"
+    },
+    {
+      "word1": "sign",
+      "word2": "signs",
+      "explanation": "Word2 (signs) is longer than word1 (sign) and contains all letters from word1"
+    },
+    {
+      "word1": "site",
+      "word2": "sited",
+      "explanation": "Word2 (sited) is longer than word1 (site) and contains all letters from word1"
+    },
+    {
+      "word1": "site",
+      "word2": "sites",
+      "explanation": "Word2 (sites) is longer than word1 (site) and contains all letters from word1"
+    },
+    {
+      "word1": "size",
+      "word2": "sized",
+      "explanation": "Word2 (sized) is longer than word1 (size) and contains all letters from word1"
+    },
+    {
+      "word1": "size",
+      "word2": "sizer",
+      "explanation": "Word2 (sizer) is longer than word1 (size) and contains all letters from word1"
+    },
+    {
+      "word1": "size",
+      "word2": "sizes",
+      "explanation": "Word2 (sizes) is longer than word1 (size) and contains all letters from word1"
+    },
+    {
+      "word1": "skin",
+      "word2": "skinned",
+      "explanation": "Word2 (skinned) is longer than word1 (skin) and contains all letters from word1"
+    },
+    {
+      "word1": "skin",
+      "word2": "skinning",
+      "explanation": "Word2 (skinning) is longer than word1 (skin) and contains all letters from word1"
+    },
+    {
+      "word1": "skin",
+      "word2": "skins",
+      "explanation": "Word2 (skins) is longer than word1 (skin) and contains all letters from word1"
+    },
+    {
+      "word1": "skip",
+      "word2": "skipped",
+      "explanation": "Word2 (skipped) is longer than word1 (skip) and contains all letters from word1"
+    },
+    {
+      "word1": "skip",
+      "word2": "skipping",
+      "explanation": "Word2 (skipping) is longer than word1 (skip) and contains all letters from word1"
+    },
+    {
+      "word1": "skip",
+      "word2": "skips",
+      "explanation": "Word2 (skips) is longer than word1 (skip) and contains all letters from word1"
+    },
+    {
+      "word1": "slot",
+      "word2": "slots",
+      "explanation": "Word2 (slots) is longer than word1 (slot) and contains all letters from word1"
+    },
+    {
+      "word1": "slot",
+      "word2": "slotted",
+      "explanation": "Word2 (slotted) is longer than word1 (slot) and contains all letters from word1"
+    },
+    {
+      "word1": "slot",
+      "word2": "slotting",
+      "explanation": "Word2 (slotting) is longer than word1 (slot) and contains all letters from word1"
+    },
+    {
+      "word1": "slow",
+      "word2": "slower",
+      "explanation": "Word2 (slower) is longer than word1 (slow) and contains all letters from word1"
+    },
+    {
+      "word1": "slow",
+      "word2": "slowest",
+      "explanation": "Word2 (slowest) is longer than word1 (slow) and contains all letters from word1"
+    },
+    {
+      "word1": "slow",
+      "word2": "slows",
+      "explanation": "Word2 (slows) is longer than word1 (slow) and contains all letters from word1"
+    },
+    {
+      "word1": "snow",
+      "word2": "snows",
+      "explanation": "Word2 (snows) is longer than word1 (snow) and contains all letters from word1"
+    },
+    {
+      "word1": "soft",
+      "word2": "softer",
+      "explanation": "Word2 (softer) is longer than word1 (soft) and contains all letters from word1"
+    },
+    {
+      "word1": "soft",
+      "word2": "softest",
+      "explanation": "Word2 (softest) is longer than word1 (soft) and contains all letters from word1"
+    },
+    {
+      "word1": "soft",
+      "word2": "softs",
+      "explanation": "Word2 (softs) is longer than word1 (soft) and contains all letters from word1"
+    },
+    {
+      "word1": "soil",
+      "word2": "soiled",
+      "explanation": "Word2 (soiled) is longer than word1 (soil) and contains all letters from word1"
+    },
+    {
+      "word1": "soil",
+      "word2": "soiling",
+      "explanation": "Word2 (soiling) is longer than word1 (soil) and contains all letters from word1"
+    },
+    {
+      "word1": "soil",
+      "word2": "soils",
+      "explanation": "Word2 (soils) is longer than word1 (soil) and contains all letters from word1"
+    },
+    {
+      "word1": "song",
+      "word2": "songs",
+      "explanation": "Word2 (songs) is longer than word1 (song) and contains all letters from word1"
+    },
+    {
+      "word1": "soon",
+      "word2": "sooner",
+      "explanation": "Word2 (sooner) is longer than word1 (soon) and contains all letters from word1"
+    },
+    {
+      "word1": "soon",
+      "word2": "soonest",
+      "explanation": "Word2 (soonest) is longer than word1 (soon) and contains all letters from word1"
+    },
+    {
+      "word1": "sort",
+      "word2": "sorted",
+      "explanation": "Word2 (sorted) is longer than word1 (sort) and contains all letters from word1"
+    },
+    {
+      "word1": "sort",
+      "word2": "sorter",
+      "explanation": "Word2 (sorter) is longer than word1 (sort) and contains all letters from word1"
+    },
+    {
+      "word1": "sort",
+      "word2": "sorting",
+      "explanation": "Word2 (sorting) is longer than word1 (sort) and contains all letters from word1"
+    },
+    {
+      "word1": "sort",
+      "word2": "sorts",
+      "explanation": "Word2 (sorts) is longer than word1 (sort) and contains all letters from word1"
+    },
+    {
+      "word1": "soul",
+      "word2": "souled",
+      "explanation": "Word2 (souled) is longer than word1 (soul) and contains all letters from word1"
+    },
+    {
+      "word1": "soul",
+      "word2": "souls",
+      "explanation": "Word2 (souls) is longer than word1 (soul) and contains all letters from word1"
+    },
+    {
+      "word1": "spam",
+      "word2": "spammed",
+      "explanation": "Word2 (spammed) is longer than word1 (spam) and contains all letters from word1"
+    },
+    {
+      "word1": "spam",
+      "word2": "spamming",
+      "explanation": "Word2 (spamming) is longer than word1 (spam) and contains all letters from word1"
+    },
+    {
+      "word1": "spam",
+      "word2": "spams",
+      "explanation": "Word2 (spams) is longer than word1 (spam) and contains all letters from word1"
+    },
+    {
+      "word1": "spot",
+      "word2": "spots",
+      "explanation": "Word2 (spots) is longer than word1 (spot) and contains all letters from word1"
+    },
+    {
+      "word1": "spot",
+      "word2": "spotted",
+      "explanation": "Word2 (spotted) is longer than word1 (spot) and contains all letters from word1"
+    },
+    {
+      "word1": "spot",
+      "word2": "spotting",
+      "explanation": "Word2 (spotting) is longer than word1 (spot) and contains all letters from word1"
+    },
+    {
+      "word1": "star",
+      "word2": "starer",
+      "explanation": "Word2 (starer) is longer than word1 (star) and contains all letters from word1"
+    },
+    {
+      "word1": "star",
+      "word2": "starred",
+      "explanation": "Word2 (starred) is longer than word1 (star) and contains all letters from word1"
+    },
+    {
+      "word1": "star",
+      "word2": "starring",
+      "explanation": "Word2 (starring) is longer than word1 (star) and contains all letters from word1"
+    },
+    {
+      "word1": "star",
+      "word2": "stars",
+      "explanation": "Word2 (stars) is longer than word1 (star) and contains all letters from word1"
+    },
+    {
+      "word1": "stay",
+      "word2": "stayed",
+      "explanation": "Word2 (stayed) is longer than word1 (stay) and contains all letters from word1"
+    },
+    {
+      "word1": "stay",
+      "word2": "staying",
+      "explanation": "Word2 (staying) is longer than word1 (stay) and contains all letters from word1"
+    },
+    {
+      "word1": "stay",
+      "word2": "stays",
+      "explanation": "Word2 (stays) is longer than word1 (stay) and contains all letters from word1"
+    },
+    {
+      "word1": "step",
+      "word2": "stepped",
+      "explanation": "Word2 (stepped) is longer than word1 (step) and contains all letters from word1"
+    },
+    {
+      "word1": "step",
+      "word2": "stepping",
+      "explanation": "Word2 (stepping) is longer than word1 (step) and contains all letters from word1"
+    },
+    {
+      "word1": "step",
+      "word2": "steps",
+      "explanation": "Word2 (steps) is longer than word1 (step) and contains all letters from word1"
+    },
+    {
+      "word1": "stop",
+      "word2": "stoper",
+      "explanation": "Word2 (stoper) is longer than word1 (stop) and contains all letters from word1"
+    },
+    {
+      "word1": "stop",
+      "word2": "stopped",
+      "explanation": "Word2 (stopped) is longer than word1 (stop) and contains all letters from word1"
+    },
+    {
+      "word1": "stop",
+      "word2": "stopping",
+      "explanation": "Word2 (stopping) is longer than word1 (stop) and contains all letters from word1"
+    },
+    {
+      "word1": "stop",
+      "word2": "stops",
+      "explanation": "Word2 (stops) is longer than word1 (stop) and contains all letters from word1"
+    },
+    {
+      "word1": "suit",
+      "word2": "suited",
+      "explanation": "Word2 (suited) is longer than word1 (suit) and contains all letters from word1"
+    },
+    {
+      "word1": "suit",
+      "word2": "suiter",
+      "explanation": "Word2 (suiter) is longer than word1 (suit) and contains all letters from word1"
+    },
+    {
+      "word1": "suit",
+      "word2": "suiting",
+      "explanation": "Word2 (suiting) is longer than word1 (suit) and contains all letters from word1"
+    },
+    {
+      "word1": "suit",
+      "word2": "suits",
+      "explanation": "Word2 (suits) is longer than word1 (suit) and contains all letters from word1"
+    },
+    {
+      "word1": "sure",
+      "word2": "surer",
+      "explanation": "Word2 (surer) is longer than word1 (sure) and contains all letters from word1"
+    },
+    {
+      "word1": "sure",
+      "word2": "surest",
+      "explanation": "Word2 (surest) is longer than word1 (sure) and contains all letters from word1"
+    },
+    {
+      "word1": "take",
+      "word2": "taken",
+      "explanation": "Word2 (taken) is longer than word1 (take) and contains all letters from word1"
+    },
+    {
+      "word1": "take",
+      "word2": "taker",
+      "explanation": "Word2 (taker) is longer than word1 (take) and contains all letters from word1"
+    },
+    {
+      "word1": "take",
+      "word2": "takes",
+      "explanation": "Word2 (takes) is longer than word1 (take) and contains all letters from word1"
+    },
+    {
+      "word1": "talk",
+      "word2": "talked",
+      "explanation": "Word2 (talked) is longer than word1 (talk) and contains all letters from word1"
+    },
+    {
+      "word1": "talk",
+      "word2": "talker",
+      "explanation": "Word2 (talker) is longer than word1 (talk) and contains all letters from word1"
+    },
+    {
+      "word1": "talk",
+      "word2": "talking",
+      "explanation": "Word2 (talking) is longer than word1 (talk) and contains all letters from word1"
+    },
+    {
+      "word1": "talk",
+      "word2": "talks",
+      "explanation": "Word2 (talks) is longer than word1 (talk) and contains all letters from word1"
+    },
+    {
+      "word1": "tank",
+      "word2": "tanked",
+      "explanation": "Word2 (tanked) is longer than word1 (tank) and contains all letters from word1"
+    },
+    {
+      "word1": "tank",
+      "word2": "tanker",
+      "explanation": "Word2 (tanker) is longer than word1 (tank) and contains all letters from word1"
+    },
+    {
+      "word1": "tank",
+      "word2": "tanking",
+      "explanation": "Word2 (tanking) is longer than word1 (tank) and contains all letters from word1"
+    },
+    {
+      "word1": "tank",
+      "word2": "tanks",
+      "explanation": "Word2 (tanks) is longer than word1 (tank) and contains all letters from word1"
+    },
+    {
+      "word1": "tape",
+      "word2": "taped",
+      "explanation": "Word2 (taped) is longer than word1 (tape) and contains all letters from word1"
+    },
+    {
+      "word1": "tape",
+      "word2": "taper",
+      "explanation": "Word2 (taper) is longer than word1 (tape) and contains all letters from word1"
+    },
+    {
+      "word1": "tape",
+      "word2": "tapes",
+      "explanation": "Word2 (tapes) is longer than word1 (tape) and contains all letters from word1"
+    },
+    {
+      "word1": "task",
+      "word2": "tasked",
+      "explanation": "Word2 (tasked) is longer than word1 (task) and contains all letters from word1"
+    },
+    {
+      "word1": "task",
+      "word2": "tasking",
+      "explanation": "Word2 (tasking) is longer than word1 (task) and contains all letters from word1"
+    },
+    {
+      "word1": "task",
+      "word2": "tasks",
+      "explanation": "Word2 (tasks) is longer than word1 (task) and contains all letters from word1"
+    },
+    {
+      "word1": "team",
+      "word2": "teamed",
+      "explanation": "Word2 (teamed) is longer than word1 (team) and contains all letters from word1"
+    },
+    {
+      "word1": "team",
+      "word2": "teaming",
+      "explanation": "Word2 (teaming) is longer than word1 (team) and contains all letters from word1"
+    },
+    {
+      "word1": "team",
+      "word2": "teams",
+      "explanation": "Word2 (teams) is longer than word1 (team) and contains all letters from word1"
+    },
+    {
+      "word1": "tech",
+      "word2": "teched",
+      "explanation": "Word2 (teched) is longer than word1 (tech) and contains all letters from word1"
+    },
+    {
+      "word1": "tech",
+      "word2": "techs",
+      "explanation": "Word2 (techs) is longer than word1 (tech) and contains all letters from word1"
+    },
+    {
+      "word1": "teen",
+      "word2": "teener",
+      "explanation": "Word2 (teener) is longer than word1 (teen) and contains all letters from word1"
+    },
+    {
+      "word1": "teen",
+      "word2": "teens",
+      "explanation": "Word2 (teens) is longer than word1 (teen) and contains all letters from word1"
+    },
+    {
+      "word1": "tell",
+      "word2": "teller",
+      "explanation": "Word2 (teller) is longer than word1 (tell) and contains all letters from word1"
+    },
+    {
+      "word1": "tell",
+      "word2": "telling",
+      "explanation": "Word2 (telling) is longer than word1 (tell) and contains all letters from word1"
+    },
+    {
+      "word1": "tell",
+      "word2": "tells",
+      "explanation": "Word2 (tells) is longer than word1 (tell) and contains all letters from word1"
+    },
+    {
+      "word1": "term",
+      "word2": "termed",
+      "explanation": "Word2 (termed) is longer than word1 (term) and contains all letters from word1"
+    },
+    {
+      "word1": "term",
+      "word2": "termer",
+      "explanation": "Word2 (termer) is longer than word1 (term) and contains all letters from word1"
+    },
+    {
+      "word1": "term",
+      "word2": "terming",
+      "explanation": "Word2 (terming) is longer than word1 (term) and contains all letters from word1"
+    },
+    {
+      "word1": "term",
+      "word2": "terms",
+      "explanation": "Word2 (terms) is longer than word1 (term) and contains all letters from word1"
+    },
+    {
+      "word1": "test",
+      "word2": "tested",
+      "explanation": "Word2 (tested) is longer than word1 (test) and contains all letters from word1"
+    },
+    {
+      "word1": "test",
+      "word2": "tester",
+      "explanation": "Word2 (tester) is longer than word1 (test) and contains all letters from word1"
+    },
+    {
+      "word1": "test",
+      "word2": "testing",
+      "explanation": "Word2 (testing) is longer than word1 (test) and contains all letters from word1"
+    },
+    {
+      "word1": "test",
+      "word2": "tests",
+      "explanation": "Word2 (tests) is longer than word1 (test) and contains all letters from word1"
+    },
+    {
+      "word1": "text",
+      "word2": "texts",
+      "explanation": "Word2 (texts) is longer than word1 (text) and contains all letters from word1"
+    },
+    {
+      "word1": "then",
+      "word2": "thens",
+      "explanation": "Word2 (thens) is longer than word1 (then) and contains all letters from word1"
+    },
+    {
+      "word1": "think",
+      "word2": "thinking",
+      "explanation": "Word2 (thinking) is longer than word1 (think) and contains all letters from word1"
+    },
+    {
+      "word1": "think",
+      "word2": "thinks",
+      "explanation": "Word2 (thinks) is longer than word1 (think) and contains all letters from word1"
+    },
+    {
+      "word1": "time",
+      "word2": "timed",
+      "explanation": "Word2 (timed) is longer than word1 (time) and contains all letters from word1"
+    },
+    {
+      "word1": "time",
+      "word2": "timer",
+      "explanation": "Word2 (timer) is longer than word1 (time) and contains all letters from word1"
+    },
+    {
+      "word1": "time",
+      "word2": "times",
+      "explanation": "Word2 (times) is longer than word1 (time) and contains all letters from word1"
+    },
+    {
+      "word1": "toll",
+      "word2": "tolled",
+      "explanation": "Word2 (tolled) is longer than word1 (toll) and contains all letters from word1"
+    },
+    {
+      "word1": "toll",
+      "word2": "toller",
+      "explanation": "Word2 (toller) is longer than word1 (toll) and contains all letters from word1"
+    },
+    {
+      "word1": "toll",
+      "word2": "tolling",
+      "explanation": "Word2 (tolling) is longer than word1 (toll) and contains all letters from word1"
+    },
+    {
+      "word1": "toll",
+      "word2": "tolls",
+      "explanation": "Word2 (tolls) is longer than word1 (toll) and contains all letters from word1"
+    },
+    {
+      "word1": "tool",
+      "word2": "tooled",
+      "explanation": "Word2 (tooled) is longer than word1 (tool) and contains all letters from word1"
+    },
+    {
+      "word1": "tool",
+      "word2": "tooler",
+      "explanation": "Word2 (tooler) is longer than word1 (tool) and contains all letters from word1"
+    },
+    {
+      "word1": "tool",
+      "word2": "tooling",
+      "explanation": "Word2 (tooling) is longer than word1 (tool) and contains all letters from word1"
+    },
+    {
+      "word1": "tool",
+      "word2": "tools",
+      "explanation": "Word2 (tools) is longer than word1 (tool) and contains all letters from word1"
+    },
+    {
+      "word1": "tour",
+      "word2": "toured",
+      "explanation": "Word2 (toured) is longer than word1 (tour) and contains all letters from word1"
+    },
+    {
+      "word1": "tour",
+      "word2": "tourer",
+      "explanation": "Word2 (tourer) is longer than word1 (tour) and contains all letters from word1"
+    },
+    {
+      "word1": "tour",
+      "word2": "touring",
+      "explanation": "Word2 (touring) is longer than word1 (tour) and contains all letters from word1"
+    },
+    {
+      "word1": "tour",
+      "word2": "tours",
+      "explanation": "Word2 (tours) is longer than word1 (tour) and contains all letters from word1"
+    },
+    {
+      "word1": "town",
+      "word2": "towns",
+      "explanation": "Word2 (towns) is longer than word1 (town) and contains all letters from word1"
+    },
+    {
+      "word1": "tree",
+      "word2": "treed",
+      "explanation": "Word2 (treed) is longer than word1 (tree) and contains all letters from word1"
+    },
+    {
+      "word1": "tree",
+      "word2": "trees",
+      "explanation": "Word2 (trees) is longer than word1 (tree) and contains all letters from word1"
+    },
+    {
+      "word1": "trip",
+      "word2": "tripped",
+      "explanation": "Word2 (tripped) is longer than word1 (trip) and contains all letters from word1"
+    },
+    {
+      "word1": "trip",
+      "word2": "tripping",
+      "explanation": "Word2 (tripping) is longer than word1 (trip) and contains all letters from word1"
+    },
+    {
+      "word1": "trip",
+      "word2": "trips",
+      "explanation": "Word2 (trips) is longer than word1 (trip) and contains all letters from word1"
+    },
+    {
+      "word1": "true",
+      "word2": "trued",
+      "explanation": "Word2 (trued) is longer than word1 (true) and contains all letters from word1"
+    },
+    {
+      "word1": "true",
+      "word2": "truer",
+      "explanation": "Word2 (truer) is longer than word1 (true) and contains all letters from word1"
+    },
+    {
+      "word1": "true",
+      "word2": "trues",
+      "explanation": "Word2 (trues) is longer than word1 (true) and contains all letters from word1"
+    },
+    {
+      "word1": "true",
+      "word2": "truest",
+      "explanation": "Word2 (truest) is longer than word1 (true) and contains all letters from word1"
+    },
+    {
+      "word1": "turn",
+      "word2": "turned",
+      "explanation": "Word2 (turned) is longer than word1 (turn) and contains all letters from word1"
+    },
+    {
+      "word1": "turn",
+      "word2": "turner",
+      "explanation": "Word2 (turner) is longer than word1 (turn) and contains all letters from word1"
+    },
+    {
+      "word1": "turn",
+      "word2": "turning",
+      "explanation": "Word2 (turning) is longer than word1 (turn) and contains all letters from word1"
+    },
+    {
+      "word1": "turn",
+      "word2": "turns",
+      "explanation": "Word2 (turns) is longer than word1 (turn) and contains all letters from word1"
+    },
+    {
+      "word1": "twin",
+      "word2": "twiner",
+      "explanation": "Word2 (twiner) is longer than word1 (twin) and contains all letters from word1"
+    },
+    {
+      "word1": "twin",
+      "word2": "twinned",
+      "explanation": "Word2 (twinned) is longer than word1 (twin) and contains all letters from word1"
+    },
+    {
+      "word1": "twin",
+      "word2": "twinning",
+      "explanation": "Word2 (twinning) is longer than word1 (twin) and contains all letters from word1"
+    },
+    {
+      "word1": "twin",
+      "word2": "twins",
+      "explanation": "Word2 (twins) is longer than word1 (twin) and contains all letters from word1"
+    },
+    {
+      "word1": "type",
+      "word2": "typed",
+      "explanation": "Word2 (typed) is longer than word1 (type) and contains all letters from word1"
+    },
+    {
+      "word1": "type",
+      "word2": "types",
+      "explanation": "Word2 (types) is longer than word1 (type) and contains all letters from word1"
+    },
+    {
+      "word1": "unit",
+      "word2": "uniter",
+      "explanation": "Word2 (uniter) is longer than word1 (unit) and contains all letters from word1"
+    },
+    {
+      "word1": "unit",
+      "word2": "units",
+      "explanation": "Word2 (units) is longer than word1 (unit) and contains all letters from word1"
+    },
+    {
+      "word1": "user",
+      "word2": "users",
+      "explanation": "Word2 (users) is longer than word1 (user) and contains all letters from word1"
+    },
+    {
+      "word1": "vary",
+      "word2": "varying",
+      "explanation": "Word2 (varying) is longer than word1 (vary) and contains all letters from word1"
+    },
+    {
+      "word1": "vice",
+      "word2": "viced",
+      "explanation": "Word2 (viced) is longer than word1 (vice) and contains all letters from word1"
+    },
+    {
+      "word1": "vice",
+      "word2": "vices",
+      "explanation": "Word2 (vices) is longer than word1 (vice) and contains all letters from word1"
+    },
+    {
+      "word1": "view",
+      "word2": "viewed",
+      "explanation": "Word2 (viewed) is longer than word1 (view) and contains all letters from word1"
+    },
+    {
+      "word1": "view",
+      "word2": "viewer",
+      "explanation": "Word2 (viewer) is longer than word1 (view) and contains all letters from word1"
+    },
+    {
+      "word1": "view",
+      "word2": "viewing",
+      "explanation": "Word2 (viewing) is longer than word1 (view) and contains all letters from word1"
+    },
+    {
+      "word1": "view",
+      "word2": "views",
+      "explanation": "Word2 (views) is longer than word1 (view) and contains all letters from word1"
+    },
+    {
+      "word1": "visa",
+      "word2": "visaed",
+      "explanation": "Word2 (visaed) is longer than word1 (visa) and contains all letters from word1"
+    },
+    {
+      "word1": "visa",
+      "word2": "visaing",
+      "explanation": "Word2 (visaing) is longer than word1 (visa) and contains all letters from word1"
+    },
+    {
+      "word1": "visa",
+      "word2": "visas",
+      "explanation": "Word2 (visas) is longer than word1 (visa) and contains all letters from word1"
+    },
+    {
+      "word1": "void",
+      "word2": "voided",
+      "explanation": "Word2 (voided) is longer than word1 (void) and contains all letters from word1"
+    },
+    {
+      "word1": "void",
+      "word2": "voider",
+      "explanation": "Word2 (voider) is longer than word1 (void) and contains all letters from word1"
+    },
+    {
+      "word1": "void",
+      "word2": "voiding",
+      "explanation": "Word2 (voiding) is longer than word1 (void) and contains all letters from word1"
+    },
+    {
+      "word1": "void",
+      "word2": "voids",
+      "explanation": "Word2 (voids) is longer than word1 (void) and contains all letters from word1"
+    },
+    {
+      "word1": "vote",
+      "word2": "voted",
+      "explanation": "Word2 (voted) is longer than word1 (vote) and contains all letters from word1"
+    },
+    {
+      "word1": "vote",
+      "word2": "voter",
+      "explanation": "Word2 (voter) is longer than word1 (vote) and contains all letters from word1"
+    },
+    {
+      "word1": "vote",
+      "word2": "votes",
+      "explanation": "Word2 (votes) is longer than word1 (vote) and contains all letters from word1"
+    },
+    {
+      "word1": "wait",
+      "word2": "waited",
+      "explanation": "Word2 (waited) is longer than word1 (wait) and contains all letters from word1"
+    },
+    {
+      "word1": "wait",
+      "word2": "waiter",
+      "explanation": "Word2 (waiter) is longer than word1 (wait) and contains all letters from word1"
+    },
+    {
+      "word1": "wait",
+      "word2": "waiting",
+      "explanation": "Word2 (waiting) is longer than word1 (wait) and contains all letters from word1"
+    },
+    {
+      "word1": "wait",
+      "word2": "waits",
+      "explanation": "Word2 (waits) is longer than word1 (wait) and contains all letters from word1"
+    },
+    {
+      "word1": "walk",
+      "word2": "walked",
+      "explanation": "Word2 (walked) is longer than word1 (walk) and contains all letters from word1"
+    },
+    {
+      "word1": "walk",
+      "word2": "walker",
+      "explanation": "Word2 (walker) is longer than word1 (walk) and contains all letters from word1"
+    },
+    {
+      "word1": "walk",
+      "word2": "walking",
+      "explanation": "Word2 (walking) is longer than word1 (walk) and contains all letters from word1"
+    },
+    {
+      "word1": "walk",
+      "word2": "walks",
+      "explanation": "Word2 (walks) is longer than word1 (walk) and contains all letters from word1"
+    },
+    {
+      "word1": "wall",
+      "word2": "walled",
+      "explanation": "Word2 (walled) is longer than word1 (wall) and contains all letters from word1"
+    },
+    {
+      "word1": "wall",
+      "word2": "walling",
+      "explanation": "Word2 (walling) is longer than word1 (wall) and contains all letters from word1"
+    },
+    {
+      "word1": "wall",
+      "word2": "walls",
+      "explanation": "Word2 (walls) is longer than word1 (wall) and contains all letters from word1"
+    },
+    {
+      "word1": "want",
+      "word2": "wanted",
+      "explanation": "Word2 (wanted) is longer than word1 (want) and contains all letters from word1"
+    },
+    {
+      "word1": "want",
+      "word2": "wanter",
+      "explanation": "Word2 (wanter) is longer than word1 (want) and contains all letters from word1"
+    },
+    {
+      "word1": "want",
+      "word2": "wanting",
+      "explanation": "Word2 (wanting) is longer than word1 (want) and contains all letters from word1"
+    },
+    {
+      "word1": "want",
+      "word2": "wants",
+      "explanation": "Word2 (wants) is longer than word1 (want) and contains all letters from word1"
+    },
+    {
+      "word1": "warm",
+      "word2": "warmed",
+      "explanation": "Word2 (warmed) is longer than word1 (warm) and contains all letters from word1"
+    },
+    {
+      "word1": "warm",
+      "word2": "warmer",
+      "explanation": "Word2 (warmer) is longer than word1 (warm) and contains all letters from word1"
+    },
+    {
+      "word1": "warm",
+      "word2": "warmest",
+      "explanation": "Word2 (warmest) is longer than word1 (warm) and contains all letters from word1"
+    },
+    {
+      "word1": "warm",
+      "word2": "warming",
+      "explanation": "Word2 (warming) is longer than word1 (warm) and contains all letters from word1"
+    },
+    {
+      "word1": "warm",
+      "word2": "warms",
+      "explanation": "Word2 (warms) is longer than word1 (warm) and contains all letters from word1"
+    },
+    {
+      "word1": "wave",
+      "word2": "waved",
+      "explanation": "Word2 (waved) is longer than word1 (wave) and contains all letters from word1"
+    },
+    {
+      "word1": "wave",
+      "word2": "waver",
+      "explanation": "Word2 (waver) is longer than word1 (wave) and contains all letters from word1"
+    },
+    {
+      "word1": "wave",
+      "word2": "waves",
+      "explanation": "Word2 (waves) is longer than word1 (wave) and contains all letters from word1"
+    },
+    {
+      "word1": "wear",
+      "word2": "wearer",
+      "explanation": "Word2 (wearer) is longer than word1 (wear) and contains all letters from word1"
+    },
+    {
+      "word1": "wear",
+      "word2": "wearing",
+      "explanation": "Word2 (wearing) is longer than word1 (wear) and contains all letters from word1"
+    },
+    {
+      "word1": "wear",
+      "word2": "wears",
+      "explanation": "Word2 (wears) is longer than word1 (wear) and contains all letters from word1"
+    },
+    {
+      "word1": "week",
+      "word2": "weeks",
+      "explanation": "Word2 (weeks) is longer than word1 (week) and contains all letters from word1"
+    },
+    {
+      "word1": "well",
+      "word2": "welled",
+      "explanation": "Word2 (welled) is longer than word1 (well) and contains all letters from word1"
+    },
+    {
+      "word1": "well",
+      "word2": "welling",
+      "explanation": "Word2 (welling) is longer than word1 (well) and contains all letters from word1"
+    },
+    {
+      "word1": "well",
+      "word2": "wells",
+      "explanation": "Word2 (wells) is longer than word1 (well) and contains all letters from word1"
+    },
+    {
+      "word1": "west",
+      "word2": "wester",
+      "explanation": "Word2 (wester) is longer than word1 (west) and contains all letters from word1"
+    },
+    {
+      "word1": "west",
+      "word2": "westing",
+      "explanation": "Word2 (westing) is longer than word1 (west) and contains all letters from word1"
+    },
+    {
+      "word1": "west",
+      "word2": "wests",
+      "explanation": "Word2 (wests) is longer than word1 (west) and contains all letters from word1"
+    },
+    {
+      "word1": "what",
+      "word2": "whats",
+      "explanation": "Word2 (whats) is longer than word1 (what) and contains all letters from word1"
+    },
+    {
+      "word1": "when",
+      "word2": "whens",
+      "explanation": "Word2 (whens) is longer than word1 (when) and contains all letters from word1"
+    },
+    {
+      "word1": "wide",
+      "word2": "wider",
+      "explanation": "Word2 (wider) is longer than word1 (wide) and contains all letters from word1"
+    },
+    {
+      "word1": "wide",
+      "word2": "wides",
+      "explanation": "Word2 (wides) is longer than word1 (wide) and contains all letters from word1"
+    },
+    {
+      "word1": "wide",
+      "word2": "widest",
+      "explanation": "Word2 (widest) is longer than word1 (wide) and contains all letters from word1"
+    },
+    {
+      "word1": "wife",
+      "word2": "wifed",
+      "explanation": "Word2 (wifed) is longer than word1 (wife) and contains all letters from word1"
+    },
+    {
+      "word1": "wife",
+      "word2": "wifes",
+      "explanation": "Word2 (wifes) is longer than word1 (wife) and contains all letters from word1"
+    },
+    {
+      "word1": "wild",
+      "word2": "wilded",
+      "explanation": "Word2 (wilded) is longer than word1 (wild) and contains all letters from word1"
+    },
+    {
+      "word1": "wild",
+      "word2": "wilder",
+      "explanation": "Word2 (wilder) is longer than word1 (wild) and contains all letters from word1"
+    },
+    {
+      "word1": "wild",
+      "word2": "wildest",
+      "explanation": "Word2 (wildest) is longer than word1 (wild) and contains all letters from word1"
+    },
+    {
+      "word1": "wild",
+      "word2": "wilding",
+      "explanation": "Word2 (wilding) is longer than word1 (wild) and contains all letters from word1"
+    },
+    {
+      "word1": "wild",
+      "word2": "wilds",
+      "explanation": "Word2 (wilds) is longer than word1 (wild) and contains all letters from word1"
+    },
+    {
+      "word1": "will",
+      "word2": "willed",
+      "explanation": "Word2 (willed) is longer than word1 (will) and contains all letters from word1"
+    },
+    {
+      "word1": "will",
+      "word2": "willer",
+      "explanation": "Word2 (willer) is longer than word1 (will) and contains all letters from word1"
+    },
+    {
+      "word1": "will",
+      "word2": "willing",
+      "explanation": "Word2 (willing) is longer than word1 (will) and contains all letters from word1"
+    },
+    {
+      "word1": "will",
+      "word2": "wills",
+      "explanation": "Word2 (wills) is longer than word1 (will) and contains all letters from word1"
+    },
+    {
+      "word1": "wind",
+      "word2": "winded",
+      "explanation": "Word2 (winded) is longer than word1 (wind) and contains all letters from word1"
+    },
+    {
+      "word1": "wind",
+      "word2": "winder",
+      "explanation": "Word2 (winder) is longer than word1 (wind) and contains all letters from word1"
+    },
+    {
+      "word1": "wind",
+      "word2": "winding",
+      "explanation": "Word2 (winding) is longer than word1 (wind) and contains all letters from word1"
+    },
+    {
+      "word1": "wind",
+      "word2": "winds",
+      "explanation": "Word2 (winds) is longer than word1 (wind) and contains all letters from word1"
+    },
+    {
+      "word1": "wine",
+      "word2": "wined",
+      "explanation": "Word2 (wined) is longer than word1 (wine) and contains all letters from word1"
+    },
+    {
+      "word1": "wine",
+      "word2": "wines",
+      "explanation": "Word2 (wines) is longer than word1 (wine) and contains all letters from word1"
+    },
+    {
+      "word1": "wire",
+      "word2": "wired",
+      "explanation": "Word2 (wired) is longer than word1 (wire) and contains all letters from word1"
+    },
+    {
+      "word1": "wire",
+      "word2": "wirer",
+      "explanation": "Word2 (wirer) is longer than word1 (wire) and contains all letters from word1"
+    },
+    {
+      "word1": "wire",
+      "word2": "wires",
+      "explanation": "Word2 (wires) is longer than word1 (wire) and contains all letters from word1"
+    },
+    {
+      "word1": "wish",
+      "word2": "wished",
+      "explanation": "Word2 (wished) is longer than word1 (wish) and contains all letters from word1"
+    },
+    {
+      "word1": "wish",
+      "word2": "wisher",
+      "explanation": "Word2 (wisher) is longer than word1 (wish) and contains all letters from word1"
+    },
+    {
+      "word1": "wish",
+      "word2": "wishing",
+      "explanation": "Word2 (wishing) is longer than word1 (wish) and contains all letters from word1"
+    },
+    {
+      "word1": "with",
+      "word2": "withed",
+      "explanation": "Word2 (withed) is longer than word1 (with) and contains all letters from word1"
+    },
+    {
+      "word1": "with",
+      "word2": "wither",
+      "explanation": "Word2 (wither) is longer than word1 (with) and contains all letters from word1"
+    },
+    {
+      "word1": "with",
+      "word2": "withing",
+      "explanation": "Word2 (withing) is longer than word1 (with) and contains all letters from word1"
+    },
+    {
+      "word1": "wood",
+      "word2": "wooded",
+      "explanation": "Word2 (wooded) is longer than word1 (wood) and contains all letters from word1"
+    },
+    {
+      "word1": "wood",
+      "word2": "wooding",
+      "explanation": "Word2 (wooding) is longer than word1 (wood) and contains all letters from word1"
+    },
+    {
+      "word1": "wood",
+      "word2": "woods",
+      "explanation": "Word2 (woods) is longer than word1 (wood) and contains all letters from word1"
+    },
+    {
+      "word1": "word",
+      "word2": "worded",
+      "explanation": "Word2 (worded) is longer than word1 (word) and contains all letters from word1"
+    },
+    {
+      "word1": "word",
+      "word2": "wording",
+      "explanation": "Word2 (wording) is longer than word1 (word) and contains all letters from word1"
+    },
+    {
+      "word1": "word",
+      "word2": "words",
+      "explanation": "Word2 (words) is longer than word1 (word) and contains all letters from word1"
+    },
+    {
+      "word1": "work",
+      "word2": "worked",
+      "explanation": "Word2 (worked) is longer than word1 (work) and contains all letters from word1"
+    },
+    {
+      "word1": "work",
+      "word2": "worker",
+      "explanation": "Word2 (worker) is longer than word1 (work) and contains all letters from word1"
+    },
+    {
+      "word1": "work",
+      "word2": "working",
+      "explanation": "Word2 (working) is longer than word1 (work) and contains all letters from word1"
+    },
+    {
+      "word1": "work",
+      "word2": "works",
+      "explanation": "Word2 (works) is longer than word1 (work) and contains all letters from word1"
+    },
+    {
+      "word1": "yeah",
+      "word2": "yeahs",
+      "explanation": "Word2 (yeahs) is longer than word1 (yeah) and contains all letters from word1"
+    },
+    {
+      "word1": "year",
+      "word2": "years",
+      "explanation": "Word2 (years) is longer than word1 (year) and contains all letters from word1"
+    },
+    {
+      "word1": "your",
+      "word2": "yours",
+      "explanation": "Word2 (yours) is longer than word1 (your) and contains all letters from word1"
+    },
+    {
+      "word1": "zero",
+      "word2": "zeroed",
+      "explanation": "Word2 (zeroed) is longer than word1 (zero) and contains all letters from word1"
+    },
+    {
+      "word1": "zero",
+      "word2": "zeroing",
+      "explanation": "Word2 (zeroing) is longer than word1 (zero) and contains all letters from word1"
+    },
+    {
+      "word1": "zero",
+      "word2": "zeros",
+      "explanation": "Word2 (zeros) is longer than word1 (zero) and contains all letters from word1"
+    },
+    {
+      "word1": "zone",
+      "word2": "zoned",
+      "explanation": "Word2 (zoned) is longer than word1 (zone) and contains all letters from word1"
+    },
+    {
+      "word1": "zone",
+      "word2": "zoner",
+      "explanation": "Word2 (zoner) is longer than word1 (zone) and contains all letters from word1"
+    },
+    {
+      "word1": "zone",
+      "word2": "zones",
+      "explanation": "Word2 (zones) is longer than word1 (zone) and contains all letters from word1"
+    },
+    {
+      "word1": "zoom",
+      "word2": "zoomed",
+      "explanation": "Word2 (zoomed) is longer than word1 (zoom) and contains all letters from word1"
+    },
+    {
+      "word1": "zoom",
+      "word2": "zooming",
+      "explanation": "Word2 (zooming) is longer than word1 (zoom) and contains all letters from word1"
+    },
+    {
+      "word1": "zoom",
+      "word2": "zooms",
+      "explanation": "Word2 (zooms) is longer than word1 (zoom) and contains all letters from word1"
     }
   ]
 }
