@@ -17,15 +17,29 @@
       "word2": "snipes",
       "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
     },
-
     {
       "word1": "mess",
       "word2": "messenger",
       "explanation": "Different stems ('mess' vs. 'messenger') with distinct meanings"
     },
     {
+      "word1": "mess",
+      "word2": "messengers",
+      "explanation": "Different stems ('mess' vs. 'messenger') with distinct meanings"
+    },
+    {
       "word1": "barb",
       "word2": "barber",
+      "explanation": "Different stems ('barb' vs. 'barber') with distinct meanings"
+    },
+    {
+      "word1": "barb",
+      "word2": "barbers",
+      "explanation": "Different stems ('barb' vs. 'barber') with distinct meanings"
+    },
+    {
+      "word1": "barbs",
+      "word2": "barbers",
       "explanation": "Different stems ('barb' vs. 'barber') with distinct meanings"
     },
     {

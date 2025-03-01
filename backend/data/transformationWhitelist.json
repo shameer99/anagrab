@@ -11,9 +11,29 @@
       "explanation": "Different stems ('barb' vs. 'barber') with distinct meanings"
     },
     {
+      "word1": "barb",
+      "word2": "barbers",
+      "explanation": "Different stems ('barb' vs. 'barbers') with distinct meanings"
+    },
+    {
+      "word1": "barbs",
+      "word2": "barbers",
+      "explanation": "Different stems ('barb' vs. 'barbers') with distinct meanings"
+    },
+    {
       "word1": "live",
       "word2": "liver",
       "explanation": "Different stems ('live' vs. 'liver') with distinct meanings"
+    },
+    {
+      "word1": "live",
+      "word2": "livers",
+      "explanation": "Different stems ('live' vs. 'livers') with distinct meanings"
+    },
+    {
+      "word1": "lives",
+      "word2": "livers",
+      "explanation": "Different stems ('live' vs. 'livers') with distinct meanings"
     },
     {
       "word1": "ling",
@@ -21,9 +41,29 @@
       "explanation": "Different stems ('ling' vs. 'linger') with distinct meanings"
     },
     {
+      "word1": "ling",
+      "word2": "lingers",
+      "explanation": "Different stems ('ling' vs. 'lingers') with distinct meanings"
+    },
+    {
+      "word1": "lings",
+      "word2": "lingers",
+      "explanation": "Different stems ('ling' vs. 'lingers') with distinct meanings"
+    },
+    {
       "word1": "flow",
       "word2": "flower",
       "explanation": "Stems differ ('flow' vs. 'flower') with clear meaning shift"
+    },
+    {
+      "word1": "flow",
+      "word2": "flowers",
+      "explanation": "Stems differ ('flow' vs. 'flowers') with clear meaning shift"
+    },
+    {
+      "word1": "flows",
+      "word2": "flowers",
+      "explanation": "Stems differ ('flow' vs. 'flowers') with clear meaning shift"
     }
   ]
 }
