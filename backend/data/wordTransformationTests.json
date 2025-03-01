@@ -200,11 +200,7 @@
       "word2": "bring",
       "explanation": "Stems differ ('ring' vs. 'bring') with unrelated meanings"
     },
-    {
-      "word1": "line",
-      "word2": "liner",
-      "explanation": "Different stems with meaningful change"
-    },
+
     {
       "word1": "word",
       "word2": "sword",
@@ -341,6 +337,11 @@
       "word1": "act",
       "word2": "action",
       "explanation": "Same stem ('act'), adds 'ion' (missing from suffixes)"
+    },
+    {
+      "word1": "line",
+      "word2": "liner",
+      "explanation": "Different stems with meaningful change"
     },
     {
       "word1": "create",
