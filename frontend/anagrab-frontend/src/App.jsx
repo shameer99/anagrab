@@ -2,7 +2,6 @@ import './App.css';
 import { useSocket } from './hooks/useSocket';
 import { JoinForm } from './components/JoinForm';
 import { GameControls } from './components/GameControls';
-import { LetterPot } from './components/LetterPot';
 import { WordForm } from './components/WordForm';
 import { PlayersList } from './components/PlayersList';
 import ErrorMessage from './components/ErrorMessage';
@@ -73,9 +72,8 @@ function App() {
       {/* Alphabet display for all 26 letters */}
       <AlphabetDisplay letters={gameState?.pot || []} />
 
-      {/* Game board with letter pot and word form */}
+      {/* Game board with word form only */}
       <div className="game-board">
-        <LetterPot letters={gameState?.pot || []} />
         <WordForm onClaimWord={claimWord} />
       </div>
 

@@ -180,10 +180,9 @@
 
 .game-board {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
+  justify-content: center;
   padding: 10px 0;
+  width: 100%;
 }
 
 .game-title {
@@ -465,6 +464,28 @@ h3 {
     padding: 10px;
     font-size: 14px;
   }
+  
+  .alphabet-letter {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8em;
+  }
+  
+  .letter-count {
+    width: 14px;
+    height: 14px;
+    font-size: 0.6em;
+    top: -4px;
+    right: -4px;
+  }
+  
+  .alphabet-display {
+    gap: 3px;
+  }
+  
+  .alphabet-row {
+    gap: 3px;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -494,11 +515,20 @@ body {
 /* Alphabet Display Styles */
 .alphabet-display {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
   justify-content: center;
   padding: 10px;
   margin-bottom: 15px;
+  width: 100%;
+}
+
+.alphabet-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
 }
 
 .alphabet-letter {
@@ -511,6 +541,7 @@ body {
   font-weight: bold;
   font-size: 1.1em;
   position: relative;
+  transition: all 0.2s ease;
 }
 
 .alphabet-letter.available {
@@ -627,6 +658,11 @@ body {
   }
   
   .alphabet-display {
+    gap: 4px;
+    padding: 5px;
+  }
+  
+  .alphabet-row {
     gap: 4px;
   }
   
