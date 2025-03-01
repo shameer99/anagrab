@@ -248,7 +248,7 @@ router.get('/test-cases', (req, res) => {
 
       <div class="test-cases">
         <div class="test-section">
-          <h2>Allowed Transformations</h2>
+          <h2>Allowed Transformations (!sharesSameRoot)</h2>
           <p>These word pairs should be considered to have <strong>different</strong> roots, so they can both be valid words in the game. The algorithm should return <strong>false</strong>.</p>
           
           ${evaluatedAllowed
@@ -277,7 +277,7 @@ router.get('/test-cases', (req, res) => {
         </div>
         
         <div class="test-section">
-          <h2>Disallowed Transformations</h2>
+          <h2>Disallowed Transformations (sharesSameRoot)</h2>
           <p>These word pairs should be considered to share the <strong>same</strong> root, so they cannot both be valid words in the game. The algorithm should return <strong>true</strong>.</p>
           
           ${evaluatedDisallowed
