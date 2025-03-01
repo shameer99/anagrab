@@ -37,6 +37,7 @@ export const WordForm = ({ onClaimWord }) => {
           autoCorrect="off"
           spellCheck="false"
           disabled={isSubmitting}
+          autoFocus
         />
         {wordInput && !isSubmitting && (
           <button
