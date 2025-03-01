@@ -40,6 +40,31 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Add meta viewport tag to prevent zooming on mobile
+  useEffect(() => {
+    // Check if there's an existing viewport meta tag
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+
+    if (!viewportMeta) {
+      // Create a new viewport meta tag if it doesn't exist
+      viewportMeta = document.createElement('meta');
+      viewportMeta.name = 'viewport';
+      document.head.appendChild(viewportMeta);
+    }
+
+    // Set the content attribute to prevent zooming
+    viewportMeta.content =
+      'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+
+    // Cleanup function (optional)
+    return () => {
+      // If you want to restore zooming when component unmounts
+      if (viewportMeta) {
+        viewportMeta.content = 'width=device-width, initial-scale=1.0';
+      }
+    };
+  }, []);
+
   if (!isJoined) {
     return <JoinForm onJoin={joinGame} />;
   }
