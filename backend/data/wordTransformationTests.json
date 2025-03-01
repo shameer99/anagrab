@@ -1,6 +1,31 @@
 {
   "allowed": [
     {
+      "word1": "mess",
+      "word2": "messenger",
+      "explanation": "Different stems ('mess' vs. 'messenger') with distinct meanings"
+    },
+    {
+      "word1": "barb",
+      "word2": "barber",
+      "explanation": "Different stems ('barb' vs. 'barber') with distinct meanings"
+    },
+    {
+      "word1": "live",
+      "word2": "liver",
+      "explanation": "Different stems ('live' vs. 'liver') with distinct meanings"
+    },
+    {
+      "word1": "ling",
+      "word2": "linger",
+      "explanation": "Different stems ('ling' vs. 'linger') with distinct meanings"
+    },
+    {
+      "word1": "plan",
+      "word2": "planet",
+      "explanation": "Different stems ('plan' vs. 'planet') with distinct meanings"
+    },
+    {
       "word1": "seer",
       "word2": "steer",
       "explanation": "Different stems ('seer' vs. 'steer') with distinct meanings"
@@ -222,6 +247,236 @@
     }
   ],
   "disallowed": [
+    {
+      "word1": "walk",
+      "word2": "walked",
+      "explanation": "Same stem ('walk'), adds 'ed' for past tense"
+    },
+    {
+      "word1": "help",
+      "word2": "helping",
+      "explanation": "Same stem ('help'), adds 'ing' for gerund"
+    },
+    {
+      "word1": "build",
+      "word2": "building",
+      "explanation": "Same stem ('build'), adds 'ing' for gerund or noun"
+    },
+    {
+      "word1": "teach",
+      "word2": "teacher",
+      "explanation": "Same stem ('teach'), adds 'er' for agent noun"
+    },
+    {
+      "word1": "paint",
+      "word2": "painter",
+      "explanation": "Same stem ('paint'), adds 'er' for agent noun"
+    },
+    {
+      "word1": "dance",
+      "word2": "dancing",
+      "explanation": "Same stem ('dance'), adds 'ing' for gerund"
+    },
+    {
+      "word1": "write",
+      "word2": "written",
+      "explanation": "Same stem ('write'), adds 'en' for past participle"
+    },
+    {
+      "word1": "cook",
+      "word2": "cooker",
+      "explanation": "Same stem ('cook'), adds 'er' for agent or device"
+    },
+    {
+      "word1": "swim",
+      "word2": "swimming",
+      "explanation": "Same stem ('swim'), adds 'ing' for gerund"
+    },
+    {
+      "word1": "drive",
+      "word2": "driver",
+      "explanation": "Same stem ('drive'), adds 'er' for agent noun"
+    },
+    {
+      "word1": "clean",
+      "word2": "cleaner",
+      "explanation": "Same stem ('clean'), adds 'er' for agent noun"
+    },
+    {
+      "word1": "work",
+      "word2": "worker",
+      "explanation": "Same stem ('work'), adds 'er' for agent noun"
+    },
+    {
+      "word1": "jump",
+      "word2": "jumping",
+      "explanation": "Same stem ('jump'), adds 'ing' for gerund"
+    },
+    {
+      "word1": "play",
+      "word2": "playing",
+      "explanation": "Same stem ('play'), adds 'ing' for gerund"
+    },
+    {
+      "word1": "hope",
+      "word2": "hopeful",
+      "explanation": "Same stem ('hope'), adds 'ful' for adjective"
+    },
+    {
+      "word1": "fear",
+      "word2": "fearless",
+      "explanation": "Same stem ('fear'), adds 'less' for adjective"
+    },
+    {
+      "word1": "kind",
+      "word2": "kindness",
+      "explanation": "Same stem ('kind'), adds 'ness' for noun"
+    },
+    {
+      "word1": "move",
+      "word2": "movement",
+      "explanation": "Same stem ('move'), adds 'ment' for noun"
+    },
+    {
+      "word1": "act",
+      "word2": "action",
+      "explanation": "Same stem ('act'), adds 'ion' (missing from suffixes)"
+    },
+    {
+      "word1": "create",
+      "word2": "creation",
+      "explanation": "Same stem ('create'), adds 'ion' (not in suffix list)"
+    },
+    {
+      "word1": "prove",
+      "word2": "proven",
+      "explanation": "Same stem ('prove'), adds 'en' for past participle"
+    },
+    {
+      "word1": "bake",
+      "word2": "baking",
+      "explanation": "Same stem ('bake'), adds 'ing' for gerund"
+    },
+    {
+      "word1": "flow",
+      "word2": "flower",
+      "explanation": "Different roots ('flow' vs. 'flour'), coincidental prefix match with 'er' suffix"
+    },
+    {
+      "word1": "line",
+      "word2": "liner",
+      "explanation": "Coincidental prefix 'lin' and 'er' suffix, not a true derivative"
+    },
+    {
+      "word1": "spin",
+      "word2": "spider",
+      "explanation": "Unrelated roots, 'spi' match and 'er' suffix are coincidental"
+    },
+    {
+      "word1": "cake",
+      "word2": "caker",
+      "explanation": "Not a valid word or derivative, 'cak' prefix and 'er' suffix match by chance"
+    },
+    {
+      "word1": "bark",
+      "word2": "barker",
+      "explanation": "Seems plausible, but could be unrelated in context (tree bark vs. dog barker)"
+    },
+    {
+      "word1": "sink",
+      "word2": "sinker",
+      "explanation": "Could be unrelated (sink as noun vs. sinker as fishing term)"
+    },
+    {
+      "word1": "hope",
+      "word2": "hoper",
+      "explanation": "Not a common derivative, 'hop' prefix and 'er' suffix match coincidentally"
+    },
+    {
+      "word1": "file",
+      "word2": "filer",
+      "explanation": "Ambiguous roots (file as tool vs. file as document), not guaranteed derivation"
+    },
+    {
+      "word1": "ring",
+      "word2": "ringer",
+      "explanation": "Could be unrelated (ring as circle vs. ringer as substitute)"
+    },
+    {
+      "word1": "lock",
+      "word2": "locker",
+      "explanation": "Coincidental 'loc' match and 'er' suffix, not always a root match"
+    },
+    {
+      "word1": "play",
+      "word2": "player",
+      "explanation": "Seems valid but could be contextually distinct (play vs. player in sports)"
+    },
+    {
+      "word1": "ship",
+      "word2": "shiper",
+      "explanation": "Not a real word, but 'ship' prefix and 'er' suffix trigger a false positive"
+    },
+    {
+      "word1": "root",
+      "word2": "rooter",
+      "explanation": "Could be unrelated (plant root vs. one who roots for a team)"
+    },
+    {
+      "word1": "fast",
+      "word2": "faster",
+      "explanation": "Seems valid, but 'fas' prefix logic might overgeneralize"
+    },
+    {
+      "word1": "wind",
+      "word2": "winder",
+      "explanation": "Unrelated meanings (wind as breeze vs. winder as tool)"
+    },
+    {
+      "word1": "part",
+      "word2": "partner",
+      "explanation": "Different roots ('part' vs. 'parten'), 'er' suffix misleads"
+    },
+    {
+      "word1": "list",
+      "word2": "lister",
+      "explanation": "Coincidental 'lis' match and 'er' suffix, not a clear derivative"
+    },
+    {
+      "word1": "cake",
+      "word2": "cakes",
+      "explanation": "Plural form misidentified due to 'cak' prefix and 'es' suffix"
+    },
+    {
+      "word1": "pine",
+      "word2": "pines",
+      "explanation": "Plural form, not a new root, but matches 'pin' and 'es'"
+    },
+    {
+      "word1": "rate",
+      "word2": "rates",
+      "explanation": "Plural form miscaught by 'rat' prefix and 'es' suffix"
+    },
+    {
+      "word1": "time",
+      "word2": "timer",
+      "explanation": "Could be unrelated (time as concept vs. timer as device)"
+    },
+    {
+      "word1": "rock",
+      "word2": "rocker",
+      "explanation": "Different senses (rock as stone vs. rocker as chair)"
+    },
+    {
+      "word1": "dust",
+      "word2": "duster",
+      "explanation": "Coincidental 'dus' match and 'er' suffix, not always derived"
+    },
+    {
+      "word1": "jump",
+      "word2": "jumper",
+      "explanation": "Ambiguous (jump as action vs. jumper as clothing)"
+    },
     {
       "word1": "line",
       "word2": "lining",
