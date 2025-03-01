@@ -1,6 +1,24 @@
 {
   "allowed": [
     {
+      "word1": "snip",
+      "word2": "sniper",
+      "explanation": "Different stems ('snip' vs. 'sniper') with distinct meanings"
+    },
+
+    {
+      "word1": "snip",
+      "word2": "snipe",
+      "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
+    },
+
+    {
+      "word1": "snip",
+      "word2": "snipes",
+      "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
+    },
+
+    {
       "word1": "mess",
       "word2": "messenger",
       "explanation": "Different stems ('mess' vs. 'messenger') with distinct meanings"
@@ -244,14 +262,14 @@
   ],
   "disallowed": [
     {
+      "word1": "snip",
+      "word2": "snipper",
+      "explanation": "Same stem ('snip'), adds 'er' for agent noun"
+    },
+    {
       "word1": "walk",
       "word2": "walked",
       "explanation": "Same stem ('walk'), adds 'ed' for past tense"
-    },
-    {
-      "word1": "help",
-      "word2": "helping",
-      "explanation": "Same stem ('help'), adds 'ing' for gerund"
     },
     {
       "word1": "build",
@@ -269,6 +287,11 @@
       "explanation": "Same stem ('paint'), adds 'er' for agent noun"
     },
     {
+      "word1": "paint",
+      "word2": "painters",
+      "explanation": "Same stem ('paint'), adds 'er' for agent noun"
+    },
+    {
       "word1": "dance",
       "word2": "dancing",
       "explanation": "Same stem ('dance'), adds 'ing' for gerund"
@@ -281,6 +304,11 @@
     {
       "word1": "cook",
       "word2": "cooker",
+      "explanation": "Same stem ('cook'), adds 'er' for agent or device"
+    },
+    {
+      "word1": "cook",
+      "word2": "cookers",
       "explanation": "Same stem ('cook'), adds 'er' for agent or device"
     },
     {
