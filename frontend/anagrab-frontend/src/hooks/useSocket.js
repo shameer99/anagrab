@@ -26,6 +26,7 @@ export const useSocket = () => {
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [connectionState, setConnectionState] = useState('connecting');
   const [pingLatency, setPingLatency] = useState(null);
+  const [pendingClaim, setPendingClaim] = useState(null);
 
   useEffect(() => {
     socket.on('connect', () => {
@@ -109,16 +110,34 @@ export const useSocket = () => {
     return () => {
       socket.off('game_state_update');
     };
-  }, []);
+  }, [currentPlayer?.name]);
 
   useEffect(() => {
     socket.on('claim_error', data => {
       setErrorData(data);
+      // Resolve pending claim as failed
+      if (pendingClaim && data.type === 'claim_failed') {
+        setPendingClaim(prev => {
+          if (prev) {
+            prev.resolve(false);
+          }
+          return null;
+        });
+      }
       setTimeout(() => setErrorData(null), 5000);
     });
 
     socket.on('claim_success', data => {
       setSuccessData(data);
+      // Resolve pending claim as successful
+      if (pendingClaim && data.type?.includes('claim')) {
+        setPendingClaim(prev => {
+          if (prev) {
+            prev.resolve(true);
+          }
+          return null;
+        });
+      }
       setTimeout(() => setSuccessData(null), 5000);
     });
 
@@ -126,7 +145,7 @@ export const useSocket = () => {
       socket.off('claim_error');
       socket.off('claim_success');
     };
-  }, []);
+  }, [pendingClaim]);
 
   const joinGame = playerName => {
     if (playerName.trim()) {
@@ -147,8 +166,22 @@ export const useSocket = () => {
 
   const claimWord = word => {
     if (word.trim()) {
-      socket.emit('claim_word', word.toUpperCase());
+      return new Promise(resolve => {
+        setPendingClaim({
+          resolve: success => {
+            // Create a minimum delay of 500ms
+            const minDelay = new Promise(r => setTimeout(() => r(success), 500));
+            Promise.all([minDelay]).then(() => resolve(success));
+          },
+        });
+        socket.emit('claim_word', word.toUpperCase());
+      });
     }
+    return Promise.resolve(false);
+  };
+
+  const endGame = () => {
+    socket.emit('end_game');
   };
 
   return {
@@ -158,6 +191,7 @@ export const useSocket = () => {
     startGame,
     flipLetter,
     claimWord,
+    endGame,
     errorData,
     setErrorData,
     successData,
