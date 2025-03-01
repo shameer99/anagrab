@@ -61,29 +61,9 @@
       "explanation": "Different stems ('seer' vs. 'steer') with distinct meanings"
     },
     {
-      "word1": "pat",
-      "word2": "patch",
-      "explanation": "Different stems ('pat' vs. 'patch') and a clear meaning shift"
-    },
-    {
-      "word1": "tap",
-      "word2": "tape",
-      "explanation": "Stems differ ('tap' vs. 'tape'), and the meaning changes"
-    },
-    {
       "word1": "spar",
       "word2": "spark",
       "explanation": "Stems are distinct ('spar' vs. 'spark'), and it's a meaningful jump"
-    },
-    {
-      "word1": "rid",
-      "word2": "ridge",
-      "explanation": "Different stems ('rid' vs. 'ridg') and meanings"
-    },
-    {
-      "word1": "pin",
-      "word2": "pine",
-      "explanation": "Stems differ ('pin' vs. 'pine'), and meanings diverge"
     },
     {
       "word1": "star",
@@ -373,11 +353,6 @@
       "explanation": "Same stem ('move'), adds 'ment' for noun"
     },
     {
-      "word1": "act",
-      "word2": "action",
-      "explanation": "Same stem ('act'), adds 'ion' (missing from suffixes)"
-    },
-    {
       "word1": "line",
       "word2": "liner",
       "explanation": "Different stems with meaningful change"
@@ -528,19 +503,9 @@
       "explanation": "Same stem ('time'), just adds agent suffix"
     },
     {
-      "word1": "cat",
-      "word2": "cats",
-      "explanation": "Just adds an 's' for pluralization. Same stem ('cat'), no real meaning change"
-    },
-    {
       "word1": "lose",
       "word2": "loser",
       "explanation": "Same stem ('lose'), and it's just a noun form"
-    },
-    {
-      "word1": "run",
-      "word2": "running",
-      "explanation": "Same stem ('run'), too close in meaning"
     },
     {
       "word1": "bake",
@@ -643,19 +608,9 @@
       "explanation": "Just adds an 's' for pluralization. Same stem ('book')"
     },
     {
-      "word1": "dog",
-      "word2": "dogs",
-      "explanation": "Just adds an 's' for pluralization. Same stem ('dog')"
-    },
-    {
       "word1": "house",
       "word2": "houses",
       "explanation": "Just adds an 's' for pluralization. Same stem ('house')"
-    },
-    {
-      "word1": "car",
-      "word2": "cars",
-      "explanation": "Just adds an 's' for pluralization. Same stem ('car')"
     },
     {
       "word1": "tree",
@@ -696,11 +651,6 @@
       "word1": "talk",
       "word2": "talks",
       "explanation": "Just adds an 's' for conjugation. Same stem ('talk')"
-    },
-    {
-      "word1": "eat",
-      "word2": "eats",
-      "explanation": "Just adds an 's' for conjugation. Same stem ('eat')"
     },
     {
       "word1": "drink",
@@ -788,21 +738,6 @@
       "explanation": "Word2 (acids) is longer than word1 (acid) and contains all letters from word1"
     },
     {
-      "word1": "act",
-      "word2": "acts",
-      "explanation": "Word2 (acts) is longer than word1 (act) and contains all letters from word1"
-    },
-    {
-      "word1": "age",
-      "word2": "ages",
-      "explanation": "Word2 (ages) is longer than word1 (age) and contains all letters from word1"
-    },
-    {
-      "word1": "aid",
-      "word2": "aids",
-      "explanation": "Word2 (aids) is longer than word1 (aid) and contains all letters from word1"
-    },
-    {
       "word1": "alan",
       "word2": "alans",
       "explanation": "Word2 (alans) is longer than word1 (alan) and contains all letters from word1"
@@ -816,16 +751,6 @@
       "word1": "area",
       "word2": "areas",
       "explanation": "Word2 (areas) is longer than word1 (area) and contains all letters from word1"
-    },
-    {
-      "word1": "arm",
-      "word2": "arms",
-      "explanation": "Word2 (arms) is longer than word1 (arm) and contains all letters from word1"
-    },
-    {
-      "word1": "art",
-      "word2": "arts",
-      "explanation": "Word2 (arts) is longer than word1 (art) and contains all letters from word1"
     },
     {
       "word1": "atom",
@@ -876,11 +801,6 @@
       "word1": "back",
       "word2": "backs",
       "explanation": "Word2 (backs) is longer than word1 (back) and contains all letters from word1"
-    },
-    {
-      "word1": "bag",
-      "word2": "bags",
-      "explanation": "Word2 (bags) is longer than word1 (bag) and contains all letters from word1"
     },
     {
       "word1": "ball",
@@ -943,11 +863,6 @@
       "explanation": "Word2 (banks) is longer than word1 (bank) and contains all letters from word1"
     },
     {
-      "word1": "bar",
-      "word2": "bars",
-      "explanation": "Word2 (bars) is longer than word1 (bar) and contains all letters from word1"
-    },
-    {
       "word1": "base",
       "word2": "based",
       "explanation": "Word2 (based) is longer than word1 (base) and contains all letters from word1"
@@ -986,16 +901,6 @@
       "word1": "bath",
       "word2": "baths",
       "explanation": "Word2 (baths) is longer than word1 (bath) and contains all letters from word1"
-    },
-    {
-      "word1": "be",
-      "word2": "been",
-      "explanation": "Word2 (been) is longer than word1 (be) and contains all letters from word1"
-    },
-    {
-      "word1": "be",
-      "word2": "being",
-      "explanation": "Word2 (being) is longer than word1 (be) and contains all letters from word1"
     },
     {
       "word1": "bear",
@@ -1068,11 +973,6 @@
       "explanation": "Word2 (betas) is longer than word1 (beta) and contains all letters from word1"
     },
     {
-      "word1": "bid",
-      "word2": "bids",
-      "explanation": "Word2 (bids) is longer than word1 (bid) and contains all letters from word1"
-    },
-    {
       "word1": "bike",
       "word2": "biked",
       "explanation": "Word2 (biked) is longer than word1 (bike) and contains all letters from word1"
@@ -1126,11 +1026,6 @@
       "word1": "bird",
       "word2": "birds",
       "explanation": "Word2 (birds) is longer than word1 (bird) and contains all letters from word1"
-    },
-    {
-      "word1": "bit",
-      "word2": "bits",
-      "explanation": "Word2 (bits) is longer than word1 (bit) and contains all letters from word1"
     },
     {
       "word1": "blog",
@@ -1278,11 +1173,6 @@
       "explanation": "Word2 (bowls) is longer than word1 (bowl) and contains all letters from word1"
     },
     {
-      "word1": "boy",
-      "word2": "boys",
-      "explanation": "Word2 (boys) is longer than word1 (boy) and contains all letters from word1"
-    },
-    {
       "word1": "bush",
       "word2": "bushed",
       "explanation": "Word2 (bushed) is longer than word1 (bush) and contains all letters from word1"
@@ -1351,11 +1241,6 @@
       "word1": "cape",
       "word2": "capes",
       "explanation": "Word2 (capes) is longer than word1 (cape) and contains all letters from word1"
-    },
-    {
-      "word1": "car",
-      "word2": "cars",
-      "explanation": "Word2 (cars) is longer than word1 (car) and contains all letters from word1"
     },
     {
       "word1": "card",
@@ -1723,11 +1608,6 @@
       "explanation": "Word2 (dates) is longer than word1 (date) and contains all letters from word1"
     },
     {
-      "word1": "day",
-      "word2": "days",
-      "explanation": "Word2 (days) is longer than word1 (day) and contains all letters from word1"
-    },
-    {
       "word1": "dead",
       "word2": "deader",
       "explanation": "Word2 (deader) is longer than word1 (dead) and contains all letters from word1"
@@ -1833,11 +1713,6 @@
       "explanation": "Word2 (desks) is longer than word1 (desk) and contains all letters from word1"
     },
     {
-      "word1": "die",
-      "word2": "died",
-      "explanation": "Word2 (died) is longer than word1 (die) and contains all letters from word1"
-    },
-    {
       "word1": "diet",
       "word2": "dieted",
       "explanation": "Word2 (dieted) is longer than word1 (diet) and contains all letters from word1"
@@ -1906,26 +1781,6 @@
       "word1": "disk",
       "word2": "disks",
       "explanation": "Word2 (disks) is longer than word1 (disk) and contains all letters from word1"
-    },
-    {
-      "word1": "do",
-      "word2": "does",
-      "explanation": "Word2 (does) is longer than word1 (do) and contains all letters from word1"
-    },
-    {
-      "word1": "do",
-      "word2": "doing",
-      "explanation": "Word2 (doing) is longer than word1 (do) and contains all letters from word1"
-    },
-    {
-      "word1": "do",
-      "word2": "done",
-      "explanation": "Word2 (done) is longer than word1 (do) and contains all letters from word1"
-    },
-    {
-      "word1": "dog",
-      "word2": "dogs",
-      "explanation": "Word2 (dogs) is longer than word1 (dog) and contains all letters from word1"
     },
     {
       "word1": "door",
@@ -2038,21 +1893,6 @@
       "explanation": "Word2 (easts) is longer than word1 (east) and contains all letters from word1"
     },
     {
-      "word1": "eat",
-      "word2": "eaten",
-      "explanation": "Word2 (eaten) is longer than word1 (eat) and contains all letters from word1"
-    },
-    {
-      "word1": "eat",
-      "word2": "eating",
-      "explanation": "Word2 (eating) is longer than word1 (eat) and contains all letters from word1"
-    },
-    {
-      "word1": "eat",
-      "word2": "eats",
-      "explanation": "Word2 (eats) is longer than word1 (eat) and contains all letters from word1"
-    },
-    {
       "word1": "echo",
       "word2": "echoed",
       "explanation": "Word2 (echoed) is longer than word1 (echo) and contains all letters from word1"
@@ -2093,11 +1933,6 @@
       "explanation": "Word2 (edits) is longer than word1 (edit) and contains all letters from word1"
     },
     {
-      "word1": "end",
-      "word2": "ends",
-      "explanation": "Word2 (ends) is longer than word1 (end) and contains all letters from word1"
-    },
-    {
       "word1": "euro",
       "word2": "euros",
       "explanation": "Word2 (euros) is longer than word1 (euro) and contains all letters from word1"
@@ -2136,11 +1971,6 @@
       "word1": "exit",
       "word2": "exits",
       "explanation": "Word2 (exits) is longer than word1 (exit) and contains all letters from word1"
-    },
-    {
-      "word1": "eye",
-      "word2": "eyes",
-      "explanation": "Word2 (eyes) is longer than word1 (eye) and contains all letters from word1"
     },
     {
       "word1": "face",
@@ -2218,11 +2048,6 @@
       "explanation": "Word2 (falls) is longer than word1 (fall) and contains all letters from word1"
     },
     {
-      "word1": "fan",
-      "word2": "fans",
-      "explanation": "Word2 (fans) is longer than word1 (fan) and contains all letters from word1"
-    },
-    {
       "word1": "farm",
       "word2": "farmed",
       "explanation": "Word2 (farmed) is longer than word1 (farm) and contains all letters from word1"
@@ -2286,11 +2111,6 @@
       "word1": "fear",
       "word2": "fears",
       "explanation": "Word2 (fears) is longer than word1 (fear) and contains all letters from word1"
-    },
-    {
-      "word1": "fee",
-      "word2": "fees",
-      "explanation": "Word2 (fees) is longer than word1 (fee) and contains all letters from word1"
     },
     {
       "word1": "feed",
@@ -2748,21 +2568,6 @@
       "explanation": "Word2 (genes) is longer than word1 (gene) and contains all letters from word1"
     },
     {
-      "word1": "get",
-      "word2": "gets",
-      "explanation": "Word2 (gets) is longer than word1 (get) and contains all letters from word1"
-    },
-    {
-      "word1": "get",
-      "word2": "getting",
-      "explanation": "Word2 (getting) is longer than word1 (get) and contains all letters from word1"
-    },
-    {
-      "word1": "get",
-      "word2": "gotten",
-      "explanation": "Word2 (gotten) is longer than word1 (get) and contains all letters from word1"
-    },
-    {
       "word1": "gift",
       "word2": "gifted",
       "explanation": "Word2 (gifted) is longer than word1 (gift) and contains all letters from word1"
@@ -2796,26 +2601,6 @@
       "word1": "give",
       "word2": "gives",
       "explanation": "Word2 (gives) is longer than word1 (give) and contains all letters from word1"
-    },
-    {
-      "word1": "go",
-      "word2": "goes",
-      "explanation": "Word2 (goes) is longer than word1 (go) and contains all letters from word1"
-    },
-    {
-      "word1": "go",
-      "word2": "going",
-      "explanation": "Word2 (going) is longer than word1 (go) and contains all letters from word1"
-    },
-    {
-      "word1": "go",
-      "word2": "gone",
-      "explanation": "Word2 (gone) is longer than word1 (go) and contains all letters from word1"
-    },
-    {
-      "word1": "go",
-      "word2": "goner",
-      "explanation": "Word2 (goner) is longer than word1 (go) and contains all letters from word1"
     },
     {
       "word1": "goal",
@@ -2906,11 +2691,6 @@
       "word1": "grow",
       "word2": "grows",
       "explanation": "Word2 (grows) is longer than word1 (grow) and contains all letters from word1"
-    },
-    {
-      "word1": "guy",
-      "word2": "guys",
-      "explanation": "Word2 (guys) is longer than word1 (guy) and contains all letters from word1"
     },
     {
       "word1": "hair",
@@ -3133,11 +2913,6 @@
       "explanation": "Word2 (hires) is longer than word1 (hire) and contains all letters from word1"
     },
     {
-      "word1": "hit",
-      "word2": "hits",
-      "explanation": "Word2 (hits) is longer than word1 (hit) and contains all letters from word1"
-    },
-    {
       "word1": "hold",
       "word2": "holder",
       "explanation": "Word2 (holder) is longer than word1 (hold) and contains all letters from word1"
@@ -3328,11 +3103,6 @@
       "explanation": "Word2 (jeans) is longer than word1 (jean) and contains all letters from word1"
     },
     {
-      "word1": "job",
-      "word2": "jobs",
-      "explanation": "Word2 (jobs) is longer than word1 (job) and contains all letters from word1"
-    },
-    {
       "word1": "john",
       "word2": "johns",
       "explanation": "Word2 (johns) is longer than word1 (john) and contains all letters from word1"
@@ -3418,16 +3188,6 @@
       "explanation": "Word2 (keeps) is longer than word1 (keep) and contains all letters from word1"
     },
     {
-      "word1": "key",
-      "word2": "keys",
-      "explanation": "Word2 (keys) is longer than word1 (key) and contains all letters from word1"
-    },
-    {
-      "word1": "kid",
-      "word2": "kids",
-      "explanation": "Word2 (kids) is longer than word1 (kid) and contains all letters from word1"
-    },
-    {
       "word1": "kill",
       "word2": "killed",
       "explanation": "Word2 (killed) is longer than word1 (kill) and contains all letters from word1"
@@ -3476,11 +3236,6 @@
       "word1": "king",
       "word2": "kings",
       "explanation": "Word2 (kings) is longer than word1 (king) and contains all letters from word1"
-    },
-    {
-      "word1": "kit",
-      "word2": "kits",
-      "explanation": "Word2 (kits) is longer than word1 (kit) and contains all letters from word1"
     },
     {
       "word1": "know",
@@ -3598,11 +3353,6 @@
       "explanation": "Word2 (latest) is longer than word1 (late) and contains all letters from word1"
     },
     {
-      "word1": "law",
-      "word2": "laws",
-      "explanation": "Word2 (laws) is longer than word1 (law) and contains all letters from word1"
-    },
-    {
       "word1": "lead",
       "word2": "leaded",
       "explanation": "Word2 (leaded) is longer than word1 (lead) and contains all letters from word1"
@@ -3636,11 +3386,6 @@
       "word1": "left",
       "word2": "lefts",
       "explanation": "Word2 (lefts) is longer than word1 (left) and contains all letters from word1"
-    },
-    {
-      "word1": "leg",
-      "word2": "legs",
-      "explanation": "Word2 (legs) is longer than word1 (leg) and contains all letters from word1"
     },
     {
       "word1": "lens",
@@ -3908,11 +3653,6 @@
       "explanation": "Word2 (loses) is longer than word1 (lose) and contains all letters from word1"
     },
     {
-      "word1": "lot",
-      "word2": "lots",
-      "explanation": "Word2 (lots) is longer than word1 (lot) and contains all letters from word1"
-    },
-    {
       "word1": "love",
       "word2": "loved",
       "explanation": "Word2 (loved) is longer than word1 (love) and contains all letters from word1"
@@ -3966,11 +3706,6 @@
       "word1": "male",
       "word2": "males",
       "explanation": "Word2 (males) is longer than word1 (male) and contains all letters from word1"
-    },
-    {
-      "word1": "map",
-      "word2": "maps",
-      "explanation": "Word2 (maps) is longer than word1 (map) and contains all letters from word1"
     },
     {
       "word1": "mark",
@@ -4061,16 +3796,6 @@
       "word1": "meet",
       "word2": "meets",
       "explanation": "Word2 (meets) is longer than word1 (meet) and contains all letters from word1"
-    },
-    {
-      "word1": "men",
-      "word2": "mensed",
-      "explanation": "Word2 (mensed) is longer than word1 (men) and contains all letters from word1"
-    },
-    {
-      "word1": "men",
-      "word2": "mensing",
-      "explanation": "Word2 (mensing) is longer than word1 (men) and contains all letters from word1"
     },
     {
       "word1": "menu",
@@ -4393,11 +4118,6 @@
       "explanation": "Word2 (nulls) is longer than word1 (null) and contains all letters from word1"
     },
     {
-      "word1": "one",
-      "word2": "ones",
-      "explanation": "Word2 (ones) is longer than word1 (one) and contains all letters from word1"
-    },
-    {
       "word1": "open",
       "word2": "opener",
       "explanation": "Word2 (opener) is longer than word1 (open) and contains all letters from word1"
@@ -4543,26 +4263,6 @@
       "explanation": "Word2 (parts) is longer than word1 (part) and contains all letters from word1"
     },
     {
-      "word1": "pas",
-      "word2": "pass",
-      "explanation": "Word2 (pass) is longer than word1 (pas) and contains all letters from word1"
-    },
-    {
-      "word1": "pas",
-      "word2": "passed",
-      "explanation": "Word2 (passed) is longer than word1 (pas) and contains all letters from word1"
-    },
-    {
-      "word1": "pas",
-      "word2": "passer",
-      "explanation": "Word2 (passer) is longer than word1 (pas) and contains all letters from word1"
-    },
-    {
-      "word1": "pas",
-      "word2": "passing",
-      "explanation": "Word2 (passing) is longer than word1 (pas) and contains all letters from word1"
-    },
-    {
       "word1": "past",
       "word2": "pasted",
       "explanation": "Word2 (pasted) is longer than word1 (past) and contains all letters from word1"
@@ -4601,16 +4301,6 @@
       "word1": "peak",
       "word2": "peaks",
       "explanation": "Word2 (peaks) is longer than word1 (peak) and contains all letters from word1"
-    },
-    {
-      "word1": "pet",
-      "word2": "pets",
-      "explanation": "Word2 (pets) is longer than word1 (pet) and contains all letters from word1"
-    },
-    {
-      "word1": "pic",
-      "word2": "pics",
-      "explanation": "Word2 (pics) is longer than word1 (pic) and contains all letters from word1"
     },
     {
       "word1": "pick",
@@ -5253,21 +4943,6 @@
       "explanation": "Word2 (rules) is longer than word1 (rule) and contains all letters from word1"
     },
     {
-      "word1": "run",
-      "word2": "runner",
-      "explanation": "Word2 (runner) is longer than word1 (run) and contains all letters from word1"
-    },
-    {
-      "word1": "run",
-      "word2": "running",
-      "explanation": "Word2 (running) is longer than word1 (run) and contains all letters from word1"
-    },
-    {
-      "word1": "run",
-      "word2": "runs",
-      "explanation": "Word2 (runs) is longer than word1 (run) and contains all letters from word1"
-    },
-    {
       "word1": "safe",
       "word2": "safer",
       "explanation": "Word2 (safer) is longer than word1 (safe) and contains all letters from word1"
@@ -5328,16 +5003,6 @@
       "explanation": "Word2 (saves) is longer than word1 (save) and contains all letters from word1"
     },
     {
-      "word1": "say",
-      "word2": "saying",
-      "explanation": "Word2 (saying) is longer than word1 (say) and contains all letters from word1"
-    },
-    {
-      "word1": "say",
-      "word2": "says",
-      "explanation": "Word2 (says) is longer than word1 (say) and contains all letters from word1"
-    },
-    {
       "word1": "seat",
       "word2": "seated",
       "explanation": "Word2 (seated) is longer than word1 (seat) and contains all letters from word1"
@@ -5356,21 +5021,6 @@
       "word1": "seat",
       "word2": "seats",
       "explanation": "Word2 (seats) is longer than word1 (seat) and contains all letters from word1"
-    },
-    {
-      "word1": "see",
-      "word2": "seeing",
-      "explanation": "Word2 (seeing) is longer than word1 (see) and contains all letters from word1"
-    },
-    {
-      "word1": "see",
-      "word2": "seen",
-      "explanation": "Word2 (seen) is longer than word1 (see) and contains all letters from word1"
-    },
-    {
-      "word1": "see",
-      "word2": "sees",
-      "explanation": "Word2 (sees) is longer than word1 (see) and contains all letters from word1"
     },
     {
       "word1": "seek",
@@ -5456,11 +5106,6 @@
       "word1": "send",
       "word2": "sends",
       "explanation": "Word2 (sends) is longer than word1 (send) and contains all letters from word1"
-    },
-    {
-      "word1": "set",
-      "word2": "sets",
-      "explanation": "Word2 (sets) is longer than word1 (set) and contains all letters from word1"
     },
     {
       "word1": "ship",
@@ -5843,11 +5488,6 @@
       "explanation": "Word2 (surest) is longer than word1 (sure) and contains all letters from word1"
     },
     {
-      "word1": "tag",
-      "word2": "tags",
-      "explanation": "Word2 (tags) is longer than word1 (tag) and contains all letters from word1"
-    },
-    {
       "word1": "take",
       "word2": "taken",
       "explanation": "Word2 (taken) is longer than word1 (take) and contains all letters from word1"
@@ -6058,11 +5698,6 @@
       "explanation": "Word2 (times) is longer than word1 (time) and contains all letters from word1"
     },
     {
-      "word1": "tip",
-      "word2": "tips",
-      "explanation": "Word2 (tips) is longer than word1 (tip) and contains all letters from word1"
-    },
-    {
       "word1": "toll",
       "word2": "tolled",
       "explanation": "Word2 (tolled) is longer than word1 (toll) and contains all letters from word1"
@@ -6126,11 +5761,6 @@
       "word1": "town",
       "word2": "towns",
       "explanation": "Word2 (towns) is longer than word1 (town) and contains all letters from word1"
-    },
-    {
-      "word1": "toy",
-      "word2": "toys",
-      "explanation": "Word2 (toys) is longer than word1 (toy) and contains all letters from word1"
     },
     {
       "word1": "tree",
@@ -6236,16 +5866,6 @@
       "word1": "unit",
       "word2": "units",
       "explanation": "Word2 (units) is longer than word1 (unit) and contains all letters from word1"
-    },
-    {
-      "word1": "us",
-      "word2": "uses",
-      "explanation": "Word2 (uses) is longer than word1 (us) and contains all letters from word1"
-    },
-    {
-      "word1": "use",
-      "word2": "used",
-      "explanation": "Word2 (used) is longer than word1 (use) and contains all letters from word1"
     },
     {
       "word1": "user",
@@ -6413,11 +6033,6 @@
       "explanation": "Word2 (wants) is longer than word1 (want) and contains all letters from word1"
     },
     {
-      "word1": "war",
-      "word2": "wars",
-      "explanation": "Word2 (wars) is longer than word1 (war) and contains all letters from word1"
-    },
-    {
       "word1": "warm",
       "word2": "warmed",
       "explanation": "Word2 (warmed) is longer than word1 (warm) and contains all letters from word1"
@@ -6456,11 +6071,6 @@
       "word1": "wave",
       "word2": "waves",
       "explanation": "Word2 (waves) is longer than word1 (wave) and contains all letters from word1"
-    },
-    {
-      "word1": "way",
-      "word2": "ways",
-      "explanation": "Word2 (ways) is longer than word1 (way) and contains all letters from word1"
     },
     {
       "word1": "wear",
