@@ -542,17 +542,25 @@ body {
   font-size: 1.1em;
   position: relative;
   transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e6dfc7;
 }
 
 .alphabet-letter.available {
-  background-color: #4f7df3;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f7f3e9;
+  color: #2b2b2b;
+  transform-style: preserve-3d;
 }
 
 .alphabet-letter.unavailable {
-  background-color: #e0e0e0;
+  background-color: #f7f3e9;
   color: #888;
+  opacity: 0.7;
+}
+
+.alphabet-letter:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .letter-count {
@@ -568,6 +576,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Word List Styles */
