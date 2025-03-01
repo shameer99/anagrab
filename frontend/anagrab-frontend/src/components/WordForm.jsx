@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export const WordForm = ({ onClaimWord }) => {
   const [wordInput, setWordInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const inputRef = useRef(null);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -13,12 +14,14 @@ export const WordForm = ({ onClaimWord }) => {
       if (success) {
         setWordInput('');
       }
+      inputRef.current?.focus();
     }
   };
 
   const handleClear = e => {
     e.preventDefault(); // Prevent form submission
     setWordInput('');
+    inputRef.current?.focus();
   };
 
   return (
@@ -28,6 +31,7 @@ export const WordForm = ({ onClaimWord }) => {
         style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
       >
         <input
+          ref={inputRef}
           type="text"
           value={wordInput}
           onChange={e => setWordInput(e.target.value)}

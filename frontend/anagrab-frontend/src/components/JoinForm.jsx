@@ -43,6 +43,7 @@ export const JoinForm = ({ onJoin }) => {
           value={playerName}
           onChange={e => setPlayerName(e.target.value)}
           placeholder="Enter your name"
+          autoFocus
         />
         <button type="submit">Join Game</button>
       </form>
