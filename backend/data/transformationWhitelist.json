@@ -1,0 +1,29 @@
+{
+  "transformations": [
+    {
+      "word1": "mess",
+      "word2": "messenger",
+      "explanation": "Different stems ('mess' vs. 'messenger') with distinct meanings"
+    },
+    {
+      "word1": "barb",
+      "word2": "barber",
+      "explanation": "Different stems ('barb' vs. 'barber') with distinct meanings"
+    },
+    {
+      "word1": "live",
+      "word2": "liver",
+      "explanation": "Different stems ('live' vs. 'liver') with distinct meanings"
+    },
+    {
+      "word1": "ling",
+      "word2": "linger",
+      "explanation": "Different stems ('ling' vs. 'linger') with distinct meanings"
+    },
+    {
+      "word1": "flow",
+      "word2": "flower",
+      "explanation": "Stems differ ('flow' vs. 'flower') with clear meaning shift"
+    }
+  ]
+}

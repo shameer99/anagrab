@@ -10,8 +10,24 @@ const dictionary = new Set(
     .map(word => word.trim().toLowerCase())
 );
 
-// Load word roots from JSON file
-const wordRoots = JSON.parse(fs.readFileSync(__dirname + '/../data/wordRoots.json', 'utf8'));
+// Load transformation whitelist
+const transformationWhitelist = JSON.parse(
+  fs.readFileSync('./data/transformationWhitelist.json', 'utf8')
+);
+
+// Create a map for quick lookup of whitelisted transformations
+const whitelistedTransformations = new Map();
+transformationWhitelist.transformations.forEach(transformation => {
+  // Store both directions for easy lookup
+  whitelistedTransformations.set(
+    `${transformation.word1.toLowerCase()}-${transformation.word2.toLowerCase()}`,
+    true
+  );
+  whitelistedTransformations.set(
+    `${transformation.word2.toLowerCase()}-${transformation.word1.toLowerCase()}`,
+    true
+  );
+});
 
 function isValidWord(word) {
   if (word.length < 4) {
@@ -60,28 +76,92 @@ function isAnagram(word1, word2) {
   return word1.split('').sort().join('') === word2.split('').sort().join('');
 }
 
-// Helper function to check if two words share the same root
-//Since we do not know the part of speech, we check all possible forms using wink-lemmatizer
 function sharesSameRoot(word1, word2) {
   word1 = word1.toLowerCase();
   word2 = word2.toLowerCase();
 
-  // First try the lemmatizer
-  const word1Forms = [lemmatizer.noun(word1), lemmatizer.verb(word1), lemmatizer.adjective(word1)];
+  // Check if this pair is in the whitelist
+  if (
+    whitelistedTransformations.has(`${word1}-${word2}`) ||
+    whitelistedTransformations.has(`${word2}-${word1}`)
+  ) {
+    return false;
+  }
 
-  const word2Forms = [lemmatizer.noun(word2), lemmatizer.verb(word2), lemmatizer.adjective(word2)];
+  if (word1 === word2) {
+    return true;
+  }
+
+  // ensure word2 is longer than word1
+  if (word2.length <= word1.length) {
+    console.error('word2 expected to be longer than word1');
+    return false;
+  }
+
+  // return false if word2 doesn't start with (word1 - word1's last letter)
+  if (!word2.startsWith(word1.slice(0, -1))) {
+    return false;
+  }
+
+  if (word2.length - word1.length > 4) {
+    return false;
+  }
+
+  // check if word2 ends with any of the common suffixes
+  const commonSuffixes = [
+    'er',
+    'ing',
+    'es',
+    's',
+    'ed',
+    'en',
+    'est',
+    'ly',
+    'ful',
+    'less',
+    'ness',
+    'ment',
+    'able',
+    'ible',
+    'ize',
+    'ise',
+    'ify',
+    'ship',
+    'hood',
+    'dom',
+    'ion',
+  ];
+
+  // this breaks expected false cases like flow -> flower, line -> liner, etc
+  return commonSuffixes.some(suffix => word2.endsWith(suffix));
+}
+
+// Helper function to check if two words share the same root
+//Since we do not know the part of speech, we check all possible forms using wink-lemmatizer
+function sharesSameRootOld(word1, word2) {
+  word1 = word1.toLowerCase();
+  word2 = word2.toLowerCase();
+
+  // First try the lemmatizer
+  let word1Forms = [lemmatizer.noun(word1), lemmatizer.verb(word1), lemmatizer.adjective(word1)];
+
+  let word2Forms = [lemmatizer.noun(word2), lemmatizer.verb(word2), lemmatizer.adjective(word2)];
+
+  // remove own word from forms
+  word1Forms = word1Forms.filter(form => form !== word1);
+  word2Forms = word2Forms.filter(form => form !== word2);
 
   // Check if any form matches between the two words
   if (word1Forms.some(form1 => word2Forms.some(form2 => form1 === form2))) {
     return true;
   }
 
-  // If no match with lemmatizer, check custom word roots mapping
-  if (wordRoots[word1] && wordRoots[word2]) {
-    if (wordRoots[word1] === wordRoots[word2]) {
-      return true;
-    }
-  }
+  // // If no match with lemmatizer, check custom word roots mapping
+  // if (wordRoots[word1] && wordRoots[word2]) {
+  //   if (wordRoots[word1] === wordRoots[word2]) {
+  //     return true;
+  //   }
+  // }
 
   return false;
 }

@@ -358,11 +358,7 @@
       "word2": "baking",
       "explanation": "Same stem ('bake'), adds 'ing' for gerund"
     },
-    {
-      "word1": "flow",
-      "word2": "flower",
-      "explanation": "Different roots ('flow' vs. 'flour'), coincidental prefix match with 'er' suffix"
-    },
+
     {
       "word1": "line",
       "word2": "liner",
