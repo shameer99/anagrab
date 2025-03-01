@@ -5,17 +5,25 @@
       "word2": "sniper",
       "explanation": "Different stems ('snip' vs. 'sniper') with distinct meanings"
     },
-
     {
       "word1": "snip",
       "word2": "snipe",
       "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
     },
-
     {
       "word1": "snip",
       "word2": "snipes",
       "explanation": "Different stems ('snip' vs. 'snipe') with distinct meanings"
+    },
+    {
+      "word1": "snips",
+      "word2": "snipes",
+      "explanation": "Different stems ('snip' vs. 'snipes') with distinct meanings"
+    },
+    {
+      "word1": "snips",
+      "word2": "snipers",
+      "explanation": "Different stems ('snip' vs. 'sniper') with distinct meanings"
     },
     {
       "word1": "mess",
