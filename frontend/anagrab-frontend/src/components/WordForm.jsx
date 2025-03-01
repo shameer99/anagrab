@@ -5,6 +5,12 @@ export const WordForm = ({ onClaimWord }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const inputRef = useRef(null);
 
+  const focusInput = () => {
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 0);
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
     if (wordInput.trim() && !isSubmitting) {
@@ -14,14 +20,14 @@ export const WordForm = ({ onClaimWord }) => {
       if (success) {
         setWordInput('');
       }
-      inputRef.current?.focus();
+      focusInput();
     }
   };
 
   const handleClear = e => {
     e.preventDefault(); // Prevent form submission
     setWordInput('');
-    inputRef.current?.focus();
+    focusInput();
   };
 
   return (
