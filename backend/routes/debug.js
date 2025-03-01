@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { sharesSameRoot } = require('../utils/gameLogic');
-const lemmatizer = require('wink-lemmatizer');
 const testCases = require('../data/wordTransformationTests.json');
 
 // Debug route for testing sharesSameRoot function
@@ -13,18 +12,6 @@ router.get('/shareroot', (req, res) => {
 
   if (word1 && word2) {
     result = sharesSameRoot(word1, word2);
-
-    word1Forms = [
-      lemmatizer.noun(word1.toLowerCase()),
-      lemmatizer.verb(word1.toLowerCase()),
-      lemmatizer.adjective(word1.toLowerCase()),
-    ];
-
-    word2Forms = [
-      lemmatizer.noun(word2.toLowerCase()),
-      lemmatizer.verb(word2.toLowerCase()),
-      lemmatizer.adjective(word2.toLowerCase()),
-    ];
   }
 
   const html = `
@@ -104,21 +91,6 @@ router.get('/shareroot', (req, res) => {
         <div class="result ${result}">
           <h2>Result:</h2>
           <p>Do "${word1}" and "${word2}" share the same root? <strong>${result}</strong></p>
-          
-          <h3>Word Forms:</h3>
-          <h4>${word1}:</h4>
-          <ul>
-            <li>Noun form: ${word1Forms[0]}</li>
-            <li>Verb form: ${word1Forms[1]}</li>
-            <li>Adjective form: ${word1Forms[2]}</li>
-          </ul>
-          
-          <h4>${word2}:</h4>
-          <ul>
-            <li>Noun form: ${word2Forms[0]}</li>
-            <li>Verb form: ${word2Forms[1]}</li>
-            <li>Adjective form: ${word2Forms[2]}</li>
-          </ul>
         </div>
       `
           : ''
