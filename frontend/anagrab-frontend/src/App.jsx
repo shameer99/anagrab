@@ -17,6 +17,7 @@ function App() {
     startGame,
     flipLetter,
     claimWord,
+    getCurrentPlayer,
     endGame,
     errorData,
     successData,
@@ -41,6 +42,9 @@ function App() {
     },
     [null, []]
   );
+
+  const playerTurn =
+    gameState?.players[gameState?.playerOrder[gameState.turn % gameState.playerOrder.length]].name;
 
   return (
     <div className="game-container">
@@ -90,6 +94,7 @@ function App() {
       <div className="game-board">
         <LetterPot letters={gameState?.pot || []} />
         <WordForm onClaimWord={claimWord} />
+        <h3>Current Player: {playerTurn}</h3>
       </div>
 
       {/* Current player at the bottom */}

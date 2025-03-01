@@ -25,7 +25,7 @@ function setupSocketHandlers(io) {
 
     socket.on('flip_letter', () => {
       console.log('Received flip_letter event from:', socket.id);
-      const { success, state } = flipLetter();
+      const { success, state } = flipLetter(socket.id);
       if (success) {
         console.log('Emitting updated game state after flip');
         io.emit('game_state_update', state);
