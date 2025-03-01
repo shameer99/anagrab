@@ -19,6 +19,9 @@ export const WordForm = ({ onClaimWord }) => {
         onChange={e => setWordInput(e.target.value)}
         placeholder="Enter word to claim"
         className="word-input"
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck="false"
       />
       <button type="submit" className="claim-button">
         Claim Word
