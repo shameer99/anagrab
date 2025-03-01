@@ -146,6 +146,11 @@
       "explanation": "Stems differ ('rage' vs. 'barge') with distinct meanings"
     },
     {
+      "word1": "rage",
+      "word2": "barger",
+      "explanation": "Stems differ ('rage' vs. 'barge') with distinct meanings"
+    },
+    {
       "word1": "tale",
       "word2": "stale",
       "explanation": "Different stems ('tale' vs. 'stale') with unrelated meanings"
