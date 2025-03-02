@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './WordList.css';
 
 export const WordList = ({ players = {} }) => {
   const [filterPlayer, setFilterPlayer] = useState('all');
@@ -30,11 +31,14 @@ export const WordList = ({ players = {} }) => {
     return 0;
   });
 
-  // Get unique players for filter options
-  const uniquePlayers = Object.entries(players).map(([id, player]) => ({
-    id,
-    name: player.name,
-  }));
+  // Get unique players with their scores for filter options
+  const uniquePlayers = Object.entries(players)
+    .map(([id, player]) => ({
+      id,
+      name: player.name,
+      score: player.words.reduce((sum, word) => sum + word.length, 0),
+    }))
+    .sort((a, b) => b.score - a.score); // Sort by score in descending order
 
   return (
     <div className="word-list-container">
@@ -52,7 +56,8 @@ export const WordList = ({ players = {} }) => {
               className={`filter-chip ${filterPlayer === player.id ? 'active' : ''}`}
               onClick={() => setFilterPlayer(player.id)}
             >
-              {player.name}
+              <span className="player-name">{player.name}</span>
+              <span className="player-score">{player.score} pts</span>
             </button>
           ))}
         </div>
