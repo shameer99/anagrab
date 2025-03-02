@@ -619,10 +619,18 @@ body {
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 0.9em;
-  background-color: #f0f0f0;
-  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  border: 1px solid #d0d0d0;
+  color: #333333;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.filter-chip:hover,
+.sort-chip:hover {
+  background-color: #f5f5f5;
+  border-color: #b0b0b0;
 }
 
 .filter-chip.active,
@@ -630,6 +638,7 @@ body {
   background-color: #4f7df3;
   color: white;
   border-color: #4f7df3;
+  font-weight: 600;
 }
 
 .word-list {
