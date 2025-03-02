@@ -11,8 +11,10 @@ const io = new Server(server, {
 
 // Import modules
 const { setupSocketHandlers } = require('./socket/handlers');
-const { gameState } = require('./gameState');
+const { gameState, setIo } = require('./gameState');
 const debugRoutes = require('./routes/debug');
+
+setIo(io);
 
 // Use debug routes
 app.use('/debug', debugRoutes);

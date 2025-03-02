@@ -19,6 +19,7 @@ function App() {
     startGame,
     flipLetter,
     claimWord,
+    getCurrentPlayer,
     endGame,
     errorData,
     successData,
@@ -81,6 +82,9 @@ function App() {
     [null, []]
   );
 
+  const playerTurn =
+    gameState?.players[gameState?.playerOrder[gameState.turn % gameState.playerOrder.length]].name;
+
   return (
     <div className="game-container">
       <ConnectionStatus state={connectionState} ping={pingLatency} />
@@ -100,6 +104,7 @@ function App() {
       {/* Game board with word form only */}
       <div className="game-board">
         <WordForm onClaimWord={claimWord} />
+        <h3>Current Player: {playerTurn}</h3>
       </div>
 
       {/* Responsive layout: Show WordList on mobile, traditional layout on desktop */}
