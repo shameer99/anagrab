@@ -1,5 +1,7 @@
-const { shuffle, isValidWord, tryTakeFromPot, tryToStealWord } = require('./utils/gameLogic');
+const { GameManager } = require('./GameManager');
 
+// Legacy global game state for backward compatibility
+// This will be removed in a future update
 const gameState = {
   players: {},
   pot: [],
@@ -7,104 +9,153 @@ const gameState = {
   isActive: true,
 };
 
+// Create a default game for backward compatibility
+const defaultGame = GameManager.createGame('system');
+const DEFAULT_GAME_ID = defaultGame.id;
+
 function initializeDeck() {
   const distribution =
     'AAAAAAAAAAAABBBCCCDDDDDDEEEEEEEEEEEEEEEEEEFFFGGGGHHHIIIIIIIIIIIIJJKKLLLLLMMMNNNNNNNNOOOOOOOOOOOPPPQQRRRRRRRRRSSSSSSUUUUUUVVVWWWXXYYYZZ'.split(
       ''
     );
+  const { shuffle } = require('./utils/gameLogic');
   gameState.deck = shuffle([...distribution]);
   gameState.pot = [];
-  console.log('Deck initialized:', { deckSize: gameState.deck.length });
+  console.log('Legacy: Deck initialized:', { deckSize: gameState.deck.length });
 }
 
 function addPlayer(socketId, playerName) {
+  // Add to both the legacy gameState and the default game
   gameState.players[socketId] = {
     name: playerName,
     words: [],
   };
+
+  // Add to the default game in the GameManager
+  GameManager.addPlayerToGame(DEFAULT_GAME_ID, socketId, playerName);
+
   return gameState;
 }
 
 function removePlayer(socketId) {
+  // Remove from legacy gameState
   delete gameState.players[socketId];
+
+  // Remove from all games in the GameManager
+  GameManager.removePlayerFromAllGames(socketId);
+
   return gameState;
 }
 
 function startNewGame() {
+  // Initialize the legacy gameState
   initializeDeck();
-  // Reset all players' word banks
+
+  // Reset all players' word banks in legacy gameState
   for (const playerId in gameState.players) {
     gameState.players[playerId].words = [];
   }
+
+  // Start a new game in the default game
+  defaultGame.startNewGame();
+
   return gameState;
 }
 
 function flipLetter() {
-  console.log('Attempting to flip letter. Current state:', {
+  console.log('Legacy: Attempting to flip letter. Current state:', {
     deckSize: gameState.deck.length,
     potSize: gameState.pot.length,
   });
 
+  // Flip letter in legacy gameState
+  let success = false;
   if (gameState.deck.length > 0) {
     const letter = gameState.deck.pop();
     gameState.pot.push(letter);
-    console.log('Letter flipped:', {
-      letter,
-      newDeckSize: gameState.deck.length,
-      newPotSize: gameState.pot.length,
-    });
-    return { success: true, state: gameState };
+    success = true;
   }
-  console.log('Failed to flip letter: deck is empty');
-  return { success: false, state: gameState };
+
+  // Flip letter in the default game
+  const defaultGameResult = defaultGame.flipLetter();
+
+  // Use the success status from the default game
+  return {
+    success: defaultGameResult.success,
+    state: gameState,
+  };
 }
 
 function claimWord(word, socketId) {
-  if (!gameState.players[socketId]) {
-    return { success: false, error: 'Player not found in game' };
+  // Forward to the default game
+  const result = defaultGame.claimWord(word, socketId);
+
+  // If successful, sync the legacy gameState with the default game
+  if (result.success) {
+    // Sync pot
+    gameState.pot = [...defaultGame.pot];
+
+    // Sync player words
+    for (const playerId in defaultGame.players) {
+      if (gameState.players[playerId]) {
+        gameState.players[playerId].words = [...defaultGame.players[playerId].words];
+      }
+    }
   }
 
-  const validation = isValidWord(word);
-  if (!validation.success) {
-    return { success: false, error: validation.reason };
-  }
-
-  // Try taking from pot first
-  if (tryTakeFromPot(word, gameState.pot, socketId, gameState)) {
+  // Return the result but with the legacy gameState
+  if (result.success) {
     return {
-      success: true,
+      ...result,
       state: gameState,
-      source: 'pot',
-      word,
     };
   }
 
-  // Try stealing
-  const stealResult = tryToStealWord(word, gameState.pot, socketId, gameState);
-  if (stealResult.success) {
-    return {
-      success: true,
-      state: gameState,
-      source: 'steal',
-      stolenFrom: stealResult.stolenFrom,
-      originalWord: stealResult.originalWord,
-      word,
-    };
-  }
-
-  // Return the specific error message from tryToStealWord
-  return { success: false, error: stealResult.error };
+  return result;
 }
 
 function endGame() {
+  // End game in legacy gameState
   if (gameState.deck.length === 0) {
     gameState.isActive = false;
-    return { success: true, state: gameState };
   }
-  return { success: false, state: gameState };
+
+  // End game in the default game
+  const result = defaultGame.endGame();
+
+  return {
+    success: result.success,
+    state: gameState,
+  };
+}
+
+// New multi-game functions
+function createGame(hostSocketId, settings = {}) {
+  return GameManager.createGame(hostSocketId, settings);
+}
+
+function getGame(gameId) {
+  return GameManager.getGame(gameId);
+}
+
+function joinGame(gameId, socketId, playerName) {
+  return GameManager.addPlayerToGame(gameId, socketId, playerName);
+}
+
+function leaveGame(gameId, socketId) {
+  return GameManager.removePlayerFromGame(gameId, socketId);
+}
+
+function getGameByPlayerId(socketId) {
+  return GameManager.getGameByPlayerId(socketId);
+}
+
+function listGames() {
+  return GameManager.listGames();
 }
 
 module.exports = {
+  // Legacy exports for backward compatibility
   gameState,
   addPlayer,
   removePlayer,
@@ -112,4 +163,13 @@ module.exports = {
   flipLetter,
   claimWord,
   endGame,
+
+  // New multi-game exports
+  createGame,
+  getGame,
+  joinGame,
+  leaveGame,
+  getGameByPlayerId,
+  listGames,
+  DEFAULT_GAME_ID,
 };
