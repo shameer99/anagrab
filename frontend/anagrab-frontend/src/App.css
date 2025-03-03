@@ -1,35 +1,35 @@
 /* CSS Variables for theming */
 :root {
   --bg-primary: #ffffff;
-  --bg-secondary: #f0f2f5;
-  --bg-tertiary: #f7f3e9;
+  --bg-secondary: #f5f7fa;
+  --bg-tertiary: #f0f4f8;
   --text-primary: #1a1a1a;
   --text-secondary: #2b2b2b;
   --text-muted: #666666;
-  --border-color: #d0d0d0;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --accent-primary: #0052cc;
-  --accent-secondary: #0747a6;
-  --danger: #dc3545;
-  --success: #2e844a;
-  --warning: #b59e00;
+  --border-color: #e0e5ec;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --accent-primary: #4361ee;
+  --accent-secondary: #3f37c9;
+  --danger: #ef476f;
+  --success: #06d6a0;
+  --warning: #ffd166;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
-    --bg-tertiary: #333333;
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #292929;
     --text-primary: #ffffff;
     --text-secondary: #f0f0f0;
     --text-muted: #cccccc;
-    --border-color: #505050;
+    --border-color: #404040;
     --shadow-color: rgba(0, 0, 0, 0.3);
-    --accent-primary: #4c9aff;
-    --accent-secondary: #79b8ff;
-    --danger: #ff6b6b;
-    --success: #57d9a3;
-    --warning: #ffd700;
+    --accent-primary: #4895ef;
+    --accent-secondary: #4361ee;
+    --danger: #ff5d8f;
+    --success: #06d6a0;
+    --warning: #ffd166;
   }
 }
 
@@ -191,54 +191,104 @@ body {
 
 .your-player {
   background: var(--bg-secondary);
-  padding: 12px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s;
+}
+
+.your-player:hover {
+  transform: translateY(-2px);
 }
 
 .other-players {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  padding: 0 8px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 8px;
 }
 
 .player {
-  padding: 12px;
+  padding: 16px;
   background: var(--bg-primary);
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.player:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .your-player .player {
   background: transparent;
   border: none;
   padding: 0;
+  box-shadow: none;
+}
+
+.your-player .player:hover {
+  transform: none;
 }
 
 .player h3 {
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
   color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .words {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .word {
-  background: var(--bg-secondary);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  color: var(--text-primary);
+  background: var(--accent-primary);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.word:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.word-player {
+  font-size: 0.9em;
+  color: white;
+  background-color: var(--success);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition: transform 0.2s;
+}
+
+.word-player:hover {
+  transform: translateY(-1px);
 }
 
 .game-board {
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  padding: 20px 0;
   width: 100%;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  margin: 10px 0;
+  box-shadow: inset 0 1px 3px var(--shadow-color);
 }
 
 .game-title {
@@ -715,14 +765,6 @@ h3 {
 
 .word-text {
   font-weight: 500;
-}
-
-.word-player {
-  font-size: 0.85em;
-  color: var(--text-muted);
-  background-color: var(--bg-tertiary);
-  padding: 2px 6px;
-  border-radius: 10px;
 }
 
 .no-words {
@@ -1286,4 +1328,18 @@ h3 {
 
 .close-modal:hover {
   background-color: var(--bg-tertiary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .word {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .word:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .word-player {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
 }

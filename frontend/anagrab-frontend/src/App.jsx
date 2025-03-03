@@ -185,7 +185,7 @@ function App() {
 
       {/* Responsive layout: Show WordList on mobile, traditional layout on desktop */}
       {isMobile ? (
-        <WordList players={players} />
+        <WordList players={players} currentPlayer={currentPlayer} />
       ) : (
         <>
           {/* Other players at the top */}

@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import './WordList.css';
 
-export const WordList = ({ players = {} }) => {
+export const WordList = ({ players = {}, currentPlayer }) => {
   const [filterPlayer, setFilterPlayer] = useState('all');
   const [sortBy, setSortBy] = useState('player'); // 'player', 'length-asc', 'length-desc'
 
   // Extract all words with player information
   const allWords = Object.entries(players).flatMap(([playerId, player]) => {
+    const isCurrentPlayer = currentPlayer?.id
+      ? playerId === currentPlayer.id
+      : player.name === currentPlayer?.name;
+
     return player.words.map(word => ({
       word,
       playerId,
       playerName: player.name,
       length: word.length,
+      isCurrentPlayer,
     }));
   });
 
@@ -37,6 +42,9 @@ export const WordList = ({ players = {} }) => {
       id,
       name: player.name,
       score: player.words.reduce((sum, word) => sum + word.length, 0),
+      isCurrentPlayer: currentPlayer?.id
+        ? id === currentPlayer.id
+        : player.name === currentPlayer?.name,
     }))
     .sort((a, b) => b.score - a.score); // Sort by score in descending order
 
@@ -53,7 +61,7 @@ export const WordList = ({ players = {} }) => {
           {uniquePlayers.map(player => (
             <button
               key={player.id}
-              className={`filter-chip ${filterPlayer === player.id ? 'active' : ''}`}
+              className={`filter-chip ${filterPlayer === player.id ? 'active' : ''} ${player.isCurrentPlayer ? 'current-player' : ''}`}
               onClick={() => setFilterPlayer(player.id)}
             >
               <span className="player-name">{player.name}</span>
@@ -86,7 +94,7 @@ export const WordList = ({ players = {} }) => {
 
       <div className="word-list">
         {sortedWords.map((item, index) => (
-          <div key={index} className="word-item">
+          <div key={index} className={`word-item ${item.isCurrentPlayer ? 'current-player' : ''}`}>
             <span className="word-text">{item.word}</span>
             <span className="word-player">{item.playerName}</span>
           </div>
