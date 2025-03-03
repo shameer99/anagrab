@@ -1,0 +1,34 @@
+{
+  "transformationGroups": [
+    {
+      "baseWord": "know",
+      "variations": ["known"],
+      "explanation": "Past participle form that should be considered same root"
+    },
+    {
+      "baseWord": "grow",
+      "variations": ["grown"],
+      "explanation": "Past participle form that should be considered same root"
+    },
+    {
+      "baseWord": "show",
+      "variations": ["shown"],
+      "explanation": "Past participle form that should be considered same root"
+    },
+    {
+      "baseWord": "throw",
+      "variations": ["thrown"],
+      "explanation": "Past participle form that should be considered same root"
+    },
+    {
+      "baseWord": "blow",
+      "variations": ["blown"],
+      "explanation": "Past participle form that should be considered same root"
+    },
+    {
+      "baseWord": "fly",
+      "variations": ["flown"],
+      "explanation": "Past participle form that should be considered same root"
+    }
+  ]
+}

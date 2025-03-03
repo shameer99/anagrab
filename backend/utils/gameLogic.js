@@ -8,13 +8,19 @@ const dictionary = new Set(
     .map(word => word.trim().toLowerCase())
 );
 
-// Load transformation whitelist
+// Load transformation whitelist and blacklist
 const transformationWhitelist = JSON.parse(
   fs.readFileSync('./data/transformationWhitelist.json', 'utf8')
 );
 
-// Create a map for quick lookup of whitelisted transformations
+const transformationBlacklist = JSON.parse(
+  fs.readFileSync('./data/transformationBlacklist.json', 'utf8')
+);
+
+// Create maps for quick lookup of whitelisted and blacklisted transformations
 const whitelistedTransformations = new Map();
+const blacklistedTransformations = new Map();
+
 transformationWhitelist.transformationGroups.forEach(group => {
   const baseWord = group.baseWord.toLowerCase();
   const variations = group.variations.map(v => v.toLowerCase());
@@ -37,6 +43,16 @@ transformationWhitelist.transformationGroups.forEach(group => {
       whitelistedTransformations.set(`${variations[j]}-${variations[i]}`, true);
     }
   }
+});
+
+transformationBlacklist.transformationGroups.forEach(group => {
+  const baseWord = group.baseWord.toLowerCase();
+  const variations = group.variations.map(v => v.toLowerCase());
+
+  variations.forEach(variation => {
+    blacklistedTransformations.set(`${baseWord}-${variation}`, true);
+    blacklistedTransformations.set(`${variation}-${baseWord}`, true);
+  });
 });
 
 function isValidWord(word) {
@@ -90,6 +106,14 @@ function sharesSameRoot(word1, word2) {
     whitelistedTransformations.has(`${word2}-${word1}`)
   ) {
     return false;
+  }
+
+  // Check if this pair is in the blacklist
+  if (
+    blacklistedTransformations.has(`${word1}-${word2}`) ||
+    blacklistedTransformations.has(`${word2}-${word1}`)
+  ) {
+    return true;
   }
 
   if (word1 === word2) {
