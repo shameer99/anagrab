@@ -943,12 +943,12 @@ body {
   font-weight: bold;
 }
 
-.form-actions button[type="button"] {
+.form-actions button[type='button'] {
   background-color: #ccc;
   color: #333;
 }
 
-.form-actions button[type="submit"] {
+.form-actions button[type='submit'] {
   background-color: #4a90e2;
   color: white;
 }
@@ -1007,25 +1007,25 @@ body {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .form-actions {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .form-actions button {
     width: 100%;
   }
-  
+
   .game-link {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .game-link input {
     border-radius: 5px;
   }
-  
+
   .game-link button {
     border-radius: 5px;
   }

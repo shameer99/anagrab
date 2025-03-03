@@ -85,6 +85,7 @@ flowchart TD
   ```
 
 - Modify player joining to include game ID:
+
   ```javascript
   function addPlayer(gameId, socketId, playerName) {
     const game = games.get(gameId);
