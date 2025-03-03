@@ -32,6 +32,8 @@ function App() {
   } = useSocket();
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   // Add a window resize listener to detect mobile/desktop
   useEffect(() => {
@@ -42,6 +44,16 @@ function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Reset copy success message after a delay
+  useEffect(() => {
+    if (copySuccess) {
+      const timer = setTimeout(() => {
+        setCopySuccess(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copySuccess]);
 
   // Add meta viewport tag to prevent zooming on mobile
   useEffect(() => {
@@ -68,6 +80,47 @@ function App() {
     };
   }, []);
 
+  const handleShareGame = () => {
+    // Always show the modal first
+    setShowShareModal(true);
+  };
+
+  const copyGameLink = () => {
+    const url = `${window.location.origin}?gameCode=${currentGameId}`;
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        setCopySuccess(true);
+        // Don't close the modal so user can see the success message
+      })
+      .catch(err => {
+        console.error('Failed to copy link: ', err);
+      });
+  };
+
+  // Function to handle native sharing
+  const shareGameNative = () => {
+    const shareData = {
+      title: 'Join my Anagrab game!',
+      text: `Join my game with code: ${currentGameId}`,
+      url: `${window.location.origin}?gameCode=${currentGameId}`,
+    };
+
+    if (navigator.canShare(shareData)) {
+      navigator
+        .share(shareData)
+        .then(() => {
+          console.log('Game shared successfully');
+          setShowShareModal(false);
+        })
+        .catch(error => {
+          // Only log the error, don't close the modal
+          // This allows users to try again or use the copy link option
+          console.error('Error sharing game:', error);
+        });
+    }
+  };
+
   if (!isJoined) {
     return <JoinForm onCreateGame={createGame} onJoinGame={joinGame} />;
   }
@@ -92,9 +145,14 @@ function App() {
 
       <div className="game-header">
         <h2>Game: {currentGameId || 'Unknown'}</h2>
-        <button className="leave-game-btn" onClick={leaveGame}>
-          Leave Game
-        </button>
+        <div className="game-header-buttons">
+          <button className="share-game-btn" onClick={handleShareGame}>
+            Share Game
+          </button>
+          <button className="leave-game-btn" onClick={leaveGame}>
+            Leave Game
+          </button>
+        </div>
       </div>
 
       <GameControls
@@ -178,6 +236,34 @@ function App() {
             </div>
           )}
         </>
+      )}
+
+      {/* Share Game Modal */}
+      {showShareModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Share Game</h2>
+            <p>
+              Invite friends to join your game with code: <strong>{currentGameId}</strong>
+            </p>
+
+            <div className="share-buttons">
+              {navigator.share && (
+                <button className="share-button native-share" onClick={shareGameNative}>
+                  Share via Device
+                </button>
+              )}
+
+              <button className="share-button copy-link" onClick={copyGameLink}>
+                {copySuccess ? 'Copied!' : 'Copy Link'}
+              </button>
+            </div>
+
+            <button className="close-modal" onClick={() => setShowShareModal(false)}>
+              Close
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

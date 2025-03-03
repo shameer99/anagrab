@@ -5,7 +5,6 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
   const [playerName, setPlayerName] = useState('');
   const [gameCode, setGameCode] = useState('');
   const [flippedTiles, setFlippedTiles] = useState(new Set());
-  const [gameCreated, setGameCreated] = useState(null);
 
   // Check URL for game code
   useEffect(() => {
@@ -20,29 +19,11 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (mode === 'create') {
-      // Pass a callback to handle the created game info
-      onCreateGame(playerName, gameInfo => {
-        console.log('Game created with info:', gameInfo);
-        setGameCreated(gameInfo);
-      });
+      // No need for callback since component will unmount
+      onCreateGame(playerName);
     } else if (mode === 'join') {
       onJoinGame(gameCode, playerName);
     }
-  };
-
-  const handleCopyLink = () => {
-    if (!gameCreated) return;
-
-    const url = `${window.location.origin}?game=${gameCreated.gameId}`;
-    navigator.clipboard
-      .writeText(url)
-      .then(() => {
-        alert('Game link copied to clipboard!');
-      })
-      .catch(err => {
-        console.error('Failed to copy link:', err);
-        alert('Failed to copy link. Please copy it manually.');
-      });
   };
 
   useEffect(() => {
@@ -75,31 +56,6 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
     </div>
   );
 
-  // If a game was just created, show the game code and copy link button
-  if (gameCreated) {
-    return (
-      <div className="join-form">
-        {renderTitleTiles()}
-        <div className="game-created">
-          <h2>Game Created!</h2>
-          <p>
-            Share this code with friends: <strong>{gameCreated.gameId}</strong>
-          </p>
-          <p>Or share this link:</p>
-          <div className="game-link">
-            <input
-              type="text"
-              value={`${window.location.origin}?game=${gameCreated.gameId}`}
-              readOnly
-            />
-            <button onClick={handleCopyLink}>Copy Link</button>
-          </div>
-          <button onClick={() => setGameCreated(null)}>Back to Lobby</button>
-        </div>
-      </div>
-    );
-  }
-
   // Initial choice screen
   if (mode === 'choice') {
     return (
@@ -128,7 +84,9 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
               type="text"
               value={gameCode}
               onChange={e => setGameCode(e.target.value.toUpperCase())}
-              placeholder="Enter game code"
+              placeholder="Enter 4-letter code"
+              maxLength={4}
+              style={{ textTransform: 'uppercase', letterSpacing: '0.5em', fontWeight: 'bold' }}
             />
           </div>
         )}

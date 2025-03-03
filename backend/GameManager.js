@@ -3,7 +3,8 @@ const { shuffle, isValidWord, tryTakeFromPot, tryToStealWord } = require('./util
 
 class Game {
   constructor(hostSocketId, settings = {}) {
-    this.id = uuidv4().substring(0, 6).toUpperCase(); // Short, readable game ID
+    // Generate a 4-letter uppercase game code
+    this.id = this.generateUniqueGameCode();
     this.host = hostSocketId;
     this.players = {};
     this.pot = [];
@@ -11,6 +12,16 @@ class Game {
     this.isActive = true;
     this.settings = settings;
     this.createdAt = Date.now();
+  }
+
+  // Generate a unique 4-letter game code
+  generateUniqueGameCode() {
+    const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // Removed I and O to avoid confusion with 1 and 0
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      code += letters.charAt(Math.floor(Math.random() * letters.length));
+    }
+    return code;
   }
 
   initializeDeck() {
@@ -140,6 +151,21 @@ class GameManager {
 
   createGame(hostSocketId, settings = {}) {
     const game = new Game(hostSocketId, settings);
+
+    // Ensure the game code is unique
+    let attempts = 0;
+    const maxAttempts = 10; // Prevent infinite loops
+
+    while (this.games.has(game.id) && attempts < maxAttempts) {
+      game.id = game.generateUniqueGameCode();
+      attempts++;
+    }
+
+    // If we still have a collision after max attempts, add a random number suffix
+    if (this.games.has(game.id)) {
+      game.id = game.id + Math.floor(Math.random() * 10);
+    }
+
     this.games.set(game.id, game);
     console.log(`Game created: ${game.id} by host: ${hostSocketId}`);
     return game;

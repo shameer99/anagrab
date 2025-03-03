@@ -164,17 +164,12 @@ export const useSocket = () => {
   }, []);
 
   // Game creation
-  const createGame = (playerName, callback) => {
+  const createGame = playerName => {
     if (playerName.trim()) {
       console.log('[createGame] Creating new game with player:', playerName);
       socket.emit('create_game', playerName);
       setIsJoined(true);
       setCurrentPlayer({ name: playerName });
-
-      // If callback provided, set up a one-time listener for the response
-      if (callback && typeof callback === 'function') {
-        socket.once('game_created', callback);
-      }
     }
   };
 

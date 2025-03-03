@@ -869,6 +869,11 @@ body {
   color: #333;
 }
 
+.game-header-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .leave-game-btn {
   background-color: #ff4d4d;
   color: white;
@@ -881,6 +886,20 @@ body {
 
 .leave-game-btn:hover {
   background-color: #ff3333;
+}
+
+.share-game-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.share-game-btn:hover {
+  background-color: #3a80d2;
 }
 
 /* Game options on the choice screen */
@@ -1006,27 +1025,201 @@ body {
   .game-header {
     flex-direction: column;
     gap: 0.5rem;
+    padding: 0.75rem;
   }
-
+  
+  .game-header-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .share-game-btn,
+  .leave-game-btn {
+    flex: 1;
+  }
+  
   .form-actions {
     flex-direction: column;
     gap: 0.5rem;
   }
-
+  
   .form-actions button {
     width: 100%;
   }
-
+  
   .game-link {
     flex-direction: column;
     gap: 0.5rem;
   }
-
+  
   .game-link input {
     border-radius: 5px;
   }
-
+  
   .game-link button {
     border-radius: 5px;
   }
+  
+  .game-code-letter {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Game code display */
+.game-code-display {
+  margin: 1.5rem 0;
+}
+
+.game-code {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.game-code-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .game-code-letter {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 90%;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.share-native-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.share-native-btn:hover {
+  background-color: #3a80d2;
+}
+
+.modal-close {
+  padding: 0.75rem 1.5rem;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.modal-close:hover {
+  background-color: #bbb;
+}
+
+/* Share buttons in modal */
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.share-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-button.native-share {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.share-button.native-share:hover {
+  background-color: #3a80d2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.share-button.copy-link {
+  background-color: #34a853;
+  color: white;
+}
+
+.share-button.copy-link:hover {
+  background-color: #2d8e47;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+  background-color: #e0e0e0;
 }
