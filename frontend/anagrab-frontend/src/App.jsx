@@ -35,6 +35,10 @@ function App() {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showLeaveConfirmModal, setShowLeaveConfirmModal] = useState(false);
   const [showRestartConfirmModal, setShowRestartConfirmModal] = useState(false);
+  const [showWinnerModal, setShowWinnerModal] = useState(false);
+  const [stealingPhase, setStealingPhase] = useState(false);
+  const [stealingTimeLeft, setStealingTimeLeft] = useState(60);
+  const [winner, setWinner] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Add a window resize listener to detect mobile/desktop
@@ -81,6 +85,53 @@ function App() {
       }
     };
   }, []);
+
+  // Monitor deck size and trigger stealing phase
+  useEffect(() => {
+    if (gameState?.deck?.length === 0 && !stealingPhase && !showWinnerModal) {
+      setStealingPhase(true);
+      setStealingTimeLeft(60);
+    }
+  }, [gameState?.deck?.length]);
+
+  // Countdown timer for stealing phase
+  useEffect(() => {
+    let timer;
+    if (stealingPhase && stealingTimeLeft > 0) {
+      timer = setInterval(() => {
+        setStealingTimeLeft(prev => prev - 1);
+      }, 1000);
+    } else if (stealingPhase && stealingTimeLeft === 0) {
+      // When stealing phase ends, calculate winner(s)
+      const players = gameState?.players || {};
+      const playerScores = Object.entries(players).map(([id, player]) => ({
+        id,
+        name: player.name,
+        score: player.words.reduce((total, word) => total + word.length, 0),
+      }));
+
+      // Find highest score
+      const highestScore = Math.max(...playerScores.map(player => player.score));
+
+      // Find all players with the highest score (handles ties)
+      const winners = playerScores.filter(player => player.score === highestScore);
+
+      setWinner(winners);
+      setShowWinnerModal(true);
+      setStealingPhase(false);
+    }
+    return () => clearInterval(timer);
+  }, [stealingPhase, stealingTimeLeft, gameState?.players]);
+
+  // Reset states when game restarts
+  useEffect(() => {
+    if (gameState?.deck?.length > 0) {
+      setStealingPhase(false);
+      setStealingTimeLeft(60);
+      setShowWinnerModal(false);
+      setWinner(null);
+    }
+  }, [gameState?.deck?.length]);
 
   const handleShareGame = () => {
     // Always show the modal first
@@ -165,6 +216,14 @@ function App() {
         <SuccessMessage data={successData} onDismiss={() => socket.emit('clear_success')} />
       )}
 
+      {/* Stealing Phase Banner */}
+      {stealingPhase && (
+        <div className="stealing-phase-banner">
+          <h3>Stealing Phase!</h3>
+          <p>Time remaining: {stealingTimeLeft} seconds</p>
+        </div>
+      )}
+
       <div className="game-header">
         <h2>Game Code: {currentGameId || 'Unknown'}</h2>
         <div className="game-header-buttons">
@@ -210,7 +269,7 @@ function App() {
                     {'   '}
                     <span
                       style={{
-                        backgroundColor: 'var(--accent-primary)',
+                        backgroundColor: 'red',
                         color: 'white',
                         padding: '0 5px',
                         borderRadius: 15,
@@ -240,7 +299,7 @@ function App() {
                   {'   '}
                   <span
                     style={{
-                      backgroundColor: 'var(--accent-primary)',
+                      backgroundColor: 'red',
                       color: 'white',
                       padding: '0 5px',
                       borderRadius: 15,
@@ -260,6 +319,38 @@ function App() {
             </div>
           )}
         </>
+      )}
+
+      {/* Winner Display Modal */}
+      {showWinnerModal && winner && (
+        <div className="modal-overlay">
+          <div className="modal-content winner-modal">
+            <button className="modal-close" onClick={() => setShowWinnerModal(false)}>
+              ×
+            </button>
+            <h2>Game Over!</h2>
+            <div className="winner-content">
+              {winner.length === 1 ? (
+                <>
+                  <h3>Winner: {winner[0].name}</h3>
+                  <p className="winner-score">{winner[0].score} points</p>
+                </>
+              ) : (
+                <>
+                  <h3>It's a Tie!</h3>
+                  <div className="winners-list">
+                    {winner.map((w, index) => (
+                      <div key={w.id} className="winner-item">
+                        <p className="winner-name">{w.name}</p>
+                        <p className="winner-score">{w.score} points</p>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Leave Game Confirmation Modal */}
