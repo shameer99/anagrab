@@ -9,7 +9,7 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
   // Check URL for game code
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const gameParam = params.get('game');
+    const gameParam = params.get('gameCode');
     if (gameParam) {
       setGameCode(gameParam);
       setMode('join');
