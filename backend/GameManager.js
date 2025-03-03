@@ -122,7 +122,7 @@ class Game {
       host: this.host,
       players: this.players,
       pot: this.pot,
-      deck: this.deck.length, // Only send the length, not the actual deck
+      deck: this.deck, // Send the full deck array
       isActive: this.isActive,
       createdAt: this.createdAt,
     };

@@ -1,12 +1,48 @@
 import { useState, useEffect } from 'react';
 
-export const JoinForm = ({ onJoin }) => {
+export const JoinForm = ({ onCreateGame, onJoinGame }) => {
+  const [mode, setMode] = useState('choice'); // 'choice', 'create', or 'join'
   const [playerName, setPlayerName] = useState('');
+  const [gameCode, setGameCode] = useState('');
   const [flippedTiles, setFlippedTiles] = useState(new Set());
+  const [gameCreated, setGameCreated] = useState(null);
+
+  // Check URL for game code
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const gameParam = params.get('game');
+    if (gameParam) {
+      setGameCode(gameParam);
+      setMode('join');
+    }
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
-    onJoin(playerName);
+    if (mode === 'create') {
+      // Pass a callback to handle the created game info
+      onCreateGame(playerName, gameInfo => {
+        console.log('Game created with info:', gameInfo);
+        setGameCreated(gameInfo);
+      });
+    } else if (mode === 'join') {
+      onJoinGame(gameCode, playerName);
+    }
+  };
+
+  const handleCopyLink = () => {
+    if (!gameCreated) return;
+
+    const url = `${window.location.origin}?game=${gameCreated.gameId}`;
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        alert('Game link copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Failed to copy link:', err);
+        alert('Failed to copy link. Please copy it manually.');
+      });
   };
 
   useEffect(() => {
@@ -25,26 +61,95 @@ export const JoinForm = ({ onJoin }) => {
     });
   }, []); // Run once on component mount
 
+  // Render the title tiles
+  const renderTitleTiles = () => (
+    <div className="title-tiles">
+      {['A', 'N', 'A', 'G', 'R', 'A', 'B'].map((letter, index) => (
+        <div key={index} className={`title-tile ${flippedTiles.has(index) ? 'flipped' : ''}`}>
+          <div className="title-tile-inner">
+            <div className="title-tile-front"></div>
+            <div className="title-tile-back">{letter}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // If a game was just created, show the game code and copy link button
+  if (gameCreated) {
+    return (
+      <div className="join-form">
+        {renderTitleTiles()}
+        <div className="game-created">
+          <h2>Game Created!</h2>
+          <p>
+            Share this code with friends: <strong>{gameCreated.gameId}</strong>
+          </p>
+          <p>Or share this link:</p>
+          <div className="game-link">
+            <input
+              type="text"
+              value={`${window.location.origin}?game=${gameCreated.gameId}`}
+              readOnly
+            />
+            <button onClick={handleCopyLink}>Copy Link</button>
+          </div>
+          <button onClick={() => setGameCreated(null)}>Back to Lobby</button>
+        </div>
+      </div>
+    );
+  }
+
+  // Initial choice screen
+  if (mode === 'choice') {
+    return (
+      <div className="join-form">
+        {renderTitleTiles()}
+        <div className="game-options">
+          <button onClick={() => setMode('create')}>Create New Game</button>
+          <button onClick={() => setMode('join')}>Join Existing Game</button>
+        </div>
+      </div>
+    );
+  }
+
+  // Create or join form
   return (
     <div className="join-form">
-      <div className="title-tiles">
-        {['A', 'N', 'A', 'G', 'R', 'A', 'B'].map((letter, index) => (
-          <div key={index} className={`title-tile ${flippedTiles.has(index) ? 'flipped' : ''}`}>
-            <div className="title-tile-inner">
-              <div className="title-tile-front"></div>
-              <div className="title-tile-back">{letter}</div>
-            </div>
-          </div>
-        ))}
-      </div>
+      {renderTitleTiles()}
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={playerName}
-          onChange={e => setPlayerName(e.target.value)}
-          placeholder="Enter your name"
-        />
-        <button type="submit">Join Game</button>
+        <h2>{mode === 'create' ? 'Create New Game' : 'Join Existing Game'}</h2>
+
+        {mode === 'join' && (
+          <div className="form-group">
+            <label htmlFor="gameCode">Game Code:</label>
+            <input
+              id="gameCode"
+              type="text"
+              value={gameCode}
+              onChange={e => setGameCode(e.target.value.toUpperCase())}
+              placeholder="Enter game code"
+            />
+          </div>
+        )}
+
+        <div className="form-group">
+          <label htmlFor="playerName">Your Name:</label>
+          <input
+            id="playerName"
+            type="text"
+            value={playerName}
+            onChange={e => setPlayerName(e.target.value)}
+            placeholder="Enter your name"
+          />
+        </div>
+
+        <div className="form-actions">
+          <button type="button" onClick={() => setMode('choice')}>
+            Back
+          </button>
+          <button type="submit">{mode === 'create' ? 'Create Game' : 'Join Game'}</button>
+        </div>
       </form>
     </div>
   );

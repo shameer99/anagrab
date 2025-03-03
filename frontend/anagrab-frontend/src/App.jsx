@@ -15,7 +15,9 @@ function App() {
   const {
     gameState,
     isJoined,
+    createGame,
     joinGame,
+    leaveGame,
     startGame,
     flipLetter,
     claimWord,
@@ -23,6 +25,7 @@ function App() {
     errorData,
     successData,
     currentPlayer,
+    currentGameId,
     connectionState,
     pingLatency,
     socket,
@@ -66,7 +69,7 @@ function App() {
   }, []);
 
   if (!isJoined) {
-    return <JoinForm onJoin={joinGame} />;
+    return <JoinForm onCreateGame={createGame} onJoinGame={joinGame} />;
   }
 
   // Split players into current and others
@@ -86,11 +89,19 @@ function App() {
       <ConnectionStatus state={connectionState} ping={pingLatency} />
       {errorData && <ErrorMessage data={errorData} />}
       {successData && <SuccessMessage data={successData} />}
+
+      <div className="game-header">
+        <h2>Game: {currentGameId || 'Unknown'}</h2>
+        <button className="leave-game-btn" onClick={leaveGame}>
+          Leave Game
+        </button>
+      </div>
+
       <GameControls
         onStartGame={startGame}
         onFlipLetter={flipLetter}
         onEndGame={endGame}
-        deckCount={gameState?.deck?.length}
+        deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
         gameState={gameState}
       />
 
