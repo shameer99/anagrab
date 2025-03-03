@@ -84,7 +84,7 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
               type="text"
               value={gameCode}
               onChange={e => setGameCode(e.target.value.toUpperCase())}
-              placeholder="Enter 4-letter code"
+              placeholder="GAME CODE"
               maxLength={4}
               style={{ textTransform: 'uppercase', letterSpacing: '0.5em', fontWeight: 'bold' }}
             />
