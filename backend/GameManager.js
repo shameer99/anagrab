@@ -1,6 +1,15 @@
 const { v4: uuidv4 } = require('uuid');
-const { shuffle, isValidWord, tryTakeFromPot, tryToStealWord } = require('./utils/gameLogic');
+const {
+  shuffle,
+  isValidWord,
+  tryTakeFromPot,
+  tryToStealWord,
+  dictionary,
+} = require('./utils/gameLogic');
 const { getDB } = require('./config/mongodb');
+
+// Singleton instance for GameManager
+let gameManagerInstance = null;
 
 class Game {
   constructor(hostSocketId, settings = {}) {
@@ -19,6 +28,22 @@ class Game {
 
   // Generate a unique 4-letter game code
   generateUniqueGameCode() {
+    // Get all 4-letter words from dictionary
+    const fourLetterWords = Array.from(dictionary).filter(word => word.length === 4);
+
+    // Shuffle the array of words to get random ones
+    const shuffledWords = shuffle([...fourLetterWords]);
+
+    // Try each word until we find an unused one
+    for (const word of shuffledWords) {
+      const code = word.toUpperCase();
+      const existingGames = gameManagerInstance?.listGames() || [];
+      if (!existingGames.some(game => game.id === code)) {
+        return code;
+      }
+    }
+
+    // If all 4-letter words are used (extremely unlikely), fall back to random letters
     const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; // Removed I and O to avoid confusion with 1 and 0
     let code = '';
     for (let i = 0; i < 4; i++) {
@@ -197,6 +222,9 @@ class GameManager {
     this.games = new Map();
     this.playerGameMap = new Map(); // Maps player tokens to gameId
     this.db = null;
+
+    // Set singleton instance
+    gameManagerInstance = this;
 
     // Initialize database connection
     this.initializeDB();

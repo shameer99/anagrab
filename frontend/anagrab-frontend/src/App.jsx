@@ -154,7 +154,7 @@ function App() {
       {successData && <SuccessMessage data={successData} />}
 
       <div className="game-header">
-        <h2>Game: {currentGameId || 'Unknown'}</h2>
+        <h2>Game Code: {currentGameId || 'Unknown'}</h2>
         <div className="game-header-buttons">
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
