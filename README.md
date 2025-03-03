@@ -9,20 +9,6 @@ A real-time multiplayer word game where players compete to form words from share
 - Node.js (v16 or higher)
 - npm (v7 or higher)
 
-### Environment Setup
-
-1. Copy the backend environment file:
-
-```bash
-cp backend/.env.example backend/.env
-```
-
-2. Copy the frontend environment file:
-
-```bash
-cp frontend/anagrab-frontend/.env.example frontend/anagrab-frontend/.env
-```
-
 ### Quick Start
 
 If you haven't installed dependencies yet:
