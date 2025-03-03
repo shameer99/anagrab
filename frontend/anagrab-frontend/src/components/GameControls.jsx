@@ -1,9 +1,7 @@
-export const GameControls = ({ onStartGame, onFlipLetter, deckCount }) => {
+export const GameControls = ({ onFlipLetter, deckCount }) => {
   return (
     <div className="game-controls">
       <div className="buttons">
-        <button onClick={onStartGame}>Start New Game</button>
-
         <button onClick={onFlipLetter} className="bag-button" title="Flip Letter">
           <div className="bag-icon">
             <svg

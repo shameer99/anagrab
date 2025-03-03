@@ -34,6 +34,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [showShareModal, setShowShareModal] = useState(false);
   const [showLeaveConfirmModal, setShowLeaveConfirmModal] = useState(false);
+  const [showRestartConfirmModal, setShowRestartConfirmModal] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Add a window resize listener to detect mobile/desktop
@@ -131,6 +132,15 @@ function App() {
     setShowLeaveConfirmModal(false);
   };
 
+  const handleRestartGame = () => {
+    setShowRestartConfirmModal(true);
+  };
+
+  const confirmRestartGame = () => {
+    startGame();
+    setShowRestartConfirmModal(false);
+  };
+
   if (!isJoined) {
     return <JoinForm onCreateGame={createGame} onJoinGame={joinGame} />;
   }
@@ -158,6 +168,9 @@ function App() {
       <div className="game-header">
         <h2>Game Code: {currentGameId || 'Unknown'}</h2>
         <div className="game-header-buttons">
+          <button className="start-game-btn" onClick={handleRestartGame}>
+            Restart Game
+          </button>
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
           </button>
@@ -168,7 +181,6 @@ function App() {
       </div>
 
       <GameControls
-        onStartGame={startGame}
         onFlipLetter={flipLetter}
         onEndGame={endGame}
         deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
@@ -262,6 +274,25 @@ function App() {
                 Yes, Leave Game
               </button>
               <button className="cancel-button" onClick={() => setShowLeaveConfirmModal(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Restart Game Confirmation Modal */}
+      {showRestartConfirmModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Restart Game?</h2>
+            <p>Are you sure you want to restart the game? All current progress will be lost.</p>
+
+            <div className="modal-buttons">
+              <button className="confirm-button" onClick={confirmRestartGame}>
+                Yes, Restart Game
+              </button>
+              <button className="cancel-button" onClick={() => setShowRestartConfirmModal(false)}>
                 Cancel
               </button>
             </div>

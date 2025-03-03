@@ -990,6 +990,20 @@ h3 {
   background-color: var(--accent-secondary);
 }
 
+.start-game-btn {
+  background-color: var(--success);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.start-game-btn:hover {
+  background-color: #05b589;
+}
+
 /* Game options on the choice screen */
 .game-options {
   display: flex;
