@@ -1,5 +1,6 @@
-const fs = require('fs');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import { execSync } from 'child_process';
+
 const prNumber = process.env.VERCEL_GIT_PULL_REQUEST_ID; // e.g., "55"
 
 // Production backend URL
