@@ -282,6 +282,7 @@ class GameManager {
 
   async createGame(hostSocketId, settings = {}) {
     const game = new Game(hostSocketId, settings);
+    game.startNewGame();
 
     // Ensure unique game code
     let attempts = 0;
