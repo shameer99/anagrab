@@ -9,6 +9,9 @@ const io = new Server(server, {
   cors: { origin: '*' },
 });
 
+// Middleware
+app.use(express.json());
+
 // Import modules
 const { setupSocketHandlers } = require('./socket/handlers');
 const { gameState } = require('./gameState');

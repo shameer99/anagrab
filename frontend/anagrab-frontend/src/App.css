@@ -14,6 +14,7 @@
   height: 6em;
   padding: 1.5em;
   will-change: filter;
+
   transition: filter 300ms;
 }
 .logo:hover {
@@ -850,4 +851,376 @@ body {
   100% {
     transform: scale(1);
   }
+}
+
+/* Game header with game ID and leave button */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.game-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.game-header-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.leave-game-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.leave-game-btn:hover {
+  background-color: #ff3333;
+}
+
+.share-game-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.share-game-btn:hover {
+  background-color: #3a80d2;
+}
+
+/* Game options on the choice screen */
+.game-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.game-options button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.game-options button:hover {
+  background-color: #3a80d2;
+}
+
+/* Form groups for inputs */
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Form actions for buttons */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.form-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-actions button[type='button'] {
+  background-color: #ccc;
+  color: #333;
+}
+
+.form-actions button[type='submit'] {
+  background-color: #4a90e2;
+  color: white;
+}
+
+/* Game created screen */
+.game-created {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.game-created h2 {
+  color: #4a90e2;
+  margin-bottom: 1rem;
+}
+
+.game-created p {
+  margin-bottom: 1rem;
+}
+
+.game-created strong {
+  font-size: 1.5rem;
+  color: #333;
+  background-color: #e0e0e0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+}
+
+.game-link {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.game-link input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  font-size: 0.9rem;
+}
+
+.game-link button {
+  padding: 0.5rem 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .game-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .game-header-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .share-game-btn,
+  .leave-game-btn {
+    flex: 1;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .game-link {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .game-link input {
+    border-radius: 5px;
+  }
+
+  .game-link button {
+    border-radius: 5px;
+  }
+
+  .game-code-letter {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Game code display */
+.game-code-display {
+  margin: 1.5rem 0;
+}
+
+.game-code {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.game-code-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .game-code-letter {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 90%;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.share-native-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.share-native-btn:hover {
+  background-color: #3a80d2;
+}
+
+.modal-close {
+  padding: 0.75rem 1.5rem;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.modal-close:hover {
+  background-color: #bbb;
+}
+
+/* Share buttons in modal */
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.share-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-button.native-share {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.share-button.native-share:hover {
+  background-color: #3a80d2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.share-button.copy-link {
+  background-color: #34a853;
+  color: white;
+}
+
+.share-button.copy-link:hover {
+  background-color: #2d8e47;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+  background-color: #e0e0e0;
 }

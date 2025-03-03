@@ -27,6 +27,8 @@ export const useSocket = () => {
   const [connectionState, setConnectionState] = useState('connecting');
   const [pingLatency, setPingLatency] = useState(null);
   const [pendingClaim, setPendingClaim] = useState(null);
+  const [currentGameId, setCurrentGameId] = useState(null);
+  const [gamesList, setGamesList] = useState([]);
 
   useEffect(() => {
     socket.on('connect', () => {
@@ -62,46 +64,22 @@ export const useSocket = () => {
 
   useEffect(() => {
     socket.on('game_state_update', newState => {
-      console.log('Received game_state_update with state:', {
-        isNull: newState === null,
-        playerCount: newState ? Object.keys(newState.players).length : 0,
-        potSize: newState ? newState.pot.length : 0,
-        deckSize: newState ? newState.deck.length : 0,
-      });
+      if (newState?.id && !currentGameId) {
+        setCurrentGameId(newState.id);
+      }
 
       if (newState?.players && currentPlayer?.name) {
-        console.log('[game_state_update] Current player before update:', currentPlayer);
-        console.log('[game_state_update] All players:', newState.players);
-
         const playerEntry = Object.entries(newState.players).find(([_, p]) => {
-          const match = p.name === currentPlayer.name;
-          console.log('[game_state_update] Comparing:', {
-            playerName: p.name,
-            currentPlayerName: currentPlayer.name,
-            match,
-          });
-          return match;
+          return p.name === currentPlayer.name;
         });
-
-        console.log('[game_state_update] Found player entry:', playerEntry);
 
         if (playerEntry) {
           const [id] = playerEntry;
-          console.log('[game_state_update] Updating current player with id:', id);
-          setCurrentPlayer(prev => {
-            const updated = { ...prev, id };
-            console.log('[game_state_update] Updated current player:', updated);
-            return updated;
-          });
-        } else {
-          console.log('[game_state_update] WARNING: Could not find current player in game state');
+          setCurrentPlayer(prev => ({
+            ...prev,
+            id,
+          }));
         }
-      } else {
-        console.log('[game_state_update] Skipping current player update:', {
-          hasPlayers: !!newState?.players,
-          hasCurrentPlayer: !!currentPlayer,
-          currentPlayerName: currentPlayer?.name,
-        });
       }
 
       setGameState(newState);
@@ -110,7 +88,7 @@ export const useSocket = () => {
     return () => {
       socket.off('game_state_update');
     };
-  }, [currentPlayer?.name]);
+  }, [currentPlayer?.name, currentGameId]);
 
   useEffect(() => {
     socket.on('claim_error', data => {
@@ -141,31 +119,102 @@ export const useSocket = () => {
       setTimeout(() => setSuccessData(null), 5000);
     });
 
+    socket.on('join_error', data => {
+      setErrorData({
+        type: 'join_failed',
+        reason: data.message,
+      });
+      setTimeout(() => setErrorData(null), 5000);
+    });
+
+    socket.on('game_error', data => {
+      setErrorData({
+        type: data.type,
+        reason: data.message,
+      });
+      setTimeout(() => setErrorData(null), 5000);
+    });
+
+    socket.on('games_list', games => {
+      setGamesList(games);
+    });
+
     return () => {
       socket.off('claim_error');
       socket.off('claim_success');
+      socket.off('join_error');
+      socket.off('game_error');
+      socket.off('games_list');
     };
   }, [pendingClaim]);
 
-  const joinGame = playerName => {
+  // Add a useEffect specifically for handling the game_created event
+  useEffect(() => {
+    const handleGameCreated = data => {
+      if (data && data.gameId) {
+        setCurrentGameId(data.gameId);
+      }
+    };
+
+    socket.on('game_created', handleGameCreated);
+
+    return () => {
+      socket.off('game_created', handleGameCreated);
+    };
+  }, []);
+
+  // Game creation
+  const createGame = playerName => {
     if (playerName.trim()) {
-      console.log('[joinGame] Setting current player name:', playerName);
-      socket.emit('join_game', playerName);
+      console.log('[createGame] Creating new game with player:', playerName);
+      socket.emit('create_game', playerName);
       setIsJoined(true);
       setCurrentPlayer({ name: playerName });
     }
   };
 
+  // Join an existing game
+  const joinGame = (gameId, playerName) => {
+    if (gameId && playerName.trim()) {
+      console.log('[joinGame] Joining game:', { gameId, playerName });
+      socket.emit('join_game', { gameId, playerName });
+      setIsJoined(true);
+      setCurrentPlayer({ name: playerName });
+      setCurrentGameId(gameId);
+    }
+  };
+
+  // Leave the current game
+  const leaveGame = () => {
+    if (currentGameId) {
+      socket.emit('leave_game', currentGameId);
+      setIsJoined(false);
+      setCurrentPlayer(null);
+      setCurrentGameId(null);
+      setGameState(null);
+    }
+  };
+
+  // List available games
+  const listGames = () => {
+    socket.emit('list_games');
+  };
+
+  // Game actions
   const startGame = () => {
-    socket.emit('start_game');
+    if (currentGameId) {
+      socket.emit('start_game', currentGameId);
+    }
   };
 
   const flipLetter = () => {
-    socket.emit('flip_letter');
+    if (currentGameId) {
+      socket.emit('flip_letter', currentGameId);
+    }
   };
 
   const claimWord = word => {
-    if (word.trim()) {
+    if (currentGameId && word.trim()) {
       return new Promise(resolve => {
         setPendingClaim({
           resolve: success => {
@@ -174,20 +223,25 @@ export const useSocket = () => {
             Promise.all([minDelay]).then(() => resolve(success));
           },
         });
-        socket.emit('claim_word', word.toUpperCase());
+        socket.emit('claim_word', { gameId: currentGameId, word: word.toUpperCase() });
       });
     }
     return Promise.resolve(false);
   };
 
   const endGame = () => {
-    socket.emit('end_game');
+    if (currentGameId) {
+      socket.emit('end_game', currentGameId);
+    }
   };
 
   return {
     gameState,
     isJoined,
+    createGame,
     joinGame,
+    leaveGame,
+    listGames,
     startGame,
     flipLetter,
     claimWord,
@@ -197,8 +251,10 @@ export const useSocket = () => {
     successData,
     setSuccessData,
     currentPlayer,
+    currentGameId,
     connectionState,
     pingLatency,
+    gamesList,
     socket,
   };
 };
