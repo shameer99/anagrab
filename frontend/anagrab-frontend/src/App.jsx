@@ -33,6 +33,7 @@ function App() {
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showLeaveConfirmModal, setShowLeaveConfirmModal] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Add a window resize listener to detect mobile/desktop
@@ -121,6 +122,15 @@ function App() {
     }
   };
 
+  const handleLeaveGame = () => {
+    setShowLeaveConfirmModal(true);
+  };
+
+  const confirmLeaveGame = () => {
+    leaveGame();
+    setShowLeaveConfirmModal(false);
+  };
+
   if (!isJoined) {
     return <JoinForm onCreateGame={createGame} onJoinGame={joinGame} />;
   }
@@ -149,7 +159,7 @@ function App() {
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
           </button>
-          <button className="leave-game-btn" onClick={leaveGame}>
+          <button className="leave-game-btn" onClick={handleLeaveGame}>
             Leave Game
           </button>
         </div>
@@ -236,6 +246,25 @@ function App() {
             </div>
           )}
         </>
+      )}
+
+      {/* Leave Game Confirmation Modal */}
+      {showLeaveConfirmModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Leave Game?</h2>
+            <p>Are you sure you want to leave the game? This action cannot be undone.</p>
+
+            <div className="modal-buttons">
+              <button className="confirm-button" onClick={confirmLeaveGame}>
+                Yes, Leave Game
+              </button>
+              <button className="cancel-button" onClick={() => setShowLeaveConfirmModal(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Share Game Modal */}

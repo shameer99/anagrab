@@ -1110,62 +1110,81 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 .modal-content {
-  background-color: white;
+  background: white;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   max-width: 90%;
   width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  position: relative;
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-content h2 {
-  margin-top: 0;
-  color: #333;
+  margin: 0 0 1rem 0;
+  color: #2b2b2b;
+  font-size: 1.5rem;
 }
 
-.modal-actions {
+.modal-content p {
+  margin: 0 0 1.5rem 0;
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
+.modal-buttons {
   display: flex;
+  gap: 12px;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
 }
 
-.share-native-btn {
-  padding: 0.75rem 1.5rem;
-  background-color: #4a90e2;
+.confirm-button, .cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.confirm-button {
+  background-color: #dc3545;
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
 }
 
-.share-native-btn:hover {
-  background-color: #3a80d2;
+.confirm-button:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
 }
 
-.modal-close {
-  padding: 0.75rem 1.5rem;
-  background-color: #ccc;
-  color: #333;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 0;
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
 }
 
-.modal-close:hover {
-  background-color: #bbb;
+.cancel-button:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
 }
 
 /* Share buttons in modal */
