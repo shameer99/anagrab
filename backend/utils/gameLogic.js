@@ -160,7 +160,6 @@ function sharesSameRoot(word1, word2) {
     'ion',
   ];
 
-  // this breaks expected false cases like flow -> flower, line -> liner, etc
   return commonSuffixes.some(suffix => word2.endsWith(suffix));
 }
 
@@ -168,6 +167,8 @@ function canMakeNewWord(existingWord, targetWord, pot) {
   // Convert words to lowercase for comparison
   existingWord = existingWord.toLowerCase();
   targetWord = targetWord.toLowerCase();
+  // Convert pot to lowercase for case-insensitive matching
+  const lowerPot = pot.map(letter => letter.toLowerCase());
 
   // If words are the same, can't steal
   if (existingWord === targetWord) {
@@ -186,7 +187,7 @@ function canMakeNewWord(existingWord, targetWord, pot) {
   // Create arrays of letters for comparison
   const existingLetters = [...existingWord];
   const targetLetters = [...targetWord];
-  const potCopy = [...pot];
+  const potCopy = [...lowerPot];
 
   // Try to find each target letter in either existing word or pot
   for (const targetLetter of targetLetters) {
@@ -206,10 +207,13 @@ function canMakeNewWord(existingWord, targetWord, pot) {
     }
   }
 
+  // Map the remaining lowercase pot letters back to their original case
+  const newPot = pot.filter((letter, index) => potCopy.includes(letter.toLowerCase()));
+
   // If we got here, we found all needed letters
   return {
     success: true,
-    newPot: potCopy,
+    newPot: newPot,
   };
 }
 
