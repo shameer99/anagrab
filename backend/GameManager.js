@@ -8,6 +8,7 @@ class Game {
     this.id = this.generateUniqueGameCode();
     this.host = hostSocketId;
     this.players = {};
+    this.playerTokens = new Map(); // Map socket IDs to player tokens
     this.pot = [];
     this.deck = [];
     this.isActive = true;
@@ -37,17 +38,50 @@ class Game {
     return this;
   }
 
-  addPlayer(socketId, playerName) {
-    this.players[socketId] = {
+  addPlayer(socketId, playerName, playerToken = null) {
+    // Generate a player token if not provided
+    const token = playerToken || uuidv4();
+
+    this.players[token] = {
       name: playerName,
       words: [],
+      lastSeen: new Date(),
+      socketId: socketId,
     };
-    return this;
+
+    this.playerTokens.set(socketId, token);
+    return { token, game: this };
   }
 
   removePlayer(socketId) {
-    delete this.players[socketId];
+    const token = this.playerTokens.get(socketId);
+    if (token) {
+      delete this.players[token];
+      this.playerTokens.delete(socketId);
+    }
     return this;
+  }
+
+  updatePlayerSocket(token, newSocketId) {
+    const player = this.players[token];
+    if (player) {
+      const oldSocketId = player.socketId;
+      player.socketId = newSocketId;
+      player.lastSeen = new Date();
+      this.playerTokens.delete(oldSocketId);
+      this.playerTokens.set(newSocketId, token);
+      return true;
+    }
+    return false;
+  }
+
+  getPlayerByToken(token) {
+    return this.players[token];
+  }
+
+  getPlayerBySocket(socketId) {
+    const token = this.playerTokens.get(socketId);
+    return token ? this.players[token] : null;
   }
 
   startNewGame() {
@@ -81,7 +115,9 @@ class Game {
   }
 
   claimWord(word, socketId) {
-    if (!this.players[socketId]) {
+    // Get player token from socket ID
+    const playerToken = this.playerTokens.get(socketId);
+    if (!playerToken || !this.players[playerToken]) {
       return { success: false, error: 'Player not found in game' };
     }
 
@@ -91,7 +127,7 @@ class Game {
     }
 
     // Try taking from pot first
-    if (tryTakeFromPot(word, this.pot, socketId, this)) {
+    if (tryTakeFromPot(word, this.pot, playerToken, this)) {
       return {
         success: true,
         state: this,
@@ -101,7 +137,7 @@ class Game {
     }
 
     // Try stealing
-    const stealResult = tryToStealWord(word, this.pot, socketId, this);
+    const stealResult = tryToStealWord(word, this.pot, playerToken, this);
     if (stealResult.success) {
       return {
         success: true,
@@ -159,7 +195,7 @@ class Game {
 class GameManager {
   constructor() {
     this.games = new Map();
-    this.playerGameMap = new Map(); // Maps socketId to gameId for quick lookup
+    this.playerGameMap = new Map(); // Maps player tokens to gameId
     this.db = null;
 
     // Initialize database connection
@@ -243,49 +279,67 @@ class GameManager {
     return this.games.get(gameId);
   }
 
-  async addPlayerToGame(gameId, socketId, playerName) {
+  async addPlayerToGame(gameId, socketId, playerName, playerToken = null) {
     const game = this.games.get(gameId);
     if (!game) {
       console.log(`Failed to add player to game: Game ${gameId} not found`);
       return null;
     }
 
-    await this.removePlayerFromAllGames(socketId);
+    // If player token provided, check if player is already in a game
+    if (playerToken) {
+      const existingGameId = this.playerGameMap.get(playerToken);
+      if (existingGameId && existingGameId !== gameId) {
+        await this.removePlayerFromGame(existingGameId, playerToken);
+      }
+    }
 
-    game.addPlayer(socketId, playerName);
-    this.playerGameMap.set(socketId, gameId);
-    await this.saveGameToDB(game);
+    const { token, game: updatedGame } = game.addPlayer(socketId, playerName, playerToken);
+    this.playerGameMap.set(token, gameId);
+    await this.saveGameToDB(updatedGame);
 
-    console.log(`Player ${playerName} (${socketId}) added to game ${gameId}`);
-    return game;
+    console.log(`Player ${playerName} (${token}) added to game ${gameId}`);
+    return { game: updatedGame, playerToken: token };
   }
 
-  async removePlayerFromGame(gameId, socketId) {
+  async removePlayerFromGame(gameId, identifier) {
     const game = this.games.get(gameId);
     if (!game) return null;
 
-    game.removePlayer(socketId);
-    this.playerGameMap.delete(socketId);
-    await this.saveGameToDB(game);
+    // Handle both socket IDs and player tokens
+    const player =
+      typeof identifier === 'string' && identifier.length === 36
+        ? game.getPlayerByToken(identifier)
+        : game.getPlayerBySocket(identifier);
 
-    if (game.isEmpty()) {
-      console.log(`Game ${gameId} is now empty, scheduling for cleanup`);
-      setTimeout(() => this.cleanupGameIfEmpty(gameId), 1000 * 60 * 5);
+    if (player) {
+      game.removePlayer(player.socketId);
+      this.playerGameMap.delete(identifier);
+      await this.saveGameToDB(game);
+
+      if (game.isEmpty()) {
+        console.log(`Game ${gameId} is now empty, scheduling for cleanup`);
+        setTimeout(() => this.cleanupGameIfEmpty(gameId), 1000 * 60 * 5);
+      }
     }
 
     return game;
   }
 
-  async removePlayerFromAllGames(socketId) {
-    const gameId = this.playerGameMap.get(socketId);
-    if (gameId) {
-      return await this.removePlayerFromGame(gameId, socketId);
+  async reconnectPlayer(gameId, token, newSocketId) {
+    const game = this.games.get(gameId);
+    if (!game) return null;
+
+    const success = game.updatePlayerSocket(token, newSocketId);
+    if (success) {
+      await this.saveGameToDB(game);
+      return game;
     }
     return null;
   }
 
-  getGameByPlayerId(socketId) {
-    const gameId = this.playerGameMap.get(socketId);
+  getGameByPlayerId(identifier) {
+    const gameId = this.playerGameMap.get(identifier);
     if (!gameId) return null;
     return this.games.get(gameId);
   }

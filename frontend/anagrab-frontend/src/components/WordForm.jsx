@@ -1,17 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const WordForm = ({ onClaimWord }) => {
   const [wordInput, setWordInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Add cleanup effect for submission state
+  useEffect(() => {
+    let timeoutId;
+    if (isSubmitting) {
+      // Reduced safety timeout from 6s to 3s
+      timeoutId = setTimeout(() => {
+        setIsSubmitting(false);
+      }, 3000);
+    }
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [isSubmitting]);
+
   const handleSubmit = async e => {
     e.preventDefault();
     if (wordInput.trim() && !isSubmitting) {
-      setIsSubmitting(true);
-      const success = await onClaimWord(wordInput);
-      setIsSubmitting(false);
-      if (success) {
-        setWordInput('');
+      try {
+        setIsSubmitting(true);
+        const success = await onClaimWord(wordInput);
+        // Immediately set isSubmitting to false after getting a response
+        setIsSubmitting(false);
+        if (success) {
+          setWordInput('');
+        }
+      } catch (error) {
+        console.error('Error claiming word:', error);
+        setIsSubmitting(false);
       }
     }
   };

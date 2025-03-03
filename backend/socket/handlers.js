@@ -5,13 +5,18 @@ function setupSocketHandlers(io) {
     console.log('Player connected:', socket.id);
 
     // Create a new game
-    socket.on('create_game', async playerName => {
-      console.log('Creating new game:', { hostSocketId: socket.id, playerName });
+    socket.on('create_game', async ({ playerName, playerToken }) => {
+      console.log('Creating new game:', { hostSocketId: socket.id, playerName, playerToken });
       try {
         const game = await GameManager.createGame(socket.id);
 
         // Add the host as a player
-        await GameManager.addPlayerToGame(game.id, socket.id, playerName);
+        const result = await GameManager.addPlayerToGame(
+          game.id,
+          socket.id,
+          playerName,
+          playerToken
+        );
 
         // Join the socket to the game room
         socket.join(game.id);
@@ -20,12 +25,13 @@ function setupSocketHandlers(io) {
         const gameInfo = {
           gameId: game.id,
           joinUrl: `${process.env.FRONTEND_URL || ''}?game=${game.id}`,
+          playerToken: result.playerToken,
         };
 
         socket.emit('game_created', gameInfo);
 
         // Send game state to all players in the room
-        io.to(game.id).emit('game_state_update', game);
+        io.to(game.id).emit('game_state_update', result.game);
       } catch (error) {
         console.error('Error creating game:', error);
         socket.emit('game_error', { type: 'create_failed', message: 'Failed to create game' });
@@ -33,19 +39,30 @@ function setupSocketHandlers(io) {
     });
 
     // Join an existing game
-    socket.on('join_game', async ({ gameId, playerName }) => {
-      console.log('Player joining game:', { socketId: socket.id, playerName, gameId });
+    socket.on('join_game', async ({ gameId, playerName, playerToken }) => {
+      console.log('Player joining game:', { socketId: socket.id, playerName, gameId, playerToken });
 
       try {
         // Add player to the game
-        const game = await GameManager.addPlayerToGame(gameId, socket.id, playerName);
+        const result = await GameManager.addPlayerToGame(
+          gameId,
+          socket.id,
+          playerName,
+          playerToken
+        );
 
-        if (game) {
+        if (result) {
           // Join the socket to the game room
           socket.join(gameId);
 
+          // Send player token back to the client
+          socket.emit('join_successful', {
+            gameId,
+            playerToken: result.playerToken,
+          });
+
           // Send game state to all players in the room
-          io.to(gameId).emit('game_state_update', game);
+          io.to(gameId).emit('game_state_update', result.game);
         } else {
           // Game not found
           socket.emit('join_error', { message: 'Game not found' });
@@ -53,6 +70,36 @@ function setupSocketHandlers(io) {
       } catch (error) {
         console.error('Error joining game:', error);
         socket.emit('join_error', { message: 'Failed to join game' });
+      }
+    });
+
+    // Reconnect to a game
+    socket.on('reconnect_to_game', async ({ gameId, playerToken }) => {
+      console.log('Player reconnecting:', { socketId: socket.id, gameId, playerToken });
+
+      try {
+        const game = await GameManager.reconnectPlayer(gameId, playerToken, socket.id);
+
+        if (game) {
+          // Join the socket to the game room
+          socket.join(gameId);
+
+          // Send success response
+          socket.emit('reconnection_successful', { gameId });
+
+          // Send game state to all players
+          io.to(gameId).emit('game_state_update', game);
+        } else {
+          socket.emit('reconnection_failed', {
+            message:
+              'Unable to reconnect to the game. The game may have ended or your session expired.',
+          });
+        }
+      } catch (error) {
+        console.error('Error reconnecting:', error);
+        socket.emit('reconnection_failed', {
+          message: 'Failed to reconnect to the game',
+        });
       }
     });
 
@@ -103,17 +150,18 @@ function setupSocketHandlers(io) {
 
           if (result.success) {
             await GameManager.saveGameToDB(result.state);
+            const playerToken = game.playerTokens.get(socket.id);
             console.log('Word claim successful', {
               gameId,
               newPotSize: result.state.pot.length,
-              playerWordCount: result.state.players[socket.id].words.length,
+              playerWordCount: result.state.players[playerToken].words.length,
             });
 
             // Send game state update to all players in the room
             io.to(gameId).emit('game_state_update', result.state);
 
             // Send success notification to all players in the room
-            const playerName = result.state.players[socket.id].name;
+            const playerName = result.state.players[playerToken].name;
             if (result.source === 'pot') {
               io.to(gameId).emit('claim_success', {
                 type: 'pot_claim',
@@ -122,7 +170,7 @@ function setupSocketHandlers(io) {
               });
             } else {
               const stolenFromName = result.state.players[result.stolenFrom].name;
-              const isSelfModification = socket.id === result.stolenFrom;
+              const isSelfModification = playerToken === result.stolenFrom;
 
               io.to(gameId).emit('claim_success', {
                 type: isSelfModification ? 'self_modify' : 'steal',
@@ -205,11 +253,15 @@ function setupSocketHandlers(io) {
         const game = GameManager.getGameByPlayerId(socket.id);
 
         if (game) {
-          // Remove player from all games
-          await GameManager.removePlayerFromAllGames(socket.id);
+          // Update the player's last seen timestamp but don't remove them
+          const player = game.getPlayerBySocket(socket.id);
+          if (player) {
+            player.lastSeen = new Date();
+            await GameManager.saveGameToDB(game);
 
-          // Send updated game state to remaining players
-          io.to(game.id).emit('game_state_update', game);
+            // Send updated game state to remaining players
+            io.to(game.id).emit('game_state_update', game);
+          }
         }
       } catch (error) {
         console.error('Error handling disconnect:', error);
