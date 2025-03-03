@@ -29,6 +29,11 @@
       "baseWord": "flow",
       "variations": ["flower", "flowers"],
       "explanation": "Different stem ('flow' vs. variations) with distinct meanings"
+    },
+    {
+      "baseWord": "wand",
+      "variations": ["wander"],
+      "explanation": "Different stem ('wand' vs. variations) with distinct meanings"
     }
   ]
 }
