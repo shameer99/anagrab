@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io(import.meta.env.VITE_BACKEND_URL);
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001';
+const socket = io(BACKEND_URL);
+console.log(`Socket initialized with URL: ${BACKEND_URL}`);
 
 const originalOn = socket.on.bind(socket);
 socket.on = (eventName, callback) => {
