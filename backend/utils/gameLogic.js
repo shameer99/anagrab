@@ -92,7 +92,7 @@ function tryTakeFromPot(word, pot, playerToken, game) {
   return true;
 }
 
-function isAnagram(word1, word2) {
+function isExactAnagram(word1, word2) {
   return word1.split('').sort().join('') === word2.split('').sort().join('');
 }
 
@@ -162,6 +162,55 @@ function sharesSameRoot(word1, word2) {
 
   // this breaks expected false cases like flow -> flower, line -> liner, etc
   return commonSuffixes.some(suffix => word2.endsWith(suffix));
+}
+
+function canMakeNewWord(existingWord, targetWord, pot) {
+  // Convert words to lowercase for comparison
+  existingWord = existingWord.toLowerCase();
+  targetWord = targetWord.toLowerCase();
+
+  // If words are the same, can't steal
+  if (existingWord === targetWord) {
+    return { success: false };
+  }
+
+  if (isExactAnagram(existingWord, targetWord)) {
+    return { success: false };
+  }
+
+  // If words share same root, can't steal
+  if (sharesSameRoot(existingWord, targetWord)) {
+    return { success: false };
+  }
+
+  // Create arrays of letters for comparison
+  const existingLetters = [...existingWord];
+  const targetLetters = [...targetWord];
+  const potCopy = [...pot];
+
+  // Try to find each target letter in either existing word or pot
+  for (const targetLetter of targetLetters) {
+    const existingIndex = existingLetters.indexOf(targetLetter);
+    if (existingIndex !== -1) {
+      // Letter found in existing word, remove it from consideration
+      existingLetters.splice(existingIndex, 1);
+    } else {
+      // Letter not in existing word, try to find in pot
+      const potIndex = potCopy.indexOf(targetLetter);
+      if (potIndex === -1) {
+        // Letter not found in pot either
+        return { success: false };
+      }
+      // Letter found in pot, remove it from consideration
+      potCopy.splice(potIndex, 1);
+    }
+  }
+
+  // If we got here, we found all needed letters
+  return {
+    success: true,
+    newPot: potCopy,
+  };
 }
 
 function tryToStealWord(word, pot, playerToken, game) {
