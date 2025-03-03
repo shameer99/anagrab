@@ -44,6 +44,109 @@ flowchart TD
 3. **No Persistence Layer**: No mechanism exists to save or restore game states
 4. **No Player Session Management**: No way to associate a returning player with their previous game state
 
+## Implementation Phases
+
+### Phase 1: MongoDB Integration & Basic Persistence
+
+**Goal**: Games survive server restarts
+**Verifiable Improvements**:
+
+- Games persist after server restart
+- Games load correctly when server comes back up
+- No data loss during saves
+
+**User Impact**:
+
+- Games no longer lost on server restarts
+- Players can return to games even after deployment
+- Game history preserved
+
+### Phase 2: Player Identity & Session Management
+
+**Goal**: Players maintain identity across sessions
+**Verifiable Improvements**:
+
+- Players automatically rejoin their games on refresh
+- Player scores/words preserved across reconnects
+- Multiple tabs/windows handled correctly
+
+**User Impact**:
+
+- Browser refresh doesn't disrupt gameplay
+- No more "player left the game" on accidental refresh
+- Seamless experience across connection drops
+
+### Phase 3: Cleanup & Performance
+
+**Goal**: Efficient game management and cleanup
+**Verifiable Improvements**:
+
+- Old games automatically archived
+- Server memory usage remains stable
+- Quick game state loading
+
+**User Impact**:
+
+- Faster game loads
+- More reliable performance
+- No stale games cluttering the UI
+
+## Technical Implementation
+
+### MongoDB Schema
+
+```javascript
+{
+  _id: "GAME_CODE",
+  host: "player_token",
+  players: {
+    "player_token": {  // Use token as key instead of socketId
+      name: "Player Name",
+      words: ["WORD1", "WORD2"],
+      lastSeen: ISODate()
+    }
+  },
+  pot: ["A", "B", "C"],
+  deck: ["D", "E", "F"],
+  isActive: true,
+  createdAt: ISODate(),
+  lastActivity: ISODate()
+}
+```
+
+### Socket Management
+
+```javascript
+// In-memory mappings for socket communication
+socketToToken = new Map(); // socket.id -> player_token
+tokenToSocket = new Map(); // player_token -> socket.id
+```
+
+### Key Technical Decisions
+
+1. **Player Identification**:
+
+   - Generate persistent player tokens stored in browser
+   - Token replaces socket ID as player identifier
+   - Socket IDs only used for real-time communication
+
+2. **Game State Management**:
+
+   - Keep active games in memory for performance
+   - Sync to MongoDB on state changes
+   - Load from MongoDB on server restart
+
+3. **Cleanup Strategy**:
+
+   - Archive games after 24h of inactivity
+   - Remove games from memory if all players inactive >5min
+   - Keep archived games for stats/history
+
+4. **Error Handling**:
+   - Graceful fallback to new game if rejoin fails
+   - Clear feedback to players on connection status
+   - Automatic retry on MongoDB connection issues
+
 ## Server-Side Persistence Solution
 
 ### 1. Database Integration
@@ -76,21 +179,15 @@ flowchart TD
 
 ```mermaid
 sequenceDiagram
-    participant Client
+    participant Browser
     participant Server
-    participant Storage
+    participant MongoDB
 
-    Client->>Server: connect()
-    Server->>Client: assign player_token
-    Client->>Server: join_game(gameId, playerName, player_token)
-    Server->>Storage: get_player(player_token)
-    alt Player exists
-        Storage->>Server: player data
-        Server->>Client: reconnect to game
-    else New player
-        Server->>Storage: save_player(player_token, playerData)
-        Server->>Client: join as new player
-    end
+    Browser->>Browser: Store player token locally
+    Browser->>Server: Refresh page
+    Server->>MongoDB: Find game by token
+    MongoDB->>Server: Return game state
+    Server->>Browser: Rejoin game
 ```
 
 **Key Components:**
@@ -393,31 +490,6 @@ socket.on('reconnect_to_game', ({ gameId, playerName, playerToken }) => {
 });
 ```
 
-## Implementation Schedule
-
-1. **Phase 1: Basic File Persistence (1-2 days)**
-
-   - Implement PersistenceManager
-   - Modify GameManager for saving/loading
-   - Add basic file-based persistence
-
-2. **Phase 2: Player Session Management (1-2 days)**
-
-   - Implement persistent player tokens
-   - Add reconnection logic to server
-   - Update client for automatic reconnection
-
-3. **Phase 3: Testing & Refinement (1-2 days)**
-
-   - Test server restart scenarios
-   - Test client refresh scenarios
-   - Optimize persistence frequency
-
-4. **Phase 4: Advanced Features (Optional, 2-3 days)**
-   - Migrate to Redis or MongoDB for better scalability
-   - Add game state compression for efficiency
-   - Implement selective persistence for large games
-
 ## Conclusion
 
 This persistence plan addresses both server restart resilience and client refresh support through a combination of:
@@ -432,18 +504,19 @@ The implementation can start with simple file-based storage and evolve to more r
 
 ```
 {
-  _id: "ABCD", // The game code
-  host: "socketId",
+  _id: "GAME_CODE",  // 4 letter code
+  host: "player_token",
   players: {
-    "socketId1": {
-      name: "Player 1",
+    "player_token": {
+      name: "Player Name",
       words: ["WORD1", "WORD2"],
-      token: "persistent-token" // For reconnection
+      lastSeen: ISODate()
     }
   },
   pot: ["A", "B", "C"],
   deck: ["D", "E", "F"],
   isActive: true,
-  createdAt: ISODate("2024-...")
+  createdAt: ISODate(),
+  lastActivity: ISODate()
 }
 ```
