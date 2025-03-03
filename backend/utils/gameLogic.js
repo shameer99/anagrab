@@ -170,6 +170,10 @@ function canMakeNewWord(existingWord, targetWord, pot) {
   // Convert pot to lowercase for case-insensitive matching
   const lowerPot = pot.map(letter => letter.toLowerCase());
 
+  console.log(
+    `[DEBUG] Attempting word transformation: '${existingWord}' -> '${targetWord}' (pot: [${pot}])`
+  );
+
   // If words are the same, can't steal
   if (existingWord === targetWord) {
     return { success: false };
@@ -189,28 +193,50 @@ function canMakeNewWord(existingWord, targetWord, pot) {
   const targetLetters = [...targetWord];
   const potCopy = [...lowerPot];
 
+  // Track which letters from existing word were used and if we used any from pot
+  const usedExistingLetterIndices = new Set();
+  let usedPotLetter = false;
+
   // Try to find each target letter in either existing word or pot
   for (const targetLetter of targetLetters) {
     const existingIndex = existingLetters.indexOf(targetLetter);
     if (existingIndex !== -1) {
-      // Letter found in existing word, remove it from consideration
-      existingLetters.splice(existingIndex, 1);
+      // Letter found in existing word, mark it as used
+      usedExistingLetterIndices.add(existingIndex);
     } else {
       // Letter not in existing word, try to find in pot
       const potIndex = potCopy.indexOf(targetLetter);
       if (potIndex === -1) {
-        // Letter not found in pot either
+        console.log(`[DEBUG] Failed: Letter '${targetLetter}' not found in existing word or pot`);
         return { success: false };
       }
       // Letter found in pot, remove it from consideration
       potCopy.splice(potIndex, 1);
+      usedPotLetter = true;
     }
+  }
+
+  // Check if all letters from existing word were used
+  if (usedExistingLetterIndices.size !== existingLetters.length) {
+    const unusedLetters = existingLetters.filter(
+      (_, index) => !usedExistingLetterIndices.has(index)
+    );
+    console.log(
+      `[DEBUG] Failed: Not all letters used from '${existingWord}'. Unused: [${unusedLetters}]`
+    );
+    return { success: false };
+  }
+
+  // Check if at least one letter from pot was used
+  if (!usedPotLetter) {
+    console.log('[DEBUG] Failed: No letters from pot were used');
+    return { success: false };
   }
 
   // Map the remaining lowercase pot letters back to their original case
   const newPot = pot.filter((letter, index) => potCopy.includes(letter.toLowerCase()));
 
-  // If we got here, we found all needed letters
+  console.log(`[DEBUG] Success: '${existingWord}' -> '${targetWord}'`);
   return {
     success: true,
     newPot: newPot,
