@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const { shuffle, isValidWord, tryTakeFromPot, tryToStealWord } = require('./utils/gameLogic');
+const { getDB } = require('./config/mongodb');
 
 class Game {
   constructor(hostSocketId, settings = {}) {
@@ -7,11 +8,13 @@ class Game {
     this.id = this.generateUniqueGameCode();
     this.host = hostSocketId;
     this.players = {};
+    this.playerTokens = new Map(); // Map socket IDs to player tokens
     this.pot = [];
     this.deck = [];
     this.isActive = true;
     this.settings = settings;
-    this.createdAt = Date.now();
+    this.createdAt = new Date();
+    this.lastActivity = new Date();
   }
 
   // Generate a unique 4-letter game code
@@ -35,17 +38,50 @@ class Game {
     return this;
   }
 
-  addPlayer(socketId, playerName) {
-    this.players[socketId] = {
+  addPlayer(socketId, playerName, playerToken = null) {
+    // Generate a player token if not provided
+    const token = playerToken || uuidv4();
+
+    this.players[token] = {
       name: playerName,
       words: [],
+      lastSeen: new Date(),
+      socketId: socketId,
     };
-    return this;
+
+    this.playerTokens.set(socketId, token);
+    return { token, game: this };
   }
 
   removePlayer(socketId) {
-    delete this.players[socketId];
+    const token = this.playerTokens.get(socketId);
+    if (token) {
+      delete this.players[token];
+      this.playerTokens.delete(socketId);
+    }
     return this;
+  }
+
+  updatePlayerSocket(token, newSocketId) {
+    const player = this.players[token];
+    if (player) {
+      const oldSocketId = player.socketId;
+      player.socketId = newSocketId;
+      player.lastSeen = new Date();
+      this.playerTokens.delete(oldSocketId);
+      this.playerTokens.set(newSocketId, token);
+      return true;
+    }
+    return false;
+  }
+
+  getPlayerByToken(token) {
+    return this.players[token];
+  }
+
+  getPlayerBySocket(socketId) {
+    const token = this.playerTokens.get(socketId);
+    return token ? this.players[token] : null;
   }
 
   startNewGame() {
@@ -79,7 +115,9 @@ class Game {
   }
 
   claimWord(word, socketId) {
-    if (!this.players[socketId]) {
+    // Get player token from socket ID
+    const playerToken = this.playerTokens.get(socketId);
+    if (!playerToken || !this.players[playerToken]) {
       return { success: false, error: 'Player not found in game' };
     }
 
@@ -89,7 +127,7 @@ class Game {
     }
 
     // Try taking from pot first
-    if (tryTakeFromPot(word, this.pot, socketId, this)) {
+    if (tryTakeFromPot(word, this.pot, playerToken, this)) {
       return {
         success: true,
         state: this,
@@ -99,7 +137,7 @@ class Game {
     }
 
     // Try stealing
-    const stealResult = tryToStealWord(word, this.pot, socketId, this);
+    const stealResult = tryToStealWord(word, this.pot, playerToken, this);
     if (stealResult.success) {
       return {
         success: true,
@@ -129,44 +167,110 @@ class Game {
 
   toJSON() {
     return {
-      id: this.id,
+      _id: this.id, // Use _id for MongoDB
       host: this.host,
       players: this.players,
       pot: this.pot,
-      deck: this.deck, // Send the full deck array
+      deck: this.deck,
       isActive: this.isActive,
+      settings: this.settings,
       createdAt: this.createdAt,
+      lastActivity: this.lastActivity,
     };
+  }
+
+  static fromJSON(data) {
+    const game = new Game(data.host, data.settings);
+    game.id = data._id;
+    game.players = data.players;
+    game.pot = data.pot;
+    game.deck = data.deck;
+    game.isActive = data.isActive;
+    game.createdAt = new Date(data.createdAt);
+    game.lastActivity = new Date(data.lastActivity);
+    return game;
   }
 }
 
 class GameManager {
   constructor() {
     this.games = new Map();
-    this.playerGameMap = new Map(); // Maps socketId to gameId for quick lookup
+    this.playerGameMap = new Map(); // Maps player tokens to gameId
+    this.db = null;
+
+    // Initialize database connection
+    this.initializeDB();
 
     // Set up periodic cleanup of inactive games
     setInterval(() => this.cleanupInactiveGames(), 1000 * 60 * 60); // Cleanup every hour
   }
 
-  createGame(hostSocketId, settings = {}) {
+  async initializeDB() {
+    try {
+      this.db = await getDB();
+      await this.loadGamesFromDB();
+    } catch (error) {
+      console.error('Failed to initialize database:', error);
+    }
+  }
+
+  async loadGamesFromDB() {
+    try {
+      const games = await this.db
+        .collection('games')
+        .find({
+          lastActivity: {
+            $gt: new Date(Date.now() - 24 * 60 * 60 * 1000), // Last 24 hours
+          },
+        })
+        .toArray();
+
+      games.forEach(gameData => {
+        const game = Game.fromJSON(gameData);
+        this.games.set(game.id, game);
+
+        // Rebuild player game map
+        Object.keys(game.players).forEach(socketId => {
+          this.playerGameMap.set(socketId, game.id);
+        });
+      });
+
+      console.log(`Loaded ${games.length} games from database`);
+    } catch (error) {
+      console.error('Failed to load games from database:', error);
+    }
+  }
+
+  async saveGameToDB(game) {
+    try {
+      game.lastActivity = new Date();
+      await this.db
+        .collection('games')
+        .updateOne({ _id: game.id }, { $set: game.toJSON() }, { upsert: true });
+    } catch (error) {
+      console.error(`Failed to save game ${game.id} to database:`, error);
+    }
+  }
+
+  async createGame(hostSocketId, settings = {}) {
     const game = new Game(hostSocketId, settings);
 
-    // Ensure the game code is unique
+    // Ensure unique game code
     let attempts = 0;
-    const maxAttempts = 10; // Prevent infinite loops
+    const maxAttempts = 10;
 
     while (this.games.has(game.id) && attempts < maxAttempts) {
       game.id = game.generateUniqueGameCode();
       attempts++;
     }
 
-    // If we still have a collision after max attempts, add a random number suffix
     if (this.games.has(game.id)) {
       game.id = game.id + Math.floor(Math.random() * 10);
     }
 
     this.games.set(game.id, game);
+    await this.saveGameToDB(game);
+
     console.log(`Game created: ${game.id} by host: ${hostSocketId}`);
     return game;
   }
@@ -175,78 +279,104 @@ class GameManager {
     return this.games.get(gameId);
   }
 
-  addPlayerToGame(gameId, socketId, playerName) {
+  async addPlayerToGame(gameId, socketId, playerName, playerToken = null) {
     const game = this.games.get(gameId);
     if (!game) {
       console.log(`Failed to add player to game: Game ${gameId} not found`);
       return null;
     }
 
-    // Remove player from any existing game
-    this.removePlayerFromAllGames(socketId);
+    // If player token provided, check if player is already in a game
+    if (playerToken) {
+      const existingGameId = this.playerGameMap.get(playerToken);
+      if (existingGameId && existingGameId !== gameId) {
+        await this.removePlayerFromGame(existingGameId, playerToken);
+      }
+    }
 
-    // Add player to the new game
-    game.addPlayer(socketId, playerName);
-    this.playerGameMap.set(socketId, gameId);
+    const { token, game: updatedGame } = game.addPlayer(socketId, playerName, playerToken);
+    this.playerGameMap.set(token, gameId);
+    await this.saveGameToDB(updatedGame);
 
-    console.log(`Player ${playerName} (${socketId}) added to game ${gameId}`);
-    return game;
+    console.log(`Player ${playerName} (${token}) added to game ${gameId}`);
+    return { game: updatedGame, playerToken: token };
   }
 
-  removePlayerFromGame(gameId, socketId) {
+  async removePlayerFromGame(gameId, identifier) {
     const game = this.games.get(gameId);
     if (!game) return null;
 
-    game.removePlayer(socketId);
-    this.playerGameMap.delete(socketId);
+    // Handle both socket IDs and player tokens
+    const player =
+      typeof identifier === 'string' && identifier.length === 36
+        ? game.getPlayerByToken(identifier)
+        : game.getPlayerBySocket(identifier);
 
-    // If game is empty, schedule it for cleanup
-    if (game.isEmpty()) {
-      console.log(`Game ${gameId} is now empty, scheduling for cleanup`);
-      setTimeout(() => this.cleanupGameIfEmpty(gameId), 1000 * 60 * 5); // Cleanup after 5 minutes if still empty
+    if (player) {
+      game.removePlayer(player.socketId);
+      this.playerGameMap.delete(identifier);
+      await this.saveGameToDB(game);
+
+      if (game.isEmpty()) {
+        console.log(`Game ${gameId} is now empty, scheduling for cleanup`);
+        setTimeout(() => this.cleanupGameIfEmpty(gameId), 1000 * 60 * 5);
+      }
     }
 
     return game;
   }
 
-  removePlayerFromAllGames(socketId) {
-    const gameId = this.playerGameMap.get(socketId);
-    if (gameId) {
-      return this.removePlayerFromGame(gameId, socketId);
+  async reconnectPlayer(gameId, token, newSocketId) {
+    const game = this.games.get(gameId);
+    if (!game) return null;
+
+    const success = game.updatePlayerSocket(token, newSocketId);
+    if (success) {
+      await this.saveGameToDB(game);
+      return game;
     }
     return null;
   }
 
-  getGameByPlayerId(socketId) {
-    const gameId = this.playerGameMap.get(socketId);
+  getGameByPlayerId(identifier) {
+    const gameId = this.playerGameMap.get(identifier);
     if (!gameId) return null;
     return this.games.get(gameId);
   }
 
-  cleanupGameIfEmpty(gameId) {
+  async cleanupGameIfEmpty(gameId) {
     const game = this.games.get(gameId);
     if (game && game.isEmpty()) {
       console.log(`Cleaning up empty game: ${gameId}`);
+      await this.db.collection('games').deleteOne({ _id: gameId });
       this.games.delete(gameId);
     }
   }
 
-  cleanupInactiveGames() {
-    const now = Date.now();
-    const ONE_DAY = 1000 * 60 * 60 * 24;
+  async cleanupInactiveGames() {
+    const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
-    for (const [gameId, game] of this.games.entries()) {
-      // Remove games that are older than 1 day
-      if (now - game.createdAt > ONE_DAY) {
-        console.log(`Cleaning up inactive game: ${gameId}`);
+    try {
+      // Delete from MongoDB
+      await this.db.collection('games').deleteMany({
+        lastActivity: { $lt: oneDayAgo },
+      });
 
-        // Remove all player mappings for this game
-        for (const socketId of Object.keys(game.players)) {
-          this.playerGameMap.delete(socketId);
+      // Clean up memory
+      for (const [gameId, game] of this.games.entries()) {
+        if (game.lastActivity < oneDayAgo) {
+          console.log(`Cleaning up inactive game: ${gameId}`);
+
+          // Remove all player mappings
+          Object.keys(game.players).forEach(socketId => {
+            this.playerGameMap.delete(socketId);
+          });
+
+          this.games.delete(gameId);
         }
-
-        this.games.delete(gameId);
       }
+    } catch (error) {
+      console.error('Failed to cleanup inactive games:', error);
     }
   }
 

@@ -1,183 +1,270 @@
-const {
-  createGame,
-  addPlayerToGame,
-  removePlayerFromGame,
-  removePlayerFromAllGames,
-  getGameByPlayerId,
-  startGame,
-  flipLetter,
-  claimWord,
-  endGame,
-  listGames,
-} = require('../gameState');
+const { GameManager } = require('../GameManager');
 
 function setupSocketHandlers(io) {
   io.on('connection', socket => {
     console.log('Player connected:', socket.id);
 
     // Create a new game
-    socket.on('create_game', playerName => {
-      console.log('Creating new game:', { hostSocketId: socket.id, playerName });
-      const game = createGame(socket.id);
+    socket.on('create_game', async ({ playerName, playerToken }) => {
+      console.log('Creating new game:', { hostSocketId: socket.id, playerName, playerToken });
+      try {
+        const game = await GameManager.createGame(socket.id);
 
-      // Add the host as a player
-      addPlayerToGame(game.id, socket.id, playerName);
+        // Add the host as a player
+        const result = await GameManager.addPlayerToGame(
+          game.id,
+          socket.id,
+          playerName,
+          playerToken
+        );
 
-      // Join the socket to the game room
-      socket.join(game.id);
+        // Join the socket to the game room
+        socket.join(game.id);
 
-      // Send the game info back to the creator
-      const gameInfo = {
-        gameId: game.id,
-        joinUrl: `${process.env.FRONTEND_URL || ''}?game=${game.id}`,
-      };
+        // Send the game info back to the creator
+        const gameInfo = {
+          gameId: game.id,
+          joinUrl: `${process.env.FRONTEND_URL || ''}?game=${game.id}`,
+          playerToken: result.playerToken,
+        };
 
-      socket.emit('game_created', gameInfo);
+        socket.emit('game_created', gameInfo);
 
-      // Send game state to all players in the room
-      io.to(game.id).emit('game_state_update', game);
+        // Send game state to all players in the room
+        io.to(game.id).emit('game_state_update', result.game);
+      } catch (error) {
+        console.error('Error creating game:', error);
+        socket.emit('game_error', { type: 'create_failed', message: 'Failed to create game' });
+      }
     });
 
     // Join an existing game
-    socket.on('join_game', ({ gameId, playerName }) => {
-      console.log('Player joining game:', { socketId: socket.id, playerName, gameId });
+    socket.on('join_game', async ({ gameId, playerName, playerToken }) => {
+      console.log('Player joining game:', { socketId: socket.id, playerName, gameId, playerToken });
 
-      // Add player to the game
-      const game = addPlayerToGame(gameId, socket.id, playerName);
+      try {
+        // Add player to the game
+        const result = await GameManager.addPlayerToGame(
+          gameId,
+          socket.id,
+          playerName,
+          playerToken
+        );
 
-      if (game) {
-        // Join the socket to the game room
-        socket.join(gameId);
+        if (result) {
+          // Join the socket to the game room
+          socket.join(gameId);
 
-        // Send game state to all players in the room
-        io.to(gameId).emit('game_state_update', game);
-      } else {
-        // Game not found
-        socket.emit('join_error', { message: 'Game not found' });
+          // Send player token back to the client
+          socket.emit('join_successful', {
+            gameId,
+            playerToken: result.playerToken,
+          });
+
+          // Send game state to all players in the room
+          io.to(gameId).emit('game_state_update', result.game);
+        } else {
+          // Game not found
+          socket.emit('join_error', { message: 'Game not found' });
+        }
+      } catch (error) {
+        console.error('Error joining game:', error);
+        socket.emit('join_error', { message: 'Failed to join game' });
+      }
+    });
+
+    // Reconnect to a game
+    socket.on('reconnect_to_game', async ({ gameId, playerToken }) => {
+      console.log('Player reconnecting:', { socketId: socket.id, gameId, playerToken });
+
+      try {
+        const game = await GameManager.reconnectPlayer(gameId, playerToken, socket.id);
+
+        if (game) {
+          // Join the socket to the game room
+          socket.join(gameId);
+
+          // Send success response
+          socket.emit('reconnection_successful', { gameId });
+
+          // Send game state to all players
+          io.to(gameId).emit('game_state_update', game);
+        } else {
+          socket.emit('reconnection_failed', {
+            message:
+              'Unable to reconnect to the game. The game may have ended or your session expired.',
+          });
+        }
+      } catch (error) {
+        console.error('Error reconnecting:', error);
+        socket.emit('reconnection_failed', {
+          message: 'Failed to reconnect to the game',
+        });
       }
     });
 
     // Start a game
-    socket.on('start_game', gameId => {
+    socket.on('start_game', async gameId => {
       console.log('Starting game:', { gameId, requestedBy: socket.id });
-      const game = startGame(gameId);
-
-      if (game) {
-        io.to(gameId).emit('game_state_update', game);
+      try {
+        const game = GameManager.getGame(gameId);
+        if (game) {
+          game.startNewGame();
+          await GameManager.saveGameToDB(game);
+          io.to(gameId).emit('game_state_update', game);
+        }
+      } catch (error) {
+        console.error('Error starting game:', error);
+        socket.emit('game_error', { type: 'start_failed', message: 'Failed to start game' });
       }
     });
 
     // Flip a letter
-    socket.on('flip_letter', gameId => {
+    socket.on('flip_letter', async gameId => {
       console.log('Flipping letter in game:', { gameId, requestedBy: socket.id });
-      const { success, state, error } = flipLetter(gameId);
-
-      if (success) {
-        io.to(gameId).emit('game_state_update', state);
-      } else {
-        socket.emit('game_error', { type: 'flip_failed', message: error });
+      try {
+        const game = GameManager.getGame(gameId);
+        if (game) {
+          const { success, state } = game.flipLetter();
+          if (success) {
+            await GameManager.saveGameToDB(state);
+            io.to(gameId).emit('game_state_update', state);
+          } else {
+            socket.emit('game_error', { type: 'flip_failed', message: 'No more letters in deck' });
+          }
+        }
+      } catch (error) {
+        console.error('Error flipping letter:', error);
+        socket.emit('game_error', { type: 'flip_failed', message: 'Failed to flip letter' });
       }
     });
 
     // Claim a word
-    socket.on('claim_word', ({ gameId, word }) => {
-      console.log('Word claim attempt:', {
-        socketId: socket.id,
-        gameId,
-        word,
-      });
+    socket.on('claim_word', async ({ gameId, word }) => {
+      console.log('Word claim attempt:', { socketId: socket.id, gameId, word });
 
-      const result = claimWord(gameId, word, socket.id);
+      try {
+        const game = GameManager.getGame(gameId);
+        if (game) {
+          const result = game.claimWord(word, socket.id);
 
-      if (result.success) {
-        console.log('Word claim successful', {
-          gameId,
-          newPotSize: result.state.pot.length,
-          playerWordCount: result.state.players[socket.id].words.length,
-        });
+          if (result.success) {
+            await GameManager.saveGameToDB(result.state);
+            const playerToken = game.playerTokens.get(socket.id);
+            console.log('Word claim successful', {
+              gameId,
+              newPotSize: result.state.pot.length,
+              playerWordCount: result.state.players[playerToken].words.length,
+            });
 
-        // Send game state update to all players in the room
-        io.to(gameId).emit('game_state_update', result.state);
+            // Send game state update to all players in the room
+            io.to(gameId).emit('game_state_update', result.state);
 
-        // Send success notification to all players in the room
-        const playerName = result.state.players[socket.id].name;
-        if (result.source === 'pot') {
-          io.to(gameId).emit('claim_success', {
-            type: 'pot_claim',
-            player: playerName,
-            word: result.word,
-          });
-        } else {
-          const stolenFromName = result.state.players[result.stolenFrom].name;
-          const isSelfModification = socket.id === result.stolenFrom;
+            // Send success notification to all players in the room
+            const playerName = result.state.players[playerToken].name;
+            if (result.source === 'pot') {
+              io.to(gameId).emit('claim_success', {
+                type: 'pot_claim',
+                player: playerName,
+                word: result.word,
+              });
+            } else {
+              const stolenFromName = result.state.players[result.stolenFrom].name;
+              const isSelfModification = playerToken === result.stolenFrom;
 
-          io.to(gameId).emit('claim_success', {
-            type: isSelfModification ? 'self_modify' : 'steal',
-            player: playerName,
-            word: result.word,
-            originalWord: result.originalWord,
-            stolenFrom: stolenFromName,
-          });
+              io.to(gameId).emit('claim_success', {
+                type: isSelfModification ? 'self_modify' : 'steal',
+                player: playerName,
+                word: result.word,
+                originalWord: result.originalWord,
+                stolenFrom: stolenFromName,
+              });
+            }
+          } else {
+            socket.emit('claim_error', {
+              word,
+              type: 'claim_failed',
+              reason: result.error,
+            });
+          }
         }
-      } else {
-        console.log('Word claim failed:', {
-          error: result.error,
-        });
+      } catch (error) {
+        console.error('Error claiming word:', error);
         socket.emit('claim_error', {
           word,
           type: 'claim_failed',
-          reason: result.error,
+          reason: 'Internal server error',
         });
       }
     });
 
     // End a game
-    socket.on('end_game', gameId => {
+    socket.on('end_game', async gameId => {
       console.log('End game requested:', { gameId, requestedBy: socket.id });
-      const { success, state, error } = endGame(gameId);
-
-      if (success) {
-        io.to(gameId).emit('game_state_update', state);
-      } else {
-        socket.emit('game_error', { type: 'end_game_failed', message: error });
+      try {
+        const game = GameManager.getGame(gameId);
+        if (game) {
+          const { success, state } = game.endGame();
+          if (success) {
+            await GameManager.saveGameToDB(state);
+            io.to(gameId).emit('game_state_update', state);
+          } else {
+            socket.emit('game_error', { type: 'end_game_failed', message: 'Cannot end game yet' });
+          }
+        }
+      } catch (error) {
+        console.error('Error ending game:', error);
+        socket.emit('game_error', { type: 'end_game_failed', message: 'Failed to end game' });
       }
     });
 
     // Leave a game
-    socket.on('leave_game', gameId => {
+    socket.on('leave_game', async gameId => {
       console.log('Player leaving game:', { socketId: socket.id, gameId });
 
-      // Remove player from the game
-      const game = removePlayerFromGame(gameId, socket.id);
+      try {
+        // Remove player from the game
+        const game = await GameManager.removePlayerFromGame(gameId, socket.id);
 
-      if (game) {
-        // Leave the socket room
-        socket.leave(gameId);
+        if (game) {
+          // Leave the socket room
+          socket.leave(gameId);
 
-        // Send updated game state to remaining players
-        io.to(gameId).emit('game_state_update', game);
+          // Send updated game state to remaining players
+          io.to(gameId).emit('game_state_update', game);
+        }
+      } catch (error) {
+        console.error('Error leaving game:', error);
       }
     });
 
     // List available games
     socket.on('list_games', () => {
-      const games = listGames();
+      const games = Array.from(GameManager.games.values());
       socket.emit('games_list', games);
     });
 
     // Handle disconnection
-    socket.on('disconnect', () => {
+    socket.on('disconnect', async () => {
       console.log('Player disconnected:', socket.id);
 
-      // Find which game the player was in
-      const game = getGameByPlayerId(socket.id);
+      try {
+        // Find which game the player was in
+        const game = GameManager.getGameByPlayerId(socket.id);
 
-      if (game) {
-        // Remove player from all games
-        removePlayerFromAllGames(socket.id);
+        if (game) {
+          // Update the player's last seen timestamp but don't remove them
+          const player = game.getPlayerBySocket(socket.id);
+          if (player) {
+            player.lastSeen = new Date();
+            await GameManager.saveGameToDB(game);
 
-        // Send updated game state to remaining players
-        io.to(game.id).emit('game_state_update', game);
+            // Send updated game state to remaining players
+            io.to(game.id).emit('game_state_update', game);
+          }
+        }
+      } catch (error) {
+        console.error('Error handling disconnect:', error);
       }
     });
 

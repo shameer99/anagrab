@@ -2,14 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { sharesSameRoot } = require('../utils/gameLogic');
 const testCases = require('../data/wordTransformationTests.json');
-const {
-  createGame,
-  getGame,
-  joinGame,
-  leaveGame,
-  listGames,
-  DEFAULT_GAME_ID,
-} = require('../gameState');
+const { GameManager } = require('../GameManager');
 
 // Debug route for testing sharesSameRoot function
 router.get('/shareroot', (req, res) => {
@@ -298,17 +291,17 @@ router.get('/test-cases', (req, res) => {
 
 // List all games
 router.get('/games', (req, res) => {
-  const games = listGames();
+  const games = GameManager.listGames();
   res.json({
     games,
-    defaultGameId: DEFAULT_GAME_ID,
+    defaultGameId: GameManager.DEFAULT_GAME_ID,
   });
 });
 
 // Get a specific game
 router.get('/games/:gameId', (req, res) => {
   const { gameId } = req.params;
-  const game = getGame(gameId);
+  const game = GameManager.getGame(gameId);
 
   if (!game) {
     return res.status(404).json({ error: 'Game not found' });
@@ -322,7 +315,7 @@ router.post('/games', (req, res) => {
   const hostId = req.body.hostId || 'debug-user';
   const settings = req.body.settings || {};
 
-  const game = createGame(hostId, settings);
+  const game = GameManager.createGame(hostId, settings);
   res.json(game);
 });
 
@@ -335,7 +328,7 @@ router.post('/games/:gameId/players', (req, res) => {
     return res.status(400).json({ error: 'Player ID and name are required' });
   }
 
-  const game = joinGame(gameId, playerId, playerName);
+  const game = GameManager.joinGame(gameId, playerId, playerName);
 
   if (!game) {
     return res.status(404).json({ error: 'Game not found' });
@@ -348,7 +341,7 @@ router.post('/games/:gameId/players', (req, res) => {
 router.delete('/games/:gameId/players/:playerId', (req, res) => {
   const { gameId, playerId } = req.params;
 
-  const game = leaveGame(gameId, playerId);
+  const game = GameManager.leaveGame(gameId, playerId);
 
   if (!game) {
     return res.status(404).json({ error: 'Game not found' });

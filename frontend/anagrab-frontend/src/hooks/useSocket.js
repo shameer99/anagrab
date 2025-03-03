@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
+import {
+  getPlayerToken,
+  storeGameSession,
+  getLastGameSession,
+  clearGameSession,
+} from '../utils/SessionManager';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001';
 const socket = io(BACKEND_URL);
@@ -31,19 +37,39 @@ export const useSocket = () => {
   const [pendingClaim, setPendingClaim] = useState(null);
   const [currentGameId, setCurrentGameId] = useState(null);
   const [gamesList, setGamesList] = useState([]);
+  const [playerToken, setPlayerToken] = useState(() => getPlayerToken());
 
+  // Handle reconnection on initial load
   useEffect(() => {
-    socket.on('connect', () => {
+    const lastSession = getLastGameSession();
+    if (lastSession && lastSession.gameId && lastSession.playerName) {
+      console.log('Found previous session, attempting to reconnect:', lastSession);
+      reconnectToGame(lastSession.gameId, lastSession.playerName);
+    }
+  }, []);
+
+  // Handle connection state changes
+  useEffect(() => {
+    const handleConnect = () => {
       setConnectionState('connected');
-    });
+      // Try to reconnect if we have an active game
+      const lastSession = getLastGameSession();
+      if (lastSession && lastSession.gameId && lastSession.playerName) {
+        reconnectToGame(lastSession.gameId, lastSession.playerName);
+      }
+    };
 
-    socket.on('disconnect', () => {
+    const handleDisconnect = () => {
       setConnectionState('disconnected');
-    });
+    };
 
-    socket.on('connect_error', () => {
+    const handleConnectError = () => {
       setConnectionState('error');
-    });
+    };
+
+    socket.on('connect', handleConnect);
+    socket.on('disconnect', handleDisconnect);
+    socket.on('connect_error', handleConnectError);
 
     // Set up ping measurement
     socket.on('pong', data => {
@@ -56,30 +82,32 @@ export const useSocket = () => {
     }, 5000);
 
     return () => {
-      socket.off('connect');
-      socket.off('disconnect');
-      socket.off('connect_error');
+      socket.off('connect', handleConnect);
+      socket.off('disconnect', handleDisconnect);
+      socket.off('connect_error', handleConnectError);
       socket.off('pong');
       clearInterval(pingInterval);
     };
   }, []);
 
+  // Handle game state updates
   useEffect(() => {
     socket.on('game_state_update', newState => {
-      if (newState?.id && !currentGameId) {
+      if (newState?.id) {
         setCurrentGameId(newState.id);
       }
 
       if (newState?.players && currentPlayer?.name) {
-        const playerEntry = Object.entries(newState.players).find(([_, p]) => {
-          return p.name === currentPlayer.name;
-        });
+        // Find the player entry by name
+        const playerEntry = Object.entries(newState.players).find(
+          ([_, p]) => p.name === currentPlayer.name
+        );
 
         if (playerEntry) {
-          const [id] = playerEntry;
+          const [token] = playerEntry;
           setCurrentPlayer(prev => ({
             ...prev,
-            id,
+            id: token,
           }));
         }
       }
@@ -90,13 +118,38 @@ export const useSocket = () => {
     return () => {
       socket.off('game_state_update');
     };
-  }, [currentPlayer?.name, currentGameId]);
+  }, [currentPlayer?.name]);
 
+  // Handle game events
   useEffect(() => {
+    socket.on('join_successful', ({ gameId, playerToken: newToken }) => {
+      if (newToken) {
+        setPlayerToken(newToken);
+      }
+      setCurrentGameId(gameId);
+    });
+
+    socket.on('reconnection_successful', ({ gameId }) => {
+      setIsJoined(true);
+      setCurrentGameId(gameId);
+      const session = getLastGameSession();
+      if (session) {
+        setCurrentPlayer({ name: session.playerName });
+      }
+    });
+
+    socket.on('reconnection_failed', () => {
+      clearGameSession();
+      setIsJoined(false);
+      setCurrentPlayer(null);
+      setGameState(null);
+      setCurrentGameId(null);
+    });
+
     socket.on('claim_error', data => {
       setErrorData(data);
       // Resolve pending claim as failed
-      if (pendingClaim && data.type === 'claim_failed') {
+      if (pendingClaim) {
         setPendingClaim(prev => {
           if (prev) {
             prev.resolve(false);
@@ -110,7 +163,7 @@ export const useSocket = () => {
     socket.on('claim_success', data => {
       setSuccessData(data);
       // Resolve pending claim as successful
-      if (pendingClaim && data.type?.includes('claim')) {
+      if (pendingClaim) {
         setPendingClaim(prev => {
           if (prev) {
             prev.resolve(true);
@@ -142,6 +195,9 @@ export const useSocket = () => {
     });
 
     return () => {
+      socket.off('join_successful');
+      socket.off('reconnection_successful');
+      socket.off('reconnection_failed');
       socket.off('claim_error');
       socket.off('claim_success');
       socket.off('join_error');
@@ -155,6 +211,15 @@ export const useSocket = () => {
     const handleGameCreated = data => {
       if (data && data.gameId) {
         setCurrentGameId(data.gameId);
+        // Store the game session with the new game ID
+        const playerName = currentPlayer?.name;
+        if (playerName) {
+          storeGameSession(data.gameId, playerName);
+        }
+        // Update player token if provided
+        if (data.playerToken) {
+          setPlayerToken(data.playerToken);
+        }
       }
     };
 
@@ -163,37 +228,42 @@ export const useSocket = () => {
     return () => {
       socket.off('game_created', handleGameCreated);
     };
-  }, []);
+  }, [currentPlayer?.name]);
 
-  // Game creation
   const createGame = playerName => {
     if (playerName.trim()) {
-      console.log('[createGame] Creating new game with player:', playerName);
-      socket.emit('create_game', playerName);
+      socket.emit('create_game', { playerName, playerToken });
       setIsJoined(true);
       setCurrentPlayer({ name: playerName });
     }
   };
 
-  // Join an existing game
   const joinGame = (gameId, playerName) => {
     if (gameId && playerName.trim()) {
-      console.log('[joinGame] Joining game:', { gameId, playerName });
-      socket.emit('join_game', { gameId, playerName });
+      socket.emit('join_game', { gameId, playerName, playerToken });
+      storeGameSession(gameId, playerName);
       setIsJoined(true);
       setCurrentPlayer({ name: playerName });
       setCurrentGameId(gameId);
     }
   };
 
-  // Leave the current game
+  const reconnectToGame = (gameId, playerName) => {
+    if (gameId && playerName && playerToken) {
+      console.log('Attempting to reconnect to game:', { gameId, playerName, playerToken });
+      setCurrentGameId(gameId);
+      socket.emit('reconnect_to_game', { gameId, playerToken });
+    }
+  };
+
   const leaveGame = () => {
     if (currentGameId) {
       socket.emit('leave_game', currentGameId);
+      clearGameSession();
       setIsJoined(false);
       setCurrentPlayer(null);
-      setCurrentGameId(null);
       setGameState(null);
+      setCurrentGameId(null);
     }
   };
 
@@ -218,10 +288,26 @@ export const useSocket = () => {
   const claimWord = word => {
     if (currentGameId && word.trim()) {
       return new Promise(resolve => {
+        // Set a timeout to automatically resolve the claim after 2 seconds
+        const timeoutId = setTimeout(() => {
+          setPendingClaim(prev => {
+            if (prev) {
+              prev.resolve(false);
+            }
+            return null;
+          });
+          setErrorData({
+            type: 'claim_failed',
+            word: word,
+            reason: 'Request timed out',
+          });
+        }, 2000);
+
         setPendingClaim({
           resolve: success => {
-            // Create a minimum delay of 500ms
-            const minDelay = new Promise(r => setTimeout(() => r(success), 500));
+            clearTimeout(timeoutId);
+            // Set minimum delay to 300ms as requested
+            const minDelay = new Promise(r => setTimeout(() => r(success), 300));
             Promise.all([minDelay]).then(() => resolve(success));
           },
         });
@@ -258,5 +344,7 @@ export const useSocket = () => {
     pingLatency,
     gamesList,
     socket,
+    playerToken,
+    reconnectToGame,
   };
 };
