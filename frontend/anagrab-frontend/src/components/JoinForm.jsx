@@ -16,17 +16,11 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
     }
   }, []);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (mode === 'create') {
-      // No need for callback since component will unmount
-      onCreateGame(playerName);
-    } else if (mode === 'join') {
-      onJoinGame(gameCode, playerName);
-    }
-  };
-
   useEffect(() => {
+    // Reset flipped tiles when mode changes
+    setFlippedTiles(new Set());
+
+    // Start the flip animation sequence
     const letters = ['A', 'N', 'A', 'G', 'R', 'A', 'B'];
     letters.forEach((_, index) => {
       setTimeout(
@@ -38,9 +32,19 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
           });
         },
         500 * (index + 1)
-      ); // 500ms delay between each flip
+      );
     });
-  }, []); // Run once on component mount
+  }, [mode]); // Run when mode changes or on mount
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (mode === 'create') {
+      // No need for callback since component will unmount
+      onCreateGame(playerName);
+    } else if (mode === 'join') {
+      onJoinGame(gameCode, playerName);
+    }
+  };
 
   // Render the title tiles
   const renderTitleTiles = () => (
