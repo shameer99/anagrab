@@ -210,7 +210,7 @@ function App() {
                     {'   '}
                     <span
                       style={{
-                        backgroundColor: 'red',
+                        backgroundColor: 'var(--accent-primary)',
                         color: 'white',
                         padding: '0 5px',
                         borderRadius: 15,
@@ -240,7 +240,7 @@ function App() {
                   {'   '}
                   <span
                     style={{
-                      backgroundColor: 'red',
+                      backgroundColor: 'var(--accent-primary)',
                       color: 'white',
                       padding: '0 5px',
                       borderRadius: 15,
