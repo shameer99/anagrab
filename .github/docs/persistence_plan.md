@@ -2,10 +2,11 @@
 
 ## Overview
 
-This document outlines a comprehensive plan for implementing persistence in the Anagrab game application. The plan addresses two key requirements:
+This document outlines a comprehensive plan for implementing persistence in the Anagrab game application. The plan addresses three key requirements:
 
 1. **Server Restart Resilience** - Ensuring game state survives server restarts on Render
 2. **Client Refresh Support** - Allowing players to refresh their browsers and rejoin active games
+3. **Local Development Support** - Providing filesystem-based fallback storage for local development
 
 ## Current Architecture Analysis
 
@@ -24,7 +25,6 @@ flowchart TD
         GameStateModule[gameState.js]
         GameManager[GameManager.js]
         GameLogic[utils/gameLogic.js]
-        MongoDB[(MongoDB)]
     end
 
     App --> UseSocket
@@ -34,7 +34,6 @@ flowchart TD
     SocketHandlers --> GameStateModule
     GameStateModule --> GameManager
     GameManager --> GameLogic
-    GameManager <-->|Save/Load Games| MongoDB
 ```
 
 ### Current Implementation Limitations
