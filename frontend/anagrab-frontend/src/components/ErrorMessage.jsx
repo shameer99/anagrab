@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './ErrorMessage.css';
 import PropTypes from 'prop-types';
@@ -23,26 +23,49 @@ MessageContent.propTypes = {
   }).isRequired,
 };
 
-export default function ErrorMessage({ data }) {
+export default function ErrorMessage({ data, onDismiss }) {
   const nodeRef = React.useRef(null);
+  const [show, setShow] = useState(!!data);
+
+  useEffect(() => {
+    setShow(!!data);
+
+    if (data) {
+      const timer = setTimeout(() => {
+        setShow(false);
+        if (onDismiss) onDismiss();
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [data, onDismiss]);
+
+  const handleClose = () => {
+    setShow(false);
+    if (onDismiss) onDismiss();
+  };
 
   if (!data) return null;
 
   return (
     <CSSTransition
       nodeRef={nodeRef}
-      in={!!data}
+      in={show}
       appear={true}
-      timeout={300}
+      timeout={400}
       classNames="error-message"
       unmountOnExit
     >
-      <div ref={nodeRef} className="error-message">
+      <div ref={nodeRef} className="error-message" onClick={handleClose}>
         <div className="error-content">
           <span className="error-icon">❌</span>
           <span className="error-text">
             <MessageContent data={data} />
           </span>
+          <span className="error-close">✕</span>
+        </div>
+        <div className="error-progress">
+          <div className="error-progress-bar" />
         </div>
       </div>
     </CSSTransition>
@@ -55,4 +78,5 @@ ErrorMessage.propTypes = {
     word: PropTypes.string.isRequired,
     reason: PropTypes.string.isRequired,
   }),
+  onDismiss: PropTypes.func,
 };

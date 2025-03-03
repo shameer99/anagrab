@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './SuccessMessage.css';
 import PropTypes from 'prop-types';
@@ -43,26 +43,49 @@ MessageContent.propTypes = {
   }).isRequired,
 };
 
-export default function SuccessMessage({ data }) {
+export default function SuccessMessage({ data, onDismiss }) {
   const nodeRef = React.useRef(null);
+  const [show, setShow] = useState(!!data);
+
+  useEffect(() => {
+    setShow(!!data);
+
+    if (data) {
+      const timer = setTimeout(() => {
+        setShow(false);
+        if (onDismiss) onDismiss();
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [data, onDismiss]);
+
+  const handleClose = () => {
+    setShow(false);
+    if (onDismiss) onDismiss();
+  };
 
   if (!data) return null;
 
   return (
     <CSSTransition
       nodeRef={nodeRef}
-      in={!!data}
+      in={show}
       appear={true}
-      timeout={300}
+      timeout={400}
       classNames="success-message"
       unmountOnExit
     >
-      <div ref={nodeRef} className="success-message">
+      <div ref={nodeRef} className="success-message" onClick={handleClose}>
         <div className="success-content">
           <span className="success-icon">✨</span>
           <span className="success-text">
             <MessageContent data={data} />
           </span>
+          <span className="success-close">✕</span>
+        </div>
+        <div className="success-progress">
+          <div className="success-progress-bar" />
         </div>
       </div>
     </CSSTransition>
@@ -77,4 +100,5 @@ SuccessMessage.propTypes = {
     originalWord: PropTypes.string,
     stolenFrom: PropTypes.string,
   }),
+  onDismiss: PropTypes.func,
 };

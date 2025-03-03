@@ -150,8 +150,10 @@ function App() {
   return (
     <div className="game-container">
       <ConnectionStatus state={connectionState} ping={pingLatency} />
-      {errorData && <ErrorMessage data={errorData} />}
-      {successData && <SuccessMessage data={successData} />}
+      {errorData && <ErrorMessage data={errorData} onDismiss={() => socket.emit('clear_error')} />}
+      {successData && (
+        <SuccessMessage data={successData} onDismiss={() => socket.emit('clear_success')} />
+      )}
 
       <div className="game-header">
         <h2>Game Code: {currentGameId || 'Unknown'}</h2>
