@@ -1280,6 +1280,8 @@ h3 {
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease;
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 .close-modal:hover {
