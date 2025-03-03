@@ -3,37 +3,57 @@
     {
       "baseWord": "snip",
       "variations": ["sniper", "snipe", "snipes", "snipers"],
-      "explanation": "Different stem ('snip' vs. variations) with distinct meanings"
+      "explanation": "Base word 'snip' means a quick cut; 'sniper' refers to a marksman; 'snipe' can mean to shoot from a distance or trim subtly, highlighting different semantic domains."
     },
     {
       "baseWord": "mess",
       "variations": ["messenger"],
-      "explanation": "Different stem ('mess' vs. 'messenger') with distinct meanings"
+      "explanation": "Base word 'mess' indicates disorder or clutter, whereas 'messenger' denotes a person who delivers messages, often in organized contexts."
     },
     {
       "baseWord": "barb",
       "variations": ["barber", "barbers"],
-      "explanation": "Different stem ('barb' vs. variations) with distinct meanings"
+      "explanation": "Base word 'barb' refers to a sharp, projecting point or a cutting remark, while 'barber' refers to a professional who cuts hair."
     },
     {
       "baseWord": "live",
       "variations": ["liver", "livers"],
-      "explanation": "Different stem ('live' vs. variations) with distinct meanings"
+      "explanation": "Base word 'live' can mean to exist or be broadcast in real-time, while 'liver' refers to the internal organ, marking a clear difference in meaning."
     },
     {
       "baseWord": "ling",
       "variations": ["linger", "lingers"],
-      "explanation": "Different stem ('ling' vs. variations) with distinct meanings"
+      "explanation": "Base word 'ling' may refer to a type of fish or small plant, while 'linger' means to remain or stay longer than necessary."
     },
     {
       "baseWord": "flow",
       "variations": ["flower", "flowers"],
-      "explanation": "Different stem ('flow' vs. variations) with distinct meanings"
+      "explanation": "Base word 'flow' signifies continuous movement, whereas 'flower' denotes the bloom of a plant."
     },
     {
       "baseWord": "wand",
       "variations": ["wander"],
-      "explanation": "Different stem ('wand' vs. variations) with distinct meanings"
+      "explanation": "Base word 'wand' is a thin stick (often with magical connotations), while 'wander' means to roam or travel without clear direction."
+    },
+    {
+      "baseWord": "east",
+      "variations": ["easter", "easters"],
+      "explanation": "Base word 'east' signifies the cardinal direction, while 'easter' refers to the holiday celebrating the resurrection, representing distinct concepts."
+    },
+    {
+      "baseWord": "part",
+      "variations": ["partner", "partners"],
+      "explanation": "Base word 'part' means a piece or segment of a whole, whereas 'partner' denotes a person involved in a joint endeavor, indicating different meanings."
+    },
+    {
+      "baseWord": "rout",
+      "variations": ["router", "routers"],
+      "explanation": "Base word 'rout' means a disorderly retreat or a decisive defeat, while 'router' is a network device or woodworking tool, clearly differing in meaning."
+    },
+    {
+      "baseWord": "bone",
+      "variations": ["boner", "boners"],
+      "explanation": "Base word 'bone' refers to the structural component of the skeleton, whereas 'boner' can denote a mistake or, in slang, an erection, showing distinct semantic fields."
     }
   ]
 }
