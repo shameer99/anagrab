@@ -163,114 +163,98 @@ function sharesSameRoot(word1, word2) {
   return commonSuffixes.some(suffix => word2.endsWith(suffix));
 }
 
-function canMakeNewWord(existingWord, targetWord, pot) {
-  // Convert words to lowercase for comparison
-  existingWord = existingWord.toLowerCase();
-  targetWord = targetWord.toLowerCase();
-  // Convert pot to lowercase for case-insensitive matching
-  const lowerPot = pot.map(letter => letter.toLowerCase());
+function tryToStealWord(word, pot, socketId, gameState) {
+  const potLetters = [...pot];
+  const wordLetters = word.split('');
 
-  console.log(
-    `[DEBUG] Attempting word transformation: '${existingWord}' -> '${targetWord}' (pot: [${pot}])`
-  );
+  // Get all words from all players
+  const allPlayerWords = Object.values(gameState.players).reduce((words, player) => {
+    return words.concat(player.words);
+  }, []);
 
-  // If words are the same, can't steal
-  if (existingWord === targetWord) {
-    return { success: false };
-  }
+  // Try each existing word to see if it can be used for stealing
+  for (const existingWord of allPlayerWords) {
+    // Check if this is an exact anagram or shares same root - if so, return specific error
+    if (isExactAnagram(existingWord, word) && existingWord !== word) {
+      return {
+        success: false,
+        error: 'Anagrams are not allowed - must change the root of the word',
+      };
+    }
 
-  if (isExactAnagram(existingWord, targetWord)) {
-    return { success: false };
-  }
+    if (sharesSameRoot(existingWord, word)) {
+      return {
+        success: false,
+        error: 'Must change the root of the word (adding -s, -ing, -er etc. is not allowed)',
+      };
+    }
 
-  // If words share same root, can't steal
-  if (sharesSameRoot(existingWord, targetWord)) {
-    return { success: false };
-  }
+    let remainingLetters = [...wordLetters];
+    let canUseExistingWord = true;
 
-  // Create arrays of letters for comparison
-  const existingLetters = [...existingWord];
-  const targetLetters = [...targetWord];
-  const potCopy = [...lowerPot];
+    // Remove letters from existing word
+    for (const letter of existingWord) {
+      const index = remainingLetters.indexOf(letter);
+      if (index === -1) {
+        canUseExistingWord = false;
+        break;
+      }
+      remainingLetters.splice(index, 1);
+    }
 
-  // Track which letters from existing word were used and if we used any from pot
-  const usedExistingLetterIndices = new Set();
-  let usedPotLetter = false;
+    if (!canUseExistingWord) continue;
 
-  // Try to find each target letter in either existing word or pot
-  for (const targetLetter of targetLetters) {
-    const existingIndex = existingLetters.indexOf(targetLetter);
-    if (existingIndex !== -1) {
-      // Letter found in existing word, mark it as used
-      usedExistingLetterIndices.add(existingIndex);
-    } else {
-      // Letter not in existing word, try to find in pot
-      const potIndex = potCopy.indexOf(targetLetter);
+    // Check if remaining letters are available in pot
+    let canFormFromPot = true;
+    for (const letter of remainingLetters) {
+      const potIndex = potLetters.indexOf(letter);
       if (potIndex === -1) {
-        console.log(`[DEBUG] Failed: Letter '${targetLetter}' not found in existing word or pot`);
-        return { success: false };
+        canFormFromPot = false;
+        break;
       }
-      // Letter found in pot, remove it from consideration
-      potCopy.splice(potIndex, 1);
-      usedPotLetter = true;
+      potLetters.splice(potIndex, 1);
     }
-  }
 
-  // Check if all letters from existing word were used
-  if (usedExistingLetterIndices.size !== existingLetters.length) {
-    const unusedLetters = existingLetters.filter(
-      (_, index) => !usedExistingLetterIndices.has(index)
-    );
-    console.log(
-      `[DEBUG] Failed: Not all letters used from '${existingWord}'. Unused: [${unusedLetters}]`
-    );
-    return { success: false };
-  }
+    if (!canFormFromPot) {
+      return {
+        success: false,
+        error: 'Insufficient letters available to form this word',
+      };
+    }
 
-  // Check if at least one letter from pot was used
-  if (!usedPotLetter) {
-    console.log('[DEBUG] Failed: No letters from pot were used');
-    return { success: false };
-  }
-
-  // Map the remaining lowercase pot letters back to their original case
-  const newPot = pot.filter((letter, index) => potCopy.includes(letter.toLowerCase()));
-
-  console.log(`[DEBUG] Success: '${existingWord}' -> '${targetWord}'`);
-  return {
-    success: true,
-    newPot: newPot,
-  };
-}
-
-function tryToStealWord(word, pot, playerToken, game) {
-  // Check if any player has a word that could be modified into the target word
-  for (const [targetToken, targetPlayer] of Object.entries(game.players)) {
-    for (const existingWord of targetPlayer.words) {
-      const result = canMakeNewWord(existingWord, word, pot);
-      if (result.success) {
-        // Remove the stolen word
-        const wordIndex = targetPlayer.words.indexOf(existingWord);
-        targetPlayer.words.splice(wordIndex, 1);
-
-        // Update the pot
-        game.pot = result.newPot;
-
-        // Add the new word to the player's list
-        game.players[playerToken].words.push(word);
-
-        return {
-          success: true,
-          stolenFrom: targetToken,
-          originalWord: existingWord,
-        };
+    // If we get here with an existing word, we can successfully steal
+    // Find the player who owns the word
+    let stolenFromId;
+    for (const [playerId, player] of Object.entries(gameState.players)) {
+      const wordIndex = player.words.indexOf(existingWord);
+      if (wordIndex !== -1) {
+        stolenFromId = playerId;
+        player.words.splice(wordIndex, 1);
+        break;
       }
     }
+
+    // Add the new word to the current player's words
+    gameState.players[socketId].words.push(word);
+
+    // Remove used letters from pot
+    for (const letter of remainingLetters) {
+      const index = gameState.pot.indexOf(letter);
+      if (index !== -1) {
+        gameState.pot.splice(index, 1);
+      }
+    }
+
+    return {
+      success: true,
+      stolenFrom: stolenFromId,
+      originalWord: existingWord,
+    };
   }
 
   return {
     success: false,
-    error: 'Cannot make this word from the pot or by modifying existing words',
+    error: 'No valid word found that can be used for stealing',
   };
 }
 
