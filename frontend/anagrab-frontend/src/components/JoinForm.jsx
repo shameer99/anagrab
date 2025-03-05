@@ -5,6 +5,8 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
   const [playerName, setPlayerName] = useState('');
   const [gameCode, setGameCode] = useState('');
   const [flippedTiles, setFlippedTiles] = useState(new Set());
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Check URL for game code
   useEffect(() => {
@@ -16,9 +18,37 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
     }
   }, []);
 
+  // Listen for socket errors
+  useEffect(() => {
+    const handleJoinError = event => {
+      if (event.detail && event.detail.type === 'join_failed') {
+        setError(event.detail.reason || 'Failed to join game. Please check your game code.');
+        setIsLoading(false);
+      }
+    };
+
+    const handleJoinSuccess = () => {
+      // On successful join, the component will unmount as the app navigates to the game
+      setIsLoading(false);
+    };
+
+    // Create custom event listeners
+    window.addEventListener('join_error', handleJoinError);
+    window.addEventListener('join_successful', handleJoinSuccess);
+
+    return () => {
+      window.removeEventListener('join_error', handleJoinError);
+      window.removeEventListener('join_successful', handleJoinSuccess);
+    };
+  }, []);
+
   useEffect(() => {
     // Reset flipped tiles when mode changes
     setFlippedTiles(new Set());
+    // Clear any errors when mode changes
+    setError(null);
+    // Reset loading state
+    setIsLoading(false);
 
     // Start the flip animation sequence
     const letters = ['A', 'N', 'A', 'G', 'R', 'A', 'B'];
@@ -38,10 +68,34 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    // Clear any previous errors
+    setError(null);
+
     if (mode === 'create') {
       // No need for callback since component will unmount
+      setIsLoading(true);
       onCreateGame(playerName);
     } else if (mode === 'join') {
+      // Validate game code
+      if (!gameCode || gameCode.length !== 4) {
+        setError('Please enter a valid 4-character game code');
+        return;
+      }
+
+      // Set loading state
+      setIsLoading(true);
+
+      // Add event listener for join errors that will be triggered by the socket
+      const handleJoinErrorEvent = errorData => {
+        setError(errorData.detail.reason || 'Failed to join game');
+        setIsLoading(false);
+        document.removeEventListener('join_error', handleJoinErrorEvent);
+      };
+
+      document.addEventListener('join_error', handleJoinErrorEvent, { once: true });
+
+      // Attempt to join the game
       onJoinGame(gameCode, playerName);
     }
   };
@@ -87,11 +141,32 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
               id="gameCode"
               type="text"
               value={gameCode}
-              onChange={e => setGameCode(e.target.value.toUpperCase())}
+              onChange={e => {
+                setGameCode(e.target.value.toUpperCase());
+                // Clear error when user types
+                if (error) setError(null);
+              }}
               placeholder="GAME CODE"
               maxLength={4}
               style={{ textTransform: 'uppercase', letterSpacing: '0.5em', fontWeight: 'bold' }}
+              disabled={isLoading}
             />
+            {error && (
+              <div
+                className="error-message"
+                style={{
+                  color: 'white',
+                  backgroundColor: '#ff5252',
+                  padding: '8px 12px',
+                  borderRadius: '4px',
+                  marginTop: '8px',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                }}
+              >
+                {error}
+              </div>
+            )}
           </div>
         )}
 
@@ -103,14 +178,18 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
             value={playerName}
             onChange={e => setPlayerName(e.target.value)}
             placeholder="Enter your name"
+            required
+            disabled={isLoading}
           />
         </div>
 
         <div className="form-actions">
-          <button type="button" onClick={() => setMode('choice')}>
+          <button type="button" onClick={() => setMode('choice')} disabled={isLoading}>
             Back
           </button>
-          <button type="submit">{mode === 'create' ? 'Create Game' : 'Join Game'}</button>
+          <button type="submit" disabled={(mode === 'join' && error) || isLoading}>
+            {isLoading ? 'Connecting...' : mode === 'create' ? 'Create Game' : 'Join Game'}
+          </button>
         </div>
       </form>
     </div>

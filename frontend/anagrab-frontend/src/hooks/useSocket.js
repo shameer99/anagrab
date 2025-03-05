@@ -127,6 +127,21 @@ export const useSocket = () => {
         setPlayerToken(newToken);
       }
       setCurrentGameId(gameId);
+
+      // Get the player name from the stored session
+      const session = getLastGameSession();
+      if (session) {
+        setCurrentPlayer({ name: session.playerName });
+      }
+
+      // Set as joined
+      setIsJoined(true);
+
+      // Dispatch a custom event for the JoinForm component
+      const joinSuccessEvent = new CustomEvent('join_successful', {
+        detail: { gameId },
+      });
+      window.dispatchEvent(joinSuccessEvent);
     });
 
     socket.on('reconnection_successful', ({ gameId }) => {
@@ -179,6 +194,16 @@ export const useSocket = () => {
         type: 'join_failed',
         reason: data.message,
       });
+
+      // Dispatch a custom event for the JoinForm component to listen for
+      const joinErrorEvent = new CustomEvent('join_error', {
+        detail: {
+          type: 'join_failed',
+          reason: data.message,
+        },
+      });
+      window.dispatchEvent(joinErrorEvent);
+
       setTimeout(() => setErrorData(null), 5000);
     });
 
@@ -241,10 +266,12 @@ export const useSocket = () => {
   const joinGame = (gameId, playerName) => {
     if (gameId && playerName.trim()) {
       socket.emit('join_game', { gameId, playerName, playerToken });
+      // Store the session but don't set as joined yet - wait for server confirmation
       storeGameSession(gameId, playerName);
-      setIsJoined(true);
-      setCurrentPlayer({ name: playerName });
-      setCurrentGameId(gameId);
+      // We'll set these states when we receive join_successful event
+      // setIsJoined(true);
+      // setCurrentPlayer({ name: playerName });
+      // setCurrentGameId(gameId);
     }
   };
 
