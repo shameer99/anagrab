@@ -56,6 +56,10 @@
 /* Player Name and Score in Filter Chips */
 .player-name {
   font-weight: 500;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .player-score {
@@ -115,6 +119,10 @@
   font-weight: 700;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .word-player:hover {
@@ -137,6 +145,14 @@
   .sort-chip {
     padding: 4px 8px;
     font-size: 0.8em;
+  }
+
+  .player-name {
+    max-width: 80px;
+  }
+  
+  .word-player {
+    max-width: 70px;
   }
 
   .word-form {

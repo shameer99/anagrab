@@ -64,7 +64,9 @@ export const WordList = ({ players = {}, currentPlayer }) => {
               className={`filter-chip ${filterPlayer === player.id ? 'active' : ''} ${player.isCurrentPlayer ? 'current-player' : ''}`}
               onClick={() => setFilterPlayer(player.id)}
             >
-              <span className="player-name">{player.name}</span>
+              <span className="player-name" title={player.name}>
+                {player.name}
+              </span>
               <span className="player-score">{player.score} pts</span>
             </button>
           ))}
@@ -96,7 +98,9 @@ export const WordList = ({ players = {}, currentPlayer }) => {
         {sortedWords.map((item, index) => (
           <div key={index} className={`word-item ${item.isCurrentPlayer ? 'current-player' : ''}`}>
             <span className="word-text">{item.word}</span>
-            <span className="word-player">{item.playerName}</span>
+            <span className="word-player" title={item.playerName}>
+              {item.playerName}
+            </span>
           </div>
         ))}
         {sortedWords.length === 0 && <div className="no-words">No words found</div>}

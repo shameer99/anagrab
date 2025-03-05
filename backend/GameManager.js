@@ -96,8 +96,13 @@ class Game {
     // Generate a player token if not provided
     const token = playerToken || uuidv4();
 
+    // Sanitize player name
+    const sanitizedName = playerName
+      ? playerName.trim().substring(0, 20) // Limit to 20 characters
+      : 'Player';
+
     this.players[token] = {
-      name: playerName,
+      name: sanitizedName,
       words: [],
       lastSeen: new Date(),
       socketId: socketId,

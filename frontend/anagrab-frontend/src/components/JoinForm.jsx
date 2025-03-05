@@ -179,8 +179,21 @@ export const JoinForm = ({ onCreateGame, onJoinGame }) => {
             onChange={e => setPlayerName(e.target.value)}
             placeholder="Enter your name"
             required
+            maxLength={20}
             disabled={isLoading}
           />
+          <small
+            className="char-counter"
+            style={{
+              fontSize: '12px',
+              color: playerName.length >= 15 ? '#ff5252' : '#888',
+              textAlign: 'right',
+              display: 'block',
+              marginTop: '4px',
+            }}
+          >
+            {playerName.length}/20 characters
+          </small>
         </div>
 
         <div className="form-actions">

@@ -8,13 +8,18 @@ function setupSocketHandlers(io) {
     socket.on('create_game', async ({ playerName, playerToken }) => {
       console.log('Creating new game:', { hostSocketId: socket.id, playerName, playerToken });
       try {
+        // Validate and truncate player name if needed
+        const sanitizedPlayerName = playerName
+          ? playerName.trim().substring(0, 20) // Limit to 20 characters
+          : 'Player';
+
         const game = await GameManager.createGame(socket.id);
 
         // Add the host as a player
         const result = await GameManager.addPlayerToGame(
           game.id,
           socket.id,
-          playerName,
+          sanitizedPlayerName,
           playerToken
         );
 
@@ -43,11 +48,16 @@ function setupSocketHandlers(io) {
       console.log('Player joining game:', { socketId: socket.id, playerName, gameId, playerToken });
 
       try {
+        // Validate and truncate player name if needed
+        const sanitizedPlayerName = playerName
+          ? playerName.trim().substring(0, 20) // Limit to 20 characters
+          : 'Player';
+
         // Add player to the game
         const result = await GameManager.addPlayerToGame(
           gameId,
           socket.id,
-          playerName,
+          sanitizedPlayerName,
           playerToken
         );
 
