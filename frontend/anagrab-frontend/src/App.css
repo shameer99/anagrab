@@ -1628,3 +1628,106 @@ h3 {
     font-size: 1rem;
   }
 }
+
+/* PWA Install Prompt Styles */
+.install-prompt {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--bg-primary);
+  box-shadow: 0 2px 10px var(--shadow-color);
+  padding: 15px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.install-prompt-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.install-prompt-content h3 {
+  margin: 0 0 8px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.install-prompt-content p {
+  margin: 0 0 15px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.install-prompt-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.install-btn {
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.install-btn:hover {
+  background-color: var(--accent-secondary);
+}
+
+.dismiss-btn {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dismiss-btn:hover {
+  background-color: var(--bg-secondary);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .install-prompt {
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .dismiss-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .install-prompt-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .install-prompt-content p {
+    font-size: 0.85rem;
+  }
+  
+  .install-btn, .dismiss-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}

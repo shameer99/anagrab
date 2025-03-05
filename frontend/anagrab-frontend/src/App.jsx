@@ -41,6 +41,11 @@ function App() {
   const [winner, setWinner] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
 
+  // PWA installation states
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+  const [isAppInstalled, setIsAppInstalled] = useState(false);
+
   // Add a window resize listener to detect mobile/desktop
   useEffect(() => {
     const handleResize = () => {
@@ -50,6 +55,76 @@ function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // PWA installation event handlers
+  useEffect(() => {
+    // Check if the app is already installed
+    if (
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true
+    ) {
+      setIsAppInstalled(true);
+    }
+
+    // Listen for the beforeinstallprompt event
+    const handleBeforeInstallPrompt = e => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      setDeferredPrompt(e);
+      // Show the install prompt to the user
+      setShowInstallPrompt(true);
+    };
+
+    // Listen for the appinstalled event
+    const handleAppInstalled = () => {
+      // Hide the install prompt
+      setShowInstallPrompt(false);
+      // Set the app as installed
+      setIsAppInstalled(true);
+      // Clear the deferredPrompt
+      setDeferredPrompt(null);
+      // Log the installation
+      console.log('PWA was installed');
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  // Function to install the PWA
+  const installPWA = () => {
+    if (!deferredPrompt) {
+      console.log('Cannot install PWA: No installation prompt available');
+      return;
+    }
+
+    // Show the install prompt
+    deferredPrompt.prompt();
+
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then(choiceResult => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      // Clear the deferredPrompt variable as it can only be used once
+      setDeferredPrompt(null);
+      // Hide the install prompt
+      setShowInstallPrompt(false);
+    });
+  };
+
+  // Function to dismiss the install prompt
+  const dismissInstallPrompt = () => {
+    setShowInstallPrompt(false);
+  };
 
   // Reset copy success message after a delay
   useEffect(() => {
@@ -193,7 +268,27 @@ function App() {
   };
 
   if (!isJoined) {
-    return <JoinForm onCreateGame={createGame} onJoinGame={joinGame} />;
+    return (
+      <>
+        {showInstallPrompt && isMobile && !isAppInstalled && (
+          <div className="install-prompt">
+            <div className="install-prompt-content">
+              <h3>Install Anagrab</h3>
+              <p>Install this app on your device for a better experience!</p>
+              <div className="install-prompt-buttons">
+                <button onClick={installPWA} className="install-btn">
+                  Install
+                </button>
+                <button onClick={dismissInstallPrompt} className="dismiss-btn">
+                  Not Now
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        <JoinForm onCreateGame={createGame} onJoinGame={joinGame} />
+      </>
+    );
   }
 
   // Split players into current and others
@@ -210,6 +305,22 @@ function App() {
 
   return (
     <div className="game-container">
+      {showInstallPrompt && isMobile && !isAppInstalled && (
+        <div className="install-prompt">
+          <div className="install-prompt-content">
+            <h3>Install Anagrab</h3>
+            <p>Install this app on your device for a better experience!</p>
+            <div className="install-prompt-buttons">
+              <button onClick={installPWA} className="install-btn">
+                Install
+              </button>
+              <button onClick={dismissInstallPrompt} className="dismiss-btn">
+                Not Now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <ConnectionStatus state={connectionState} ping={pingLatency} />
       {errorData && <ErrorMessage data={errorData} onDismiss={() => socket.emit('clear_error')} />}
       {successData && (
