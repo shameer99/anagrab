@@ -9,6 +9,7 @@ import SuccessMessage from './components/SuccessMessage';
 import ConnectionStatus from './components/ConnectionStatus';
 import { AlphabetDisplay } from './components/AlphabetDisplay';
 import { WordList } from './components/WordList';
+import { GameSettings } from './components/GameSettings';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -227,15 +228,21 @@ function App() {
       <div className="game-header">
         <h2>Game Code: {currentGameId || 'Unknown'}</h2>
         <div className="game-header-buttons">
-          <button className="start-game-btn" onClick={handleRestartGame}>
-            Restart Game
-          </button>
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
           </button>
-          <button className="leave-game-btn" onClick={handleLeaveGame}>
-            Leave Game
-          </button>
+          <GameSettings
+            gameState={gameState}
+            onAutoFlipChange={(enabled, timeoutSeconds) => {
+              socket.emit('update_auto_flip', {
+                gameId: currentGameId,
+                enabled,
+                timeoutSeconds,
+              });
+            }}
+            onRestartGame={handleRestartGame}
+            onLeaveGame={handleLeaveGame}
+          />
         </div>
       </div>
 
@@ -244,6 +251,8 @@ function App() {
         onEndGame={endGame}
         deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
         gameState={gameState}
+        currentPlayer={currentPlayer}
+        socket={socket}
       />
 
       {/* Alphabet display for all 26 letters */}
