@@ -8,9 +8,9 @@ This document outlines the implementation plan for adding two new features to th
 
 A structured approach where players take turns flipping letters, ensuring fair participation.
 
-### Phase 2: Auto-Flip Option
+### Phase 2: Auto-Flip Enhancement
 
-An automated system that flips letters at regular intervals, maintaining game momentum.
+An enhancement to turn-based flipping that adds a time management aspect to player turns.
 
 These features aim to enhance gameplay by providing more structure, fairness, and flexibility in how letters are revealed during the game.
 
@@ -88,50 +88,69 @@ flowchart TD
 4. Test with multiple players
 5. Deploy and monitor
 
-## Phase 2: Auto-Flip Implementation (Future)
+## Phase 2: Auto-Flip Enhancement
 
 ### Core Mechanics
 
 ```mermaid
 flowchart TD
-    A[Game Start] --> B{Auto-Flip Enabled?}
-    B -- Yes --> C[Start Auto-Flip Timer]
-    B -- No --> D[Wait for Manual Flip]
+    A[Player's Turn Starts] --> B[Start Turn Timer]
+    B --> C{Auto-Flip Enabled?}
+    C -- Yes --> D[Start Auto-Flip Timer]
+    C -- No --> E[Wait for Manual Flip]
 
-    C --> E[Timer Reaches Zero]
-    E --> F[Automatically Flip Letter]
-    F --> G[Reset Timer]
-    G --> H{Deck Empty?}
-    H -- No --> E
-    H -- Yes --> I[Enter Stealing Phase]
+    D --> F{Timer Expires?}
+    F -- Yes --> G[Force Letter Flip]
+    F -- No --> H{Manual Flip?}
+    H -- Yes --> I[Process Flip]
+    H -- No --> F
 
-    J[Toggle Auto-Flip] --> K{Currently Enabled?}
-    K -- Yes --> L[Disable Auto-Flip]
-    K -- No --> M[Enable Auto-Flip]
-    L --> D
-    M --> C
+    E --> J{Manual Flip?}
+    J -- Yes --> I
+    J -- No --> E
+
+    I --> K[Advance to Next Player]
+    G --> K
 ```
 
 ### Future Implementation (Phase 2)
 
-1. **Settings**:
+1. **Turn Timer Enhancement**:
 
-   - Toggle for auto-flip
-   - Configurable interval (default: 15 seconds)
+   - Add configurable timer to each player's turn (default: 15 seconds)
+   - Timer starts when player's turn begins
+   - Player can flip manually at any time during their turn
+   - If timer expires, automatic flip occurs
+
+2. **Settings**:
+
+   - Toggle for auto-flip timer
+   - Configurable timer duration
    - Host-only controls
+   - Visual timer countdown for current player
 
-2. **Timer System**:
-   - Server-side timer
-   - Visual countdown
-   - Auto-reset after flips
+3. **Game Flow**:
+
+   - Players maintain their turns as in Phase 1
+   - During their turn, players can:
+     - Flip manually at any time
+     - Wait for auto-flip if timer expires
+   - Turn advances after any flip (manual or automatic)
+   - Timer resets with each new turn
+
+4. **Technical Considerations**:
+   - Server-side timer management
+   - Synchronization between clients
+   - Graceful handling of network delays
+   - Clear visual feedback for timer status
 
 ## Conclusion
 
 This phased approach will allow us to:
 
 1. First establish a fair and structured turn-based system
-2. Gather feedback and improve turn-based mechanics
-3. Later introduce auto-flip as an optional feature
+2. Later enhance turns with optional auto-flip timing
+3. Maintain player agency while preventing stalled games
 4. Provide flexibility in gameplay styles
 
-The immediate focus on turn-based flipping will address the core issues of participation balance and game flow, while setting up a solid foundation for future auto-flip functionality.
+The auto-flip enhancement will work seamlessly with the turn-based system, adding a time management aspect while preserving the core turn structure. This ensures games maintain momentum while still giving players control over their turns.
