@@ -1,6 +1,21 @@
 const { GameManager } = require('../GameManager');
 
 function setupSocketHandlers(io) {
+  // Timer for checking auto-flips across all games
+  setInterval(() => {
+    const games = GameManager.getAllGames();
+    const now = Date.now();
+
+    for (const [gameId, game] of games) {
+      if (game.nextAutoFlipTime && now >= game.nextAutoFlipTime) {
+        const { success, state } = game.flipLetter(null); // null indicates system flip
+        if (success) {
+          io.to(gameId).emit('game_state_update', state);
+        }
+      }
+    }
+  }, 1000); // Check every second
+
   io.on('connection', socket => {
     console.log('Player connected:', socket.id);
 
@@ -284,6 +299,23 @@ function setupSocketHandlers(io) {
     // Ping for latency measurement
     socket.on('ping', data => {
       socket.emit('pong', data);
+    });
+
+    // Update auto-flip settings
+    socket.on('update_auto_flip', ({ gameId, enabled, timeoutSeconds }) => {
+      try {
+        const game = GameManager.getGame(gameId);
+        if (game) {
+          game.updateAutoFlipSettings(enabled, timeoutSeconds);
+          io.to(gameId).emit('game_state_update', game);
+        }
+      } catch (error) {
+        console.error('Error updating auto-flip settings:', error);
+        socket.emit('game_error', {
+          type: 'settings_update_failed',
+          message: 'Failed to update auto-flip settings',
+        });
+      }
     });
   });
 }

@@ -21,13 +21,20 @@ class Game {
     this.pot = [];
     this.deck = [];
     this.isActive = true;
-    this.settings = settings;
+    this.settings = {
+      ...settings,
+      autoFlip: {
+        enabled: true,
+        timeoutSeconds: 15,
+      },
+    };
     this.createdAt = new Date();
     this.lastActivity = new Date();
 
     // Turn-based functionality
     this.playerOrder = [];
     this.currentTurnIndex = 0;
+    this.nextAutoFlipTime = null; // Timestamp for next auto-flip
   }
 
   // Generate a unique 4-letter game code
@@ -200,8 +207,8 @@ class Game {
     const playerToken = this.playerTokens.get(socketId);
     const currentTurnPlayer = this.getCurrentTurnPlayer();
 
-    // Check if it's the player's turn
-    if (playerToken !== currentTurnPlayer) {
+    // For auto-flip, allow system to flip (socketId will be null)
+    if (socketId !== null && playerToken !== currentTurnPlayer) {
       console.log(`Game ${this.id}: Failed to flip letter: not player's turn`);
       return {
         success: false,
@@ -214,8 +221,9 @@ class Game {
       const letter = this.deck.pop();
       this.pot.push(letter);
 
-      // Advance to next player's turn
+      // Advance to next player's turn and set next auto-flip time
       this.advanceTurn();
+      this.updateNextAutoFlipTime();
 
       console.log(`Game ${this.id}: Letter flipped:`, {
         letter,
@@ -226,6 +234,29 @@ class Game {
     }
     console.log(`Game ${this.id}: Failed to flip letter: deck is empty`);
     return { success: false, error: 'Deck is empty', state: this };
+  }
+
+  updateNextAutoFlipTime() {
+    if (this.settings.autoFlip.enabled && this.deck.length > 0) {
+      this.nextAutoFlipTime = Date.now() + this.settings.autoFlip.timeoutSeconds * 1000;
+    } else {
+      this.nextAutoFlipTime = null;
+    }
+  }
+
+  updateAutoFlipSettings(enabled, timeoutSeconds) {
+    // Validate timeout range
+    if (timeoutSeconds !== undefined) {
+      timeoutSeconds = Math.max(5, Math.min(120, timeoutSeconds));
+    }
+
+    this.settings.autoFlip = {
+      enabled: enabled ?? this.settings.autoFlip.enabled,
+      timeoutSeconds: timeoutSeconds ?? this.settings.autoFlip.timeoutSeconds,
+    };
+
+    // Update next flip time based on new settings
+    this.updateNextAutoFlipTime();
   }
 
   claimWord(word, socketId) {
@@ -292,6 +323,7 @@ class Game {
       lastActivity: this.lastActivity,
       playerOrder: this.playerOrder,
       currentTurnIndex: this.currentTurnIndex,
+      nextAutoFlipTime: this.nextAutoFlipTime,
     };
   }
 
@@ -306,6 +338,7 @@ class Game {
     game.lastActivity = new Date(data.lastActivity);
     game.playerOrder = data.playerOrder || [];
     game.currentTurnIndex = data.currentTurnIndex || 0;
+    game.nextAutoFlipTime = data.nextAutoFlipTime;
     return game;
   }
 }
@@ -513,6 +546,11 @@ class GameManager {
       });
     }
     return gameList;
+  }
+
+  // Get all active games
+  getAllGames() {
+    return this.games;
   }
 }
 

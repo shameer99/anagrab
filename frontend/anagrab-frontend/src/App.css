@@ -9,6 +9,7 @@
   --border-color: #e0e5ec;
   --shadow-color: rgba(0, 0, 0, 0.08);
   --accent-primary: #4361ee;
+  --accent-primary-rgb: 67, 97, 238;
   --accent-secondary: #3f37c9;
   --danger: #ef476f;
   --success: #06d6a0;
@@ -26,6 +27,7 @@
     --border-color: #404040;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --accent-primary: #4895ef;
+    --accent-primary-rgb: 72, 149, 239;
     --accent-secondary: #4361ee;
     --danger: #ff5d8f;
     --success: #06d6a0;
@@ -122,6 +124,58 @@ body {
 .game-controls .buttons {
   display: flex;
   gap: 10px;
+}
+
+.auto-flip-settings {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 8px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.auto-flip-settings label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.auto-flip-settings input[type="number"] {
+  width: 60px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.auto-flip-settings input[type="number"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.auto-flip-timer {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin: 0;
+  padding: 4px 8px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .deck-count {
@@ -1036,6 +1090,7 @@ h3 {
 .game-header-buttons {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .leave-game-btn {
@@ -1053,17 +1108,19 @@ h3 {
 }
 
 .share-game-btn {
+  padding: 8px 16px;
   background-color: var(--accent-primary);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .share-game-btn:hover {
   background-color: var(--accent-secondary);
+  transform: translateY(-1px);
 }
 
 .start-game-btn {
@@ -1636,20 +1693,32 @@ h3 {
 }
 
 .turn-status {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #666;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin: 0;
-  padding: 0.5rem;
+  padding: 8px 16px;
   border-radius: 8px;
-  background-color: #f5f5f5;
+  background: var(--bg-secondary);
+  transition: all 0.3s ease;
 }
 
 .turn-status.your-turn {
-  color: #2c5282;
-  background-color: #ebf8ff;
-  border: 2px solid #bee3f8;
-  animation: pulse 2s infinite;
+  color: var(--accent-primary);
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-primary);
+  animation: yourTurnPulse 2s infinite;
+}
+
+@keyframes yourTurnPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-primary-rgb), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--accent-primary-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-primary-rgb), 0);
+  }
 }
 
 .bag-button.disabled {
@@ -1666,5 +1735,160 @@ h3 {
   }
   100% {
     box-shadow: 0 0 0 0 rgba(44, 82, 130, 0);
+  }
+}
+
+/* Game Settings Modal Styles */
+.settings-button {
+  padding: 8px 16px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.settings-button:hover {
+  background-color: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.settings-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.settings-modal {
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.settings-modal h2 {
+  margin: 0 0 20px 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.settings-section {
+  margin-bottom: 24px;
+}
+
+.settings-section h3 {
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.settings-modal .auto-flip-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.settings-modal .timeout-setting {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-modal .timeout-setting input {
+  width: 80px;
+  padding: 4px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.settings-modal .game-controls-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.settings-modal .game-controls-buttons button {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settings-modal .game-controls-buttons button:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.settings-modal .close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.settings-modal .close-button:hover {
+  color: var(--text-primary);
+}
+
+/* Update turn indicator styles to show countdown */
+.turn-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.auto-flip-countdown {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  background: var(--bg-secondary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--accent-primary);
+  margin-top: 4px;
+  animation: countdownPulse 1s infinite;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+@keyframes countdownPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
