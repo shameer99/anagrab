@@ -10,9 +10,22 @@ import ConnectionStatus from './components/ConnectionStatus';
 import { AlphabetDisplay } from './components/AlphabetDisplay';
 import { WordList } from './components/WordList';
 import { GameSettings } from './components/GameSettings';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { useSocket } from './hooks/useSocket';
+import { JoinForm } from './components/JoinForm';
+import { GameControls } from './components/GameControls';
+import { WordForm } from './components/WordForm';
+import { PlayersList } from './components/PlayersList';
+import ErrorMessage from './components/ErrorMessage';
+import SuccessMessage from './components/SuccessMessage';
+import ConnectionStatus from './components/ConnectionStatus';
+import { AlphabetDisplay } from './components/AlphabetDisplay';
+import { WordList } from './components/WordList';
+import { GameSettings } from './components/GameSettings';
 
+const gameControlsRef = useRef(null);
 function App() {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const {
     gameState,
     isJoined,
@@ -41,8 +54,7 @@ function App() {
   const [stealingTimeLeft, setStealingTimeLeft] = useState(60);
   const [winner, setWinner] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
-
-  // Add a window resize listener to detect mobile/desktop
+    // Add a window resize listener to detect mobile/desktop
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -231,32 +243,52 @@ function App() {
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
           </button>
-          <GameSettings
+          <div className='game-controls-collapsable'>
+            <GameSettings
+              gameState={gameState}
+              onAutoFlipChange={(enabled, timeoutSeconds) => {
+                socket.emit('update_auto_flip', {
+                  gameId: currentGameId,
+                  enabled,
+                  timeoutSeconds,
+                });
+              }}
+              onRestartGame={handleRestartGame}
+              onLeaveGame={handleLeaveGame}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="game-controls-wrapper">
+        <button onClick={() => setIsCollapsed(!isCollapsed)} className="collapse-button">
+          {isCollapsed ? 'Expand' : 'Collapse'}
+        </button>
+        <div className={`game-controls ${isCollapsed ? 'collapsed' : 'expanded'}`} ref={gameControlsRef}>
+          <GameControls
+            onFlipLetter={flipLetter}
+            onEndGame={endGame}
+            deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
             gameState={gameState}
-            onAutoFlipChange={(enabled, timeoutSeconds) => {
-              socket.emit('update_auto_flip', {
-                gameId: currentGameId,
-                enabled,
-                timeoutSeconds,
-              });
-            }}
-            onRestartGame={handleRestartGame}
-            onLeaveGame={handleLeaveGame}
+            currentPlayer={currentPlayer}
+            socket={socket}
           />
         </div>
       </div>
 
-      <GameControls
-        onFlipLetter={flipLetter}
-        onEndGame={endGame}
-        deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
-        gameState={gameState}
-        currentPlayer={currentPlayer}
-        socket={socket}
-      />
-
       {/* Alphabet display for all 26 letters */}
       <AlphabetDisplay letters={gameState?.pot || []} />
+      <div className="game-controls-wrapper">
+        <div className={`game-controls ${isCollapsed ? 'collapsed' : 'expanded'}`} ref={gameControlsRef}>
+            <GameControls
+              onFlipLetter={flipLetter}
+              onEndGame={endGame}
+              deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
+              gameState={gameState}
+              currentPlayer={currentPlayer}
+              socket={socket}
+            />
+        </div>
+      </div>
 
       {/* Game board with word form only */}
       <div className="game-board">
