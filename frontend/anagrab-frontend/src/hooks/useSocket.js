@@ -307,8 +307,14 @@ export const useSocket = () => {
   };
 
   const flipLetter = () => {
-    if (currentGameId) {
+    if (socket && currentGameId) {
       socket.emit('flip_letter', currentGameId);
+    }
+  };
+
+  const toggleAutoFlip = (gameId, enabled, interval) => {
+    if (socket && gameId) {
+      socket.emit('toggle_auto_flip', { gameId, enabled, interval });
     }
   };
 
@@ -351,6 +357,7 @@ export const useSocket = () => {
   };
 
   return {
+    socket,
     gameState,
     isJoined,
     createGame,
@@ -369,8 +376,8 @@ export const useSocket = () => {
     currentGameId,
     connectionState,
     pingLatency,
+    toggleAutoFlip,
     gamesList,
-    socket,
     playerToken,
     reconnectToGame,
   };

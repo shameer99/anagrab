@@ -21,7 +21,14 @@ class Game {
     this.pot = [];
     this.deck = [];
     this.isActive = true;
-    this.settings = settings;
+    this.settings = {
+      ...settings,
+      autoFlipEnabled: settings.autoFlipEnabled || false,
+      autoFlipInterval: settings.autoFlipInterval || 15,
+    };
+    this.turnOrder = [];
+    this.currentTurnIndex = 0;
+    this.autoFlipTimer = null;
     this.createdAt = new Date();
     this.lastActivity = new Date();
   }
@@ -109,6 +116,10 @@ class Game {
     };
 
     this.playerTokens.set(socketId, token);
+
+    // Update turn order when new player joins
+    this.updateTurnOrder();
+
     return { token, game: this };
   }
 
@@ -117,6 +128,8 @@ class Game {
     if (token) {
       delete this.players[token];
       this.playerTokens.delete(socketId);
+      // Update turn order when player leaves
+      this.updateTurnOrder();
     }
     return this;
   }
@@ -150,10 +163,36 @@ class Game {
       this.players[playerId].words = [];
     }
     this.isActive = true;
+    // Initialize turn order when game starts
+    this.initializeTurnOrder();
+    // Start auto-flip if enabled
+    if (this.settings.autoFlipEnabled) {
+      this.startAutoFlipTimer();
+    }
     return this;
   }
 
-  flipLetter() {
+  flipLetter(socketId = null) {
+    // In auto-flip mode, no turn checking
+    if (this.settings.autoFlipEnabled || !socketId) {
+      // Proceed with flip
+    } else {
+      // Check if it's this player's turn
+      const playerToken = this.playerTokens.get(socketId);
+      const currentTurn = this.getCurrentTurn();
+
+      if (playerToken !== currentTurn) {
+        return {
+          success: false,
+          error: 'Not your turn to flip',
+          state: this,
+        };
+      }
+
+      // Advance to next player after flip
+      this.advanceToNextTurn();
+    }
+
     console.log(`Game ${this.id}: Attempting to flip letter. Current state:`, {
       deckSize: this.deck.length,
       potSize: this.pot.length,
@@ -233,6 +272,8 @@ class Game {
       deck: this.deck,
       isActive: this.isActive,
       settings: this.settings,
+      turnOrder: this.turnOrder,
+      currentTurnIndex: this.currentTurnIndex,
       createdAt: this.createdAt,
       lastActivity: this.lastActivity,
     };
@@ -245,9 +286,96 @@ class Game {
     game.pot = data.pot;
     game.deck = data.deck;
     game.isActive = data.isActive;
+    game.turnOrder = data.turnOrder || [];
+    game.currentTurnIndex = data.currentTurnIndex || 0;
     game.createdAt = new Date(data.createdAt);
     game.lastActivity = new Date(data.lastActivity);
+    // Restart auto-flip timer if enabled
+    if (game.settings.autoFlipEnabled) {
+      game.startAutoFlipTimer();
+    }
     return game;
+  }
+
+  // Initialize turn order
+  initializeTurnOrder() {
+    this.turnOrder = Object.keys(this.players);
+    this.currentTurnIndex = 0;
+    return this;
+  }
+
+  // Get current player's turn
+  getCurrentTurn() {
+    return this.turnOrder[this.currentTurnIndex];
+  }
+
+  // Advance to next player
+  advanceToNextTurn() {
+    this.currentTurnIndex = (this.currentTurnIndex + 1) % this.turnOrder.length;
+    return this.getCurrentTurn();
+  }
+
+  // Handle player joining/leaving
+  updateTurnOrder() {
+    const currentPlayer = this.getCurrentTurn();
+    this.turnOrder = Object.keys(this.players);
+
+    // If current player still exists, keep their turn
+    if (currentPlayer && this.turnOrder.includes(currentPlayer)) {
+      this.currentTurnIndex = this.turnOrder.indexOf(currentPlayer);
+    } else {
+      this.currentTurnIndex = 0;
+    }
+
+    return this;
+  }
+
+  // Start auto-flip timer
+  startAutoFlipTimer() {
+    if (this.settings.autoFlipEnabled && !this.autoFlipTimer) {
+      this.autoFlipTimer = setTimeout(() => {
+        this.autoFlip();
+      }, this.settings.autoFlipInterval * 1000);
+    }
+    return this;
+  }
+
+  // Auto-flip a letter
+  autoFlip() {
+    const result = this.flipLetter();
+    this.autoFlipTimer = null;
+
+    if (result.success && this.deck.length > 0) {
+      this.startAutoFlipTimer();
+    }
+
+    return result;
+  }
+
+  // Stop auto-flip timer
+  stopAutoFlipTimer() {
+    if (this.autoFlipTimer) {
+      clearTimeout(this.autoFlipTimer);
+      this.autoFlipTimer = null;
+    }
+    return this;
+  }
+
+  // Toggle auto-flip
+  toggleAutoFlip(enabled, interval = null) {
+    this.settings.autoFlipEnabled = enabled;
+
+    if (interval !== null) {
+      this.settings.autoFlipInterval = interval;
+    }
+
+    if (enabled) {
+      this.startAutoFlipTimer();
+    } else {
+      this.stopAutoFlipTimer();
+    }
+
+    return this;
   }
 }
 

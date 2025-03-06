@@ -29,6 +29,7 @@ function App() {
     connectionState,
     pingLatency,
     socket,
+    toggleAutoFlip,
   } = useSocket();
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -40,6 +41,9 @@ function App() {
   const [stealingTimeLeft, setStealingTimeLeft] = useState(60);
   const [winner, setWinner] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [currentTurn, setCurrentTurn] = useState(null);
+  const [currentTurnPlayer, setCurrentTurnPlayer] = useState(null);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   // Add a window resize listener to detect mobile/desktop
   useEffect(() => {
@@ -133,6 +137,31 @@ function App() {
     }
   }, [gameState?.deck?.length]);
 
+  // Listen for turn updates
+  useEffect(() => {
+    if (socket) {
+      socket.on('turn_update', ({ currentTurn: newTurn, playerName }) => {
+        setCurrentTurn(newTurn);
+        setCurrentTurnPlayer(playerName);
+      });
+
+      socket.on('turn_info', ({ currentTurn: newTurn, playerName }) => {
+        setCurrentTurn(newTurn);
+        setCurrentTurnPlayer(playerName);
+      });
+
+      // Get initial turn info when joining a game
+      if (currentGameId) {
+        socket.emit('get_turn_info', currentGameId);
+      }
+
+      return () => {
+        socket.off('turn_update');
+        socket.off('turn_info');
+      };
+    }
+  }, [socket, currentGameId]);
+
   const handleShareGame = () => {
     // Always show the modal first
     setShowShareModal(true);
@@ -208,6 +237,8 @@ function App() {
     [null, []]
   );
 
+  const isHost = gameState?.host === socket?.id;
+
   return (
     <div className="game-container">
       <ConnectionStatus state={connectionState} ping={pingLatency} />
@@ -230,6 +261,15 @@ function App() {
           <button className="start-game-btn" onClick={handleRestartGame}>
             Restart Game
           </button>
+          {isHost && (
+            <button
+              onClick={() => setShowSettingsModal(true)}
+              className="settings-btn"
+              title="Game Settings"
+            >
+              ⚙️ Settings
+            </button>
+          )}
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
           </button>
@@ -244,6 +284,12 @@ function App() {
         onEndGame={endGame}
         deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
         gameState={gameState}
+        isHost={gameState?.host === socket?.id}
+        currentTurn={currentTurn}
+        currentPlayer={currentTurnPlayer}
+        playerToken={currentPlayer?.id}
+        autoFlipEnabled={gameState?.settings?.autoFlipEnabled}
+        autoFlipInterval={gameState?.settings?.autoFlipInterval}
       />
 
       {/* Alphabet display for all 26 letters */}
@@ -415,6 +461,55 @@ function App() {
             <button className="close-modal" onClick={() => setShowShareModal(false)}>
               Close
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Settings Modal */}
+      {showSettingsModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="modal-close" onClick={() => setShowSettingsModal(false)}>
+              ×
+            </button>
+            <h2>Game Settings</h2>
+            <div className="settings-content">
+              <div className="setting-group">
+                <label className="setting-label">
+                  <input
+                    type="checkbox"
+                    checked={gameState?.settings?.autoFlipEnabled || false}
+                    onChange={e =>
+                      toggleAutoFlip(
+                        currentGameId,
+                        e.target.checked,
+                        gameState?.settings?.autoFlipInterval
+                      )
+                    }
+                  />
+                  Auto-Flip Letters
+                </label>
+                {gameState?.settings?.autoFlipEnabled && (
+                  <div className="interval-control">
+                    <label>
+                      Interval (seconds):
+                      <input
+                        type="number"
+                        min="5"
+                        max="60"
+                        value={gameState?.settings?.autoFlipInterval || 15}
+                        onChange={e => {
+                          const value = parseInt(e.target.value, 10);
+                          if (!isNaN(value) && value >= 5 && value <= 60) {
+                            toggleAutoFlip(currentGameId, true, value);
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}

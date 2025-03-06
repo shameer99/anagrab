@@ -1628,3 +1628,194 @@ h3 {
     font-size: 1rem;
   }
 }
+
+/* Turn-based and Auto-flip Styles */
+.turn-info {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.current-turn {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.your-turn {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.auto-flip-status {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: inline-block;
+  color: #FFD700;
+  font-size: 1.1rem;
+}
+
+.auto-flip-status strong {
+  color: white;
+  background-color: rgba(255, 215, 0, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  margin: 0 0.2rem;
+  font-size: 1.2rem;
+}
+
+.auto-flip-controls {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.settings-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.settings-button:hover {
+  transform: rotate(45deg);
+}
+
+.settings-panel {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #2c3e50;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.settings-panel label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.interval-control {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.interval-control input[type="number"] {
+  width: 60px;
+  padding: 0.25rem;
+  margin-left: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: white;
+}
+
+.bag-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .turn-info {
+    font-size: 1rem;
+  }
+
+  .settings-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+/* Settings button in header */
+.settings-btn {
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settings-btn:hover {
+  background-color: var(--accent-secondary);
+}
+
+/* Settings modal content */
+.settings-content {
+  margin-top: 1rem;
+}
+
+.setting-group {
+  margin-bottom: 1.5rem;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.setting-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.interval-control {
+  margin-top: 1rem;
+  padding-left: 1.8rem;
+}
+
+.interval-control label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+}
+
+.interval-control input[type="number"] {
+  width: 80px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .game-header-buttons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .settings-btn,
+  .share-game-btn,
+  .leave-game-btn,
+  .start-game-btn {
+    flex: 1;
+    min-width: calc(50% - 0.5rem);
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}

@@ -122,6 +122,12 @@ function setupSocketHandlers(io) {
           game.startNewGame();
           await GameManager.saveGameToDB(game);
           io.to(gameId).emit('game_state_update', game);
+          // Emit initial turn info
+          const currentPlayer = game.players[game.getCurrentTurn()];
+          io.to(gameId).emit('turn_update', {
+            currentTurn: game.getCurrentTurn(),
+            playerName: currentPlayer?.name,
+          });
         }
       } catch (error) {
         console.error('Error starting game:', error);
@@ -135,12 +141,21 @@ function setupSocketHandlers(io) {
       try {
         const game = GameManager.getGame(gameId);
         if (game) {
-          const { success, state } = game.flipLetter();
+          const { success, state, error } = game.flipLetter(socket.id);
           if (success) {
             await GameManager.saveGameToDB(state);
             io.to(gameId).emit('game_state_update', state);
+            // Emit whose turn is next
+            const nextPlayer = state.players[state.getCurrentTurn()];
+            io.to(gameId).emit('turn_update', {
+              currentTurn: state.getCurrentTurn(),
+              playerName: nextPlayer?.name,
+            });
           } else {
-            socket.emit('game_error', { type: 'flip_failed', message: 'No more letters in deck' });
+            socket.emit('game_error', {
+              type: 'flip_failed',
+              message: error || 'No more letters in deck',
+            });
           }
         }
       } catch (error) {
@@ -281,6 +296,60 @@ function setupSocketHandlers(io) {
     // Ping for latency measurement
     socket.on('ping', data => {
       socket.emit('pong', data);
+    });
+
+    // Toggle auto-flip
+    socket.on('toggle_auto_flip', async ({ gameId, enabled, interval }) => {
+      console.log('Toggle auto-flip:', { gameId, enabled, interval, requestedBy: socket.id });
+      try {
+        const game = GameManager.getGame(gameId);
+        if (game) {
+          // Only allow host to toggle auto-flip
+          if (game.host !== socket.id) {
+            socket.emit('game_error', {
+              type: 'auto_flip_failed',
+              message: 'Only the host can control auto-flip settings',
+            });
+            return;
+          }
+
+          game.toggleAutoFlip(enabled, interval);
+          await GameManager.saveGameToDB(game);
+          io.to(gameId).emit('game_state_update', game);
+          io.to(gameId).emit('auto_flip_update', {
+            enabled: game.settings.autoFlipEnabled,
+            interval: game.settings.autoFlipInterval,
+          });
+        }
+      } catch (error) {
+        console.error('Error toggling auto-flip:', error);
+        socket.emit('game_error', {
+          type: 'auto_flip_failed',
+          message: 'Failed to toggle auto-flip',
+        });
+      }
+    });
+
+    // Get current turn info
+    socket.on('get_turn_info', async gameId => {
+      console.log('Getting turn info:', { gameId, requestedBy: socket.id });
+      try {
+        const game = GameManager.getGame(gameId);
+        if (game) {
+          const currentTurn = game.getCurrentTurn();
+          const currentPlayer = game.players[currentTurn];
+          socket.emit('turn_info', {
+            currentTurn,
+            playerName: currentPlayer?.name,
+          });
+        }
+      } catch (error) {
+        console.error('Error getting turn info:', error);
+        socket.emit('game_error', {
+          type: 'turn_info_failed',
+          message: 'Failed to get turn information',
+        });
+      }
     });
   });
 }
