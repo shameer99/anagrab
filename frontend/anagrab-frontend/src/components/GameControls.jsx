@@ -35,12 +35,13 @@ export const GameControls = ({
   }, [autoFlipEnabled, gameState?.nextFlipTime]);
 
   const isPlayerTurn = currentTurn === playerToken;
-  const canFlip = !autoFlipEnabled && (isPlayerTurn || !currentTurn);
+  // In auto-flip mode, player can flip if it's their turn
+  const canFlip = isPlayerTurn;
 
   return (
     <div className="game-controls">
       <div className="turn-info">
-        {currentTurn && !autoFlipEnabled && (
+        {currentTurn && (
           <div className="current-turn">
             Current Turn: <strong>{currentPlayer}</strong>
             {isPlayerTurn && <span className="your-turn"> (Your Turn!)</span>}
@@ -48,8 +49,9 @@ export const GameControls = ({
         )}
         {autoFlipEnabled && (
           <div className="auto-flip-status">
-            Auto-Flip: Next flip in <strong>{countdown !== null ? countdown : '...'}</strong>{' '}
-            seconds
+            Auto-Flip: {isPlayerTurn ? 'Your turn! ' : ''}Next flip in{' '}
+            <strong>{countdown !== null ? countdown : '...'}</strong> seconds
+            {isPlayerTurn && <span className="early-flip-hint"> (Click 🍌 to flip early)</span>}
           </div>
         )}
       </div>

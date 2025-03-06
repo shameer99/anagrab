@@ -141,8 +141,16 @@ class Game {
       const oldSocketId = player.socketId;
       player.socketId = newSocketId;
       player.lastSeen = new Date();
+
+      // Update the socket to token mapping
       this.playerTokens.delete(oldSocketId);
       this.playerTokens.set(newSocketId, token);
+
+      console.log(`Game ${this.id}: Updated socket mapping for player:`, {
+        token,
+        oldSocketId,
+        newSocketId,
+      });
       return true;
     }
     return false;
@@ -174,14 +182,13 @@ class Game {
   }
 
   flipLetter(socketId = null) {
-    // In auto-flip mode, no turn checking
-    if (this.settings.autoFlipEnabled || !socketId) {
-      // Proceed with flip
-    } else {
-      // Check if it's this player's turn
+    // Check if it's a manual flip from a player
+    if (socketId) {
+      // Get the player's token using their socket ID
       const playerToken = this.playerTokens.get(socketId);
       const currentTurn = this.getCurrentTurn();
 
+      // Check if it's their turn using their persistent token
       if (playerToken !== currentTurn) {
         return {
           success: false,
@@ -190,8 +197,10 @@ class Game {
         };
       }
 
-      // Advance to next player after flip
-      this.advanceToNextTurn();
+      // If auto-flip is enabled, this is an early flip - clear the timer
+      if (this.settings.autoFlipEnabled) {
+        this.stopAutoFlipTimer();
+      }
     }
 
     console.log(`Game ${this.id}: Attempting to flip letter. Current state:`, {
@@ -207,6 +216,15 @@ class Game {
         newDeckSize: this.deck.length,
         newPotSize: this.pot.length,
       });
+
+      // Advance to next player's turn
+      this.advanceToNextTurn();
+
+      // If auto-flip is enabled, start the timer for the next player
+      if (this.settings.autoFlipEnabled) {
+        this.startAutoFlipTimer();
+      }
+
       return { success: true, state: this };
     }
     console.log(`Game ${this.id}: Failed to flip letter: deck is empty`);
@@ -293,18 +311,51 @@ class Game {
     game.createdAt = new Date(data.createdAt);
     game.lastActivity = new Date(data.lastActivity);
     game.nextFlipTime = data.nextFlipTime;
+
+    // Rebuild the playerTokens map
+    game.playerTokens = new Map();
+    Object.entries(game.players).forEach(([token, player]) => {
+      if (player.socketId) {
+        game.playerTokens.set(player.socketId, token);
+      }
+    });
+
     // Restart auto-flip timer if enabled
     if (game.settings.autoFlipEnabled) {
       // Calculate remaining time based on saved nextFlipTime
       if (game.nextFlipTime) {
         const remainingTime = game.nextFlipTime - Date.now();
         if (remainingTime > 0) {
+          console.log(`Game ${game.id}: Scheduling auto-flip in ${remainingTime}ms`);
           game.autoFlipTimer = setTimeout(() => {
-            game.autoFlip();
+            const result = game.autoFlip();
+            if (result.success) {
+              // Save game state after auto-flip
+              gameManagerInstance?.saveGameToDB(game);
+
+              // Get the io instance from the GameManager
+              const io = gameManagerInstance?.getIO();
+              if (io) {
+                // Emit all necessary updates
+                io.to(game.id).emit('game_state_update', game);
+                io.to(game.id).emit('turn_update', result.nextTurn);
+                io.to(game.id).emit('auto_flip_update', result.autoFlipStatus);
+              }
+            }
           }, remainingTime);
         } else {
           // If we missed the flip time, do it immediately
-          game.autoFlip();
+          console.log(`Game ${game.id}: Missed flip time, flipping immediately`);
+          const result = game.autoFlip();
+          if (result.success) {
+            gameManagerInstance?.saveGameToDB(game);
+            const io = gameManagerInstance?.getIO();
+            if (io) {
+              io.to(game.id).emit('game_state_update', game);
+              io.to(game.id).emit('turn_update', result.nextTurn);
+              io.to(game.id).emit('auto_flip_update', result.autoFlipStatus);
+            }
+          }
         }
       } else {
         game.startAutoFlipTimer();
@@ -313,10 +364,12 @@ class Game {
     return game;
   }
 
-  // Initialize turn order
+  // Initialize turn order using player tokens
   initializeTurnOrder() {
+    // Use the persistent player tokens for turn order
     this.turnOrder = Object.keys(this.players);
     this.currentTurnIndex = 0;
+    console.log(`Game ${this.id}: Initialized turn order:`, this.turnOrder);
     return this;
   }
 
@@ -331,9 +384,10 @@ class Game {
     return this.getCurrentTurn();
   }
 
-  // Handle player joining/leaving
+  // Update turn order when players join/leave
   updateTurnOrder() {
     const currentPlayer = this.getCurrentTurn();
+    // Use the persistent player tokens for turn order
     this.turnOrder = Object.keys(this.players);
 
     // If current player still exists, keep their turn
@@ -343,31 +397,86 @@ class Game {
       this.currentTurnIndex = 0;
     }
 
+    console.log(`Game ${this.id}: Updated turn order:`, {
+      turnOrder: this.turnOrder,
+      currentTurnIndex: this.currentTurnIndex,
+      currentPlayer: this.getCurrentTurn(),
+    });
     return this;
   }
 
   // Start auto-flip timer
   startAutoFlipTimer() {
     if (this.settings.autoFlipEnabled && !this.autoFlipTimer) {
+      // Clear any existing timer
+      if (this.autoFlipTimer) {
+        clearTimeout(this.autoFlipTimer);
+        this.autoFlipTimer = null;
+      }
+
+      // Set the next flip time
       this.nextFlipTime = Date.now() + this.settings.autoFlipInterval * 1000;
+
+      // Set the timer
       this.autoFlipTimer = setTimeout(() => {
         this.autoFlip();
       }, this.settings.autoFlipInterval * 1000);
+
+      console.log(
+        `Game ${this.id}: Auto-flip timer started, next flip at:`,
+        new Date(this.nextFlipTime)
+      );
     }
     return this;
   }
 
   // Auto-flip a letter
   autoFlip() {
-    const result = this.flipLetter();
-    this.autoFlipTimer = null;
-    this.nextFlipTime = null;
+    try {
+      console.log(`Game ${this.id}: Auto-flipping letter`);
+      const result = this.flipLetter(); // No socketId means it's an automatic flip
+      this.autoFlipTimer = null;
+      this.nextFlipTime = null;
 
-    if (result.success && this.deck.length > 0) {
-      this.startAutoFlipTimer();
+      if (result.success && this.deck.length > 0) {
+        console.log(`Game ${this.id}: Auto-flip successful, starting next timer`);
+        // Start the next timer immediately
+        this.startAutoFlipTimer();
+      } else {
+        console.log(`Game ${this.id}: Auto-flip failed or deck empty`, result);
+        // If auto-flip failed or deck is empty, disable auto-flip
+        this.settings.autoFlipEnabled = false;
+      }
+
+      // Add additional information needed for client updates
+      return {
+        ...result,
+        nextTurn: {
+          currentTurn: this.getCurrentTurn(),
+          playerName: this.players[this.getCurrentTurn()]?.name,
+        },
+        autoFlipStatus: {
+          enabled: this.settings.autoFlipEnabled,
+          interval: this.settings.autoFlipInterval,
+          nextFlipTime: this.nextFlipTime,
+        },
+      };
+    } catch (error) {
+      console.error(`Game ${this.id}: Error during auto-flip:`, error);
+      this.autoFlipTimer = null;
+      this.nextFlipTime = null;
+      this.settings.autoFlipEnabled = false;
+      return {
+        success: false,
+        error: 'Auto-flip failed',
+        state: this,
+        autoFlipStatus: {
+          enabled: false,
+          interval: this.settings.autoFlipInterval,
+          nextFlipTime: null,
+        },
+      };
     }
-
-    return result;
   }
 
   // Stop auto-flip timer
@@ -402,6 +511,7 @@ class GameManager {
     this.games = new Map();
     this.playerGameMap = new Map(); // Maps player tokens to gameId
     this.db = null;
+    this.io = null; // Store io instance
 
     // Set singleton instance
     gameManagerInstance = this;
@@ -411,6 +521,16 @@ class GameManager {
 
     // Set up periodic cleanup of inactive games
     setInterval(() => this.cleanupInactiveGames(), 1000 * 60 * 60); // Cleanup every hour
+  }
+
+  // Set the io instance
+  setIO(io) {
+    this.io = io;
+  }
+
+  // Get the io instance
+  getIO() {
+    return this.io;
   }
 
   async initializeDB() {

@@ -1,6 +1,9 @@
 const { GameManager } = require('../GameManager');
 
 function setupSocketHandlers(io) {
+  // Provide io instance to GameManager
+  GameManager.setIO(io);
+
   io.on('connection', socket => {
     console.log('Player connected:', socket.id);
 
@@ -99,6 +102,23 @@ function setupSocketHandlers(io) {
 
           // Send game state to all players
           io.to(gameId).emit('game_state_update', game);
+
+          // Send current turn info
+          const currentTurn = game.getCurrentTurn();
+          const currentPlayer = game.players[currentTurn];
+          io.to(gameId).emit('turn_update', {
+            currentTurn,
+            playerName: currentPlayer?.name,
+          });
+
+          // If auto-flip is enabled, send the current auto-flip status
+          if (game.settings.autoFlipEnabled) {
+            io.to(gameId).emit('auto_flip_update', {
+              enabled: game.settings.autoFlipEnabled,
+              interval: game.settings.autoFlipInterval,
+              nextFlipTime: game.nextFlipTime,
+            });
+          }
         } else {
           socket.emit('reconnection_failed', {
             message:
@@ -144,12 +164,22 @@ function setupSocketHandlers(io) {
           const { success, state, error } = game.flipLetter(socket.id);
           if (success) {
             await GameManager.saveGameToDB(state);
+
+            // Emit game state update
             io.to(gameId).emit('game_state_update', state);
+
             // Emit whose turn is next
             const nextPlayer = state.players[state.getCurrentTurn()];
             io.to(gameId).emit('turn_update', {
               currentTurn: state.getCurrentTurn(),
               playerName: nextPlayer?.name,
+            });
+
+            // Always emit auto-flip status to keep clients in sync
+            io.to(gameId).emit('auto_flip_update', {
+              enabled: state.settings.autoFlipEnabled,
+              interval: state.settings.autoFlipInterval,
+              nextFlipTime: state.nextFlipTime,
             });
           } else {
             socket.emit('game_error', {

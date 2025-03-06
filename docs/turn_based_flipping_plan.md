@@ -239,6 +239,7 @@ flowchart TD
    ```
 
 4. **Modified Flip Letter Method**:
+
    ```javascript
    // Update flipLetter to handle turns
    flipLetter(socketId = null) {

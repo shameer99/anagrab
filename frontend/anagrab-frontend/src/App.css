@@ -1644,9 +1644,17 @@ h3 {
 }
 
 .your-turn {
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: bold;
   margin-left: 0.5rem;
+}
+
+.early-flip-hint {
+  color: #ffd700;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-left: 0.5rem;
+  opacity: 0.9;
 }
 
 .auto-flip-status {
@@ -1654,8 +1662,18 @@ h3 {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   display: inline-block;
-  color: #FFD700;
+  color: #ffd700;
   font-size: 1.1rem;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 2px #ffd700;
+  }
+  to {
+    text-shadow: 0 0 8px #ffd700;
+  }
 }
 
 .auto-flip-status strong {
@@ -1711,7 +1729,7 @@ h3 {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.interval-control input[type="number"] {
+.interval-control input[type='number'] {
   width: 60px;
   padding: 0.25rem;
   margin-left: 0.5rem;
@@ -1788,7 +1806,7 @@ h3 {
   color: var(--text-primary);
 }
 
-.setting-label input[type="checkbox"] {
+.setting-label input[type='checkbox'] {
   width: 18px;
   height: 18px;
 }
@@ -1805,7 +1823,7 @@ h3 {
   color: var(--text-primary);
 }
 
-.interval-control input[type="number"] {
+.interval-control input[type='number'] {
   width: 80px;
   padding: 0.5rem;
   border: 1px solid var(--border-color);

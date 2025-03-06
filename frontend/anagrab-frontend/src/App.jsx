@@ -266,7 +266,7 @@ function App() {
             className="settings-btn"
             title="Game Settings"
           >
-            ⚙️ Settings
+            Settings
           </button>
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
