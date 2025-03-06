@@ -1,37 +1,38 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const GameControls = ({
   onFlipLetter,
+  onEndGame,
   deckCount,
+  gameState,
+  isHost,
   currentTurn,
   currentPlayer,
   playerToken,
   autoFlipEnabled,
   autoFlipInterval,
 }) => {
-  const [countdown, setCountdown] = useState(autoFlipInterval);
+  const [countdown, setCountdown] = useState(null);
 
   useEffect(() => {
     let timer;
-    if (autoFlipEnabled) {
-      // Reset countdown when interval changes
-      setCountdown(autoFlipInterval);
+    if (autoFlipEnabled && gameState?.nextFlipTime) {
+      const updateCountdown = () => {
+        const remaining = Math.ceil((gameState.nextFlipTime - Date.now()) / 1000);
+        setCountdown(remaining > 0 ? remaining : 0);
+      };
 
-      // Update countdown every second
-      timer = setInterval(() => {
-        setCountdown(prev => {
-          if (prev <= 1) {
-            return autoFlipInterval;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+      // Update immediately and then every second
+      updateCountdown();
+      timer = setInterval(updateCountdown, 1000);
+    } else {
+      setCountdown(null);
     }
 
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [autoFlipEnabled, autoFlipInterval]);
+  }, [autoFlipEnabled, gameState?.nextFlipTime]);
 
   const isPlayerTurn = currentTurn === playerToken;
   const canFlip = !autoFlipEnabled && (isPlayerTurn || !currentTurn);
@@ -47,7 +48,8 @@ export const GameControls = ({
         )}
         {autoFlipEnabled && (
           <div className="auto-flip-status">
-            Auto-Flip: Next flip in <strong>{countdown}</strong> seconds
+            Auto-Flip: Next flip in <strong>{countdown !== null ? countdown : '...'}</strong>{' '}
+            seconds
           </div>
         )}
       </div>

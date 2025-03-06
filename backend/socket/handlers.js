@@ -310,6 +310,7 @@ function setupSocketHandlers(io) {
           io.to(gameId).emit('auto_flip_update', {
             enabled: game.settings.autoFlipEnabled,
             interval: game.settings.autoFlipInterval,
+            nextFlipTime: game.nextFlipTime,
           });
         }
       } catch (error) {

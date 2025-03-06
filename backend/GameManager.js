@@ -29,6 +29,7 @@ class Game {
     this.turnOrder = [];
     this.currentTurnIndex = 0;
     this.autoFlipTimer = null;
+    this.nextFlipTime = null;
     this.createdAt = new Date();
     this.lastActivity = new Date();
   }
@@ -276,6 +277,7 @@ class Game {
       currentTurnIndex: this.currentTurnIndex,
       createdAt: this.createdAt,
       lastActivity: this.lastActivity,
+      nextFlipTime: this.nextFlipTime,
     };
   }
 
@@ -290,9 +292,23 @@ class Game {
     game.currentTurnIndex = data.currentTurnIndex || 0;
     game.createdAt = new Date(data.createdAt);
     game.lastActivity = new Date(data.lastActivity);
+    game.nextFlipTime = data.nextFlipTime;
     // Restart auto-flip timer if enabled
     if (game.settings.autoFlipEnabled) {
-      game.startAutoFlipTimer();
+      // Calculate remaining time based on saved nextFlipTime
+      if (game.nextFlipTime) {
+        const remainingTime = game.nextFlipTime - Date.now();
+        if (remainingTime > 0) {
+          game.autoFlipTimer = setTimeout(() => {
+            game.autoFlip();
+          }, remainingTime);
+        } else {
+          // If we missed the flip time, do it immediately
+          game.autoFlip();
+        }
+      } else {
+        game.startAutoFlipTimer();
+      }
     }
     return game;
   }
@@ -333,6 +349,7 @@ class Game {
   // Start auto-flip timer
   startAutoFlipTimer() {
     if (this.settings.autoFlipEnabled && !this.autoFlipTimer) {
+      this.nextFlipTime = Date.now() + this.settings.autoFlipInterval * 1000;
       this.autoFlipTimer = setTimeout(() => {
         this.autoFlip();
       }, this.settings.autoFlipInterval * 1000);
@@ -344,6 +361,7 @@ class Game {
   autoFlip() {
     const result = this.flipLetter();
     this.autoFlipTimer = null;
+    this.nextFlipTime = null;
 
     if (result.success && this.deck.length > 0) {
       this.startAutoFlipTimer();
@@ -357,6 +375,7 @@ class Game {
     if (this.autoFlipTimer) {
       clearTimeout(this.autoFlipTimer);
       this.autoFlipTimer = null;
+      this.nextFlipTime = null;
     }
     return this;
   }
@@ -369,10 +388,9 @@ class Game {
       this.settings.autoFlipInterval = interval;
     }
 
+    this.stopAutoFlipTimer();
     if (enabled) {
       this.startAutoFlipTimer();
-    } else {
-      this.stopAutoFlipTimer();
     }
 
     return this;

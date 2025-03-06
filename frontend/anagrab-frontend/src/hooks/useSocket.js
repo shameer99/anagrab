@@ -219,6 +219,18 @@ export const useSocket = () => {
       setGamesList(games);
     });
 
+    socket.on('auto_flip_update', ({ enabled, interval, nextFlipTime }) => {
+      setGameState(prev => ({
+        ...prev,
+        settings: {
+          ...prev.settings,
+          autoFlipEnabled: enabled,
+          autoFlipInterval: interval,
+        },
+        nextFlipTime,
+      }));
+    });
+
     return () => {
       socket.off('join_successful');
       socket.off('reconnection_successful');
@@ -228,6 +240,7 @@ export const useSocket = () => {
       socket.off('join_error');
       socket.off('game_error');
       socket.off('games_list');
+      socket.off('auto_flip_update');
     };
   }, [pendingClaim]);
 
