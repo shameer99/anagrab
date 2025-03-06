@@ -10,9 +10,11 @@ import ConnectionStatus from './components/ConnectionStatus';
 import { AlphabetDisplay } from './components/AlphabetDisplay';
 import { WordList } from './components/WordList';
 import { GameSettings } from './components/GameSettings';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
+const gameControlsRef = useRef(null);
 function App() {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const {
     gameState,
     isJoined,
@@ -208,6 +210,10 @@ function App() {
     },
     [null, []]
   );
+  
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  }
 
   return (
     <div className="game-container">
@@ -231,29 +237,38 @@ function App() {
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
           </button>
-          <GameSettings
-            gameState={gameState}
-            onAutoFlipChange={(enabled, timeoutSeconds) => {
-              socket.emit('update_auto_flip', {
-                gameId: currentGameId,
-                enabled,
-                timeoutSeconds,
-              });
-            }}
-            onRestartGame={handleRestartGame}
-            onLeaveGame={handleLeaveGame}
-          />
+          <div className='game-controls-collapsable'>
+            <GameSettings
+              gameState={gameState}
+              onAutoFlipChange={(enabled, timeoutSeconds) => {
+                socket.emit('update_auto_flip', {
+                  gameId: currentGameId,
+                  enabled,
+                  timeoutSeconds,
+                });
+              }}
+              onRestartGame={handleRestartGame}
+              onLeaveGame={handleLeaveGame}
+            />
+          </div>
         </div>
       </div>
 
-      <GameControls
-        onFlipLetter={flipLetter}
-        onEndGame={endGame}
-        deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
-        gameState={gameState}
-        currentPlayer={currentPlayer}
-        socket={socket}
-      />
+      <div className="game-controls-wrapper">
+        <button className="collapse-button" onClick={toggleCollapse}>
+          {isCollapsed ? 'Expand' : 'Collapse'}
+        </button>
+        <div className={`game-controls ${isCollapsed ? 'collapsed' : 'expanded'}`} ref={gameControlsRef}>
+          <GameControls
+            onFlipLetter={flipLetter}
+            onEndGame={endGame}
+            deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
+            gameState={gameState}
+            currentPlayer={currentPlayer}
+            socket={socket}
+          />
+        </div>
+      </div>
 
       {/* Alphabet display for all 26 letters */}
       <AlphabetDisplay letters={gameState?.pot || []} />
