@@ -261,15 +261,13 @@ function App() {
           <button className="start-game-btn" onClick={handleRestartGame}>
             Restart Game
           </button>
-          {isHost && (
-            <button
-              onClick={() => setShowSettingsModal(true)}
-              className="settings-btn"
-              title="Game Settings"
-            >
-              ⚙️ Settings
-            </button>
-          )}
+          <button
+            onClick={() => setShowSettingsModal(true)}
+            className="settings-btn"
+            title="Game Settings"
+          >
+            ⚙️ Settings
+          </button>
           <button className="share-game-btn" onClick={handleShareGame}>
             Share Game
           </button>
@@ -473,6 +471,9 @@ function App() {
               ×
             </button>
             <h2>Game Settings</h2>
+            <p className="settings-description">
+              These settings affect all players in the game. Any player can change them.
+            </p>
             <div className="settings-content">
               <div className="setting-group">
                 <label className="setting-label">

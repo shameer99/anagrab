@@ -304,15 +304,6 @@ function setupSocketHandlers(io) {
       try {
         const game = GameManager.getGame(gameId);
         if (game) {
-          // Only allow host to toggle auto-flip
-          if (game.host !== socket.id) {
-            socket.emit('game_error', {
-              type: 'auto_flip_failed',
-              message: 'Only the host can control auto-flip settings',
-            });
-            return;
-          }
-
           game.toggleAutoFlip(enabled, interval);
           await GameManager.saveGameToDB(game);
           io.to(gameId).emit('game_state_update', game);
