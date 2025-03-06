@@ -244,6 +244,7 @@ function App() {
         onEndGame={endGame}
         deckCount={Array.isArray(gameState?.deck) ? gameState.deck.length : gameState?.deck}
         gameState={gameState}
+        currentPlayer={currentPlayer}
       />
 
       {/* Alphabet display for all 26 letters */}

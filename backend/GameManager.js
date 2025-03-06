@@ -24,6 +24,10 @@ class Game {
     this.settings = settings;
     this.createdAt = new Date();
     this.lastActivity = new Date();
+
+    // Turn-based functionality
+    this.playerOrder = [];
+    this.currentTurnIndex = 0;
   }
 
   // Generate a unique 4-letter game code
@@ -109,6 +113,12 @@ class Game {
     };
 
     this.playerTokens.set(socketId, token);
+
+    // Add player to turn order if game is active
+    if (this.isActive && !this.playerOrder.includes(token)) {
+      this.playerOrder.push(token);
+    }
+
     return { token, game: this };
   }
 
@@ -117,6 +127,16 @@ class Game {
     if (token) {
       delete this.players[token];
       this.playerTokens.delete(socketId);
+
+      // Remove player from turn order
+      const playerIndex = this.playerOrder.indexOf(token);
+      if (playerIndex !== -1) {
+        this.playerOrder.splice(playerIndex, 1);
+        // Adjust currentTurnIndex if necessary
+        if (playerIndex <= this.currentTurnIndex) {
+          this.currentTurnIndex = this.currentTurnIndex > 0 ? this.currentTurnIndex - 1 : 0;
+        }
+      }
     }
     return this;
   }
@@ -150,18 +170,53 @@ class Game {
       this.players[playerId].words = [];
     }
     this.isActive = true;
+
+    // Reset turn order with all current players
+    this.playerOrder = Object.keys(this.players);
+    this.currentTurnIndex = 0;
+
     return this;
   }
 
-  flipLetter() {
+  getCurrentTurnPlayer() {
+    if (!this.isActive || this.playerOrder.length === 0) {
+      return null;
+    }
+    return this.playerOrder[this.currentTurnIndex];
+  }
+
+  advanceTurn() {
+    if (this.playerOrder.length > 0) {
+      this.currentTurnIndex = (this.currentTurnIndex + 1) % this.playerOrder.length;
+    }
+  }
+
+  flipLetter(socketId) {
     console.log(`Game ${this.id}: Attempting to flip letter. Current state:`, {
       deckSize: this.deck.length,
       potSize: this.pot.length,
     });
 
+    const playerToken = this.playerTokens.get(socketId);
+    const currentTurnPlayer = this.getCurrentTurnPlayer();
+
+    // Check if it's the player's turn
+    if (playerToken !== currentTurnPlayer) {
+      console.log(`Game ${this.id}: Failed to flip letter: not player's turn`);
+      return {
+        success: false,
+        error: 'Not your turn to flip',
+        state: this,
+      };
+    }
+
     if (this.deck.length > 0) {
       const letter = this.deck.pop();
       this.pot.push(letter);
+
+      // Advance to next player's turn
+      this.advanceTurn();
+
       console.log(`Game ${this.id}: Letter flipped:`, {
         letter,
         newDeckSize: this.deck.length,
@@ -170,7 +225,7 @@ class Game {
       return { success: true, state: this };
     }
     console.log(`Game ${this.id}: Failed to flip letter: deck is empty`);
-    return { success: false, state: this };
+    return { success: false, error: 'Deck is empty', state: this };
   }
 
   claimWord(word, socketId) {
@@ -226,7 +281,7 @@ class Game {
 
   toJSON() {
     return {
-      _id: this.id, // Use _id for MongoDB
+      _id: this.id,
       host: this.host,
       players: this.players,
       pot: this.pot,
@@ -235,6 +290,8 @@ class Game {
       settings: this.settings,
       createdAt: this.createdAt,
       lastActivity: this.lastActivity,
+      playerOrder: this.playerOrder,
+      currentTurnIndex: this.currentTurnIndex,
     };
   }
 
@@ -247,6 +304,8 @@ class Game {
     game.isActive = data.isActive;
     game.createdAt = new Date(data.createdAt);
     game.lastActivity = new Date(data.lastActivity);
+    game.playerOrder = data.playerOrder || [];
+    game.currentTurnIndex = data.currentTurnIndex || 0;
     return game;
   }
 }

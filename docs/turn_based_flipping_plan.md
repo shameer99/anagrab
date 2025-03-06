@@ -51,11 +51,21 @@ flowchart TD
    - Track player order in an array
    - Keep index of current player
    - Auto-advance after each flip
+   - Skip offline players automatically
 
 2. **Game State Updates**:
+
    - Track current and next player
    - Show visual turn indicators
    - Handle player joins/disconnects
+   - Monitor player connection status
+
+3. **Offline Player Handling**:
+   - Detect player disconnection events
+   - Auto-skip offline players after brief grace period (5 seconds)
+   - Re-include players when they reconnect
+   - Visual indicator for offline players
+   - Maintain turn order when players return
 
 ### Technical Implementation
 
@@ -66,11 +76,15 @@ flowchart TD
    - Add turn order tracking
    - Modify flip logic to respect turns
    - Add player order management
+   - Add connection status tracking
+   - Implement offline player detection and handling
 
 2. **Socket Events**:
    - Get current turn
    - Handle turn transitions
    - Player join/leave events
+   - Track disconnect/reconnect events
+   - Handle grace period timeouts
 
 #### Frontend Changes
 
@@ -79,6 +93,8 @@ flowchart TD
    - Current player highlight
    - Next player preview
    - Updated flip button state
+   - Offline status indicators
+   - Reconnection notifications
 
 #### Migration Steps
 
@@ -137,12 +153,20 @@ flowchart TD
      - Wait for auto-flip if timer expires
    - Turn advances after any flip (manual or automatic)
    - Timer resets with each new turn
+   - For offline players:
+     - Short grace period (5 seconds) when disconnection detected
+     - Auto-flip triggers immediately after grace period
+     - If player reconnects during grace period, their turn continues
+     - Visual indicator shows offline status and grace period countdown
 
 4. **Technical Considerations**:
    - Server-side timer management
    - Synchronization between clients
    - Graceful handling of network delays
    - Clear visual feedback for timer status
+   - Robust offline player detection
+   - Efficient turn skipping for offline players
+   - Proper handling of reconnection edge cases
 
 ## Conclusion
 
@@ -152,5 +176,6 @@ This phased approach will allow us to:
 2. Later enhance turns with optional auto-flip timing
 3. Maintain player agency while preventing stalled games
 4. Provide flexibility in gameplay styles
+5. Handle network issues and disconnections gracefully
 
-The auto-flip enhancement will work seamlessly with the turn-based system, adding a time management aspect while preserving the core turn structure. This ensures games maintain momentum while still giving players control over their turns.
+The auto-flip enhancement will work seamlessly with the turn-based system, adding a time management aspect while preserving the core turn structure. This ensures games maintain momentum while still giving players control over their turns, even in the presence of network issues or disconnected players.

@@ -135,12 +135,15 @@ function setupSocketHandlers(io) {
       try {
         const game = GameManager.getGame(gameId);
         if (game) {
-          const { success, state } = game.flipLetter();
+          const { success, state, error } = game.flipLetter(socket.id);
           if (success) {
             await GameManager.saveGameToDB(state);
             io.to(gameId).emit('game_state_update', state);
           } else {
-            socket.emit('game_error', { type: 'flip_failed', message: 'No more letters in deck' });
+            socket.emit('game_error', {
+              type: 'flip_failed',
+              message: error || 'No more letters in deck',
+            });
           }
         }
       } catch (error) {
